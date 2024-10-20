@@ -1,4 +1,0 @@
-<button aria-label="<?php echo $name ?>" role="button" data-href="<?php echo $url ?>" class="maskedLink font-[500] gap-2 flex-1 flex flex-col items-center justify-center relative min-w-[10rem] rounded-[.375rem] transition-[background_,_box-shadow_,_transform] duration-300 bg-[#1D1F2C] h-[6.25rem] hover:bg-[#272939] hover:shadow-slot-card hover:-translate-y-[5px] group/navigation" x-bind:class="state && 'loading'">
-    <img class="w-[2.625rem] h-[2.625rem] opacity-100 transition-[opacity]" x-bind:class="state && '!opacity-0'" src="assets/images/navigations/<?php echo $icon ?>.svg" alt="">
-    <span class="opacity-100 transition-[opacity]" x-bind:class="state && '!opacity-0'"><?php echo $name ?></span>
-</button>

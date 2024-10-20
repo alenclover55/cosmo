@@ -1,4 +1,0 @@
-<div class="flex-1 flex justify-center items-center relative z-[2]">
-    <span x-bind:class="{'win': state === 'win', 'lose': state === 'lose'}" class="dice-result font-bold font-['Roboto_Condensed'] text-[calc(100px_+_(110_-_46)_*_((100vw_-_320px)_/_(990_-_320)))]" x-text="winValue ? winValue : '000000'">000000</span>
-    <canvas x-bind:class="{'opacity-100': state !== 'pending', 'hue-rotate-[145deg]': state === 'lose', 'hue-rotate-[-35deg]': state === 'win'}" class="opacity-0 transition-all duration-[100ms] lightning !absolute left-1/2 -translate-x-1/2 top-0 w-[37.5rem] h-full group-[.disable-animations]/body:!hidden"></canvas>
-</div>
