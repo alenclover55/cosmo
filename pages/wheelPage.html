@@ -808,72 +808,41 @@
                   </div>
                   <div class="flex flex-wrap gap-2 max-w-[13.75rem]">
                     <button
-                      type="button"
-                      aria-label="+10"
-                      role="button"
                       class="h-[2rem] flex flex-1 items-center font-semibold text-sm justify-center px-2 rounded-lg bg-[#a1a4d7]/[0.15] transition-all duration-300 hover:bg-blue"
                     >
                       +10
                     </button>
                     <button
-                      type="button"
-                      aria-label="+50"
-                      role="button"
-                      @click="addSumm(50)"
                       class="h-[2rem] flex flex-1 items-center font-semibold text-sm justify-center px-2 rounded-lg bg-[#a1a4d7]/[0.15] transition-all duration-300 hover:bg-blue"
                     >
                       +50
                     </button>
                     <button
-                      type="button"
-                      aria-label="+100"
-                      role="button"
-                      @click="addSumm(100)"
                       class="h-[2rem] flex flex-1 items-center font-semibold text-sm justify-center px-2 rounded-lg bg-[#a1a4d7]/[0.15] transition-all duration-300 hover:bg-blue"
                     >
                       +100
                     </button>
                     <button
-                      type="button"
-                      aria-label="+500"
-                      role="button"
-                      @click="addSumm(500)"
                       class="h-[2rem] flex flex-1 items-center font-semibold text-sm justify-center px-2 rounded-lg bg-[#a1a4d7]/[0.15] transition-all duration-300 hover:bg-blue"
                     >
                       +500
                     </button>
                     <button
-                      type="button"
-                      aria-label="+1000"
-                      role="button"
-                      @click="addSumm(1000)"
                       class="h-[2rem] flex flex-1 items-center font-semibold text-sm justify-center px-2 rounded-lg bg-[#a1a4d7]/[0.15] transition-all duration-300 hover:bg-blue"
                     >
                       +1000
                     </button>
                     <button
-                      type="button"
-                      aria-label="+5000"
-                      role="button"
-                      @click="addSumm(5000)"
                       class="h-[2rem] flex flex-1 items-center font-semibold text-sm justify-center px-2 rounded-lg bg-[#a1a4d7]/[0.15] transition-all duration-300 hover:bg-blue"
                     >
                       +5000
                     </button>
                     <button
-                      type="button"
-                      aria-label="x2"
-                      role="button"
-                      @click="xBet"
                       class="h-[2rem] flex flex-1 items-center font-semibold text-sm justify-center px-2 rounded-lg bg-[#a1a4d7]/[0.15] transition-all duration-300 hover:bg-blue"
                     >
                       x2
                     </button>
                     <button
-                      type="button"
-                      aria-label="1/2"
-                      role="button"
-                      @click="dBet"
                       class="h-[2rem] flex flex-1 items-center font-semibold text-sm justify-center px-2 rounded-lg bg-[#a1a4d7]/[0.15] transition-all duration-300 hover:bg-blue"
                     >
                       1/2
@@ -884,10 +853,6 @@
                   class="min-[591px]:flex grid grid-cols-2 flex-1 items-stretch min-[861px]:gap-4 gap-3"
                 >
                   <button
-                    @click="addBet(1)"
-                    aria-label="Поставить на x2"
-                    role="button"
-                    type="button"
                     class="flex-1 h-full px-6 min-[861px]:py-0 py-2 overflow-hidden relative rounded-lg group/btn text-white font-bold text-3xl hover:-translate-y-[0.25rem] transition-all duration-200 hover:shadow-[0px_30px_33px_rgba(0,0,0,0.15)]"
                   >
                     <div
@@ -898,7 +863,6 @@
                       >
                       <span
                         class="text-sm py-1 px-2 rounded-full bg-black/[0.4]"
-                        x-text="userBet.x2 ? (userBet.x2).toFixed() + ' ₽' : '0.00 ₽'"
                         >0.00 ₽</span
                       >
                     </div>
@@ -909,16 +873,12 @@
                       class="absolute left-0 top-0 w-full h-full bg-gradient-to-r from-[#67739B] from-[25%] to-[#81AAC0] transition-all duration-300"
                     ></div>
                     <img
-                      src="assets/images/games/x50/btn-pattern.svg"
+                      src="../assets/images/games/x50/btn-pattern.svg"
                       class="absolute left-0 top-0 w-full h-full object-contain z-[2]"
                       alt=""
                     />
                   </button>
                   <button
-                    @click="addBet(2)"
-                    aria-label="Поставить на x3"
-                    role="button"
-                    type="button"
                     class="flex-1 h-full px-6 min-[861px]:py-0 py-2 overflow-hidden relative rounded-lg group/btn text-white font-bold text-3xl hover:-translate-y-[0.25rem] transition-all duration-200 hover:shadow-[0px_30px_33px_rgba(0,0,0,0.15)]"
                   >
                     <div
@@ -929,7 +889,6 @@
                       >
                       <span
                         class="text-sm py-1 px-2 rounded-full bg-black/[0.4]"
-                        x-text="userBet.x3 ? (userBet.x3).toFixed() + ' ₽' : '0.00 ₽'"
                         >0.00 ₽</span
                       >
                     </div>
@@ -940,16 +899,12 @@
                       class="absolute left-0 top-0 w-full h-full bg-gradient-to-r from-[#4743FF] from-[25%] to-[#67A4FF] transition-all duration-300"
                     ></div>
                     <img
-                      src="assets/images/games/x50/btn-pattern.svg"
+                      src="../assets/images/games/x50/btn-pattern.svg"
                       class="absolute left-0 top-0 w-full h-full object-contain z-[2]"
                       alt=""
                     />
                   </button>
                   <button
-                    @click="addBet(3)"
-                    aria-label="Поставить на x5"
-                    role="button"
-                    type="button"
                     class="flex-1 h-full px-6 min-[861px]:py-0 py-2 overflow-hidden relative rounded-lg group/btn text-white font-bold text-3xl hover:-translate-y-[0.25rem] transition-all duration-200 hover:shadow-[0px_30px_33px_rgba(0,0,0,0.15)]"
                   >
                     <div
@@ -960,7 +915,6 @@
                       >
                       <span
                         class="text-sm py-1 px-2 rounded-full bg-black/[0.4]"
-                        x-text="userBet.x5 ? (userBet.x5).toFixed() + ' ₽' : '0.00 ₽'"
                         >0.00 ₽</span
                       >
                     </div>
@@ -971,16 +925,12 @@
                       class="absolute left-0 top-0 w-full h-full bg-gradient-to-r from-[#D1474F] from-[25%] to-[#F14B87] transition-all duration-300"
                     ></div>
                     <img
-                      src="assets/images/games/x50/btn-pattern.svg"
+                      src="../assets/images/games/x50/btn-pattern.svg"
                       class="absolute left-0 top-0 w-full h-full object-contain z-[2]"
                       alt=""
                     />
                   </button>
                   <button
-                    @click="addBet(4)"
-                    aria-label="Поставить на x50"
-                    role="button"
-                    type="button"
                     class="flex-1 h-full px-6 min-[861px]:py-0 py-2 overflow-hidden relative rounded-lg group/btn text-white font-bold text-3xl hover:-translate-y-[0.25rem] transition-all duration-200 hover:shadow-[0px_30px_33px_rgba(0,0,0,0.15)]"
                   >
                     <div
@@ -991,7 +941,6 @@
                       >
                       <span
                         class="text-sm py-1 px-2 rounded-full bg-black/[0.4]"
-                        x-text="userBet.x50 ? (userBet.x50).toFixed() + ' ₽' : '0.00 ₽'"
                         >0.00 ₽</span
                       >
                     </div>
@@ -1002,7 +951,7 @@
                       class="absolute left-0 top-0 w-full h-full bg-gradient-to-r from-[#47D14C] from-[25%] to-[#94D147] transition-all duration-300"
                     ></div>
                     <img
-                      src="assets/images/games/x50/btn-pattern.svg"
+                      src="../assets/images/games/x50/btn-pattern.svg"
                       class="absolute left-0 top-0 w-full h-full object-contain z-[2]"
                       alt=""
                     />
@@ -1019,7 +968,7 @@
                     <div class="flex items-center justify-between">
                       <div class="flex items-center gap-3 font-bold">
                         <img
-                          src="assets/images/games/x50/x2.svg"
+                          src="../assets/images/games/x50/x2.svg"
                           class="max-w-[3rem]"
                           alt=""
                         />
@@ -1033,12 +982,10 @@
                       <div class="flex items-center gap-2">
                         <svg class="w-4 h-4 text-[#9CA0B5]">
                           <use
-                            xlink:href="assets/images/symbols.svg#icon-partners"
+                            xlink:href="../assets/images/symbols.svg#icon-partners"
                           ></use>
                         </svg>
-                        <span class="" x-text="users.x2 ? users.x2 : '0'"
-                          >0</span
-                        >
+                        <span class="">0</span>
                       </div>
                       <div class="flex items-center gap-1">
                         <svg class="w-4 h-4">
@@ -1046,21 +993,15 @@
                             xlink:href="assets/images/symbols.svg#icon-rub"
                           ></use>
                         </svg>
-                        <span class="" x-text="banks.x2 ? banks.x2 : '0.00'"
-                          >0.00</span
-                        >
+                        <span class="">0.00</span>
                       </div>
                     </div>
                   </div>
                   <div
                     class="min-[801px]:flex hidden flex-col h-full border border-white/[0.05] rounded-lg text-sm"
-                    x-html="bets.x2"
-                    x-show="bets.x2"
-                    x-cloak
                   ></div>
                   <div
                     class="min-[801px]:flex hidden flex-col h-full border border-white/[0.05] rounded-lg text-sm"
-                    x-show="!bets.x2"
                   >
                     <div class="flex flex-1 items-center justify-center py-8">
                       <span class="loader-wheel-txt">Ожидание игроков...</span>
@@ -1074,7 +1015,7 @@
                     <div class="flex items-center justify-between">
                       <div class="flex items-center gap-3 font-bold">
                         <img
-                          src="assets/images/games/x50/x3.svg"
+                          src="../assets/images/games/x50/x3.svg"
                           class="max-w-[3rem]"
                           alt=""
                         />
@@ -1088,34 +1029,26 @@
                       <div class="flex items-center gap-2">
                         <svg class="w-4 h-4 text-[#688eff]">
                           <use
-                            xlink:href="assets/images/symbols.svg#icon-partners"
+                            xlink:href="../assets/images/symbols.svg#icon-partners"
                           ></use>
                         </svg>
-                        <span class="" x-text="users.x3 ? users.x3 : '0'"
-                          >0</span
-                        >
+                        <span class="">0</span>
                       </div>
                       <div class="flex items-center gap-1">
                         <svg class="w-4 h-4">
                           <use
-                            xlink:href="assets/images/symbols.svg#icon-rub"
+                            xlink:href="../assets/images/symbols.svg#icon-rub"
                           ></use>
                         </svg>
-                        <span class="" x-text="banks.x3 ? banks.x3 : '0.00'"
-                          >0.00</span
-                        >
+                        <span class="">0.00</span>
                       </div>
                     </div>
                   </div>
                   <div
                     class="min-[801px]:flex hidden flex-col h-full border border-white/[0.05] rounded-lg text-sm"
-                    x-html="bets.x3"
-                    x-show="bets.x3"
-                    x-cloak
                   ></div>
                   <div
                     class="min-[801px]:flex hidden flex-col h-full border border-white/[0.05] rounded-lg text-sm"
-                    x-show="!bets.x3"
                   >
                     <div class="flex flex-1 items-center justify-center py-8">
                       <span class="loader-wheel-txt">Ожидание игроков...</span>
@@ -1129,7 +1062,7 @@
                     <div class="flex items-center justify-between">
                       <div class="flex items-center gap-3 font-bold">
                         <img
-                          src="assets/images/games/x50/x5.svg"
+                          src="../assets/images/games/x50/x5.svg"
                           class="max-w-[3rem]"
                           alt=""
                         />
@@ -1146,9 +1079,7 @@
                             xlink:href="assets/images/symbols.svg#icon-partners"
                           ></use>
                         </svg>
-                        <span class="" x-text="users.x5 ? users.x5 : '0'"
-                          >0</span
-                        >
+                        <span class="">0</span>
                       </div>
                       <div class="flex items-center gap-1">
                         <svg class="w-4 h-4">
@@ -1156,21 +1087,15 @@
                             xlink:href="assets/images/symbols.svg#icon-rub"
                           ></use>
                         </svg>
-                        <span class="" x-text="banks.x5 ? banks.x5 : '0.00'"
-                          >0.00</span
-                        >
+                        <span class="">0.00</span>
                       </div>
                     </div>
                   </div>
                   <div
                     class="min-[801px]:flex hidden flex-col h-full border border-white/[0.05] rounded-lg text-sm"
-                    x-html="bets.x5"
-                    x-show="bets.x5"
-                    x-cloak
                   ></div>
                   <div
                     class="min-[801px]:flex hidden flex-col h-full border border-white/[0.05] rounded-lg text-sm"
-                    x-show="!bets.x5"
                   >
                     <div class="flex flex-1 items-center justify-center py-8">
                       <span class="loader-wheel-txt">Ожидание игроков...</span>
@@ -1184,7 +1109,7 @@
                     <div class="flex items-center justify-between">
                       <div class="flex items-center gap-3 font-bold">
                         <img
-                          src="assets/images/games/x50/x50.svg"
+                          src="../assets/images/games/x50/x50.svg"
                           class="max-w-[3rem]"
                           alt=""
                         />
@@ -1198,34 +1123,26 @@
                       <div class="flex items-center gap-2">
                         <svg class="w-4 h-4 text-[#47D14C]">
                           <use
-                            xlink:href="assets/images/symbols.svg#icon-partners"
+                            xlink:href="../assets/images/symbols.svg#icon-partners"
                           ></use>
                         </svg>
-                        <span class="" x-text="users.x50 ? users.x50 : '0'"
-                          >0</span
-                        >
+                        <span class="">0</span>
                       </div>
                       <div class="flex items-center gap-1">
                         <svg class="w-4 h-4">
                           <use
-                            xlink:href="assets/images/symbols.svg#icon-rub"
+                            xlink:href="../assets/images/symbols.svg#icon-rub"
                           ></use>
                         </svg>
-                        <span class="" x-text="banks.x50 ? banks.x50 : '0.00'"
-                          >0.00</span
-                        >
+                        <span class="">0.00</span>
                       </div>
                     </div>
                   </div>
                   <div
                     class="min-[801px]:flex hidden flex-col h-full border border-white/[0.05] rounded-lg text-sm"
-                    x-html="bets.x50"
-                    x-show="bets.x50"
-                    x-cloak
                   ></div>
                   <div
                     class="min-[801px]:flex hidden flex-col h-full border border-white/[0.05] rounded-lg text-sm"
-                    x-show="!bets.x50"
                   >
                     <div class="flex flex-1 items-center justify-center py-8">
                       <span class="loader-wheel-txt">Ожидание игроков...</span>
