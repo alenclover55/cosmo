@@ -661,594 +661,580 @@
       <main
         class="flex flex-1 overflow-x-hidden flex-col min-[1125px]:pl-[17.5rem] pl-0 pt-[4.5rem] max-[1125px]:pb-[4.563rem]"
       >
-        <section
-          class="relative flex-1 flex flex-col"
-          x-data="mines"
-          x-init="init"
-        >
-          <div class="flex flex-col gap-3 flex-1">
-            <div
-              class="flex items-stretch px-4 pt-4 mines-history -translate-y-[1rem] opacity-0 gap-2 mask-right"
-              x-ref="history"
-            >
-              <div class="swiper-wrapper">
-                <template x-for="(item, index) in coeffMinesList" :key="index">
+        <section class="relative flex-1 flex flex-col">
+          <div
+            class="flex flex-col z-[1] relative min-[691px]:gap-6 gap-2 min-[1081px]:pb-12 pb-4"
+          >
+            <div class="flex flex-col relative z-[2] overflow-hidden">
+              <div
+                class="relative min-[1081px]:h-[23.75rem] h-[18rem] overflow-hidden"
+              >
+                <div
+                  class="absolute left-1/2 -translate-x-1/2 max-w-[30.25rem] w-full top-6 overflow-hidden px-4"
+                >
                   <div
-                    class="swiper-slide mines-history-item flex items-center group/item"
-                    x-bind:class="{'active': item.status === 'active', 'win': item.status === 'win', 'lose': item.status === 'lose' }"
+                    class="flex items-center gap-2 mask-right-big"
+                    x-html="history"
+                  ></div>
+                </div>
+                <div
+                  class="absolute left-1/2 -translate-x-1/2 bottom-[6.5rem] z-[1]"
+                  id="wheel-cursor"
+                >
+                  <svg
+                    width="47"
+                    height="55"
+                    viewBox="0 0 47 55"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="transition-all duration-[100ms]"
                   >
-                    <div
-                      class="bg-[#2a2b3c] px-4 rounded-2xl h-[4.063rem] flex items-center gap-4 justify-between w-[90%] border border-2 border-transparent group-[.win]/item:border-[#3dcb3d] group-[.active]/item:border-blue group-[.lose]/item:border-[#ff3535]"
-                    >
-                      <div class="flex flex-col *:leading-[100%] gap-1.5">
-                        <span
-                          class="text-sm font-medium text-[#8f91bf] group-[.win]/item:text-[#3dcb3d] group-[.active]/item:text-blue group-[.lose]/item:text-[#ff3535]"
-                          x-text="(index + 1) + ' шаг'"
-                        ></span>
-                        <span
-                          class="text-lg font-bold"
-                          x-text="'x' + item.x"
-                        ></span>
-                      </div>
-                      <div
-                        class="w-6 h-6 flex items-center justify-center text-white text-sm font-bold relative"
-                      >
-                        <span class="relative z-[1]" x-text="index + 1"></span>
-                        <div
-                          class="absolute left-0 top-0 w-full h-full rounded-md bg-[#484968] group-[.win]/item:bg-[#3dcb3d] group-[.active]/item:bg-blue group-[.lose]/item:bg-[#ff3535] -skew-x-[12deg]"
-                        ></div>
-                      </div>
-                    </div>
-                    <div
-                      class="w-[10%] h-[4px] bg-[#2a2b3c] group-[.win]/item:bg-[#3dcb3d] group-[.active]/item:bg-blue group-[.lose]/item:bg-[#ff3535] group-last/item:hidden"
-                    ></div>
+                    <path
+                      d="M21.8568 53.9229L0.162998 5.63832C-0.176872 4.86949 0.0256042 3.95208 0.669188 3.41723C1.31277 2.87868 2.22753 2.86011 2.88919 3.37266L23.4983 19.2509L44.1075 3.37267C44.7692 2.86011 45.6875 2.87868 46.3275 3.41352C46.765 3.7738 47 4.31236 47 4.85835C47 5.12205 46.9458 5.38576 46.8337 5.63461L25.1398 53.9192C24.8434 54.5803 24.2034 55 23.4983 55C22.7933 55 22.1533 54.5803 21.8568 53.9229Z"
+                      fill="black"
+                      fill-opacity="0.5"
+                    />
+                    <path
+                      d="M22.5984 42.8957L4.09357 2.22243C3.80366 1.57479 3.97637 0.801999 4.52535 0.351464C5.07432 -0.102199 5.85461 -0.117843 6.41901 0.31392L23.9986 13.6892L41.5782 0.313921C42.1426 -0.117841 42.926 -0.102197 43.4719 0.348337C43.845 0.651822 44.0455 1.10549 44.0455 1.56541C44.0455 1.78755 43.9992 2.00968 43.9036 2.21931L25.3988 42.8926C25.1459 43.4495 24.6 43.803 23.9986 43.803C23.3972 43.803 22.8513 43.4495 22.5984 42.8957Z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </div>
+                <div
+                  class="absolute left-1/2 -translate-x-1/2 bottom-0 w-[100rem] h-[100rem]"
+                >
+                  <div
+                    class="w-full h-full relative animate-event"
+                    id="wheel"
+                    style="transform: rotate(0deg)"
+                  >
+                    <img
+                      src="../assets/images/games/x50/wheel.png"
+                      class="w-full h-full"
+                      alt=""
+                    />
                   </div>
-                </template>
+                </div>
+              </div>
+              <div
+                class="min-[1081px]:absolute min-[1081px]:left-6 bottom-0 flex items-end gap-4 min-[1081px]:px-0 px-4"
+              >
+                <div
+                  class="w-[.375rem] min-[1081px]:h-[13.75rem] h-[6rem] rounded-full relative overflow-hidden bg-[#313444]"
+                >
+                  <div
+                    class="transition-all duration-300 transition-[linear] absolute left-0 bottom-0 h-full bg-blue w-full"
+                    id="wheel-timer-line"
+                  ></div>
+                </div>
+                <div class="flex flex-col *:leading-[100%] gap-0.5">
+                  <span
+                    class="text-sm font-semibold text-[#9CA0B5]"
+                    x-text="state === 'wait' ? 'Начало через' : '' || state === 'rolling' ? 'Новая игра через' : ''"
+                    >Начало через</span
+                  >
+                  <span class="text-xl font-bold">
+                    <span><span x-text="timer">15</span> секунд</span>
+                  </span>
+                </div>
               </div>
             </div>
+            <div class="absolute w-full h-full left-0 top-0">
+              <div
+                class="absolute w-full h-full left-0 top-0 bg-[radial-gradient(transparent,_#131521_70%)] z-[1]"
+              ></div>
+              <img
+                src="../assets/images/backgrounds/cosmos.jpg"
+                class="w-full h-full object-cover opacity-70"
+              />
+            </div>
             <div
-              class="relative flex-1 min-[861px]:flex min-[861px]:gap-0 gap-4 grid grid-cols-2 items-stretch justify-between z-[1] px-4"
+              class="absolute min-[531px]:right-0 -right-[20%] top-[5rem] max-[1080px]:scale-[0.5] z-[2] origin-right"
             >
               <div
-                class="min-[861px]:w-[8.75rem] w-full mines-sidebar min-[861px]:-translate-x-[1rem] max-[860px]:translate-y-[1rem] opacity-0 flex flex-col h-full rounded-[1.25rem] overflow-hidden relative shadow-[0_0_35px_rgba(0,0,0,0.1)]"
+                class="w-[30.625rem] h-[26.625rem] group-[:not(.disable-animations)]/body:animate-[nloWheel_2s_ease_forwards]"
               >
-                <div
-                  class="relative z-[1] min-[861px]:py-6 min-[861px]:py-2 max-[860px]:pb-2 w-full h-full rounded-[1.25rem] bg-[#41496B]/[0.25] border border-[#41496B]/[0.5] flex min-[861px]:flex-col items-center justify-center"
-                >
-                  <span
-                    class="uppercase font-bold min-[861px]:text-xl text-base max-[860px]:hidden"
-                    >Сфер</span
-                  >
-                  <div
-                    class="relative min-[861px]:w-full flex flex-col items-center"
-                  >
-                    <img
-                      src="../assets/images/games/mines/sphere.png"
-                      class="group-[:not(.disable-animations)]/body:animate-[mineIcon_1s_infinite_alternate] max-[860px]:min-[545px]:max-w-[5.625rem] max-[544px]:max-w-[3.875rem]"
-                      alt=""
-                    />
-                    <div
-                      class="w-[3.375rem] h-[1.125rem] rounded-[50%] bg-black opacity-20 group-[:not(.disable-animations)]/body:animate-[shadowIcon_1s_infinite_alternate]"
-                    ></div>
-                  </div>
-                  <span
-                    class="min-[861px]:text-4xl text-xl font-semibold min-[861px]:pt-4"
-                    x-text="grid.length - bomb"
-                  ></span>
+                <div class="absolute left-1/2 -translate-x-1/2 top-[26%]">
+                  <img
+                    src="../assets/images/nlo/star.svg"
+                    class="max-w-[1.25rem] group-[:not(.disable-animations)]/body:animate-[radial_5s_linear_infinite]"
+                    alt=""
+                  />
                 </div>
-                <div
-                  class="absolute left-0 top-0 w-[4.688rem] h-[4.688rem] rounded-full bg-[#0083E1] blur-[60px] group-[:not(.disable-animations)]/body:animate-[blurEllipse_3s_infinite_alternate]"
-                ></div>
-                <div
-                  class="absolute right-0 top-1/2 -translate-y-1/2 w-[4.688rem] h-[4.688rem] rounded-full bg-[#003FE1] blur-[60px] group-[:not(.disable-animations)]/body:animate-[blurEllipse_6s_0.5s_infinite_alternate]"
-                ></div>
-                <div
-                  class="absolute left-0 bottom-0 w-[4.688rem] h-[4.688rem] rounded-full bg-[#00ABE1] blur-[60px] group-[:not(.disable-animations)]/body:animate-[blurEllipse_4s_1s_infinite_alternate]"
-                ></div>
-              </div>
-              <div
-                class="flex-1 min-[545px]:px-8 flex items-center justify-center [&.wait]:pointer-events-none max-[860px]:order-[1] max-[860px]:col-span-2"
-                x-bind:class="state === 'pending' ? 'wait' : ''"
-              >
-                <div
-                  class="min-[1391px]:w-1/2 min-[861px]:w-[70%] min-[745px]:w-[60%] min-[546px]:w-[80%] w-full flex flex-col min-[861px]:py-3"
-                >
-                  <div class="grid grid-cols-5 gap-3">
-                    <template x-for="(item, index) in grid" :key="index">
-                      <button
-                        aria-label="Играть"
-                        @click="mine(index + 1)"
-                        type="button"
-                        x-bind:class="{'win': item.status === 1, 'lose': item.status === 2, 'win !opacity-40': item.status === 3 }"
-                        class="grid mines-grid-item opacity-0 scale-[0.85] relative before:pt-[100%] border-[.188rem] border-[#53588d]/[0.3] [&:not(.lose):not(.win)]:hover:border-[#8990d5] [&:not(.lose):not(.win)]:hover:!scale-105 rounded-xl transition-all duration-300 backdrop-blur-sm [&.win]:border-[#39bc3c] [&.lose]:border-[#ff4a51]"
-                      >
-                        <template x-if="item.status === 2">
-                          <div
-                            class="absolute left-0 top-0 w-full h-full flex items-center justify-center text-[#586887] p-2"
-                          >
-                            <img
-                              src="../assets/images/games/mines/mines.png"
-                              class="animate-[mineIconInner_1s_infinite_alternate]"
-                              alt=""
-                            />
-                          </div>
-                        </template>
-                        <template x-if="item.status === 3">
-                          <div
-                            class="absolute left-0 top-0 w-full h-full flex items-center justify-center text-[#586887] p-2"
-                          >
-                            <img
-                              src="../assets/images/games/mines/sphere.png"
-                              class="animate-[mineIconInner_1s_infinite_alternate]"
-                              alt=""
-                            />
-                          </div>
-                        </template>
-                        <template x-if="item.status === 1">
-                          <div
-                            class="absolute left-0 top-0 w-full h-full flex items-center justify-center text-[#586887] p-2"
-                          >
-                            <img
-                              src="../assets/images/games/mines/sphere.png"
-                              class="animate-[mineIconInner_1s_infinite_alternate]"
-                              alt=""
-                            />
-                          </div>
-                        </template>
-                        <!-- При недостатке денег
-                          <div
-                            class="absolute left-0 top-0 w-full h-full flex items-center justify-center text-[#586887]"
-                          >
-                            <svg class="w-8 h-8">
-                              <use
-                                xlink:href="../assets/images/symbols.svg#icon-logotype"
-                              ></use>
-                            </svg>
-                          </div>
-                        </template> -->
-                      </button>
-                    </template>
-                  </div>
-                </div>
-              </div>
-              <div
-                class="min-[861px]:w-[8.75rem] w-full mines-sidebar min-[861px]:-translate-x-[1rem] max-[860px]:translate-y-[1rem] opacity-0 flex flex-col h-full rounded-[1.25rem] overflow-hidden relative shadow-[0_0_35px_rgba(0,0,0,0.1)]"
-              >
-                <div
-                  class="relative z-[1] min-[861px]:py-6 min-[861px]:py-2 max-[860px]:pb-2 w-full h-full rounded-[1.25rem] bg-[#41496B]/[0.25] border border-[#41496B]/[0.5] flex min-[861px]:flex-col items-center justify-center"
-                >
-                  <span
-                    class="uppercase font-bold min-[861px]:text-xl text-base max-[860px]:hidden"
-                    >Бомб</span
-                  >
-                  <div
-                    class="relative min-[861px]:w-full flex flex-col items-center"
-                  >
-                    <img
-                      src="assets/images/games/mines/mines.png"
-                      class="group-[:not(.disable-animations)]/body:animate-[mineIcon_1s_infinite_alternate] max-[860px]:min-[545px]:max-w-[5.625rem] max-[544px]:max-w-[3.875rem]"
-                      alt=""
-                    />
-                    <div
-                      class="w-[3.375rem] h-[1.125rem] rounded-[50%] bg-black opacity-20 group-[:not(.disable-animations)]/body:animate-[shadowIcon_1s_infinite_alternate]"
-                    ></div>
-                  </div>
-                  <span
-                    class="min-[861px]:text-4xl text-xl font-semibold min-[861px]:pt-4"
-                    x-text="bomb"
-                  ></span>
-                </div>
-                <div
-                  class="absolute left-0 top-0 w-[4.688rem] h-[4.688rem] rounded-full bg-[#0083E1] blur-[60px] group-[:not(.disable-animations)]/body:animate-[blurEllipse_3s_infinite_alternate]"
-                ></div>
-                <div
-                  class="absolute right-0 top-1/2 -translate-y-1/2 w-[4.688rem] h-[4.688rem] rounded-full bg-[#003FE1] blur-[60px] group-[:not(.disable-animations)]/body:animate-[blurEllipse_6s_0.5s_infinite_alternate]"
-                ></div>
-                <div
-                  class="absolute left-0 bottom-0 w-[4.688rem] h-[4.688rem] rounded-full bg-[#00ABE1] blur-[60px] group-[:not(.disable-animations)]/body:animate-[blurEllipse_4s_1s_infinite_alternate]"
-                ></div>
+                <img
+                  src="../assets/images/nlo/up-shadow.svg"
+                  class="absolute left-0 top-0 w-full h-full group-[:not(.disable-animations)]/body:animate-[lightning_0.25s_ease_infinite_alternate]"
+                  alt=""
+                />
+                <img
+                  src="../assets/images/nlo/light-shadow.svg"
+                  class="absolute left-0 top-0 w-full h-full group-[:not(.disable-animations)]/body:animate-[lightning_0.8s_ease_infinite_alternate]"
+                  alt=""
+                />
+                <img
+                  src="../assets/images/nlo/light.svg"
+                  class="absolute left-0 top-0 w-full h-full group-[:not(.disable-animations)]/body:animate-[lightning_1s_ease_infinite_alternate]"
+                  alt=""
+                />
+                <img
+                  src="../assets/images/nlo/nlo.svg"
+                  class="w-full h-full"
+                  alt=""
+                />
               </div>
             </div>
           </div>
 
-          <div
-            class="w-full mines-bet translate-y-[1rem] opacity-0 py-4 bg-gradient-to-b from-transparent to-[#161823] min-[1125px]:to-[70%] to-[20%] min-[861px]:flex grid grid-cols-2 items-stretch justify-between px-4 gap-4 z-[1]"
-          >
-            <div class="flex items-stretch gap-2 max-[650px]:col-span-2">
-              <div class="flex flex-col gap-1 max-[860px]:flex-1">
-                <div
-                  class="min-[861px]:w-[10rem] w-full relative flex-1 flex flex-col bg-[#2a2b3c] rounded-lg items-center"
-                >
-                  <span
-                    class="absolute left-1/2 top-0 -translate-x-1/2 whitespace-nowrap text-xs pt-2 font-semibold text-[#9E9EAD]"
-                    >Сумма ставки</span
-                  >
-                  <input
-                    type="text"
-                    @input="filterBet"
-                    x-model="bet"
-                    class="bg-transparent text-center h-full border-0 text-2xl w-full pt-4"
-                  />
-                </div>
-              </div>
-              <div class="flex flex-wrap gap-2 max-w-[13.75rem]">
-                <button
-                  type="button"
-                  aria-label="+10"
-                  role="button"
-                  @click="addSumm(10)"
-                  class="h-[2rem] flex flex-1 items-center font-semibold text-sm justify-center px-2 rounded-lg bg-[#a1a4d7]/[0.15] transition-all duration-300 hover:bg-blue"
-                >
-                  +10
-                </button>
-                <button
-                  type="button"
-                  aria-label="+50"
-                  role="button"
-                  @click="addSumm(50)"
-                  class="h-[2rem] flex flex-1 items-center font-semibold text-sm justify-center px-2 rounded-lg bg-[#a1a4d7]/[0.15] transition-all duration-300 hover:bg-blue"
-                >
-                  +50
-                </button>
-                <button
-                  type="button"
-                  aria-label="+100"
-                  role="button"
-                  @click="addSumm(100)"
-                  class="h-[2rem] flex flex-1 items-center font-semibold text-sm justify-center px-2 rounded-lg bg-[#a1a4d7]/[0.15] transition-all duration-300 hover:bg-blue"
-                >
-                  +100
-                </button>
-                <button
-                  type="button"
-                  aria-label="+500"
-                  role="button"
-                  @click="addSumm(500)"
-                  class="h-[2rem] flex flex-1 items-center font-semibold text-sm justify-center px-2 rounded-lg bg-[#a1a4d7]/[0.15] transition-all duration-300 hover:bg-blue"
-                >
-                  +500
-                </button>
-                <button
-                  type="button"
-                  aria-label="+1000"
-                  role="button"
-                  @click="addSumm(1000)"
-                  class="h-[2rem] flex flex-1 items-center font-semibold text-sm justify-center px-2 rounded-lg bg-[#a1a4d7]/[0.15] transition-all duration-300 hover:bg-blue"
-                >
-                  +1000
-                </button>
-                <button
-                  type="button"
-                  aria-label="+5000"
-                  role="button"
-                  @click="addSumm(5000)"
-                  class="h-[2rem] flex flex-1 items-center font-semibold text-sm justify-center px-2 rounded-lg bg-[#a1a4d7]/[0.15] transition-all duration-300 hover:bg-blue"
-                >
-                  +5000
-                </button>
-                <button
-                  type="button"
-                  aria-label="x2"
-                  role="button"
-                  @click="xBet"
-                  class="h-[2rem] flex flex-1 items-center font-semibold text-sm justify-center px-2 rounded-lg bg-[#a1a4d7]/[0.15] transition-all duration-300 hover:bg-blue"
-                >
-                  x2
-                </button>
-                <button
-                  type="button"
-                  aria-label="1/2"
-                  role="button"
-                  @click="dBet"
-                  class="h-[2rem] flex flex-1 items-center font-semibold text-sm justify-center px-2 rounded-lg bg-[#a1a4d7]/[0.15] transition-all duration-300 hover:bg-blue"
-                >
-                  1/2
-                </button>
-              </div>
-            </div>
+          <div class="flex flex-col relative z-[1]">
             <div
-              class="flex items-stretch gap-2 max-[650px]:col-span-2"
-              x-data="{ edit: false, }"
-            >
-              <div class="flex flex-col gap-1 max-[860px]:flex-1">
-                <div
-                  class="min-[861px]:w-[10rem] w-full relative flex-1 flex flex-col bg-[#2a2b3c] rounded-lg items-center"
-                >
-                  <span
-                    class="absolute left-1/2 top-0 -translate-x-1/2 whitespace-nowrap text-xs pt-2 font-semibold text-[#9E9EAD]"
-                    >Количество бомб</span
-                  >
-                  <input
-                    type="text"
-                    @input="filterBomb"
-                    @focusout="edit = !edit"
-                    x-model="bomb"
-                    x-trap="edit"
-                    class="bg-transparent text-center h-full border-0 text-2xl w-full pt-4"
-                  />
-                </div>
-              </div>
-              <div class="flex flex-wrap gap-2 max-w-[13.75rem]">
-                <button
-                  type="button"
-                  aria-label="3"
-                  @click="state !== 'ingame' ? bombSelect(3) : ''"
-                  x-bind:class="bomb === 3 ? 'active' : ''"
-                  class="h-[2rem] w-[calc(50%-0.25rem)] flex items-center font-semibold text-sm justify-center px-2 rounded-lg bg-[#2a2b3c] [&.active]:bg-blue transition-all duration-300 hover:bg-blue"
-                >
-                  3
-                </button>
-                <button
-                  type="button"
-                  aria-label="5"
-                  @click="state !== 'ingame' ? bombSelect(5) : ''"
-                  x-bind:class="bomb === 5 ? 'active' : ''"
-                  class="h-[2rem] w-[calc(50%-0.25rem)] flex items-center font-semibold text-sm justify-center px-2 rounded-lg bg-[#2a2b3c] [&.active]:bg-blue transition-all duration-300 hover:bg-blue"
-                >
-                  5
-                </button>
-                <button
-                  type="button"
-                  aria-label="15"
-                  @click="state !== 'ingame' ? bombSelect(10) : ''"
-                  x-bind:class="bomb === 15 ? 'active' : ''"
-                  class="h-[2rem] w-[calc(50%-0.25rem)] flex items-center font-semibold text-sm justify-center px-2 rounded-lg bg-[#2a2b3c] [&.active]:bg-blue transition-all duration-300 hover:bg-blue"
-                >
-                  10
-                </button>
-                <button
-                  type="button"
-                  aria-label="25"
-                  @click="state !== 'ingame' ? bombSelect(24) : ''"
-                  x-bind:class="bomb === 24 ? 'active' : ''"
-                  class="h-[2rem] w-[calc(50%-0.25rem)] flex items-center font-semibold text-sm justify-center px-2 rounded-lg bg-[#2a2b3c] [&.active]:bg-blue transition-all duration-300 hover:bg-blue"
-                >
-                  24
-                </button>
-              </div>
-            </div>
-            <button
-              aria-label="Начать игру"
-              :disabled="loader"
-              x-show="state !== 'ingame'"
-              x-data="btn"
-              @click="eventClick(200); setTimeout(() => { startGame()  }, 100)"
-              class="min-h-[3.438rem] flex-1 uppercase relative font-[600] flex rounded-[.375rem] items-center justify-center text-white px-[1.75rem] transition-[background_,_box-shadow] duration-300 hover:bg-[#2399EF] bg-blue hover:shadow-btn-blue"
-            >
-              <span
-                class="transition-[opacity] opacity-100"
-                x-bind:class="loader ? '!opacity-0' : ''"
-                >Начать игру</span
-              >
-              <div
-                class="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 opacity-0 transition-[opacity]"
-                x-bind:class="loader ? '!opacity-100' : ''"
-              >
-                <svg
-                  class="animate-spin h-[1.625rem] w-[1.625rem] text-white"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                >
-                  <circle
-                    class="opacity-25"
-                    cx="12"
-                    cy="12"
-                    r="10"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  ></circle>
-                  <path
-                    class="opacity-75"
-                    stroke-linecap="round"
-                    fill="currentColor"
-                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                  ></path>
-                </svg>
-              </div>
-            </button>
-            <button
-              aria-label="Забрать"
-              :disabled="loader"
-              x-show="state === 'ingame'"
-              x-cloak
-              x-data="btn"
-              @click="eventClick(200); setTimeout(() => { endGame()  }, 100)"
-              class="min-h-[3.438rem] flex-1 uppercase relative font-[600] flex rounded-[.375rem] items-center justify-center text-white px-[1.75rem] transition-[background_,_box-shadow] duration-300 hover:bg-[#2399EF] bg-blue hover:shadow-btn-blue"
-            >
-              <span
-                class="transition-[opacity] opacity-100"
-                x-bind:class="loader ? '!opacity-0' : ''"
-                >Забрать
-                <span
-                  class="bg-white text-blue py-1 px-1.5 rounded-md"
-                  x-text="win ? ' ' + parseInt(win).toFixed(2) : ' 0.00'"
-                  >0 ₽</span
-                ></span
-              >
-              <div
-                class="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 opacity-0 transition-[opacity]"
-                x-bind:class="loader ? '!opacity-100' : ''"
-              >
-                <svg
-                  class="animate-spin h-[1.625rem] w-[1.625rem] text-white"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                >
-                  <circle
-                    class="opacity-25"
-                    cx="12"
-                    cy="12"
-                    r="10"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  ></circle>
-                  <path
-                    class="opacity-75"
-                    stroke-linecap="round"
-                    fill="currentColor"
-                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                  ></path>
-                </svg>
-              </div>
-            </button>
-            <button
-              aria-label="Авто-выбор"
-              :disabled="loader"
-              x-data="btn"
-              @click="eventClick(200); setTimeout(() => { randOpen() }, 100)"
-              class="min-h-[3.438rem] flex-1 uppercase relative font-[600] flex rounded-[.375rem] items-center justify-center text-white px-[1.75rem] transition-[background_,_box-shadow] duration-300 hover:bg-[#373850] bg-[#2a2b3c]"
-            >
-              <span
-                class="transition-[opacity] opacity-100"
-                x-bind:class="loader ? '!opacity-0' : ''"
-                >Авто-выбор</span
-              >
-              <div
-                class="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 opacity-0 transition-[opacity]"
-                x-bind:class="loader ? '!opacity-100' : ''"
-              >
-                <svg
-                  class="animate-spin h-[1.625rem] w-[1.625rem] text-white"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                >
-                  <circle
-                    class="opacity-25"
-                    cx="12"
-                    cy="12"
-                    r="10"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  ></circle>
-                  <path
-                    class="opacity-75"
-                    stroke-linecap="round"
-                    fill="currentColor"
-                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                  ></path>
-                </svg>
-              </div>
-            </button>
-          </div>
-          <div
-            class="absolute left-0 top-0 w-full h-full flex justify-center items-center z-[1] opacity-0 invisible pointer-events-none transition-all duration-300"
-            x-bind:class="{'opacity-100 !visible pointer-events-auto': modalShow}"
-          >
-            <div
-              x-show="modalShow"
-              x-transition:enter="transition-all duration-300"
-              x-transition:enter-start="opacity-0 translate-y-[1.25rem]"
-              x-transition:enter-end="opacity-100 translate-y-0"
-              x-transition:leave="transition-all duration-300"
-              x-transition:leave-start="opacity-100 translate-y-0"
-              x-transition:leave-end="opacity-0 translate-y-[1.25rem]"
-              class="flex flex-col relative z-[1]"
+              class="max-w-[80rem] px-2 pb-3 w-full flex flex-col mx-auto min-[861px]:gap-4 gap-3"
             >
               <div
-                class="w-[23.75rem] flex flex-col rounded-[1.25rem] overflow-hidden relative shadow-[0_0_35px_rgba(0,0,0,0.1)]"
+                class="flex items-stretch justify-between min-[861px]:gap-4 gap-3 min-[861px]:flex-row flex-col"
               >
-                <div
-                  class="relative z-[1] p-[2rem] w-full h-full rounded-[1.25rem] bg-[#41496B]/[0.25] border border-[#41496B]/[0.5] gap-5 flex flex-col items-center justify-center"
-                >
-                  <div class="flex flex-col items-center gap-2">
-                    <span
-                      class="text-[#ADB8EB] text-lg font-semibold leading-[100%]"
-                      >Поздравляем!</span
-                    >
-                    <span class="text-2xl font-bold leading-[100%]"
-                      >Вы выиграли</span
-                    >
-                  </div>
-                  <div
-                    class="flex items-center justify-center gap-2 text-xl font-medium text-[#ADB8EB]"
-                  >
-                    <span
-                      class="text-white"
-                      x-text="win ? ' ' + parseInt(win).toFixed(2) + ' ₽' : ' 0.00'"
-                      >0.00 ₽</span
-                    >
-                  </div>
-                  <div
-                    class="flex relative items-center justify-center text-4xl font-medium"
-                  >
-                    <span x-text="currX ? currX + 'x' : '0x'">x0.00</span>
-                    <span
-                      class="absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 whitespace-nowrap scale-[1.25] opacity-10"
-                      x-text="currX ? currX + 'x' : '0x'"
-                      >x0.00</span
-                    >
-                  </div>
-                  <button
-                    aria-label="Продолжить игру"
-                    :disabled="loader"
-                    x-data="btn"
-                    @click="eventClick(200); setTimeout(() => { reset() }, 200)"
-                    class="shrink-0 h-[3rem] max-[944px]:w-full min-w-[18.75rem] uppercase relative font-[600] flex rounded-[.375rem] items-center justify-center text-white px-[1.75rem] transition-[background_,_box-shadow] duration-300 hover:bg-[#2399EF] bg-blue hover:shadow-btn-blue"
-                  >
-                    <span
-                      class="transition-[opacity] opacity-100"
-                      x-bind:class="loader ? '!opacity-0' : ''"
-                      >Продолжить игру</span
-                    >
+                <div class="flex items-stretch gap-2">
+                  <div class="flex flex-col gap-1 max-[860px]:flex-1">
                     <div
-                      class="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 opacity-0 transition-[opacity]"
-                      x-bind:class="loader ? '!opacity-100' : ''"
+                      class="min-[861px]:w-[10rem] w-full relative flex-1 flex flex-col bg-[#2a2b3c] rounded-lg items-center"
                     >
-                      <svg
-                        class="animate-spin h-[1.625rem] w-[1.625rem] text-white"
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
+                      <span
+                        class="absolute left-1/2 top-0 -translate-x-1/2 whitespace-nowrap text-xs pt-2 font-semibold text-[#9E9EAD]"
+                        >Сумма ставки</span
                       >
-                        <circle
-                          class="opacity-25"
-                          cx="12"
-                          cy="12"
-                          r="10"
-                          stroke="currentColor"
-                          stroke-width="2"
-                        ></circle>
-                        <path
-                          class="opacity-75"
-                          stroke-linecap="round"
-                          fill="currentColor"
-                          d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                        ></path>
-                      </svg>
+                      <input
+                        class="bg-transparent text-center h-full border-0 text-2xl w-full pt-4"
+                      />
                     </div>
+                  </div>
+                  <div class="flex flex-wrap gap-2 max-w-[13.75rem]">
+                    <button
+                      type="button"
+                      aria-label="+10"
+                      role="button"
+                      class="h-[2rem] flex flex-1 items-center font-semibold text-sm justify-center px-2 rounded-lg bg-[#a1a4d7]/[0.15] transition-all duration-300 hover:bg-blue"
+                    >
+                      +10
+                    </button>
+                    <button
+                      type="button"
+                      aria-label="+50"
+                      role="button"
+                      @click="addSumm(50)"
+                      class="h-[2rem] flex flex-1 items-center font-semibold text-sm justify-center px-2 rounded-lg bg-[#a1a4d7]/[0.15] transition-all duration-300 hover:bg-blue"
+                    >
+                      +50
+                    </button>
+                    <button
+                      type="button"
+                      aria-label="+100"
+                      role="button"
+                      @click="addSumm(100)"
+                      class="h-[2rem] flex flex-1 items-center font-semibold text-sm justify-center px-2 rounded-lg bg-[#a1a4d7]/[0.15] transition-all duration-300 hover:bg-blue"
+                    >
+                      +100
+                    </button>
+                    <button
+                      type="button"
+                      aria-label="+500"
+                      role="button"
+                      @click="addSumm(500)"
+                      class="h-[2rem] flex flex-1 items-center font-semibold text-sm justify-center px-2 rounded-lg bg-[#a1a4d7]/[0.15] transition-all duration-300 hover:bg-blue"
+                    >
+                      +500
+                    </button>
+                    <button
+                      type="button"
+                      aria-label="+1000"
+                      role="button"
+                      @click="addSumm(1000)"
+                      class="h-[2rem] flex flex-1 items-center font-semibold text-sm justify-center px-2 rounded-lg bg-[#a1a4d7]/[0.15] transition-all duration-300 hover:bg-blue"
+                    >
+                      +1000
+                    </button>
+                    <button
+                      type="button"
+                      aria-label="+5000"
+                      role="button"
+                      @click="addSumm(5000)"
+                      class="h-[2rem] flex flex-1 items-center font-semibold text-sm justify-center px-2 rounded-lg bg-[#a1a4d7]/[0.15] transition-all duration-300 hover:bg-blue"
+                    >
+                      +5000
+                    </button>
+                    <button
+                      type="button"
+                      aria-label="x2"
+                      role="button"
+                      @click="xBet"
+                      class="h-[2rem] flex flex-1 items-center font-semibold text-sm justify-center px-2 rounded-lg bg-[#a1a4d7]/[0.15] transition-all duration-300 hover:bg-blue"
+                    >
+                      x2
+                    </button>
+                    <button
+                      type="button"
+                      aria-label="1/2"
+                      role="button"
+                      @click="dBet"
+                      class="h-[2rem] flex flex-1 items-center font-semibold text-sm justify-center px-2 rounded-lg bg-[#a1a4d7]/[0.15] transition-all duration-300 hover:bg-blue"
+                    >
+                      1/2
+                    </button>
+                  </div>
+                </div>
+                <div
+                  class="min-[591px]:flex grid grid-cols-2 flex-1 items-stretch min-[861px]:gap-4 gap-3"
+                >
+                  <button
+                    @click="addBet(1)"
+                    aria-label="Поставить на x2"
+                    role="button"
+                    type="button"
+                    class="flex-1 h-full px-6 min-[861px]:py-0 py-2 overflow-hidden relative rounded-lg group/btn text-white font-bold text-3xl hover:-translate-y-[0.25rem] transition-all duration-200 hover:shadow-[0px_30px_33px_rgba(0,0,0,0.15)]"
+                  >
+                    <div
+                      class="relative z-[3] w-full flex flex-col items-center text-center *:leading-[100%] gap-1"
+                    >
+                      <span class="drop-shadow-[0rem_.25rem_0rem_#384665]"
+                        >x2</span
+                      >
+                      <span
+                        class="text-sm py-1 px-2 rounded-full bg-black/[0.4]"
+                        x-text="userBet.x2 ? (userBet.x2).toFixed() + ' ₽' : '0.00 ₽'"
+                        >0.00 ₽</span
+                      >
+                    </div>
+                    <div
+                      class="absolute left-0 top-0 w-full h-full bg-gradient-to-r from-[#95C0D9] from-[25%] to-[#7682AC] transition-all duration-300 opacity-0 group-hover/btn:opacity-100 z-[1]"
+                    ></div>
+                    <div
+                      class="absolute left-0 top-0 w-full h-full bg-gradient-to-r from-[#67739B] from-[25%] to-[#81AAC0] transition-all duration-300"
+                    ></div>
+                    <img
+                      src="assets/images/games/x50/btn-pattern.svg"
+                      class="absolute left-0 top-0 w-full h-full object-contain z-[2]"
+                      alt=""
+                    />
+                  </button>
+                  <button
+                    @click="addBet(2)"
+                    aria-label="Поставить на x3"
+                    role="button"
+                    type="button"
+                    class="flex-1 h-full px-6 min-[861px]:py-0 py-2 overflow-hidden relative rounded-lg group/btn text-white font-bold text-3xl hover:-translate-y-[0.25rem] transition-all duration-200 hover:shadow-[0px_30px_33px_rgba(0,0,0,0.15)]"
+                  >
+                    <div
+                      class="relative z-[3] w-full flex flex-col items-center text-center *:leading-[100%] gap-1"
+                    >
+                      <span class="drop-shadow-[0rem_.25rem_0rem_#1B3D7E]"
+                        >x3</span
+                      >
+                      <span
+                        class="text-sm py-1 px-2 rounded-full bg-black/[0.4]"
+                        x-text="userBet.x3 ? (userBet.x3).toFixed() + ' ₽' : '0.00 ₽'"
+                        >0.00 ₽</span
+                      >
+                    </div>
+                    <div
+                      class="absolute left-0 top-0 w-full h-full bg-gradient-to-r from-[#605CFC] from-[25%] to-[#87B7FF] transition-all duration-300 opacity-0 group-hover/btn:opacity-100 z-[1]"
+                    ></div>
+                    <div
+                      class="absolute left-0 top-0 w-full h-full bg-gradient-to-r from-[#4743FF] from-[25%] to-[#67A4FF] transition-all duration-300"
+                    ></div>
+                    <img
+                      src="assets/images/games/x50/btn-pattern.svg"
+                      class="absolute left-0 top-0 w-full h-full object-contain z-[2]"
+                      alt=""
+                    />
+                  </button>
+                  <button
+                    @click="addBet(3)"
+                    aria-label="Поставить на x5"
+                    role="button"
+                    type="button"
+                    class="flex-1 h-full px-6 min-[861px]:py-0 py-2 overflow-hidden relative rounded-lg group/btn text-white font-bold text-3xl hover:-translate-y-[0.25rem] transition-all duration-200 hover:shadow-[0px_30px_33px_rgba(0,0,0,0.15)]"
+                  >
+                    <div
+                      class="relative z-[3] w-full flex flex-col items-center text-center *:leading-[100%] gap-1"
+                    >
+                      <span class="drop-shadow-[0rem_.25rem_0rem_#970B34]"
+                        >x5</span
+                      >
+                      <span
+                        class="text-sm py-1 px-2 rounded-full bg-black/[0.4]"
+                        x-text="userBet.x5 ? (userBet.x5).toFixed() + ' ₽' : '0.00 ₽'"
+                        >0.00 ₽</span
+                      >
+                    </div>
+                    <div
+                      class="absolute left-0 top-0 w-full h-full bg-gradient-to-r from-[#E45A63] from-[25%] to-[#FF72A5] transition-all duration-300 opacity-0 group-hover/btn:opacity-100 z-[1]"
+                    ></div>
+                    <div
+                      class="absolute left-0 top-0 w-full h-full bg-gradient-to-r from-[#D1474F] from-[25%] to-[#F14B87] transition-all duration-300"
+                    ></div>
+                    <img
+                      src="assets/images/games/x50/btn-pattern.svg"
+                      class="absolute left-0 top-0 w-full h-full object-contain z-[2]"
+                      alt=""
+                    />
+                  </button>
+                  <button
+                    @click="addBet(4)"
+                    aria-label="Поставить на x50"
+                    role="button"
+                    type="button"
+                    class="flex-1 h-full px-6 min-[861px]:py-0 py-2 overflow-hidden relative rounded-lg group/btn text-white font-bold text-3xl hover:-translate-y-[0.25rem] transition-all duration-200 hover:shadow-[0px_30px_33px_rgba(0,0,0,0.15)]"
+                  >
+                    <div
+                      class="relative z-[3] w-full flex flex-col items-center text-center *:leading-[100%] gap-1"
+                    >
+                      <span class="drop-shadow-[0rem_.25rem_0rem_#116547]"
+                        >x50</span
+                      >
+                      <span
+                        class="text-sm py-1 px-2 rounded-full bg-black/[0.4]"
+                        x-text="userBet.x50 ? (userBet.x50).toFixed() + ' ₽' : '0.00 ₽'"
+                        >0.00 ₽</span
+                      >
+                    </div>
+                    <div
+                      class="absolute left-0 top-0 w-full h-full bg-gradient-to-r from-[#5FE765] from-[25%] to-[#AEED5E] transition-all duration-300 opacity-0 group-hover/btn:opacity-100 z-[1]"
+                    ></div>
+                    <div
+                      class="absolute left-0 top-0 w-full h-full bg-gradient-to-r from-[#47D14C] from-[25%] to-[#94D147] transition-all duration-300"
+                    ></div>
+                    <img
+                      src="assets/images/games/x50/btn-pattern.svg"
+                      class="absolute left-0 top-0 w-full h-full object-contain z-[2]"
+                      alt=""
+                    />
                   </button>
                 </div>
-                <div
-                  class="absolute left-0 top-0 w-[4.688rem] h-[4.688rem] rounded-full bg-[#0083E1] blur-[60px] animate-[blurEllipse_3s_infinite_alternate]"
-                ></div>
-                <div
-                  class="absolute right-0 top-1/2 -translate-y-1/2 w-[4.688rem] h-[4.688rem] rounded-full bg-[#003FE1] blur-[60px] animate-[blurEllipse_6s_0.5s_infinite_alternate]"
-                ></div>
-                <div
-                  class="absolute left-0 bottom-0 w-[4.688rem] h-[4.688rem] rounded-full bg-[#00ABE1] blur-[60px] animate-[blurEllipse_4s_1s_infinite_alternate]"
-                ></div>
+              </div>
+              <div
+                class="grid min-[801px]:grid-cols-4 grid-cols-2 min-[861px]:gap-4 gap-3"
+              >
+                <div class="flex flex-col gap-3">
+                  <div
+                    class="flex flex-col py-3 gap-3 px-4 bg-gradient-to-r from-[#67739B]/[0.2] from-[25%] to-[#81AAC0]/[0.2] rounded-lg"
+                  >
+                    <div class="flex items-center justify-between">
+                      <div class="flex items-center gap-3 font-bold">
+                        <img
+                          src="assets/images/games/x50/x2.svg"
+                          class="max-w-[3rem]"
+                          alt=""
+                        />
+                        <span>Серый</span>
+                      </div>
+                      <span class="text-[#9CA0B5] font-medium">x2</span>
+                    </div>
+                    <div
+                      class="flex items-center justify-between text-sm font-medium"
+                    >
+                      <div class="flex items-center gap-2">
+                        <svg class="w-4 h-4 text-[#9CA0B5]">
+                          <use
+                            xlink:href="assets/images/symbols.svg#icon-partners"
+                          ></use>
+                        </svg>
+                        <span class="" x-text="users.x2 ? users.x2 : '0'"
+                          >0</span
+                        >
+                      </div>
+                      <div class="flex items-center gap-1">
+                        <svg class="w-4 h-4">
+                          <use
+                            xlink:href="assets/images/symbols.svg#icon-rub"
+                          ></use>
+                        </svg>
+                        <span class="" x-text="banks.x2 ? banks.x2 : '0.00'"
+                          >0.00</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="min-[801px]:flex hidden flex-col h-full border border-white/[0.05] rounded-lg text-sm"
+                    x-html="bets.x2"
+                    x-show="bets.x2"
+                    x-cloak
+                  ></div>
+                  <div
+                    class="min-[801px]:flex hidden flex-col h-full border border-white/[0.05] rounded-lg text-sm"
+                    x-show="!bets.x2"
+                  >
+                    <div class="flex flex-1 items-center justify-center py-8">
+                      <span class="loader-wheel-txt">Ожидание игроков...</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex flex-col gap-3">
+                  <div
+                    class="flex flex-col py-3 gap-3 px-4 bg-gradient-to-r from-[#4743FF]/[0.2] from-[25%] to-[#67A4FF]/[0.2] rounded-lg"
+                  >
+                    <div class="flex items-center justify-between">
+                      <div class="flex items-center gap-3 font-bold">
+                        <img
+                          src="assets/images/games/x50/x3.svg"
+                          class="max-w-[3rem]"
+                          alt=""
+                        />
+                        <span>Синий</span>
+                      </div>
+                      <span class="text-[#688eff] font-medium">x3</span>
+                    </div>
+                    <div
+                      class="flex items-center justify-between text-sm font-medium"
+                    >
+                      <div class="flex items-center gap-2">
+                        <svg class="w-4 h-4 text-[#688eff]">
+                          <use
+                            xlink:href="assets/images/symbols.svg#icon-partners"
+                          ></use>
+                        </svg>
+                        <span class="" x-text="users.x3 ? users.x3 : '0'"
+                          >0</span
+                        >
+                      </div>
+                      <div class="flex items-center gap-1">
+                        <svg class="w-4 h-4">
+                          <use
+                            xlink:href="assets/images/symbols.svg#icon-rub"
+                          ></use>
+                        </svg>
+                        <span class="" x-text="banks.x3 ? banks.x3 : '0.00'"
+                          >0.00</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="min-[801px]:flex hidden flex-col h-full border border-white/[0.05] rounded-lg text-sm"
+                    x-html="bets.x3"
+                    x-show="bets.x3"
+                    x-cloak
+                  ></div>
+                  <div
+                    class="min-[801px]:flex hidden flex-col h-full border border-white/[0.05] rounded-lg text-sm"
+                    x-show="!bets.x3"
+                  >
+                    <div class="flex flex-1 items-center justify-center py-8">
+                      <span class="loader-wheel-txt">Ожидание игроков...</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex flex-col gap-3">
+                  <div
+                    class="flex flex-col py-3 gap-3 px-4 bg-gradient-to-r from-[#D1474F]/[0.2] from-[25%] to-[#F14B87]/[0.2] rounded-lg"
+                  >
+                    <div class="flex items-center justify-between">
+                      <div class="flex items-center gap-3 font-bold">
+                        <img
+                          src="assets/images/games/x50/x5.svg"
+                          class="max-w-[3rem]"
+                          alt=""
+                        />
+                        <span>Красный</span>
+                      </div>
+                      <span class="text-[#D1474F] font-medium">x5</span>
+                    </div>
+                    <div
+                      class="flex items-center justify-between text-sm font-medium"
+                    >
+                      <div class="flex items-center gap-2">
+                        <svg class="w-4 h-4 text-[#D1474F]">
+                          <use
+                            xlink:href="assets/images/symbols.svg#icon-partners"
+                          ></use>
+                        </svg>
+                        <span class="" x-text="users.x5 ? users.x5 : '0'"
+                          >0</span
+                        >
+                      </div>
+                      <div class="flex items-center gap-1">
+                        <svg class="w-4 h-4">
+                          <use
+                            xlink:href="assets/images/symbols.svg#icon-rub"
+                          ></use>
+                        </svg>
+                        <span class="" x-text="banks.x5 ? banks.x5 : '0.00'"
+                          >0.00</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="min-[801px]:flex hidden flex-col h-full border border-white/[0.05] rounded-lg text-sm"
+                    x-html="bets.x5"
+                    x-show="bets.x5"
+                    x-cloak
+                  ></div>
+                  <div
+                    class="min-[801px]:flex hidden flex-col h-full border border-white/[0.05] rounded-lg text-sm"
+                    x-show="!bets.x5"
+                  >
+                    <div class="flex flex-1 items-center justify-center py-8">
+                      <span class="loader-wheel-txt">Ожидание игроков...</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex flex-col gap-3">
+                  <div
+                    class="flex flex-col py-3 gap-3 px-4 bg-gradient-to-r from-[#47D14C]/[0.2] from-[25%] to-[#94D147]/[0.2] rounded-lg"
+                  >
+                    <div class="flex items-center justify-between">
+                      <div class="flex items-center gap-3 font-bold">
+                        <img
+                          src="assets/images/games/x50/x50.svg"
+                          class="max-w-[3rem]"
+                          alt=""
+                        />
+                        <span>Зеленый</span>
+                      </div>
+                      <span class="text-[#47D14C] font-medium">x50</span>
+                    </div>
+                    <div
+                      class="flex items-center justify-between text-sm font-medium"
+                    >
+                      <div class="flex items-center gap-2">
+                        <svg class="w-4 h-4 text-[#47D14C]">
+                          <use
+                            xlink:href="assets/images/symbols.svg#icon-partners"
+                          ></use>
+                        </svg>
+                        <span class="" x-text="users.x50 ? users.x50 : '0'"
+                          >0</span
+                        >
+                      </div>
+                      <div class="flex items-center gap-1">
+                        <svg class="w-4 h-4">
+                          <use
+                            xlink:href="assets/images/symbols.svg#icon-rub"
+                          ></use>
+                        </svg>
+                        <span class="" x-text="banks.x50 ? banks.x50 : '0.00'"
+                          >0.00</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="min-[801px]:flex hidden flex-col h-full border border-white/[0.05] rounded-lg text-sm"
+                    x-html="bets.x50"
+                    x-show="bets.x50"
+                    x-cloak
+                  ></div>
+                  <div
+                    class="min-[801px]:flex hidden flex-col h-full border border-white/[0.05] rounded-lg text-sm"
+                    x-show="!bets.x50"
+                  >
+                    <div class="flex flex-1 items-center justify-center py-8">
+                      <span class="loader-wheel-txt">Ожидание игроков...</span>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-            <div
-              x-show="modalShow"
-              @click="reset()"
-              x-transition:enter="transition-all duration-300"
-              x-transition:enter-start="opacity-0"
-              x-transition:enter-end="opacity-100"
-              x-transition:leave="transition-all duration-300"
-              x-transition:leave-start="opacity-100"
-              x-transition:leave-end="opacity-0"
-              class="absolute left-0 top-0 w-full h-full bg-[#131521]/[0.8] backdrop-blur-[.313rem]"
-            ></div>
           </div>
-          <img
-            src="assets/images/games/mines/background.png"
-            class="absolute left-0 top-0 w-full h-full object-cover"
-            alt=""
-          />
         </section>
       </main>
     </div>
