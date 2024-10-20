@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="verification" content="7e83722522e8aeb7512b7075311316b7" />
+    <link rel="icon" href="../assets/images/favicon.png" type="image/png" />
+    <link rel="preload" href="../assets/css/styles.css" as="style" />
+    <link rel="preload" href="../assets/css/toastr.min.css" as="style" />
+    <link
+      rel="preload"
+      href="../assets/fonts/OpenSansCondensed/stylesheet.css"
+      as="style"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/toastr.min.js"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=line-clamp"></script>
+    <script src="../assets/js/swiper-bundle.min.js"></script>
+    <link rel="preload" href="../assets/css/swiper-bundle.min.css" as="style" />
+    <script src="../assets/js/smooth-scrollbar.js"></script>
+    <link
+      rel="preload"
+      href="../assets/css/simple-scrollbar.min.css"
+      as="style"
+    />
+    <script src="../assets/js/popper.min.js"></script>
+    <script src="../assets/js/tippy-bundle.umd.min.js"></script>
+    <script src="../assets/js/clipboard.min.js"></script>
+    <link rel="preload" href="../assets/css/scale-subtle.css" as="style" />
+    <script src="../assets/js/socket.io-1.4.5.js"></script>
+    <title>Крути и зарабатывай</title>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              blue: "#0083E1",
+            },
+            fontFamily: {
+              sans: ["Rubik"],
+              opensans: ["Open Sans Condensed"],
+            },
+            boxShadow: {
+              "btn-blue": "0px 12px 19px -4px rgba(7, 119, 200, 0.16)",
+              "slot-card": "0px 3px 85px 30px rgba(0,0,0,0.25)",
+              modal: "0px 0px 73px 6px #11131C",
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body
+    class="[&_img]:pointer-events-none [&_img]:select-none group/body font-sans bg-[#131521] h-full [&_span]:cursor-default [&_p]:cursor-default [&_b]:cursor-default [&_li]:cursor-default [&_h1]:cursor-default [&_h2]:cursor-default [&_h3]:cursor-default [&_h4]:cursor-default [&_h5]:cursor-default [&_h6]:cursor-default text-white [&_li]:list-none focus:[&_*]:ring-0 focus:[&_*]:ring-inherit focus:[&_*]:outline-0 overflow-x-hidden min-w-[320px] [&_button_span]:pointer-events-none [&_a_span]:pointer-events-none [&_canvas]:pointer-events-none select-none parallax"
+  >
+    <header
+      class="fixed right-0 top-0 min-[1125px]:w-[calc(100%_-_17.5rem)] w-full h-[4.5rem] bg-[#222432] border-b border-b-[#2A2C3D] gap-4 flex items-stretch justify-between min-[1125px]:pl-[1.875rem] pl-[1rem] z-[10]"
+    >
+      <div class="flex items-center gap-8">
+        <div class="min-[1125px]:hidden flex items-center gap-3">
+          <button class="max-[360px]:w-[1.625rem] max-[360px]:overflow-hidden">
+            <img
+              src="../assets/images/logo.svg"
+              class="min-[361px]:w-[7rem] h-[2rem] max-[360px]:max-w-fit object-contain"
+              alt=""
+            />
+          </button>
+          <button
+            class="shrink-0 flex gap-0.5 flex-col justify-center text-[.688rem] items-center w-[2.813rem] h-[2.813rem] text-[#A2A8B0] transition-[background_,_color] duration-300 hover:bg-[#2f3140] rounded-[.438rem] hover:text-white"
+          >
+            <svg class="w-4 h-4 mt-1">
+              <use xlink:href="../assets/images/symbols.svg#icon-search"></use>
+            </svg>
+            <svg class="w-3 h-3 mt-1">
+              <use xlink:href="../assets/images/symbols.svg#icon-close"></use>
+            </svg>
+            <span>Поиск</span>
+          </button>
+        </div>
+        <ul
+          class="min-[1125px]:flex hidden h-full items-stretch gap-[1.875rem]"
+        >
+          <li class="relative">
+            <button
+              class="flex h-full justify-center items-center gap-[.5rem] text-base font-[600] text-[#9E9EAD] transition-[color_,_opacity] duration-300 [&.active]:!opacity-100 hover:text-[#B9B9CA] group/link [&.active]:text-white"
+            >
+              <svg
+                class="shrink-0 w-[1.5rem] h-[1.5rem] text-[#75798C] transition-[color] duration-300 group-hover/link:text-[#9196AA] group-[.active]/link:text-blue"
+              >
+                <use xlink:href="../assets/images/symbols.svg#icon-slots"></use>
+              </svg>
+              <span>Слоты</span>
+              <div
+                class="absolute left-0 bottom-0 w-full h-[3px] bg-blue opacity-0 w-0 group-[.active]/link:!w-full group-[.active]/link:!opacity-100"
+              ></div>
+            </button>
+          </li>
+          <li class="relative">
+            <button
+              class="flex h-full justify-center items-center gap-[.5rem] text-base font-[600] text-[#9E9EAD] transition-[color_,_opacity] duration-300 [&.active]:!opacity-100 hover:text-[#B9B9CA] group/link [&.active]:text-white"
+            >
+              <svg
+                class="shrink-0 w-[1.5rem] h-[1.5rem] text-[#75798C] transition-[color] duration-300 group-hover/link:text-[#9196AA] group-[.active]/link:text-blue"
+              >
+                <use
+                  xlink:href="../assets/images/symbols.svg#icon-live-games"
+                ></use>
+              </svg>
+              <span>Live игры</span>
+              <div
+                class="absolute left-0 bottom-0 w-full h-[3px] bg-blue opacity-0 w-0 group-[.active]/link:!w-full group-[.active]/link:!opacity-100"
+              ></div>
+            </button>
+          </li>
+          <li class="relative">
+            <button
+              class="flex h-full justify-center items-center gap-[.5rem] text-base font-[600] text-[#9E9EAD] transition-[color_,_opacity] duration-300 [&.active]:!opacity-100 hover:text-[#B9B9CA] group/link [&.active]:text-white"
+            >
+              <svg
+                class="shrink-0 w-[1.5rem] h-[1.5rem] text-[#75798C] transition-[color] duration-300 group-hover/link:text-[#9196AA] group-[.active]/link:text-blue"
+              >
+                <use xlink:href="../assets/images/symbols.svg#icon-bonus"></use>
+              </svg>
+              <span>Бонусы</span>
+              <div
+                class="absolute left-0 bottom-0 w-full h-[3px] bg-blue opacity-0 w-0 group-[.active]/link:!w-full group-[.active]/link:!opacity-100"
+              ></div>
+            </button>
+          </li>
+          <li class="relative">
+            <button
+              class="flex h-full justify-center items-center gap-[.5rem] text-base font-[600] text-[#9E9EAD] transition-[color_,_opacity] duration-300 [&.active]:!opacity-100 hover:text-[#B9B9CA] group/link [&.active]:text-white"
+            >
+              <svg
+                class="shrink-0 w-[1.5rem] h-[1.5rem] text-[#75798C] transition-[color] duration-300 group-hover/link:text-[#9196AA] group-[.active]/link:text-blue"
+              >
+                <use
+                  xlink:href="../assets/images/symbols.svg#icon-tournaments"
+                ></use>
+              </svg>
+              <span>Турниры</span>
+              <div
+                class="absolute left-0 bottom-0 w-full h-[3px] bg-blue opacity-0 w-0 group-[.active]/link:!w-full group-[.active]/link:!opacity-100"
+              ></div>
+            </button>
+          </li>
+        </ul>
+      </div>
+      <div class="flex items-center gap-4">
+        <div
+          class="flex items-center gap-3 min-[1125px]:pr-[1.875rem] pr-[1rem]"
+        >
+          <button
+            class="relative flex items-center font-[500] text-[#A7AFBF] justify-center h-[2.5rem] rounded-[.375rem] bg-[#313343] transition-[color_,_background] duration-300 hover:bg-[#383a4d] hover:text-white px-5"
+          >
+            <span class="transition-[opacity] opacity-100">Войти</span>
+          </button>
+          <button
+            class="relative flex items-center font-[500] text-white justify-center h-[2.5rem] rounded-[.375rem] shadow-btn-blue bg-blue transition-[color_,_background_,_border] duration-300 hover:bg-[#2399EF] px-5"
+          >
+            <span class="transition-[opacity] opacity-100">Регистрация</span>
+          </button>
+        </div>
+      </div>
+    </header>
+    <div
+      class="fixed left-0 min-[1125px]:top-0 top-[4.5rem] min-[1125px]:h-full h-[calc(100%_-_4.5rem)] z-[10] w-full pointer-events-none flex flex-col justify-between group/sidebar [&.active]:z-[9]"
+    >
+      <div
+        class="flex flex-col justify-between min-[425px]:max-w-[17.5rem] max-w-full bg-[#1D1F2C] w-full h-full pointer-events-auto transition-[transform] duration-300 max-[1124px]:-translate-x-full max-[1124px]:group-[.active]/sidebar:translate-x-0 max-[1124px]:pb-[4rem]"
+      >
+        <div
+          class="h-[4.5rem] shrink-0 bg-[#222432] border-b border-b-[#2A2C3D] min-[1125px]:flex hidden items-center px-[1.25rem] gap-[1.25rem]"
+        >
+          <button
+            class="flex gap-0.5 flex-col justify-center text-[.688rem] items-center w-[2.813rem] h-[2.813rem] text-[#A2A8B0] transition-[background_,_color] duration-300 hover:bg-[#2f3140] rounded-[.438rem] hover:text-white"
+          >
+            <svg class="w-4 h-4 mt-1">
+              <use
+                xlink:href="../assets/images/symbols.svg?v=1#icon-search"
+              ></use>
+            </svg>
+            <span>Поиск</span>
+          </button>
+          <button>
+            <img
+              src="../assets/images/logo.svg"
+              class="w-[7rem] h-[2rem] object-contain"
+              alt=""
+            />
+          </button>
+        </div>
+        <div
+          class="w-full min-[1125px]:h-[calc(100%_-_4.5rem)] h-full flex flex-col"
+        >
+          <div class="w-full flex-1">
+            <div class="flex-col flex relative z-[1]">
+              <div
+                class="w-full h-[7.5rem] text-white relative flex items-center px-[1.25rem]"
+              >
+                <div class="relative z-[2] flex flex-col items-start gap-1.5">
+                  <span class="uppercase font-[600] text-xl drop-shadow-xl"
+                    >Luckywheel</span
+                  >
+                  <button
+                    class="flex text-sm py-0.5 px-2 rounded-[.25rem] bg-[#8b8bb9]/[0.1] backdrop-blur-[10px] text-[#b2b7e1] transition-[background_,_color] duration-300 hover:bg-[#8b8bb9]/[0.15] hover:text-white shadow-md font-[400]"
+                  >
+                    Испытать удачу
+                  </button>
+                </div>
+                <div class="absolute w-full h-full left-0 top-0">
+                  <div
+                    class="absolute w-full h-full left-0 top-0 bg-[radial-gradient(transparent,_#1d1f2c_75%)] z-[1]"
+                  ></div>
+                  <img
+                    src="../assets/images/backgrounds/cosmos.jpg"
+                    class="w-full h-full object-cover"
+                    alt=""
+                  />
+                </div>
+              </div>
+              <div class="px-[1.25rem] py-4">
+                <div
+                  class="flex items-center justify-between px-4 py-3 text-sm rounded-lg bg-[#262838]"
+                >
+                  <span class="font-semibold text-[#9e9ead]">Анимации:</span>
+                  <button class="flex items-center text-xs gap-2 group/toggle">
+                    <span>Вкл.</span>
+                    <div
+                      class="relative w-8 h-5 rounded-full bg-[#151620] group-hover/toggle:bg-[#1d1f2c] group-[.active]/toggle:bg-blue transition-all duration-300"
+                    >
+                      <div
+                        class="absolute left-1 top-1/2 -translate-y-1/2 transition-all duration-300 w-3 h-3 rounded-full bg-[#4b4e66] group-[.active]/toggle:bg-white group-[.active]/toggle:left-4"
+                      ></div>
+                    </div>
+                  </button>
+                </div>
+              </div>
+              <div class="flex flex-col pb-[1.25rem] gap-[.625rem] w-full">
+                <div
+                  class="flex flex-col gap-[.625rem] border-b border-b-[#2A2C3D] last:border-0"
+                >
+                  <button
+                    class="flex group/btn font-[600] items-center text-[#9CA0B5] hover:text-white justify-between pl-[.75rem] pr-[1.125rem] h-[2.875rem] bg-transparent rounded-[.375rem] transition-[background_,_color] duration-300 hover:bg-[#313444] [&.active]:bg-blue [&.active]:text-white [&.active]:shadow-btn-blue"
+                  >
+                    <div class="flex items-center gap-[.75rem]">
+                      <svg class="w-[1.5rem] h-[1.5rem]">
+                        <use
+                          xlink:href="../assets/images/symbols.svg?v=1#icon-games"
+                        ></use>
+                      </svg>
+                      <div
+                        class="w-[1.008px] h-[1rem] bg-current opacity-20"
+                      ></div>
+                      <span>Наши игры</span>
+                    </div>
+                    <i
+                      class="w-2 h-2 border-r-2 transition-[transform_,_top] duration-300 border-b-2 rotate-45 border-current relative -top-[.125rem] group-[.active]/btn:rotate-[225deg] group-[.active]/btn:top-[2px]"
+                    ></i>
+                  </button>
+                  <div
+                    class="flex overflow-hidden flex-col gap-[.313rem] max-h-[296px] transition-[max-height]"
+                  >
+                    <div class="flex flex-col gap-[.313rem] pb-[.625rem]">
+                      <div class="relative">
+                        <button
+                          class="flex w-full whitespace-nowrap font-[600] items-center text-[#9CA0B5] hover:text-white justify-between pl-[.75rem] pr-[1.125rem] h-[2.875rem] bg-transparent rounded-[.375rem] transition-[background_,_color_,_opacity] duration-300 hover:bg-[#313444] [&.active]:bg-blue [&.active]:text-white [&.active]:shadow-btn-blue"
+                        >
+                          <div
+                            class="flex pointer-events-none items-center gap-[.75rem]"
+                          >
+                            <svg class="shrink-0 w-[1.5rem] h-[1.5rem]">
+                              <use
+                                xlink:href="../assets/images/symbols.svg?v=1#icon-mines"
+                              ></use>
+                            </svg>
+                            <div
+                              class="shrink-0 w-[.063rem] h-[1rem] bg-current opacity-20"
+                            ></div>
+                            <span>Мины</span>
+                          </div>
+                        </button>
+                      </div>
+
+                      <button
+                        class="flex w-full whitespace-nowrap font-[600] items-center text-[#9CA0B5] hover:text-white justify-between pl-[.75rem] pr-[1.125rem] h-[2.875rem] bg-transparent rounded-[.375rem] transition-[background_,_color_,_opacity] duration-300 hover:bg-[#313444] [&.active]:bg-blue [&.active]:text-white [&.active]:shadow-btn-blue"
+                      >
+                        <div
+                          class="flex pointer-events-none items-center gap-[.75rem]"
+                        >
+                          <svg class="shrink-0 w-[1.5rem] h-[1.5rem]">
+                            <use
+                              xlink:href="../assets/images/symbols.svg?v=1#icon-dice"
+                            ></use>
+                          </svg>
+                          <div
+                            class="shrink-0 w-[.063rem] h-[1rem] bg-current opacity-20"
+                          ></div>
+                          <span>Дайс</span>
+                        </div>
+                      </button>
+                    </div>
+                    <div class="relative">
+                      <button
+                        class="flex w-full whitespace-nowrap font-[600] items-center text-[#9CA0B5] hover:text-white justify-between pl-[.75rem] pr-[1.125rem] h-[2.875rem] bg-transparent rounded-[.375rem] transition-[background_,_color_,_opacity] duration-300 hover:bg-[#313444] [&.active]:bg-blue [&.active]:text-white [&.active]:shadow-btn-blue"
+                      >
+                        <div
+                          class="flex pointer-events-none items-center gap-[.75rem]"
+                        >
+                          <svg class="shrink-0 w-[1.5rem] h-[1.5rem]">
+                            <use
+                              xlink:href="../assets/images/symbols.svg?v=1#icon-coinflip"
+                            ></use>
+                          </svg>
+                          <div
+                            class="shrink-0 w-[.063rem] h-[1rem] bg-current opacity-20"
+                          ></div>
+                          <span>Коинфлип</span>
+                        </div>
+                      </button>
+                    </div>
+                    <div class="relative">
+                      <button
+                        class="flex w-full whitespace-nowrap font-[600] items-center text-[#9CA0B5] hover:text-white justify-between pl-[.75rem] pr-[1.125rem] h-[2.875rem] bg-transparent rounded-[.375rem] transition-[background_,_color_,_opacity] duration-300 hover:bg-[#313444] [&.active]:bg-blue [&.active]:text-white [&.active]:shadow-btn-blue"
+                      >
+                        <div
+                          class="flex pointer-events-none items-center gap-[.75rem]"
+                        >
+                          <svg class="shrink-0 w-[1.5rem] h-[1.5rem]">
+                            <use
+                              xlink:href="../assets/images/symbols.svg?v=1#icon-weather"
+                            ></use>
+                          </svg>
+                          <div
+                            class="shrink-0 w-[.063rem] h-[1rem] bg-current opacity-20"
+                          ></div>
+                          <span>Ставки на погоду</span>
+                        </div>
+                      </button>
+                    </div>
+                    <div class="relative">
+                      <button
+                        class="flex w-full whitespace-nowrap font-[600] items-center text-[#9CA0B5] hover:text-white justify-between pl-[.75rem] pr-[1.125rem] h-[2.875rem] bg-transparent rounded-[.375rem] transition-[background_,_color_,_opacity] duration-300 hover:bg-[#313444] [&.active]:bg-blue [&.active]:text-white [&.active]:shadow-btn-blue"
+                      >
+                        <div
+                          class="flex pointer-events-none items-center gap-[.75rem]"
+                        >
+                          <svg class="shrink-0 w-[1.5rem] h-[1.5rem]">
+                            <use
+                              xlink:href="../assets/images/symbols.svg?v=1#icon-x50"
+                            ></use>
+                          </svg>
+                          <div
+                            class="shrink-0 w-[.063rem] h-[1rem] bg-current opacity-20"
+                          ></div>
+                          <span>Колесо</span>
+                        </div>
+                      </button>
+                    </div>
+                    <div class="relative">
+                      <button
+                        class="flex w-full whitespace-nowrap font-[600] items-center text-[#9CA0B5] hover:text-white justify-between pl-[.75rem] pr-[1.125rem] h-[2.875rem] bg-transparent rounded-[.375rem] transition-[background_,_color_,_opacity] duration-300 hover:bg-[#313444] [&.active]:bg-blue [&.active]:text-white [&.active]:shadow-btn-blue"
+                      >
+                        <div
+                          class="flex pointer-events-none items-center gap-[.75rem]"
+                        >
+                          <svg class="shrink-0 w-[1.5rem] h-[1.5rem]">
+                            <use
+                              xlink:href="../assets/images/symbols.svg?v=1#icon-jackpot"
+                            ></use>
+                          </svg>
+                          <div
+                            class="shrink-0 w-[.063rem] h-[1rem] bg-current opacity-20"
+                          ></div>
+                          <span>Джекпот</span>
+                        </div>
+                      </button>
+                    </div>
+                    <div class="relative">
+                      <button
+                        class="flex w-full whitespace-nowrap font-[600] items-center text-[#9CA0B5] hover:text-white justify-between pl-[.75rem] pr-[1.125rem] h-[2.875rem] bg-transparent rounded-[.375rem] transition-[background_,_color_,_opacity] duration-300 hover:bg-[#313444] [&.active]:bg-blue [&.active]:text-white [&.active]:shadow-btn-blue"
+                      >
+                        <div
+                          class="flex pointer-events-none items-center gap-[.75rem]"
+                        >
+                          <svg class="shrink-0 w-[1.5rem] h-[1.5rem]">
+                            <use
+                              xlink:href="../assets/images/symbols.svg?v=1#icon-upgrade"
+                            ></use>
+                          </svg>
+                          <div
+                            class="shrink-0 w-[.063rem] h-[1rem] bg-current opacity-20"
+                          ></div>
+                          <span>Апгрейд</span>
+                        </div>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="flex flex-col gap-[.625rem] border-b border-b-[#2A2C3D] last:border-0"
+              >
+                <button
+                  class="flex group/btn font-[600] items-center text-[#9CA0B5] hover:text-white justify-between pl-[.75rem] pr-[1.125rem] h-[2.875rem] bg-transparent rounded-[.375rem] transition-[background_,_color] duration-300 hover:bg-[#313444] [&.active]:bg-blue [&.active]:text-white [&.active]:shadow-btn-blue"
+                >
+                  <div class="flex items-center gap-[.75rem]">
+                    <svg class="w-[1.5rem] h-[1.5rem]">
+                      <use
+                        xlink:href="../assets/images/symbols.svg?v=1#icon-slot"
+                      ></use>
+                    </svg>
+                    <div
+                      class="w-[1.008px] h-[1rem] bg-current opacity-20"
+                    ></div>
+                    <span>Казино</span>
+                  </div>
+                  <i
+                    class="w-2 h-2 border-r-2 transition-[transform_,_top] duration-300 border-b-2 rotate-45 border-current relative -top-[.125rem] group-[.active]/btn:rotate-[225deg] group-[.active]/btn:top-[2px]"
+                  ></i>
+                </button>
+                <div
+                  x-ref="container"
+                  class="flex overflow-hidden flex-col gap-[.313rem] max-h-[296px] transition-[max-height]"
+                >
+                  <div class="flex flex-col gap-[.313rem] pb-[.625rem]">
+                    <div class="relative">
+                      <button
+                        class="flex w-full whitespace-nowrap font-[600] items-center text-[#9CA0B5] hover:text-white justify-between pl-[.75rem] pr-[1.125rem] h-[2.875rem] bg-transparent rounded-[.375rem] transition-[background_,_color_,_opacity] duration-300 hover:bg-[#313444] [&.active]:bg-blue [&.active]:text-white [&.active]:shadow-btn-blue"
+                      >
+                        <div
+                          class="flex pointer-events-none items-center gap-[.75rem]"
+                        >
+                          <svg class="shrink-0 w-[1.5rem] h-[1.5rem]">
+                            <use
+                              xlink:href="../assets/images/symbols.svg?v=1#icon-favorite-stroke"
+                            ></use>
+                          </svg>
+                          <div
+                            class="shrink-0 w-[.063rem] h-[1rem] bg-current opacity-20"
+                          ></div>
+                          <span>Избранное</span>
+                        </div>
+                      </button>
+                    </div>
+                    <div class="relative">
+                      <button
+                        class="flex w-full whitespace-nowrap font-[600] items-center text-[#9CA0B5] hover:text-white justify-between pl-[.75rem] pr-[1.125rem] h-[2.875rem] bg-transparent rounded-[.375rem] transition-[background_,_color_,_opacity] duration-300 hover:bg-[#313444] [&.active]:bg-blue [&.active]:text-white [&.active]:shadow-btn-blue"
+                      >
+                        <div
+                          class="flex pointer-events-none items-center gap-[.75rem]"
+                        >
+                          <svg class="shrink-0 w-[1.5rem] h-[1.5rem]">
+                            <use
+                              xlink:href="../assets/images/symbols.svg?v=1#icon-new-games"
+                            ></use>
+                          </svg>
+                          <div
+                            class="shrink-0 w-[.063rem] h-[1rem] bg-current opacity-20"
+                          ></div>
+                          <span>Популярные</span>
+                        </div>
+                      </button>
+                    </div>
+                    <div class="relative">
+                      <button
+                        class="flex w-full whitespace-nowrap font-[600] items-center text-[#9CA0B5] hover:text-white justify-between pl-[.75rem] pr-[1.125rem] h-[2.875rem] bg-transparent rounded-[.375rem] transition-[background_,_color_,_opacity] duration-300 hover:bg-[#313444] [&.active]:bg-blue [&.active]:text-white [&.active]:shadow-btn-blue"
+                      >
+                        <div
+                          class="flex pointer-events-none items-center gap-[.75rem]"
+                        >
+                          <svg class="shrink-0 w-[1.5rem] h-[1.5rem]">
+                            <use
+                              xlink:href="../assets/images/symbols.svg?v=1#icon-all-games"
+                            ></use>
+                          </svg>
+                          <div
+                            class="shrink-0 w-[.063rem] h-[1rem] bg-current opacity-20"
+                          ></div>
+                          <span>Все игры</span>
+                        </div>
+                      </button>
+                    </div>
+                    <div class="relative">
+                      <button
+                        class="flex w-full whitespace-nowrap font-[600] items-center text-[#9CA0B5] hover:text-white justify-between pl-[.75rem] pr-[1.125rem] h-[2.875rem] bg-transparent rounded-[.375rem] transition-[background_,_color_,_opacity] duration-300 hover:bg-[#313444] [&.active]:bg-blue [&.active]:text-white [&.active]:shadow-btn-blue"
+                      >
+                        <div
+                          class="flex pointer-events-none items-center gap-[.75rem]"
+                        >
+                          <svg class="shrink-0 w-[1.5rem] h-[1.5rem]">
+                            <use
+                              xlink:href="../assets/images/symbols.svg?v=1#icon-slots"
+                            ></use>
+                          </svg>
+                          <div
+                            class="shrink-0 w-[.063rem] h-[1rem] bg-current opacity-20"
+                          ></div>
+                          <span>Слоты</span>
+                        </div>
+                      </button>
+                    </div>
+                    <div class="relative">
+                      <button
+                        class="flex w-full whitespace-nowrap font-[600] items-center text-[#9CA0B5] hover:text-white justify-between pl-[.75rem] pr-[1.125rem] h-[2.875rem] bg-transparent rounded-[.375rem] transition-[background_,_color_,_opacity] duration-300 hover:bg-[#313444] [&.active]:bg-blue [&.active]:text-white [&.active]:shadow-btn-blue"
+                      >
+                        <div
+                          class="flex pointer-events-none items-center gap-[.75rem]"
+                        >
+                          <svg class="shrink-0 w-[1.5rem] h-[1.5rem]">
+                            <use
+                              xlink:href="../assets/images/symbols.svg?v=1#icon-live-games"
+                            ></use>
+                          </svg>
+                          <div
+                            class="shrink-0 w-[.063rem] h-[1rem] bg-current opacity-20"
+                          ></div>
+                          <span>Лайвы</span>
+                        </div>
+                      </button>
+                    </div>
+                    <div class="relative">
+                      <button
+                        class="flex w-full whitespace-nowrap font-[600] items-center text-[#9CA0B5] hover:text-white justify-between pl-[.75rem] pr-[1.125rem] h-[2.875rem] bg-transparent rounded-[.375rem] transition-[background_,_color_,_opacity] duration-300 hover:bg-[#313444] [&.active]:bg-blue [&.active]:text-white [&.active]:shadow-btn-blue"
+                      >
+                        <div
+                          class="flex pointer-events-none items-center gap-[.75rem]"
+                        >
+                          <svg class="shrink-0 w-[1.5rem] h-[1.5rem]">
+                            <use
+                              xlink:href="../assets/images/symbols.svg?v=1#icon-bonus-games"
+                            ></use>
+                          </svg>
+                          <div
+                            class="shrink-0 w-[.063rem] h-[1rem] bg-current opacity-20"
+                          ></div>
+                          <span>Bonus buy</span>
+                        </div>
+                      </button>
+                    </div>
+                    <div class="relative">
+                      <button
+                        class="flex w-full whitespace-nowrap font-[600] items-center text-[#9CA0B5] hover:text-white justify-between pl-[.75rem] pr-[1.125rem] h-[2.875rem] bg-transparent rounded-[.375rem] transition-[background_,_color_,_opacity] duration-300 hover:bg-[#313444] [&.active]:bg-blue [&.active]:text-white [&.active]:shadow-btn-blue"
+                      >
+                        <div
+                          class="flex pointer-events-none items-center gap-[.75rem]"
+                        >
+                          <svg class="shrink-0 w-[1.5rem] h-[1.5rem]">
+                            <use
+                              xlink:href="../assets/images/symbols.svg?v=1#icon-live-games"
+                            ></use>
+                          </svg>
+                          <div
+                            class="shrink-0 w-[.063rem] h-[1rem] bg-current opacity-20"
+                          ></div>
+                          <span>Live игры</span>
+                        </div>
+                      </button>
+                    </div>
+                    <div class="relative">
+                      <button
+                        class="flex w-full whitespace-nowrap font-[600] items-center text-[#9CA0B5] hover:text-white justify-between pl-[.75rem] pr-[1.125rem] h-[2.875rem] bg-transparent rounded-[.375rem] transition-[background_,_color_,_opacity] duration-300 hover:bg-[#313444] [&.active]:bg-blue [&.active]:text-white [&.active]:shadow-btn-blue"
+                      >
+                        <div
+                          class="flex pointer-events-none items-center gap-[.75rem]"
+                        >
+                          <svg class="shrink-0 w-[1.5rem] h-[1.5rem]">
+                            <use
+                              xlink:href="../assets/images/symbols.svg?v=1#icon-instant-games"
+                            ></use>
+                          </svg>
+                          <div
+                            class="shrink-0 w-[.063rem] h-[1rem] bg-current opacity-20"
+                          ></div>
+                          <span>Instant wins</span>
+                        </div>
+                      </button>
+                    </div>
+                    <div class="relative">
+                      <button
+                        class="flex w-full whitespace-nowrap font-[600] items-center text-[#9CA0B5] hover:text-white justify-between pl-[.75rem] pr-[1.125rem] h-[2.875rem] bg-transparent rounded-[.375rem] transition-[background_,_color_,_opacity] duration-300 hover:bg-[#313444] [&.active]:bg-blue [&.active]:text-white [&.active]:shadow-btn-blue"
+                      >
+                        <div
+                          class="flex pointer-events-none items-center gap-[.75rem]"
+                        >
+                          <svg class="shrink-0 w-[1.5rem] h-[1.5rem]">
+                            <use
+                              xlink:href="../assets/images/symbols.svg?v=1#icon-roulette-games"
+                            ></use>
+                          </svg>
+                          <div
+                            class="shrink-0 w-[.063rem] h-[1rem] bg-current opacity-20"
+                          ></div>
+                          <span>Рулетка</span>
+                        </div>
+                      </button>
+                    </div>
+                    <div class="relative">
+                      <button
+                        class="flex w-full whitespace-nowrap font-[600] items-center text-[#9CA0B5] hover:text-white justify-between pl-[.75rem] pr-[1.125rem] h-[2.875rem] bg-transparent rounded-[.375rem] transition-[background_,_color_,_opacity] duration-300 hover:bg-[#313444] [&.active]:bg-blue [&.active]:text-white [&.active]:shadow-btn-blue"
+                      >
+                        <div
+                          class="flex pointer-events-none items-center gap-[.75rem]"
+                        >
+                          <svg class="shrink-0 w-[1.5rem] h-[1.5rem]">
+                            <use
+                              xlink:href="../assets/images/symbols.svg?v=1#icon-card-games"
+                            ></use>
+                          </svg>
+                          <div
+                            class="shrink-0 w-[.063rem] h-[1rem] bg-current opacity-20"
+                          ></div>
+                          <span>Карточные</span>
+                        </div>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="flex flex-col border-b border-b-[#2A2C3D] last:border-0"
+              >
+                <div class="flex flex-col gap-[.313rem] pb-[.625rem]">
+                  <div class="relative">
+                    <button
+                      class="flex w-full whitespace-nowrap font-[600] items-center text-[#9CA0B5] hover:text-white justify-between pl-[.75rem] pr-[1.125rem] h-[2.875rem] bg-transparent rounded-[.375rem] transition-[background_,_color_,_opacity] duration-300 hover:bg-[#313444] [&.active]:bg-blue [&.active]:text-white [&.active]:shadow-btn-blue"
+                    >
+                      <div
+                        class="flex pointer-events-none items-center gap-[.75rem]"
+                      >
+                        <svg class="shrink-0 w-[1.5rem] h-[1.5rem]">
+                          <use
+                            xlink:href="../assets/images/symbols.svg?v=1#icon-tournaments"
+                          ></use>
+                        </svg>
+                        <div
+                          class="shrink-0 w-[.063rem] h-[1rem] bg-current opacity-20"
+                        ></div>
+                        <span>Турниры</span>
+                      </div>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="w-full h-full flex flex-col justify-between">
+      <main
+        class="flex flex-1 overflow-x-hidden flex-col min-[1125px]:pl-[17.5rem] pl-0 pt-[4.5rem] max-[1125px]:pb-[4.563rem]"
+      >
+        <section class="relative flex-1 flex flex-col overflow-hidden">
+          <div
+            class="flex-1 flex min-[921px]:items-stretch justify-between z-[1] px-4 relative max-[920px]:flex-wrap"
+          >
+            <div
+              class="min-[921px]:w-1/5 w-1/2 flex items-center justify-center relative z-[2] max-[920px]:pt-5 max-[920px]:h-fit max-[920px]:absolute max-[920px]:left-0 max-[920px]:top-0"
+            >
+              <div class="flex flex-col items-center *:leading-[100%] gap-3">
+                <span
+                  class="min-[921px]:text-[#B7C1F1] text-white/[0.8] font-semibold min-[921px]:text-lg text-sm"
+                  >Коэффициент</span
+                >
+                <span class="min-[921px]:text-4xl text-2xl font-bold"
+                  >x2.00</span
+                >
+              </div>
+            </div>
+            <div
+              class="shrink-0 relative opacity-20 max-[920px]:-order-[2] max-[920px]:absolute max-[920px]:left-0 max-[920px]:top-1/2 max-[920px]:-translate-y-1/2"
+            >
+              <img
+                src="../assets/images/games/dice/dice.svg"
+                class="absolute top-1/2 -translate-y-1/2 -left-[2.188rem] max-w-fit"
+                alt=""
+              />
+            </div>
+            <div class="flex-1 flex justify-center items-center relative z-[2]">
+              <span
+                class="dice-result font-bold font-['Roboto_Condensed'] text-[calc(100px_+_(110_-_46)_*_((100vw_-_320px)_/_(990_-_320)))]"
+                >000000</span
+              >
+              <canvas
+                class="opacity-0 transition-all duration-[100ms] lightning !absolute left-1/2 -translate-x-1/2 top-0 w-[37.5rem] h-full group-[.disable-animations]/body:!hidden"
+              ></canvas>
+            </div>
+            <div
+              class="shrink-0 relative opacity-20 max-[920px]:order-[2] max-[920px]:absolute max-[920px]:right-0 max-[920px]:top-1/2 max-[920px]:-translate-y-1/2"
+            >
+              <img
+                src="../assets/images/games/dice/dice.svg"
+                class="absolute top-1/2 -translate-y-1/2 -left-[2.188rem] max-w-fit rotate-180"
+                alt=""
+              />
+            </div>
+            <div
+              class="min-[921px]:w-1/5 w-1/2 flex items-center justify-center relative z-[2] max-[920px]:pt-5 max-[920px]:h-fit max-[920px]:absolute max-[920px]:right-0 max-[920px]:top-0"
+            >
+              <div class="flex flex-col items-center *:leading-[100%] gap-3">
+                <span
+                  class="min-[921px]:text-[#B7C1F1] text-white/[0.8] font-semibold min-[921px]:text-lg text-sm"
+                  >Возможный выигрыш</span
+                >
+                <span class="min-[921px]:text-4xl text-2xl font-bold"
+                  >20.00 ₽</span
+                >
+              </div>
+            </div>
+            <div
+              class="smoke smoke-left absolute left-0 top-[-13.125rem] w-[77.5625em] max-[920px]:scale-[0.7] origin-left pointer-events-none z-[1]"
+            >
+              <img
+                src="../assets/images/games/dice/smoke-left.png"
+                class="w-full absolute left-0 top-0 opacity-0 group-[:not(.disable-animations)]/body:animate-[12s_d_ease-in-out_infinite]"
+                alt=""
+              />
+              <img
+                src="../assets/images/games/dice/smoke-left.png"
+                class="w-full absolute left-0 top-0 opacity-0 group-[:not(.disable-animations)]/body:animate-[12s_d_4s_ease-in-out_infinite]"
+                alt=""
+              />
+              <img
+                src="../assets/images/games/dice/smoke-left.png"
+                class="w-full absolute left-0 top-0 opacity-0 group-[:not(.disable-animations)]/body:animate-[12s_d_8s_ease-in-out_infinite]"
+                alt=""
+              />
+            </div>
+            <div
+              class="smoke smoke-right absolute right-0 right-[-6.25rem] top-[-13.125rem] w-[72.75rem] max-[920px]:scale-[0.7] origin-right pointer-events-none z-[1]"
+            >
+              <img
+                src="../assets/images/games/dice/smoke-right.png"
+                class="w-full absolute left-0 top-0 opacity-0 group-[:not(.disable-animations)]/body:animate-[12s_e_ease-in-out_infinite]"
+                alt=""
+              />
+              <img
+                src="../assets/images/games/dice/smoke-right.png"
+                class="w-full absolute left-0 top-0 opacity-0 group-[:not(.disable-animations)]/body:animate-[12s_e_4s_ease-in-out_infinite]"
+                alt=""
+              />
+              <img
+                src="../assets/images/games/dice/smoke-right.png"
+                class="w-full absolute left-0 top-0 opacity-0 group-[:not(.disable-animations)]/body:animate-[12s_e_8s_ease-in-out_infinite]"
+                alt=""
+              />
+            </div>
+          </div>
+
+          <div
+            class="w-full dice-bet translate-y-[1rem] py-4 bg-gradient-to-b from-transparent to-[#161823] min-[1125px]:to-[70%] to-[20%] min-[861px]:flex grid grid-cols-2 items-stretch justify-between px-4 gap-4 z-[1]"
+          >
+            <div class="flex items-stretch gap-2 max-[650px]:col-span-2">
+              <div class="flex flex-col gap-1 max-[860px]:flex-1">
+                <div
+                  class="min-[861px]:w-[10rem] w-full relative flex-1 flex flex-col bg-[#2a2b3c] rounded-lg items-center"
+                >
+                  <span
+                    class="absolute left-1/2 top-0 -translate-x-1/2 whitespace-nowrap text-xs pt-2 font-semibold text-[#9E9EAD]"
+                    >Сумма ставки</span
+                  >
+                  <input
+                    class="bg-transparent text-center h-full border-0 text-2xl w-full pt-4"
+                  />
+                </div>
+              </div>
+              <div class="flex flex-wrap gap-2 max-w-[13.75rem]">
+                <button
+                  class="h-[2rem] flex flex-1 items-center font-semibold text-sm justify-center px-2 rounded-lg bg-[#a1a4d7]/[0.15] transition-all duration-300 hover:bg-blue"
+                >
+                  +10
+                </button>
+                <button
+                  class="h-[2rem] flex flex-1 items-center font-semibold text-sm justify-center px-2 rounded-lg bg-[#a1a4d7]/[0.15] transition-all duration-300 hover:bg-blue"
+                >
+                  +50
+                </button>
+                <button
+                  class="h-[2rem] flex flex-1 items-center font-semibold text-sm justify-center px-2 rounded-lg bg-[#a1a4d7]/[0.15] transition-all duration-300 hover:bg-blue"
+                >
+                  +100
+                </button>
+                <button
+                  class="h-[2rem] flex flex-1 items-center font-semibold text-sm justify-center px-2 rounded-lg bg-[#a1a4d7]/[0.15] transition-all duration-300 hover:bg-blue"
+                >
+                  +500
+                </button>
+                <button
+                  class="h-[2rem] flex flex-1 items-center font-semibold text-sm justify-center px-2 rounded-lg bg-[#a1a4d7]/[0.15] transition-all duration-300 hover:bg-blue"
+                >
+                  +1000
+                </button>
+                <button
+                  class="h-[2rem] flex flex-1 items-center font-semibold text-sm justify-center px-2 rounded-lg bg-[#a1a4d7]/[0.15] transition-all duration-300 hover:bg-blue"
+                >
+                  +5000
+                </button>
+                <button
+                  class="h-[2rem] flex flex-1 items-center font-semibold text-sm justify-center px-2 rounded-lg bg-[#a1a4d7]/[0.15] transition-all duration-300 hover:bg-blue"
+                >
+                  x2
+                </button>
+                <button
+                  class="h-[2rem] flex flex-1 items-center font-semibold text-sm justify-center px-2 rounded-lg bg-[#a1a4d7]/[0.15] transition-all duration-300 hover:bg-blue"
+                >
+                  1/2
+                </button>
+              </div>
+            </div>
+            <div class="flex items-stretch gap-2 max-[650px]:col-span-2">
+              <div class="flex flex-col gap-1 max-[860px]:flex-1">
+                <div
+                  class="min-[861px]:w-[10rem] w-full relative flex-1 flex flex-col bg-[#2a2b3c] rounded-lg items-center"
+                >
+                  <span
+                    class="absolute left-1/2 top-0 -translate-x-1/2 whitespace-nowrap text-xs pt-2 font-semibold text-[#9E9EAD]"
+                    >Шанс</span
+                  >
+                  <input
+                    class="bg-transparent text-center h-full border-0 text-2xl w-full pt-4"
+                  />
+                </div>
+              </div>
+              <div class="flex flex-wrap gap-2 max-w-[13.75rem]">
+                <button
+                  class="h-[2rem] w-[calc(50%-0.25rem)] flex items-center font-semibold text-sm justify-center px-2 rounded-lg bg-[#2a2b3c] [&.active]:bg-blue transition-all duration-300 hover:bg-blue"
+                >
+                  10
+                </button>
+                <button
+                  class="h-[2rem] w-[calc(50%-0.25rem)] flex items-center font-semibold text-sm justify-center px-2 rounded-lg bg-[#2a2b3c] [&.active]:bg-blue transition-all duration-300 hover:bg-blue"
+                >
+                  25
+                </button>
+                <button
+                  class="h-[2rem] w-[calc(50%-0.25rem)] flex items-center font-semibold text-sm justify-center px-2 rounded-lg bg-[#2a2b3c] [&.active]:bg-blue transition-all duration-300 hover:bg-blue"
+                >
+                  50
+                </button>
+                <button
+                  class="h-[2rem] w-[calc(50%-0.25rem)] flex items-center font-semibold text-sm justify-center px-2 rounded-lg bg-[#2a2b3c] [&.active]:bg-blue transition-all duration-300 hover:bg-blue"
+                >
+                  75
+                </button>
+              </div>
+            </div>
+            <button
+              class="min-h-[3.438rem] flex-1 uppercase relative font-[600] flex rounded-[.375rem] items-center justify-center text-white px-[1.75rem] transition-[background_,_box-shadow] duration-300 hover:bg-[#fb3a3a] bg-[#e72a2a]"
+            >
+              <span class="transition-[opacity] opacity-100">Меньше</span>
+              <div
+                class="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 opacity-0 transition-[opacity]"
+              >
+                <svg
+                  class="animate-spin h-[1.625rem] w-[1.625rem] text-white"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <circle
+                    class="opacity-25"
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  ></circle>
+                  <path
+                    class="opacity-75"
+                    stroke-linecap="round"
+                    fill="currentColor"
+                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                  ></path>
+                </svg>
+              </div>
+            </button>
+            <button
+              class="min-h-[3.438rem] flex-1 uppercase relative font-[600] flex rounded-[.375rem] items-center justify-center text-white px-[1.75rem] transition-[background_,_box-shadow] duration-300 hover:bg-[#2399EF] bg-blue hover:shadow-btn-blue"
+            >
+              <span
+                class="transition-[opacity] opacity-100"
+                x-bind:class="loader ? '!opacity-0' : ''"
+                >Больше</span
+              >
+              <div
+                class="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 opacity-0 transition-[opacity]"
+                x-bind:class="loader ? '!opacity-100' : ''"
+              >
+                <svg
+                  class="animate-spin h-[1.625rem] w-[1.625rem] text-white"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <circle
+                    class="opacity-25"
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  ></circle>
+                  <path
+                    class="opacity-75"
+                    stroke-linecap="round"
+                    fill="currentColor"
+                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                  ></path>
+                </svg>
+              </div>
+            </button>
+          </div>
+          <img
+            src="../assets/images/games/dice/background.png"
+            class="absolute left-0 top-0 w-full h-full object-cover opacity-50"
+            alt=""
+          />
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
