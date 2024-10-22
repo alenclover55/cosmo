@@ -672,10 +672,7 @@
                 <div
                   class="absolute left-1/2 -translate-x-1/2 max-w-[30.25rem] w-full top-6 overflow-hidden px-4"
                 >
-                  <div
-                    class="flex items-center gap-2 mask-right-big"
-                    x-html="history"
-                  ></div>
+                  <div class="flex items-center gap-2 mask-right-big"></div>
                 </div>
                 <div
                   class="absolute left-1/2 -translate-x-1/2 bottom-[6.5rem] z-[1]"
@@ -728,13 +725,11 @@
                   ></div>
                 </div>
                 <div class="flex flex-col *:leading-[100%] gap-0.5">
-                  <span
-                    class="text-sm font-semibold text-[#9CA0B5]"
-                    x-text="state === 'wait' ? 'Начало через' : '' || state === 'rolling' ? 'Новая игра через' : ''"
+                  <span class="text-sm font-semibold text-[#9CA0B5]"
                     >Начало через</span
                   >
                   <span class="text-xl font-bold">
-                    <span><span x-text="timer">15</span> секунд</span>
+                    <span><span>15</span> секунд</span>
                   </span>
                 </div>
               </div>
@@ -1076,15 +1071,15 @@
                       <div class="flex items-center gap-2">
                         <svg class="w-4 h-4 text-[#D1474F]">
                           <use
-                            xlink:href="assets/images/symbols.svg#icon-partners"
+                            xlink:href="../assets/images/symbols.svg#icon-partners"
                           ></use>
                         </svg>
-                        <span class="">0</span>
+                        <span>0</span>
                       </div>
                       <div class="flex items-center gap-1">
                         <svg class="w-4 h-4">
                           <use
-                            xlink:href="assets/images/symbols.svg#icon-rub"
+                            xlink:href="../assets/images/symbols.svg#icon-rub"
                           ></use>
                         </svg>
                         <span class="">0.00</span>
