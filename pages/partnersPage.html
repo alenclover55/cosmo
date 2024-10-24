@@ -658,437 +658,323 @@
       </div>
     </div>
     <div class="w-full h-full flex flex-col justify-between">
-      <main
-        class="flex flex-1 flex-col min-[1125px]:pl-[17.5rem] pl-0 pt-[4.5rem]"
-      >
-        <section
-          class="relative min-[1125px]:py-[2rem] py-[1rem] min-[1125px]:px-[2rem] px-[1rem] flex flex-col"
+      <main 
+      class="flex flex-1 flex-col min-[1125px]:pl-[17.5rem] pl-0 pt-[4.5rem]"
+  >
+      <section class="relative flex flex-col overflow-hidden min-[745px]:py-[3.75rem] py-[2rem] mb-[3rem]">
+          <div class="relative z-[2] flex justify-center">
+              <div class="px-[1rem] min-[745px]:flex-row flex-col max-w-[64rem] w-full flex items-center justify-between min-[745px]:gap-12 gap-5">
+                  <div class="shrink-0 flex flex-col min-[745px]:items-start items-center gap-1.5">
+                      <span class="text-[#9CA0B5] font-[500] text-base">Замороженный баланс</span>
+                      <span class="text-[2rem] font-[600] leading-[110%]"><span id="refbal_forze">0</span> ₽</span>
+                      <button class="mt-1.5 text-sm font-[500] transition-[background_,_color] bg-[#737CB2]/[0.15] py-0.5 px-2 rounded-full text-[#CCD5FF] backdrop-blur-[15px] hover:bg-[#737CB2]/[0.25] hover:text-white">
+                          Перевести на баланс
+                      </button>
+                  </div>
+                  <div class="p-[1rem_1.5rem] rounded-[.5rem] w-full min-[421px]:flex grid grid-cols-2 gap-5 items-center justify-between bg-[#34384E]/[0.2] backdrop-blur-[15px] min-[745px]:shadow-slot-card">
+                      <div class="flex flex-col min-[421px]:items-start items-center">
+                          <span class="text-[#CCD5FF] font-[500] text-sm">Ваш процент</span>
+                          <span class="text-xl font-[600]">20%</span>
+                      </div>
+                      <div class="flex flex-col min-[421px]:items-start items-center">
+                          <span class="text-[#CCD5FF] font-[500] text-sm">С 1 реферала</span>
+                          <span class="text-xl font-[600]">50 ₽</span>
+                      </div>
+                      <div class="flex flex-col min-[421px]:items-start items-center">
+                          <span class="text-[#CCD5FF] font-[500] text-sm">Доход по %</span>
+                          <span class="text-xl font-[600]">0 ₽ </span>
+                      </div>
+                      <div class="flex flex-col min-[421px]:items-start items-center">
+                          <span class="text-[#CCD5FF] font-[500] text-sm">Перешло</span>
+                          <span class="text-xl font-[600]">0</span>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="absolute w-full h-full left-0 top-0">
+              <div class="absolute w-full h-full left-0 top-0 bg-[radial-gradient(transparent,_#131521_70%)] z-[1]"></div>
+              <img src="../assets/images/backgrounds/night.jpg" class="w-full h-full object-cover min-[745px]:opacity-100 opacity-50">
+          </div>
+      </section>
+      <section class="relative h-[26.625rem] min-[443px]:pb-0 pb-[2rem] -mt-[3.125rem] max-[780px]:overflow-hidden">
+          <div class="w-full h-full justify-center flex min-[443px]:items-center items-end relative z-[2]">
+              <div class="max-w-[35rem] px-[1rem] relative w-full flex flex-col">
+                  <div class="relative z-[4] w-full flex min-[471px]:flex-row flex-col items-center justify-between min-[471px]:gap-5 gap-1 rounded-[.5rem] bg-white/[0.03] backdrop-blur-[15px] p-5 min-[443px]:shadow-slot-card">
+                      <div class="flex flex-col min-[471px]:items-start items-center">
+                          <span class="text-[#B6BEE5] font-[500] text-sm">Ваша реферальная ссылка</span>
+                          <span id="reflink" class="font-[600] text-lg">https://cosmocasino.pro?go=40510</span>
+                      </div>
+                      <button data-clipboard-text="https://cosmocasino.pro?go=40510" type="button" class="btn-copy mt-1.5 text-sm font-[500] transition-[transform] duration-300 bg-white py-0.5 px-3 rounded-full text-black hover:scale-105">
+                          Скопировать
+                      </button>
+                  </div>
+                  <div class="absolute -left-[30%] -top-[5rem] min-[443px]:block hidden">
+                      <img src="../assets/images/stone.svg" class="parallax-1" alt="">
+                  </div>
+                  <div class="absolute left-[20%] -bottom-[8rem] min-[443px]:block hidden">
+                      <img src="assets/images/stone.svg" class="parallax-2 max-w-[3.375rem]" alt="">
+                  </div>
+                  <div class="absolute right-[20%] -bottom-[6rem] min-[443px]:block hidden">
+                      <img src="../assets/images/stone.svg" class="parallax-3 max-w-[4.375rem]" alt="">
+                  </div>
+                  <div class="absolute -right-[30%] -top-[6rem] min-[443px]:block hidden">
+                      <img src="../assets/images/big-stone.svg" class="parallax-4" alt="">
+                  </div>
+              </div>
+              <div class="absolute left-1/2 -translate-x-1/2 top-0 max-[442px]:scale-[0.85]">
+                  <div class="w-[30.625rem] h-[26.625rem] group-[:not(.disable-animations)]/body:animate-[nlo_2s_ease]">
+                      <div class="absolute left-1/2 -translate-x-1/2 top-[26%]">
+                          <img src="assets/images/nlo/star.svg" class="max-w-[1.25rem] group-[:not(.disable-animations)]/body:animate-[radial_5s_linear_infinite]" alt="">
+                      </div>
+                      <img src="../assets/images/nlo/up-shadow.svg" class="absolute left-0 top-0 w-full h-full group-[:not(.disable-animations)]/body:animate-[lightning_0.25s_ease_infinite_alternate]" alt="">
+                      <img src="../assets/images/nlo/light-shadow.svg" class="absolute left-0 top-0 w-full h-full group-[:not(.disable-animations)]/body:animate-[lightning_0.8s_ease_infinite_alternate]" alt="">
+                      <img src="../assets/images/nlo/light.svg" class="absolute left-0 top-0 w-full h-full group-[:not(.disable-animations)]/body:animate-[lightning_1s_ease_infinite_alternate]" alt="">
+                      <img src="../assets/images/nlo/nlo.svg" class="w-full h-full" alt="">
+                  </div>
+              </div>
+          </div>
+          <div class="absolute w-full h-[calc(100%_-_3.125rem)] left-0 top-[3.125rem]">
+              <div class="absolute w-full h-full left-0 top-0 bg-[radial-gradient(transparent,_#131521_70%)] z-[1]"></div>
+              <img src="../assets/images/backgrounds/cosmos.jpg" class="w-full h-full object-cover opacity-70">
+          </div>
+      </section>
+      <section class="flex flex-col items-center min-[1125px]:p-[2rem] p-[1rem] pb-[2rem]">
+          <div class="flex flex-col max-w-[64rem] min-[1125px]:px-[1rem] w-full gap-4">
+              <div class="flex min-[521px]:items-center min-[521px]:flex-row flex-col min-[521px]:gap-0 gap-3 justify-between">
+                  <div class="flex items-center gap-3">
+                      <div class="flex items-center gap-3 font-[600] text-xl uppercase">
+                          <i class="shrink-0 w-[1.125rem] h-[1.125rem] rounded-full bg-blue shadow-btn-blue"></i>
+                          <span>Мои рефералы</span>
+                      </div>
+                      <span class="text-[#9E9EAD] font-[500] text-lg">0</span>
+                  </div>
+                  <!-- <div class="shrink-0 relative">
+                      <div class="w-[3rem] h-[3rem] text-[#82869F] absolute left-0 top-0 flex items-center justify-center">
+                          <svg class="w-4 h-4"><use xlink:href="assets/images/symbols.svg#icon-search"></use></svg>
+                      </div>
+                      <input placeholder="Поиск..." class="h-[3rem] pl-[3rem] min-[521px]:min-w-[20rem] rounded-[.375rem] bg-[#222432] font-medium text-sm w-full placeholder:text-[#82869F] text-white focus:placeholder:opacity-0 placeholder:transition-[opacity]" type="text" autocomplete="off" placeholder="Например: Roosty of Fury">
+                  </div> -->
+              </div>
+              <div class="flex flex-col gap-3 max-[780px]:overflow-auto scroll-0">
+                  
+              </div>
+    <div class="flex justify-end gap-2 flex-wrap">
+                 </br><button disabled type="button" class="text-sm font-[500] transition-[background_,_color] bg-[#222432] py-0.5 px-2 rounded-full text-[#CCD5FF] hover:bg-[#2E3040] hover:text-white disabled:opacity-50 disabled:pointer-events-none">
+          Предыдущая страница
+        </button><button disabled type="button" class="text-sm font-[500] transition-[background_,_color] bg-[#222432] py-0.5 px-2 rounded-full text-[#CCD5FF] hover:bg-[#2E3040] hover:text-white disabled:opacity-50 disabled:pointer-events-none">
+          Следующая страница
+        </button>
+              </div>
+          </div>
+      </section>
+  </main>
+  <footer
+  class="bg-[#222532] flex flex-col min-[1125px]:pl-[17.5rem] max-[1124px]:pb-[5rem]"
+>
+  <div class="flex flex-col min-[1125px]:px-[2rem] px-[1rem]">
+    <nav
+      class="flex py-4 border-b border-b-[#2F3342] justify-between max-[1570px]:min-[1125px]:[&>li:not(:nth-child(-n+6))]:!hidden max-[1124px]:overflow-auto scroll-0"
+    >
+      <li>
+        <button
+          class="flex w-full whitespace-nowrap font-[600] items-center text-[#9CA0B5] hover:text-white justify-between pl-[.75rem] pr-[1.125rem] h-[2.875rem] bg-transparent rounded-[.375rem] transition-[background_,_color_,_opacity] duration-300 hover:bg-[#313444] [&.active]:bg-blue [&.active]:text-white [&.active]:shadow-btn-blue"
         >
-          <div class="flex flex-col gap-8">
-            <!-- <div class="flex flex-col relative z-[2] gap-5">
-                    <div class="flex items-center justify-between gap-4">
-                        <div class="flex flex-wrap items-center gap-3">
-                            <div class="flex items-center gap-3 font-[600] text-xl uppercase">
-                                <i class="shrink-0 w-[1.125rem] h-[1.125rem] rounded-full bg-blue shadow-btn-blue"></i>
-                                <span>Сейчас</span>
-                            </div>
-                            <span class="text-sm text-[#9CA0B5] font-[500]">Окончание: 05.07.2024 15:00</span>
-                        </div>
-                    </div>
-                    <button type="button" data-href="/tournament?type=slots&timestamp=1720180800&history=0" class="maskedLink w-full rounded-[.375rem] bg-[#1D1F2C] relative overflow-hidden p-[2.5rem] group/tournament transition-[background_,_transform] hover:bg-[#222434] duration-300">
-                        <div class="relative w-full z-[1] flex items-center justify-between pointer-events-none min-[860px]:flex-row flex-col min-[860px]:gap-0 gap-8">
-                            <div class="flex flex-col text-left min-[860px]:items-start items-center max-w-[18.75rem] w-full gap-[1.875rem]">
-                                <div class="flex flex-col min-[860px]:items-start items-center min-[860px]:text-left text-center gap-3">
-                                    <span class="text-xl font-[500] text-[#9E9EAD] drop-shadow-md">Турнир</span>
-                                    <h1 class="text-[2.625rem] font-[700] drop-shadow-xl leading-[120%] uppercase">Звёздный Pragmatic</h1>
-                                </div>
-                                <div class="relative">
-                                    <div class="absolute left-0 top-0 w-full h-full flex items-center justify-center text-xl font-[600]">
-                                        <span><span x-text="parseDecimals(20000)"></span> <span class="text-blue">₽</span></span>
-                                    </div>
-                                    <svg class="w-[13.188rem] h-[3.438rem]" viewBox="0 0 211 55" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M1 11C1 5.47715 5.47715 1 11 1H189.674C193.234 1 196.526 2.89337 198.317 5.97106L207.917 22.4711C209.726 25.5797 209.726 29.4202 207.917 32.5289L198.317 49.0289C196.526 52.1066 193.234 54 189.674 54H11C5.47715 54 1 49.5228 1 44V11Z" fill="url(#paint0_linear_695_2362)" fill-opacity="0.25" stroke="#0083E1" stroke-width="2"/>
-                                        <defs>
-                                            <linearGradient id="paint0_linear_695_2362" x1="106" y1="0" x2="106" y2="55" gradientUnits="userSpaceOnUse">
-                                                <stop stop-color="#0777C8"/>
-                                                <stop offset="1" stop-color="#0777C8" stop-opacity="0"/>
-                                            </linearGradient>
-                                        </defs>
-                                    </svg>
-                                </div>
-                            </div>
-                            <div class="flex flex-col gap-3 min-[861px]:mr-4 max-[860px]:-order-[1]">
-                                <div class="flex items-end gap-3">
-                                 
-
-                                </div>
-                                <div class="bg-[#3D4051] flex gap-0.5 flex-col rounded-[.375rem] p-[1rem_1.25rem]">
-                                    <div class="flex items-center justify-between text-[#DBDBDB] font-[600] text-base">
-                                        <span>Ставок для участия:</span>
-                                        <span>10</span>
-                                    </div>
-                                    <div class="flex items-center justify-between text-[#9CA0B5] font-[600] text-sm">
-                                        <span>Мой результат</span>
-                                        <span>Вы не участвуете</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="flex flex-col min-[860px]:items-end items-center gap-[1.875rem]">                                        
-                                                                    <div class="h-[3.438rem] uppercase relative font-[600] flex rounded-[.375rem] items-center justify-center text-white px-[1.75rem] transition-[background_,_box-shadow_,_opacity] min-[860px]:opacity-0 group-hover/tournament:opacity-100 duration-300 bg-[#3D4051]">
-                                    <span>Подробнее</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="absolute opacity-70 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[187.5rem] h-[187.5rem] pointer-events-none">
-                            <img src="assets/images/radial-pattern.svg" class="w-full h-full group-[:not(.disable-animations)]/body:animate-[radial_80s_infinite_linear]">
-                        </div>
-                        <div class="absolute left-0 top-0 w-[20rem] h-[20rem] bg-blue/[0.5] rounded-full blur-[12.5rem] pointer-events-none"></div>
-                    </button>
-                </div> -->
-            <div class="flex flex-col relative z-[2] gap-5">
-              <div class="flex items-center justify-between gap-4">
-                <div class="flex flex-wrap items-center gap-3">
-                  <div
-                    class="flex items-center gap-3 font-[600] text-xl uppercase"
-                  >
-                    <i
-                      class="shrink-0 w-[1.125rem] h-[1.125rem] rounded-full bg-blue shadow-btn-blue"
-                    ></i>
-                    <span>Еженедельно</span>
-                  </div>
-                  <span class="text-sm text-[#9CA0B5] font-[500]"
-                    >Окончание: Coming soon</span
-                  >
-                </div>
-              </div>
-              <button
-                type="button"
-                data-href="/tournament?type=weekly&timestamp=1729598400&history=0"
-                class="maskedLink w-full rounded-[.375rem] bg-[#1D1F2C] relative overflow-hidden p-[2.5rem] group/tournament transition-[background_,_transform] hover:bg-[#222434] duration-300"
-              >
-                <div
-                  class="relative w-full z-[1] flex items-center justify-between pointer-events-none min-[860px]:flex-row flex-col min-[860px]:gap-0 gap-8"
-                >
-                  <div
-                    class="flex flex-col text-left min-[860px]:items-start items-center max-w-[18.75rem] w-full gap-[1.875rem]"
-                  >
-                    <div
-                      class="flex flex-col min-[860px]:items-start items-center min-[860px]:text-left text-center gap-3"
-                    >
-                      <span
-                        class="text-xl font-[500] text-[#9E9EAD] drop-shadow-md"
-                        >Турнир</span
-                      >
-                      <h1
-                        class="text-[2.625rem] font-[700] drop-shadow-xl leading-[120%] uppercase"
-                      >
-                        Еженедельный полёт
-                      </h1>
-                    </div>
-                    <div class="relative">
-                      <div
-                        class="absolute left-0 top-0 w-full h-full flex items-center justify-center text-xl font-[600]"
-                      >
-                        <span
-                          ><span x-text="parseDecimals(5000)"></span>
-                          <span class="text-blue">₽</span></span
-                        >
-                      </div>
-                      <svg
-                        class="w-[13.188rem] h-[3.438rem]"
-                        viewBox="0 0 211 55"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M1 11C1 5.47715 5.47715 1 11 1H189.674C193.234 1 196.526 2.89337 198.317 5.97106L207.917 22.4711C209.726 25.5797 209.726 29.4202 207.917 32.5289L198.317 49.0289C196.526 52.1066 193.234 54 189.674 54H11C5.47715 54 1 49.5228 1 44V11Z"
-                          fill="url(#paint0_linear_695_2362)"
-                          fill-opacity="0.25"
-                          stroke="#0083E1"
-                          stroke-width="2"
-                        />
-                        <defs>
-                          <linearGradient
-                            id="paint0_linear_695_2362"
-                            x1="106"
-                            y1="0"
-                            x2="106"
-                            y2="55"
-                            gradientUnits="userSpaceOnUse"
-                          >
-                            <stop stop-color="#0777C8" />
-                            <stop
-                              offset="1"
-                              stop-color="#0777C8"
-                              stop-opacity="0"
-                            />
-                          </linearGradient>
-                        </defs>
-                      </svg>
-                    </div>
-                  </div>
-                  <div
-                    class="flex flex-col gap-3 min-[861px]:mr-4 max-[860px]:-order-[1]"
-                  >
-                    <div class="flex items-end gap-3"></div>
-                    <div
-                      class="bg-[#3D4051] flex gap-0.5 flex-col rounded-[.375rem] p-[1rem_1.25rem]"
-                    >
-                      <div
-                        class="flex items-center justify-between text-[#DBDBDB] font-[600] text-base"
-                      >
-                        <span>Ставок для участия:</span>
-                        <span>10</span>
-                      </div>
-                      <div
-                        class="flex items-center justify-between text-[#9CA0B5] font-[600] text-sm"
-                      >
-                        <span>Мой результат</span>
-                        <span>Вы не участвуете</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    class="flex flex-col min-[860px]:items-end items-center gap-[1.875rem]"
-                  >
-                    <div
-                      class="flex flex-col min-[860px]:items-end items-center gap-3"
-                    >
-                      <span class="text-base font-[500] drop-shadow-md">
-                        Coming soon</span
-                      >
-                      <!-- <div class="flex items-center gap-3"> 
-    <div class="flex flex-col items-center gap-2">
-        <div class="flex relative rounded-[.375rem] bg-gradient-to-b from-[#6F7081] via-[#3B3C48] to-[#555766] w-[3.75rem] h-[5rem]">
-            <div class="absolute left-[.063rem] top-[.063rem] w-[calc(100%_-_.125rem)] h-[calc(100%_-_.125rem)] bg-[#3D4051] rounded-[.375rem] font-opensans text-[2.25rem] font-bold flex items-center justify-center">1</div>
-        </div>
-        <span class="text-xs font-[600] text-[#9CA0B5]">дней</span>
-    </div>
-    <div class="flex flex-col items-center gap-2">
-        <div class="flex relative rounded-[.375rem] bg-gradient-to-b from-[#6F7081] via-[#3B3C48] to-[#555766] w-[3.75rem] h-[5rem]">
-            <div class="absolute left-[.063rem] top-[.063rem] w-[calc(100%_-_.125rem)] h-[calc(100%_-_.125rem)] bg-[#3D4051] rounded-[.375rem] font-opensans text-[2.25rem] font-bold flex items-center justify-center">06</div>
-        </div>
-        <span class="text-xs font-[600] text-[#9CA0B5]">часов</span>
-    </div>
-    <div class="flex flex-col items-center gap-2">
-        <div class="flex relative rounded-[.375rem] bg-gradient-to-b from-[#6F7081] via-[#3B3C48] to-[#555766] w-[3.75rem] h-[5rem]">
-            <div class="absolute left-[.063rem] top-[.063rem] w-[calc(100%_-_.125rem)] h-[calc(100%_-_.125rem)] bg-[#3D4051] rounded-[.375rem] font-opensans text-[2.25rem] font-bold flex items-center justify-center">07</div>
-        </div>
-        <span class="text-xs font-[600] text-[#9CA0B5]">минут</span>
-    </div>
-    <div class="flex flex-col items-center gap-2">
-        <div class="flex relative rounded-[.375rem] bg-gradient-to-b from-[#6F7081] via-[#3B3C48] to-[#555766] w-[3.75rem] h-[5rem]">
-            <div class="absolute left-[.063rem] top-[.063rem] w-[calc(100%_-_.125rem)] h-[calc(100%_-_.125rem)] bg-[#3D4051] rounded-[.375rem] font-opensans text-[2.25rem] font-bold flex items-center justify-center">40</div>
-        </div>
-        <span class="text-xs font-[600] text-[#9CA0B5]">секунд</span>
-    </div>
-</div> -->
-                    </div>
-                    <!-- <div class="h-[3.438rem] uppercase relative font-[600] flex rounded-[.375rem] items-center justify-center text-white px-[1.75rem] transition-[background_,_box-shadow_,_opacity] min-[860px]:opacity-0 group-hover/tournament:opacity-100 duration-300 bg-[#3D4051]">
-                                    <span>Подробнее</span>
-                                </div> -->
-                  </div>
-                </div>
-                <div
-                  class="absolute opacity-70 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[187.5rem] h-[187.5rem] pointer-events-none"
-                >
-                  <img
-                    src="../assets/images/radial-pattern.svg"
-                    class="w-full h-full group-[:not(.disable-animations)]/body:animate-[radial_80s_infinite_linear]"
-                  />
-                </div>
-                <div
-                  class="absolute left-0 top-0 w-[20rem] h-[20rem] bg-blue/[0.5] rounded-full blur-[12.5rem] pointer-events-none"
-                ></div>
-              </button>
-            </div>
-          </div>
-        </section>
-      </main>
-      <footer
-        class="bg-[#222532] flex flex-col min-[1125px]:pl-[17.5rem] max-[1124px]:pb-[5rem]"
-      >
-        <div class="flex flex-col min-[1125px]:px-[2rem] px-[1rem]">
-          <nav
-            class="flex py-4 border-b border-b-[#2F3342] justify-between max-[1570px]:min-[1125px]:[&>li:not(:nth-child(-n+6))]:!hidden max-[1124px]:overflow-auto scroll-0"
-          >
-            <li>
-              <button
-                class="flex w-full whitespace-nowrap font-[600] items-center text-[#9CA0B5] hover:text-white justify-between pl-[.75rem] pr-[1.125rem] h-[2.875rem] bg-transparent rounded-[.375rem] transition-[background_,_color_,_opacity] duration-300 hover:bg-[#313444] [&.active]:bg-blue [&.active]:text-white [&.active]:shadow-btn-blue"
-              >
-                <div class="flex pointer-events-none items-center gap-[.75rem]">
-                  <svg class="shrink-0 w-[1.5rem] h-[1.5rem]">
-                    <use
-                      xlink:href="../assets/images/symbols.svg#icon-all-games"
-                    ></use>
-                  </svg>
-                  <div
-                    class="shrink-0 w-[.063rem] h-[1rem] bg-current opacity-20"
-                  ></div>
-                  <span>Все игры</span>
-                </div>
-              </button>
-            </li>
-            <li>
-              <button
-                class="flex w-full whitespace-nowrap font-[600] items-center text-[#9CA0B5] hover:text-white justify-between pl-[.75rem] pr-[1.125rem] h-[2.875rem] bg-transparent rounded-[.375rem] transition-[background_,_color_,_opacity] duration-300 hover:bg-[#313444] [&.active]:bg-blue [&.active]:text-white [&.active]:shadow-btn-blue"
-              >
-                <div class="flex pointer-events-none items-center gap-[.75rem]">
-                  <svg class="shrink-0 w-[1.5rem] h-[1.5rem]">
-                    <use
-                      xlink:href="../assets/images/symbols.svg#icon-slots"
-                    ></use>
-                  </svg>
-                  <div
-                    class="shrink-0 w-[.063rem] h-[1rem] bg-current opacity-20"
-                  ></div>
-                  <span>Слоты</span>
-                </div>
-              </button>
-            </li>
-            <li>
-              <button
-                class="flex w-full whitespace-nowrap font-[600] items-center text-[#9CA0B5] hover:text-white justify-between pl-[.75rem] pr-[1.125rem] h-[2.875rem] bg-transparent rounded-[.375rem] transition-[background_,_color_,_opacity] duration-300 hover:bg-[#313444] [&.active]:bg-blue [&.active]:text-white [&.active]:shadow-btn-blue"
-              >
-                <div class="flex pointer-events-none items-center gap-[.75rem]">
-                  <svg class="shrink-0 w-[1.5rem] h-[1.5rem]">
-                    <use
-                      xlink:href="../assets/images/symbols.svg#icon-bonus"
-                  </svg>
-                    ></use>
-                  <div
-                    class="shrink-0 w-[.063rem] h-[1rem] bg-current opacity-20"
-                  ></div>
-                  <span>Bonus buy</span>
-                </div>
-              </button>
-            </li>
-            <li>
-              <button
-                class="flex w-full whitespace-nowrap font-[600] items-center text-[#9CA0B5] hover:text-white justify-between pl-[.75rem] pr-[1.125rem] h-[2.875rem] bg-transparent rounded-[.375rem] transition-[background_,_color_,_opacity] duration-300 hover:bg-[#313444] [&.active]:bg-blue [&.active]:text-white [&.active]:shadow-btn-blue"
-              >
-                <div class="flex pointer-events-none items-center gap-[.75rem]">
-                  <svg class="shrink-0 w-[1.5rem] h-[1.5rem]">
-                    <use
-                      xlink:href="../assets/images/symbols.svg#icon-live-games"
-                    ></use>
-                  </svg>
-                  <div
-                    class="shrink-0 w-[.063rem] h-[1rem] bg-current opacity-20"
-                  ></div>
-                  <span>Live игры</span>
-                </div>
-              </button>
-            </li>
-            <li>
-              <button
-                class="flex w-full whitespace-nowrap font-[600] items-center text-[#9CA0B5] hover:text-white justify-between pl-[.75rem] pr-[1.125rem] h-[2.875rem] bg-transparent rounded-[.375rem] transition-[background_,_color_,_opacity] duration-300 hover:bg-[#313444] [&.active]:bg-blue [&.active]:text-white [&.active]:shadow-btn-blue"
-              >
-                <div class="flex pointer-events-none items-center gap-[.75rem]">
-                  <svg class="shrink-0 w-[1.5rem] h-[1.5rem]">
-                    <use
-                      xlink:href="../assets/images/symbols.svg#icon-instant-games"
-                    ></use>
-                  </svg>
-                  <div
-                    class="shrink-0 w-[.063rem] h-[1rem] bg-current opacity-20"
-                  ></div>
-                  <span>Instant wins</span>
-                </div>
-              </button>
-            </li>
-            <li>
-              <button
-                class="flex w-full whitespace-nowrap font-[600] items-center text-[#9CA0B5] hover:text-white justify-between pl-[.75rem] pr-[1.125rem] h-[2.875rem] bg-transparent rounded-[.375rem] transition-[background_,_color_,_opacity] duration-300 hover:bg-[#313444] [&.active]:bg-blue [&.active]:text-white [&.active]:shadow-btn-blue"
-              >
-                <div class="flex pointer-events-none items-center gap-[.75rem]">
-                  <svg class="shrink-0 w-[1.5rem] h-[1.5rem]">
-                    <use
-                      xlink:href="../assets/images/symbols.svg#icon-roulette-games"
-                    ></use>
-                  </svg>
-                  <div
-                    class="shrink-0 w-[.063rem] h-[1rem] bg-current opacity-20"
-                  ></div>
-                  <span>Рулетка</span>
-                </div>
-              </button>
-            </li>
-            <li>
-              <button
-                class="flex w-full whitespace-nowrap font-[600] items-center text-[#9CA0B5] hover:text-white justify-between pl-[.75rem] pr-[1.125rem] h-[2.875rem] bg-transparent rounded-[.375rem] transition-[background_,_color_,_opacity] duration-300 hover:bg-[#313444] [&.active]:bg-blue [&.active]:text-white [&.active]:shadow-btn-blue"
-              >
-                <div class="flex pointer-events-none items-center gap-[.75rem]">
-                  <svg class="shrink-0 w-[1.5rem] h-[1.5rem]">
-                    <use
-                      xlink:href="../assets/images/symbols.svg#icon-card-games"
-                    ></use>
-                  </svg>
-                  <div
-                    class="shrink-0 w-[.063rem] h-[1rem] bg-current opacity-20"
-                  ></div>
-                  <span>Карточные</span>
-                </div>
-              </button>
-            </li>
-            <li>
-              <button
-                class="flex w-full whitespace-nowrap font-[600] items-center text-[#9CA0B5] hover:text-white justify-between pl-[.75rem] pr-[1.125rem] h-[2.875rem] bg-transparent rounded-[.375rem] transition-[background_,_color_,_opacity] duration-300 hover:bg-[#313444] [&.active]:bg-blue [&.active]:text-white [&.active]:shadow-btn-blue"
-              >
-                <div class="flex pointer-events-none items-center gap-[.75rem]">
-                  <svg class="shrink-0 w-[1.5rem] h-[1.5rem]">
-                    <use xlink:href="../assets/images/symbols.svg#icon-bonus"></use>
-                  </svg>
-                  <div
-                    class="shrink-0 w-[.063rem] h-[1rem] bg-current opacity-20"
-                  ></div>
-                  <span>Бонусы</span>
-                </div>
-              </button>
-            </li>
-          </nav>
-          <div
-            class="py-7 flex min-[701px]:flex-row min-[701px]:gap-0 gap-4 flex-col items-center justify-between"
-          >
+          <div class="flex pointer-events-none items-center gap-[.75rem]">
+            <svg class="shrink-0 w-[1.5rem] h-[1.5rem]">
+              <use
+                xlink:href="../assets/images/symbols.svg#icon-all-games"
+              ></use>
+            </svg>
             <div
-              class="flex items-center gap-6 max-[700px]:justify-between max-[700px]:w-full"
-            >
-              <button
-              >
-                <img
-                  src="../assets/images/logo.svg"
-                  class="w-[7rem] h-[2rem] object-contain"
-                  alt=""
-                />
-              </button>
-              <div class="flex items-center gap-3">
-                <a
-                  href="/vk_group"
-                  aria-label="Группа вк"
-                  target="_blank"
-                  class="w-[2rem] h-[2rem] flex items-center justify-center text-[#9ca0b5] rounded-[.375rem] bg-[#2d3140] transition-[background_,_color] duration-300 hover:bg-[#343848] hover:text-white"
-                >
-                  <svg class="w-4 h-4">
-                    <use xlink:href="../assets/images/symbols.svg#icon-vk"></use>
-                  </svg>
-                </a>
-                <a
-                  href="https://t.me/cosmocasino1"
-                  aria-label="Телеграмм канал"
-                  target="_blank"
-                  class="w-[2rem] h-[2rem] flex items-center justify-center text-[#9ca0b5] rounded-[.375rem] bg-[#2d3140] transition-[background_,_color] duration-300 hover:bg-[#343848] hover:text-white"
-                >
-                  <svg class="w-4 h-4">
-                    <use
-                      xlink:href="../assets/images/symbols.svg#icon-telegram"
-                    ></use>
-                  </svg>
-                </a>
-                <!-- <a href="javascript:;" target="_blank" class="w-[2rem] h-[2rem] flex items-center justify-center text-[#9ca0b5] rounded-[.375rem] bg-[#2d3140] transition-[background_,_color] duration-300 hover:bg-[#343848] hover:text-white">
-                        <svg class="w-4 h-4"><use xlink:href="assets/images/symbols.svg#icon-youtube"></use></svg>
-                    </a>
-                    <a href="javascript:;" target="_blank" class="w-[2rem] h-[2rem] flex items-center justify-center text-[#9ca0b5] rounded-[.375rem] bg-[#2d3140] transition-[background_,_color] duration-300 hover:bg-[#343848] hover:text-white">
-                        <svg class="w-4 h-4"><use xlink:href="assets/images/symbols.svg#icon-twitch"></use></svg>
-                    </a> -->
-              </div>
-            </div>
-            <div class="min-[701px]:flex hidden items-center gap-4">
-              <div
-                class="flex items-center gap-2 text-sm text-[#9CA0B5] [&_a]:text-white"
-              >
-                <span>Поддержка:</span>
-                <a href="mailto:cosmocas312@gmail.com">cosmocas312@gmail.com</a>
-              </div>
-              <div
-                class="flex items-center gap-2 text-sm text-[#9CA0B5] [&_a]:text-white"
-              >
-                <span>Партнерство:</span>
-                <a href="mailto:cosmocas312@gmail.com">cosmocas312@gmail.com</a>
-              </div>
-            </div>
+              class="shrink-0 w-[.063rem] h-[1rem] bg-current opacity-20"
+            ></div>
+            <span>Все игры</span>
           </div>
+        </button>
+      </li>
+      <li>
+        <button
+          class="flex w-full whitespace-nowrap font-[600] items-center text-[#9CA0B5] hover:text-white justify-between pl-[.75rem] pr-[1.125rem] h-[2.875rem] bg-transparent rounded-[.375rem] transition-[background_,_color_,_opacity] duration-300 hover:bg-[#313444] [&.active]:bg-blue [&.active]:text-white [&.active]:shadow-btn-blue"
+        >
+          <div class="flex pointer-events-none items-center gap-[.75rem]">
+            <svg class="shrink-0 w-[1.5rem] h-[1.5rem]">
+              <use
+                xlink:href="../assets/images/symbols.svg#icon-slots"
+              ></use>
+            </svg>
+            <div
+              class="shrink-0 w-[.063rem] h-[1rem] bg-current opacity-20"
+            ></div>
+            <span>Слоты</span>
+          </div>
+        </button>
+      </li>
+      <li>
+        <button
+          class="flex w-full whitespace-nowrap font-[600] items-center text-[#9CA0B5] hover:text-white justify-between pl-[.75rem] pr-[1.125rem] h-[2.875rem] bg-transparent rounded-[.375rem] transition-[background_,_color_,_opacity] duration-300 hover:bg-[#313444] [&.active]:bg-blue [&.active]:text-white [&.active]:shadow-btn-blue"
+        >
+          <div class="flex pointer-events-none items-center gap-[.75rem]">
+            <svg class="shrink-0 w-[1.5rem] h-[1.5rem]">
+              <use
+                xlink:href="../assets/images/symbols.svg#icon-bonus"
+              ></use>
+            </svg>
+            <div
+              class="shrink-0 w-[.063rem] h-[1rem] bg-current opacity-20"
+            ></div>
+            <span>Bonus buy</span>
+          </div>
+        </button>
+      </li>
+      <li>
+        <button
+          class="flex w-full whitespace-nowrap font-[600] items-center text-[#9CA0B5] hover:text-white justify-between pl-[.75rem] pr-[1.125rem] h-[2.875rem] bg-transparent rounded-[.375rem] transition-[background_,_color_,_opacity] duration-300 hover:bg-[#313444] [&.active]:bg-blue [&.active]:text-white [&.active]:shadow-btn-blue"
+        >
+          <div class="flex pointer-events-none items-center gap-[.75rem]">
+            <svg class="shrink-0 w-[1.5rem] h-[1.5rem]">
+              <use
+                xlink:href="../assets/images/symbols.svg#icon-live-games"
+              ></use>
+            </svg>
+            <div
+              class="shrink-0 w-[.063rem] h-[1rem] bg-current opacity-20"
+            ></div>
+            <span>Live игры</span>
+          </div>
+        </button>
+      </li>
+      <li>
+        <button
+          class="flex w-full whitespace-nowrap font-[600] items-center text-[#9CA0B5] hover:text-white justify-between pl-[.75rem] pr-[1.125rem] h-[2.875rem] bg-transparent rounded-[.375rem] transition-[background_,_color_,_opacity] duration-300 hover:bg-[#313444] [&.active]:bg-blue [&.active]:text-white [&.active]:shadow-btn-blue"
+        >
+          <div class="flex pointer-events-none items-center gap-[.75rem]">
+            <svg class="shrink-0 w-[1.5rem] h-[1.5rem]">
+              <use
+                xlink:href="../assets/images/symbols.svg#icon-instant-games"
+              ></use>
+            </svg>
+            <div
+              class="shrink-0 w-[.063rem] h-[1rem] bg-current opacity-20"
+            ></div>
+            <span>Instant wins</span>
+          </div>
+        </button>
+      </li>
+      <li>
+        <button
+          class="flex w-full whitespace-nowrap font-[600] items-center text-[#9CA0B5] hover:text-white justify-between pl-[.75rem] pr-[1.125rem] h-[2.875rem] bg-transparent rounded-[.375rem] transition-[background_,_color_,_opacity] duration-300 hover:bg-[#313444] [&.active]:bg-blue [&.active]:text-white [&.active]:shadow-btn-blue"
+        >
+          <div class="flex pointer-events-none items-center gap-[.75rem]">
+            <svg class="shrink-0 w-[1.5rem] h-[1.5rem]">
+              <use
+                xlink:href="../assets/images/symbols.svg#icon-roulette-games"
+              ></use>
+            </svg>
+            <div
+              class="shrink-0 w-[.063rem] h-[1rem] bg-current opacity-20"
+            ></div>
+            <span>Рулетка</span>
+          </div>
+        </button>
+      </li>
+      <li>
+        <button
+          class="flex w-full whitespace-nowrap font-[600] items-center text-[#9CA0B5] hover:text-white justify-between pl-[.75rem] pr-[1.125rem] h-[2.875rem] bg-transparent rounded-[.375rem] transition-[background_,_color_,_opacity] duration-300 hover:bg-[#313444] [&.active]:bg-blue [&.active]:text-white [&.active]:shadow-btn-blue"
+        >
+          <div class="flex pointer-events-none items-center gap-[.75rem]">
+            <svg class="shrink-0 w-[1.5rem] h-[1.5rem]">
+              <use
+                xlink:href="../assets/images/symbols.svg#icon-card-games"
+              ></use>
+            </svg>
+            <div
+              class="shrink-0 w-[.063rem] h-[1rem] bg-current opacity-20"
+            ></div>
+            <span>Карточные</span>
+          </div>
+        </button>
+      </li>
+      <li>
+        <button
+          class="flex w-full whitespace-nowrap font-[600] items-center text-[#9CA0B5] hover:text-white justify-between pl-[.75rem] pr-[1.125rem] h-[2.875rem] bg-transparent rounded-[.375rem] transition-[background_,_color_,_opacity] duration-300 hover:bg-[#313444] [&.active]:bg-blue [&.active]:text-white [&.active]:shadow-btn-blue"
+        >
+          <div class="flex pointer-events-none items-center gap-[.75rem]">
+            <svg class="shrink-0 w-[1.5rem] h-[1.5rem]">
+              <use
+                xlink:href="../assets/images/symbols.svg#icon-bonus"
+              ></use>
+            </svg>
+            <div
+              class="shrink-0 w-[.063rem] h-[1rem] bg-current opacity-20"
+            ></div>
+            <span>Бонусы</span>
+          </div>
+        </button>
+      </li>
+    </nav>
+    <div
+      class="py-7 flex min-[701px]:flex-row min-[701px]:gap-0 gap-4 flex-col items-center justify-between"
+    >
+      <div
+        class="flex items-center gap-6 max-[700px]:justify-between max-[700px]:w-full"
+      >
+        <button>
+          <img
+            src="../assets/images/logo.svg"
+            class="w-[7rem] h-[2rem] object-contain"
+            alt=""
+          />
+        </button>
+        <div class="flex items-center gap-3">
+          <a
+            href="/vk_group"
+            aria-label="Группа вк"
+            target="_blank"
+            class="w-[2rem] h-[2rem] flex items-center justify-center text-[#9ca0b5] rounded-[.375rem] bg-[#2d3140] transition-[background_,_color] duration-300 hover:bg-[#343848] hover:text-white"
+          >
+            <svg class="w-4 h-4">
+              <use
+                xlink:href="../assets/images/symbols.svg#icon-vk"
+              ></use>
+            </svg>
+          </a>
+          <a
+            href="https://t.me/cosmocasino1"
+            aria-label="Телеграмм канал"
+            target="_blank"
+            class="w-[2rem] h-[2rem] flex items-center justify-center text-[#9ca0b5] rounded-[.375rem] bg-[#2d3140] transition-[background_,_color] duration-300 hover:bg-[#343848] hover:text-white"
+          >
+            <svg class="w-4 h-4">
+              <use
+                xlink:href="../assets/images/symbols.svg#icon-telegram"
+              ></use>
+            </svg>
+          </a>
+          <!-- <a href="javascript:;" target="_blank" class="w-[2rem] h-[2rem] flex items-center justify-center text-[#9ca0b5] rounded-[.375rem] bg-[#2d3140] transition-[background_,_color] duration-300 hover:bg-[#343848] hover:text-white">
+                  <svg class="w-4 h-4"><use xlink:href="assets/images/symbols.svg#icon-youtube"></use></svg>
+              </a>
+              <a href="javascript:;" target="_blank" class="w-[2rem] h-[2rem] flex items-center justify-center text-[#9ca0b5] rounded-[.375rem] bg-[#2d3140] transition-[background_,_color] duration-300 hover:bg-[#343848] hover:text-white">
+                  <svg class="w-4 h-4"><use xlink:href="assets/images/symbols.svg#icon-twitch"></use></svg>
+              </a> -->
         </div>
-      </footer>
+      </div>
+      <div class="min-[701px]:flex hidden items-center gap-4">
+        <div
+          class="flex items-center gap-2 text-sm text-[#9CA0B5] [&_a]:text-white"
+        >
+          <span>Поддержка:</span>
+          <a href="mailto:cosmocas312@gmail.com">cosmocas312@gmail.com</a>
+        </div>
+        <div
+          class="flex items-center gap-2 text-sm text-[#9CA0B5] [&_a]:text-white"
+        >
+          <span>Партнерство:</span>
+          <a href="mailto:cosmocas312@gmail.com">cosmocas312@gmail.com</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
     </div>
   </body>
 </html>
