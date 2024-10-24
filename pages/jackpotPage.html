@@ -1,16 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru" class="h-full">
+  <script
+    defer
+    src="https://cdn.jsdelivr.net/npm/@alpinejs/focus@3.x.x/dist/cdn.min.js"
+  ></script>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="verification" content="7e83722522e8aeb7512b7075311316b7" />
     <link rel="icon" href="../assets/images/favicon.png" type="image/png" />
-    <link rel="preload" href="../assets/css/styles.css" as="style" />
-    <link rel="preload" href="../assets/css/toastr.min.css" as="style" />
+    <link
+      rel="preload"
+      href="../assets/css/styles.css"
+      as="style"
+      onload="this.rel='stylesheet'"
+    />
+    <link
+      rel="preload"
+      href="../assets/css/toastr.min.css"
+      as="style"
+      onload="this.rel='stylesheet'"
+    />
     <link
       rel="preload"
       href="../assets/fonts/OpenSansCondensed/stylesheet.css"
       as="style"
+      onload="this.rel='stylesheet'"
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -26,19 +41,30 @@
     <script src="../assets/js/toastr.min.js"></script>
     <script src="https://cdn.tailwindcss.com?plugins=line-clamp"></script>
     <script src="../assets/js/swiper-bundle.min.js"></script>
-    <link rel="preload" href="../assets/css/swiper-bundle.min.css" as="style" />
+    <link
+      rel="preload"
+      href="../assets/css/swiper-bundle.min.css"
+      as="style"
+      onload="this.rel='stylesheet'"
+    />
     <script src="../assets/js/smooth-scrollbar.js"></script>
     <link
       rel="preload"
       href="../assets/css/simple-scrollbar.min.css"
       as="style"
+      onload="this.rel='stylesheet'"
     />
     <script src="../assets/js/popper.min.js"></script>
     <script src="../assets/js/tippy-bundle.umd.min.js"></script>
     <script src="../assets/js/clipboard.min.js"></script>
-    <link rel="preload" href="../assets/css/scale-subtle.css" as="style" />
+    <link
+      rel="preload"
+      href="../assets/css/scale-subtle.css"
+      as="style"
+      onload="this.rel='stylesheet'"
+    />
     <script src="../assets/js/socket.io-1.4.5.js"></script>
-    <title>Крути и зарабатывай</title>
+    <title>Крути и зарабатывай | CosmoCasino</title>
     <script>
       tailwind.config = {
         theme: {
@@ -59,6 +85,15 @@
         },
       };
     </script>
+    <style>
+      body {
+        user-select: text !important; /* Разрешаем выделение текста */
+      }
+    </style>
+    <script>
+      document.onselectstart = null;
+      window.oncontextmenu = null;
+    </script>
   </head>
   <body
     class="[&_img]:pointer-events-none [&_img]:select-none group/body font-sans bg-[#131521] h-full [&_span]:cursor-default [&_p]:cursor-default [&_b]:cursor-default [&_li]:cursor-default [&_h1]:cursor-default [&_h2]:cursor-default [&_h3]:cursor-default [&_h4]:cursor-default [&_h5]:cursor-default [&_h6]:cursor-default text-white [&_li]:list-none focus:[&_*]:ring-0 focus:[&_*]:ring-inherit focus:[&_*]:outline-0 overflow-x-hidden min-w-[320px] [&_button_span]:pointer-events-none [&_a_span]:pointer-events-none [&_canvas]:pointer-events-none select-none parallax"
@@ -68,7 +103,10 @@
     >
       <div class="flex items-center gap-8">
         <div class="min-[1125px]:hidden flex items-center gap-3">
-          <button class="max-[360px]:w-[1.625rem] max-[360px]:overflow-hidden">
+          <button
+            data-href="/"
+            class="max-[360px]:w-[1.625rem] max-[360px]:overflow-hidden"
+          >
             <img
               src="../assets/images/logo.svg"
               class="min-[361px]:w-[7rem] h-[2rem] max-[360px]:max-w-fit object-contain"
@@ -81,9 +119,6 @@
             <svg class="w-4 h-4 mt-1">
               <use xlink:href="../assets/images/symbols.svg#icon-search"></use>
             </svg>
-            <svg class="w-3 h-3 mt-1">
-              <use xlink:href="../assets/images/symbols.svg#icon-close"></use>
-            </svg>
             <span>Поиск</span>
           </button>
         </div>
@@ -92,6 +127,7 @@
         >
           <li class="relative">
             <button
+              data-href="/lobby"
               class="flex h-full justify-center items-center gap-[.5rem] text-base font-[600] text-[#9E9EAD] transition-[color_,_opacity] duration-300 [&.active]:!opacity-100 hover:text-[#B9B9CA] group/link [&.active]:text-white"
             >
               <svg
@@ -101,12 +137,13 @@
               </svg>
               <span>Слоты</span>
               <div
-                class="absolute left-0 bottom-0 w-full h-[3px] bg-blue opacity-0 w-0 group-[.active]/link:!w-full group-[.active]/link:!opacity-100"
+                class="absolute left-0 bottom-0 w-full h-[3px] bg-blue w-0 group-[.active]/link:!w-full group-[.active]/link:!opacity-100"
               ></div>
             </button>
           </li>
           <li class="relative">
             <button
+              data-href="/game?id=225597"
               class="flex h-full justify-center items-center gap-[.5rem] text-base font-[600] text-[#9E9EAD] transition-[color_,_opacity] duration-300 [&.active]:!opacity-100 hover:text-[#B9B9CA] group/link [&.active]:text-white"
             >
               <svg
@@ -118,27 +155,13 @@
               </svg>
               <span>Live игры</span>
               <div
-                class="absolute left-0 bottom-0 w-full h-[3px] bg-blue opacity-0 w-0 group-[.active]/link:!w-full group-[.active]/link:!opacity-100"
+                class="absolute left-0 bottom-0 w-full h-[3px] bg-blue w-0 group-[.active]/link:!w-full group-[.active]/link:!opacity-100"
               ></div>
             </button>
           </li>
           <li class="relative">
             <button
-              class="flex h-full justify-center items-center gap-[.5rem] text-base font-[600] text-[#9E9EAD] transition-[color_,_opacity] duration-300 [&.active]:!opacity-100 hover:text-[#B9B9CA] group/link [&.active]:text-white"
-            >
-              <svg
-                class="shrink-0 w-[1.5rem] h-[1.5rem] text-[#75798C] transition-[color] duration-300 group-hover/link:text-[#9196AA] group-[.active]/link:text-blue"
-              >
-                <use xlink:href="../assets/images/symbols.svg#icon-bonus"></use>
-              </svg>
-              <span>Бонусы</span>
-              <div
-                class="absolute left-0 bottom-0 w-full h-[3px] bg-blue opacity-0 w-0 group-[.active]/link:!w-full group-[.active]/link:!opacity-100"
-              ></div>
-            </button>
-          </li>
-          <li class="relative">
-            <button
+              data-href="/tournaments"
               class="flex h-full justify-center items-center gap-[.5rem] text-base font-[600] text-[#9E9EAD] transition-[color_,_opacity] duration-300 [&.active]:!opacity-100 hover:text-[#B9B9CA] group/link [&.active]:text-white"
             >
               <svg
@@ -150,7 +173,7 @@
               </svg>
               <span>Турниры</span>
               <div
-                class="absolute left-0 bottom-0 w-full h-[3px] bg-blue opacity-0 w-0 group-[.active]/link:!w-full group-[.active]/link:!opacity-100"
+                class="absolute left-0 bottom-0 w-full h-[3px] bg-blue w-0 group-[.active]/link:!w-full group-[.active]/link:!opacity-100"
               ></div>
             </button>
           </li>
@@ -175,6 +198,7 @@
     </header>
     <div
       class="fixed left-0 min-[1125px]:top-0 top-[4.5rem] min-[1125px]:h-full h-[calc(100%_-_4.5rem)] z-[10] w-full pointer-events-none flex flex-col justify-between group/sidebar [&.active]:z-[9]"
+      x-bind:class="menu && 'active'"
     >
       <div
         class="flex flex-col justify-between min-[425px]:max-w-[17.5rem] max-w-full bg-[#1D1F2C] w-full h-full pointer-events-auto transition-[transform] duration-300 max-[1124px]:-translate-x-full max-[1124px]:group-[.active]/sidebar:translate-x-0 max-[1124px]:pb-[4rem]"
@@ -192,7 +216,7 @@
             </svg>
             <span>Поиск</span>
           </button>
-          <button>
+          <button data-href="/">
             <img
               src="../assets/images/logo.svg"
               class="w-[7rem] h-[2rem] object-contain"
@@ -213,6 +237,7 @@
                     >Luckywheel</span
                   >
                   <button
+                    data-href="/bonus"
                     class="flex text-sm py-0.5 px-2 rounded-[.25rem] bg-[#8b8bb9]/[0.1] backdrop-blur-[10px] text-[#b2b7e1] transition-[background_,_color] duration-300 hover:bg-[#8b8bb9]/[0.15] hover:text-white shadow-md font-[400]"
                   >
                     Испытать удачу
@@ -246,7 +271,9 @@
                   </button>
                 </div>
               </div>
-              <div class="flex flex-col pb-[1.25rem] gap-[.625rem] w-full">
+              <div
+                class="flex flex-col pb-[1.25rem] px-[1.25rem] gap-[.625rem] w-full"
+              >
                 <div
                   class="flex flex-col gap-[.625rem] border-b border-b-[#2A2C3D] last:border-0"
                 >
@@ -269,11 +296,26 @@
                     ></i>
                   </button>
                   <div
-                    class="flex overflow-hidden flex-col gap-[.313rem] max-h-[296px] transition-[max-height]"
+                    class="flex overflow-hidden flex-col gap-[.313rem] max-h-0 transition-[max-height]"
                   >
                     <div class="flex flex-col gap-[.313rem] pb-[.625rem]">
                       <div class="relative">
+                        <div
+                          class="absolute left-0 top-0 gap-[.75rem] w-full h-full rounded-[.375rem] bg-transparent flex z-[1] items-center pl-[.75rem] pr-[1.125rem] h-[2.875rem]"
+                        >
+                          <div
+                            class="w-[1.5rem] h-[1.5rem] bg-[#313444] loading relative rounded-[.25rem]"
+                          ></div>
+                          <div
+                            class="shrink-0 relative w-[.063rem] h-[1rem] bg-[#313444] loading"
+                          ></div>
+                          <span
+                            class="w-[100px] h-[8px] bg-[#313444] relative loading rounded-full"
+                          ></span>
+                        </div>
+
                         <button
+                          data-href="/mines"
                           class="flex w-full whitespace-nowrap font-[600] items-center text-[#9CA0B5] hover:text-white justify-between pl-[.75rem] pr-[1.125rem] h-[2.875rem] bg-transparent rounded-[.375rem] transition-[background_,_color_,_opacity] duration-300 hover:bg-[#313444] [&.active]:bg-blue [&.active]:text-white [&.active]:shadow-btn-blue"
                         >
                           <div
@@ -291,364 +333,427 @@
                           </div>
                         </button>
                       </div>
-
-                      <button
-                        class="flex w-full whitespace-nowrap font-[600] items-center text-[#9CA0B5] hover:text-white justify-between pl-[.75rem] pr-[1.125rem] h-[2.875rem] bg-transparent rounded-[.375rem] transition-[background_,_color_,_opacity] duration-300 hover:bg-[#313444] [&.active]:bg-blue [&.active]:text-white [&.active]:shadow-btn-blue"
-                      >
-                        <div
-                          class="flex pointer-events-none items-center gap-[.75rem]"
+                      <div class="relative">
+                        <button
+                          data-href="/dice"
+                          class="flex w-full whitespace-nowrap font-[600] items-center text-[#9CA0B5] hover:text-white justify-between pl-[.75rem] pr-[1.125rem] h-[2.875rem] bg-transparent rounded-[.375rem] transition-[background_,_color_,_opacity] duration-300 hover:bg-[#313444] [&.active]:bg-blue [&.active]:text-white [&.active]:shadow-btn-blue"
                         >
-                          <svg class="shrink-0 w-[1.5rem] h-[1.5rem]">
-                            <use
-                              xlink:href="../assets/images/symbols.svg?v=1#icon-dice"
-                            ></use>
-                          </svg>
                           <div
-                            class="shrink-0 w-[.063rem] h-[1rem] bg-current opacity-20"
-                          ></div>
-                          <span>Дайс</span>
-                        </div>
-                      </button>
-                    </div>
-                    <div class="relative">
-                      <button
-                        class="flex w-full whitespace-nowrap font-[600] items-center text-[#9CA0B5] hover:text-white justify-between pl-[.75rem] pr-[1.125rem] h-[2.875rem] bg-transparent rounded-[.375rem] transition-[background_,_color_,_opacity] duration-300 hover:bg-[#313444] [&.active]:bg-blue [&.active]:text-white [&.active]:shadow-btn-blue"
-                      >
-                        <div
-                          class="flex pointer-events-none items-center gap-[.75rem]"
+                            class="flex pointer-events-none items-center gap-[.75rem]"
+                          >
+                            <svg class="shrink-0 w-[1.5rem] h-[1.5rem]">
+                              <use
+                                xlink:href="../assets/images/symbols.svg?v=1#icon-dice"
+                              ></use>
+                            </svg>
+                            <div
+                              class="shrink-0 w-[.063rem] h-[1rem] bg-current opacity-20"
+                            ></div>
+                            <span>Дайс</span>
+                          </div>
+                        </button>
+                      </div>
+                      <div class="relative">
+                        <button
+                          data-href="/coinflip"
+                          class="flex w-full whitespace-nowrap font-[600] items-center text-[#9CA0B5] hover:text-white justify-between pl-[.75rem] pr-[1.125rem] h-[2.875rem] bg-transparent rounded-[.375rem] transition-[background_,_color_,_opacity] duration-300 hover:bg-[#313444] [&.active]:bg-blue [&.active]:text-white [&.active]:shadow-btn-blue"
                         >
-                          <svg class="shrink-0 w-[1.5rem] h-[1.5rem]">
-                            <use
-                              xlink:href="../assets/images/symbols.svg?v=1#icon-coinflip"
-                            ></use>
-                          </svg>
                           <div
-                            class="shrink-0 w-[.063rem] h-[1rem] bg-current opacity-20"
-                          ></div>
-                          <span>Коинфлип</span>
-                        </div>
-                      </button>
-                    </div>
-                    <div class="relative">
-                      <button
-                        class="flex w-full whitespace-nowrap font-[600] items-center text-[#9CA0B5] hover:text-white justify-between pl-[.75rem] pr-[1.125rem] h-[2.875rem] bg-transparent rounded-[.375rem] transition-[background_,_color_,_opacity] duration-300 hover:bg-[#313444] [&.active]:bg-blue [&.active]:text-white [&.active]:shadow-btn-blue"
-                      >
-                        <div
-                          class="flex pointer-events-none items-center gap-[.75rem]"
+                            class="flex pointer-events-none items-center gap-[.75rem]"
+                          >
+                            <svg class="shrink-0 w-[1.5rem] h-[1.5rem]">
+                              <use
+                                xlink:href="../assets/images/symbols.svg?v=1#icon-coinflip"
+                              ></use>
+                            </svg>
+                            <div
+                              class="shrink-0 w-[.063rem] h-[1rem] bg-current opacity-20"
+                            ></div>
+                            <span>Коинфлип</span>
+                          </div>
+                        </button>
+                      </div>
+                      <div class="relative">
+                        <button
+                          data-href="/x50"
+                          class="flex w-full whitespace-nowrap font-[600] items-center text-[#9CA0B5] hover:text-white justify-between pl-[.75rem] pr-[1.125rem] h-[2.875rem] bg-transparent rounded-[.375rem] transition-[background_,_color_,_opacity] duration-300 hover:bg-[#313444] [&.active]:bg-blue [&.active]:text-white [&.active]:shadow-btn-blue"
                         >
-                          <svg class="shrink-0 w-[1.5rem] h-[1.5rem]">
-                            <use
-                              xlink:href="../assets/images/symbols.svg?v=1#icon-weather"
-                            ></use>
-                          </svg>
                           <div
-                            class="shrink-0 w-[.063rem] h-[1rem] bg-current opacity-20"
-                          ></div>
-                          <span>Ставки на погоду</span>
-                        </div>
-                      </button>
-                    </div>
-                    <div class="relative">
-                      <button
-                        class="flex w-full whitespace-nowrap font-[600] items-center text-[#9CA0B5] hover:text-white justify-between pl-[.75rem] pr-[1.125rem] h-[2.875rem] bg-transparent rounded-[.375rem] transition-[background_,_color_,_opacity] duration-300 hover:bg-[#313444] [&.active]:bg-blue [&.active]:text-white [&.active]:shadow-btn-blue"
-                      >
-                        <div
-                          class="flex pointer-events-none items-center gap-[.75rem]"
+                            class="flex pointer-events-none items-center gap-[.75rem]"
+                          >
+                            <svg class="shrink-0 w-[1.5rem] h-[1.5rem]">
+                              <use
+                                xlink:href="../assets/images/symbols.svg?v=1#icon-x50"
+                              ></use>
+                            </svg>
+                            <div
+                              class="shrink-0 w-[.063rem] h-[1rem] bg-current opacity-20"
+                            ></div>
+                            <span>Колесо</span>
+                          </div>
+                        </button>
+                      </div>
+                      <div class="relative">
+                        <button
+                          data-href="/jackpot"
+                          class="flex w-full whitespace-nowrap font-[600] items-center text-[#9CA0B5] hover:text-white justify-between pl-[.75rem] pr-[1.125rem] h-[2.875rem] bg-transparent rounded-[.375rem] transition-[background_,_color_,_opacity] duration-300 hover:bg-[#313444] [&.active]:bg-blue [&.active]:text-white [&.active]:shadow-btn-blue"
                         >
-                          <svg class="shrink-0 w-[1.5rem] h-[1.5rem]">
-                            <use
-                              xlink:href="../assets/images/symbols.svg?v=1#icon-x50"
-                            ></use>
-                          </svg>
                           <div
-                            class="shrink-0 w-[.063rem] h-[1rem] bg-current opacity-20"
-                          ></div>
-                          <span>Колесо</span>
-                        </div>
-                      </button>
-                    </div>
-                    <div class="relative">
-                      <button
-                        class="flex w-full whitespace-nowrap font-[600] items-center text-[#9CA0B5] hover:text-white justify-between pl-[.75rem] pr-[1.125rem] h-[2.875rem] bg-transparent rounded-[.375rem] transition-[background_,_color_,_opacity] duration-300 hover:bg-[#313444] [&.active]:bg-blue [&.active]:text-white [&.active]:shadow-btn-blue"
-                      >
-                        <div
-                          class="flex pointer-events-none items-center gap-[.75rem]"
+                            class="flex pointer-events-none items-center gap-[.75rem]"
+                          >
+                            <svg class="shrink-0 w-[1.5rem] h-[1.5rem]">
+                              <use
+                                xlink:href="../assets/images/symbols.svg?v=1#icon-jackpot"
+                              ></use>
+                            </svg>
+                            <div
+                              class="shrink-0 w-[.063rem] h-[1rem] bg-current opacity-20"
+                            ></div>
+                            <span>Джекпот</span>
+                          </div>
+                        </button>
+                      </div>
+                      <div class="relative">
+                        <template x-if="state">
+                          <div
+                            class="absolute left-0 top-0 gap-[.75rem] w-full h-full rounded-[.375rem] bg-transparent flex z-[1] items-center pl-[.75rem] pr-[1.125rem] h-[2.875rem]"
+                          >
+                            <div
+                              class="w-[1.5rem] h-[1.5rem] bg-[#313444] loading relative rounded-[.25rem]"
+                            ></div>
+                            <div
+                              class="shrink-0 relative w-[.063rem] h-[1rem] bg-[#313444] loading"
+                            ></div>
+                            <span
+                              class="w-[100px] h-[8px] bg-[#313444] relative loading rounded-full"
+                            ></span>
+                          </div>
+                        </template>
+                        <button
+                          data-href="/upgrade"
+                          class="flex w-full whitespace-nowrap font-[600] items-center text-[#9CA0B5] hover:text-white justify-between pl-[.75rem] pr-[1.125rem] h-[2.875rem] bg-transparent rounded-[.375rem] transition-[background_,_color_,_opacity] duration-300 hover:bg-[#313444] [&.active]:bg-blue [&.active]:text-white [&.active]:shadow-btn-blue"
                         >
-                          <svg class="shrink-0 w-[1.5rem] h-[1.5rem]">
-                            <use
-                              xlink:href="../assets/images/symbols.svg?v=1#icon-jackpot"
-                            ></use>
-                          </svg>
                           <div
-                            class="shrink-0 w-[.063rem] h-[1rem] bg-current opacity-20"
-                          ></div>
-                          <span>Джекпот</span>
-                        </div>
-                      </button>
-                    </div>
-                    <div class="relative">
-                      <button
-                        class="flex w-full whitespace-nowrap font-[600] items-center text-[#9CA0B5] hover:text-white justify-between pl-[.75rem] pr-[1.125rem] h-[2.875rem] bg-transparent rounded-[.375rem] transition-[background_,_color_,_opacity] duration-300 hover:bg-[#313444] [&.active]:bg-blue [&.active]:text-white [&.active]:shadow-btn-blue"
-                      >
-                        <div
-                          class="flex pointer-events-none items-center gap-[.75rem]"
-                        >
-                          <svg class="shrink-0 w-[1.5rem] h-[1.5rem]">
-                            <use
-                              xlink:href="../assets/images/symbols.svg?v=1#icon-upgrade"
-                            ></use>
-                          </svg>
-                          <div
-                            class="shrink-0 w-[.063rem] h-[1rem] bg-current opacity-20"
-                          ></div>
-                          <span>Апгрейд</span>
-                        </div>
-                      </button>
+                            class="flex pointer-events-none items-center gap-[.75rem]"
+                          >
+                            <svg class="shrink-0 w-[1.5rem] h-[1.5rem]">
+                              <use
+                                xlink:href="../assets/images/symbols.svg?v=1#icon-upgrade"
+                              ></use>
+                            </svg>
+                            <div
+                              class="shrink-0 w-[.063rem] h-[1rem] bg-current opacity-20"
+                            ></div>
+                            <span>Апгрейд</span>
+                          </div>
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div
-                class="flex flex-col gap-[.625rem] border-b border-b-[#2A2C3D] last:border-0"
-              >
-                <button
-                  class="flex group/btn font-[600] items-center text-[#9CA0B5] hover:text-white justify-between pl-[.75rem] pr-[1.125rem] h-[2.875rem] bg-transparent rounded-[.375rem] transition-[background_,_color] duration-300 hover:bg-[#313444] [&.active]:bg-blue [&.active]:text-white [&.active]:shadow-btn-blue"
-                >
-                  <div class="flex items-center gap-[.75rem]">
-                    <svg class="w-[1.5rem] h-[1.5rem]">
-                      <use
-                        xlink:href="../assets/images/symbols.svg?v=1#icon-slot"
-                      ></use>
-                    </svg>
-                    <div
-                      class="w-[1.008px] h-[1rem] bg-current opacity-20"
-                    ></div>
-                    <span>Казино</span>
-                  </div>
-                  <i
-                    class="w-2 h-2 border-r-2 transition-[transform_,_top] duration-300 border-b-2 rotate-45 border-current relative -top-[.125rem] group-[.active]/btn:rotate-[225deg] group-[.active]/btn:top-[2px]"
-                  ></i>
-                </button>
                 <div
-                  x-ref="container"
-                  class="flex overflow-hidden flex-col gap-[.313rem] max-h-[296px] transition-[max-height]"
+                  class="flex flex-col gap-[.625rem] border-b border-b-[#2A2C3D] last:border-0"
+                >
+                  <button
+                    class="flex group/btn font-[600] items-center text-[#9CA0B5] hover:text-white justify-between pl-[.75rem] pr-[1.125rem] h-[2.875rem] bg-transparent rounded-[.375rem] transition-[background_,_color] duration-300 hover:bg-[#313444] [&.active]:bg-blue [&.active]:text-white [&.active]:shadow-btn-blue"
+                  >
+                    <div class="flex items-center gap-[.75rem]">
+                      <svg class="w-[1.5rem] h-[1.5rem]">
+                        <use
+                          xlink:href="../assets/images/symbols.svg?v=1#icon-slot"
+                        ></use>
+                      </svg>
+                      <div
+                        class="w-[1.008px] h-[1rem] bg-current opacity-20"
+                      ></div>
+                      <span>Казино</span>
+                    </div>
+                    <i
+                      class="w-2 h-2 border-r-2 transition-[transform_,_top] duration-300 border-b-2 rotate-45 border-current relative -top-[.125rem] group-[.active]/btn:rotate-[225deg] group-[.active]/btn:top-[2px]"
+                    ></i>
+                  </button>
+                  <div
+                    class="flex overflow-hidden flex-col gap-[.313rem] max-h-0 transition-[max-height]"
+                  >
+                    <div class="flex flex-col gap-[.313rem] pb-[.625rem]">
+                      <div class="relative">
+                        <button
+                          data-href="/lobby?favorites=true"
+                          class="flex w-full whitespace-nowrap font-[600] items-center text-[#9CA0B5] hover:text-white justify-between pl-[.75rem] pr-[1.125rem] h-[2.875rem] bg-transparent rounded-[.375rem] transition-[background_,_color_,_opacity] duration-300 hover:bg-[#313444] [&.active]:bg-blue [&.active]:text-white [&.active]:shadow-btn-blue"
+                        >
+                          <div
+                            class="flex pointer-events-none items-center gap-[.75rem]"
+                          >
+                            <svg class="shrink-0 w-[1.5rem] h-[1.5rem]">
+                              <use
+                                xlink:href="../assets/images/symbols.svg?v=1#icon-favorite-stroke"
+                              ></use>
+                            </svg>
+                            <div
+                              class="shrink-0 w-[.063rem] h-[1rem] bg-current opacity-20"
+                            ></div>
+                            <span>Избранное</span>
+                          </div>
+                        </button>
+                      </div>
+                      <div class="relative">
+                        <button
+                          data-href="/lobby?category=1"
+                          class="flex w-full whitespace-nowrap font-[600] items-center text-[#9CA0B5] hover:text-white justify-between pl-[.75rem] pr-[1.125rem] h-[2.875rem] bg-transparent rounded-[.375rem] transition-[background_,_color_,_opacity] duration-300 hover:bg-[#313444] [&.active]:bg-blue [&.active]:text-white [&.active]:shadow-btn-blue"
+                        >
+                          <div
+                            class="flex pointer-events-none items-center gap-[.75rem]"
+                          >
+                            <svg class="shrink-0 w-[1.5rem] h-[1.5rem]">
+                              <use
+                                xlink:href="../assets/images/symbols.svg?v=1#icon-new-games"
+                              ></use>
+                            </svg>
+                            <div
+                              class="shrink-0 w-[.063rem] h-[1rem] bg-current opacity-20"
+                            ></div>
+                            <span>Популярные</span>
+                          </div>
+                        </button>
+                      </div>
+                      <div class="relative">
+                        <button
+                          data-href="/lobby"
+                          class="flex w-full whitespace-nowrap font-[600] items-center text-[#9CA0B5] hover:text-white justify-between pl-[.75rem] pr-[1.125rem] h-[2.875rem] bg-transparent rounded-[.375rem] transition-[background_,_color_,_opacity] duration-300 hover:bg-[#313444] [&.active]:bg-blue [&.active]:text-white [&.active]:shadow-btn-blue"
+                        >
+                          <div
+                            class="flex pointer-events-none items-center gap-[.75rem]"
+                          >
+                            <svg class="shrink-0 w-[1.5rem] h-[1.5rem]">
+                              <use
+                                xlink:href="../assets/images/symbols.svg?v=1#icon-all-games"
+                              ></use>
+                            </svg>
+                            <div
+                              class="shrink-0 w-[.063rem] h-[1rem] bg-current opacity-20"
+                            ></div>
+                            <span>Все игры</span>
+                          </div>
+                        </button>
+                      </div>
+                      <div class="relative">
+                        <button
+                          aria-label="Слоты"
+                          role="button"
+                          data-href="/lobby?category=0"
+                          x-bind:class="!state && 'opacity-100'"
+                          class="flex w-full whitespace-nowrap font-[600] items-center text-[#9CA0B5] hover:text-white justify-between pl-[.75rem] pr-[1.125rem] h-[2.875rem] bg-transparent rounded-[.375rem] transition-[background_,_color_,_opacity] duration-300 hover:bg-[#313444] [&.active]:bg-blue [&.active]:text-white [&.active]:shadow-btn-blue"
+                        >
+                          <div
+                            class="flex pointer-events-none items-center gap-[.75rem]"
+                          >
+                            <svg class="shrink-0 w-[1.5rem] h-[1.5rem]">
+                              <use
+                                xlink:href="../assets/images/symbols.svg?v=1#icon-slots"
+                              ></use>
+                            </svg>
+                            <div
+                              class="shrink-0 w-[.063rem] h-[1rem] bg-current opacity-20"
+                            ></div>
+                            <span>Слоты</span>
+                          </div>
+                        </button>
+                      </div>
+                      <div
+                        class="relative"
+                        x-bind:class="state && 'load'"
+                        x-data="loader"
+                        x-init="destroy"
+                      >
+                        <button
+                          aria-label="Лайвы"
+                          role="button"
+                          data-href="/game?id=225597"
+                          x-bind:class="!state && 'opacity-100'"
+                          class="flex w-full whitespace-nowrap font-[600] items-center text-[#9CA0B5] hover:text-white justify-between pl-[.75rem] pr-[1.125rem] h-[2.875rem] bg-transparent rounded-[.375rem] transition-[background_,_color_,_opacity] duration-300 hover:bg-[#313444] [&.active]:bg-blue [&.active]:text-white [&.active]:shadow-btn-blue"
+                        >
+                          <div
+                            class="flex pointer-events-none items-center gap-[.75rem]"
+                          >
+                            <svg class="shrink-0 w-[1.5rem] h-[1.5rem]">
+                              <use
+                                xlink:href="../assets/images/symbols.svg?v=1#icon-live-games"
+                              ></use>
+                            </svg>
+                            <div
+                              class="shrink-0 w-[.063rem] h-[1rem] bg-current opacity-20"
+                            ></div>
+                            <span>Лайвы</span>
+                          </div>
+                        </button>
+                      </div>
+                      <div class="relative">
+                        <button
+                          data-href="/lobby?category=4"
+                          class="flex w-full whitespace-nowrap font-[600] items-center text-[#9CA0B5] hover:text-white justify-between pl-[.75rem] pr-[1.125rem] h-[2.875rem] bg-transparent rounded-[.375rem] transition-[background_,_color_,_opacity] duration-300 hover:bg-[#313444] [&.active]:bg-blue [&.active]:text-white [&.active]:shadow-btn-blue"
+                        >
+                          <div
+                            class="flex pointer-events-none items-center gap-[.75rem]"
+                          >
+                            <svg class="shrink-0 w-[1.5rem] h-[1.5rem]">
+                              <use
+                                xlink:href="../assets/images/symbols.svg?v=1#icon-bonus-games"
+                              ></use>
+                            </svg>
+                            <div
+                              class="shrink-0 w-[.063rem] h-[1rem] bg-current opacity-20"
+                            ></div>
+                            <span>Bonus buy</span>
+                          </div>
+                        </button>
+                      </div>
+                      <div class="relative">
+                        <button
+                          data-href="/lobby?category=5"
+                          class="flex w-full whitespace-nowrap font-[600] items-center text-[#9CA0B5] hover:text-white justify-between pl-[.75rem] pr-[1.125rem] h-[2.875rem] bg-transparent rounded-[.375rem] transition-[background_,_color_,_opacity] duration-300 hover:bg-[#313444] [&.active]:bg-blue [&.active]:text-white [&.active]:shadow-btn-blue"
+                        >
+                          <div
+                            class="flex pointer-events-none items-center gap-[.75rem]"
+                          >
+                            <svg class="shrink-0 w-[1.5rem] h-[1.5rem]">
+                              <use
+                                xlink:href="../assets/images/symbols.svg?v=1#icon-instant-games"
+                              ></use>
+                            </svg>
+                            <div
+                              class="shrink-0 w-[.063rem] h-[1rem] bg-current opacity-20"
+                            ></div>
+                            <span>Instant wins</span>
+                          </div>
+                        </button>
+                      </div>
+                      <div class="relative">
+                        <button
+                          data-href="/lobby?category=7"
+                          class="flex w-full whitespace-nowrap font-[600] items-center text-[#9CA0B5] hover:text-white justify-between pl-[.75rem] pr-[1.125rem] h-[2.875rem] bg-transparent rounded-[.375rem] transition-[background_,_color_,_opacity] duration-300 hover:bg-[#313444] [&.active]:bg-blue [&.active]:text-white [&.active]:shadow-btn-blue"
+                        >
+                          <div
+                            class="flex pointer-events-none items-center gap-[.75rem]"
+                          >
+                            <svg class="shrink-0 w-[1.5rem] h-[1.5rem]">
+                              <use
+                                xlink:href="../assets/images/symbols.svg?v=1#icon-roulette-games"
+                              ></use>
+                            </svg>
+                            <div
+                              class="shrink-0 w-[.063rem] h-[1rem] bg-current opacity-20"
+                            ></div>
+                            <span>Рулетка</span>
+                          </div>
+                        </button>
+                      </div>
+                      <div class="relative">
+                        <button
+                          data-href="/lobby?category=8"
+                          class="flex w-full whitespace-nowrap font-[600] items-center text-[#9CA0B5] hover:text-white justify-between pl-[.75rem] pr-[1.125rem] h-[2.875rem] bg-transparent rounded-[.375rem] transition-[background_,_color_,_opacity] duration-300 hover:bg-[#313444] [&.active]:bg-blue [&.active]:text-white [&.active]:shadow-btn-blue"
+                        >
+                          <div
+                            class="flex pointer-events-none items-center gap-[.75rem]"
+                          >
+                            <svg class="shrink-0 w-[1.5rem] h-[1.5rem]">
+                              <use
+                                xlink:href="../assets/images/symbols.svg?v=1#icon-card-games"
+                              ></use>
+                            </svg>
+                            <div
+                              class="shrink-0 w-[.063rem] h-[1rem] bg-current opacity-20"
+                            ></div>
+                            <span>Карточные</span>
+                          </div>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="flex flex-col border-b border-b-[#2A2C3D] last:border-0"
                 >
                   <div class="flex flex-col gap-[.313rem] pb-[.625rem]">
-                    <div class="relative">
-                      <button
-                        class="flex w-full whitespace-nowrap font-[600] items-center text-[#9CA0B5] hover:text-white justify-between pl-[.75rem] pr-[1.125rem] h-[2.875rem] bg-transparent rounded-[.375rem] transition-[background_,_color_,_opacity] duration-300 hover:bg-[#313444] [&.active]:bg-blue [&.active]:text-white [&.active]:shadow-btn-blue"
-                      >
-                        <div
-                          class="flex pointer-events-none items-center gap-[.75rem]"
-                        >
-                          <svg class="shrink-0 w-[1.5rem] h-[1.5rem]">
-                            <use
-                              xlink:href="../assets/images/symbols.svg?v=1#icon-favorite-stroke"
-                            ></use>
-                          </svg>
-                          <div
-                            class="shrink-0 w-[.063rem] h-[1rem] bg-current opacity-20"
-                          ></div>
-                          <span>Избранное</span>
-                        </div>
-                      </button>
-                    </div>
-                    <div class="relative">
-                      <button
-                        class="flex w-full whitespace-nowrap font-[600] items-center text-[#9CA0B5] hover:text-white justify-between pl-[.75rem] pr-[1.125rem] h-[2.875rem] bg-transparent rounded-[.375rem] transition-[background_,_color_,_opacity] duration-300 hover:bg-[#313444] [&.active]:bg-blue [&.active]:text-white [&.active]:shadow-btn-blue"
-                      >
-                        <div
-                          class="flex pointer-events-none items-center gap-[.75rem]"
-                        >
-                          <svg class="shrink-0 w-[1.5rem] h-[1.5rem]">
-                            <use
-                              xlink:href="../assets/images/symbols.svg?v=1#icon-new-games"
-                            ></use>
-                          </svg>
-                          <div
-                            class="shrink-0 w-[.063rem] h-[1rem] bg-current opacity-20"
-                          ></div>
-                          <span>Популярные</span>
-                        </div>
-                      </button>
-                    </div>
-                    <div class="relative">
-                      <button
-                        class="flex w-full whitespace-nowrap font-[600] items-center text-[#9CA0B5] hover:text-white justify-between pl-[.75rem] pr-[1.125rem] h-[2.875rem] bg-transparent rounded-[.375rem] transition-[background_,_color_,_opacity] duration-300 hover:bg-[#313444] [&.active]:bg-blue [&.active]:text-white [&.active]:shadow-btn-blue"
-                      >
-                        <div
-                          class="flex pointer-events-none items-center gap-[.75rem]"
-                        >
-                          <svg class="shrink-0 w-[1.5rem] h-[1.5rem]">
-                            <use
-                              xlink:href="../assets/images/symbols.svg?v=1#icon-all-games"
-                            ></use>
-                          </svg>
-                          <div
-                            class="shrink-0 w-[.063rem] h-[1rem] bg-current opacity-20"
-                          ></div>
-                          <span>Все игры</span>
-                        </div>
-                      </button>
-                    </div>
-                    <div class="relative">
-                      <button
-                        class="flex w-full whitespace-nowrap font-[600] items-center text-[#9CA0B5] hover:text-white justify-between pl-[.75rem] pr-[1.125rem] h-[2.875rem] bg-transparent rounded-[.375rem] transition-[background_,_color_,_opacity] duration-300 hover:bg-[#313444] [&.active]:bg-blue [&.active]:text-white [&.active]:shadow-btn-blue"
-                      >
-                        <div
-                          class="flex pointer-events-none items-center gap-[.75rem]"
-                        >
-                          <svg class="shrink-0 w-[1.5rem] h-[1.5rem]">
-                            <use
-                              xlink:href="../assets/images/symbols.svg?v=1#icon-slots"
-                            ></use>
-                          </svg>
-                          <div
-                            class="shrink-0 w-[.063rem] h-[1rem] bg-current opacity-20"
-                          ></div>
-                          <span>Слоты</span>
-                        </div>
-                      </button>
-                    </div>
-                    <div class="relative">
-                      <button
-                        class="flex w-full whitespace-nowrap font-[600] items-center text-[#9CA0B5] hover:text-white justify-between pl-[.75rem] pr-[1.125rem] h-[2.875rem] bg-transparent rounded-[.375rem] transition-[background_,_color_,_opacity] duration-300 hover:bg-[#313444] [&.active]:bg-blue [&.active]:text-white [&.active]:shadow-btn-blue"
-                      >
-                        <div
-                          class="flex pointer-events-none items-center gap-[.75rem]"
-                        >
-                          <svg class="shrink-0 w-[1.5rem] h-[1.5rem]">
-                            <use
-                              xlink:href="../assets/images/symbols.svg?v=1#icon-live-games"
-                            ></use>
-                          </svg>
-                          <div
-                            class="shrink-0 w-[.063rem] h-[1rem] bg-current opacity-20"
-                          ></div>
-                          <span>Лайвы</span>
-                        </div>
-                      </button>
-                    </div>
-                    <div class="relative">
-                      <button
-                        class="flex w-full whitespace-nowrap font-[600] items-center text-[#9CA0B5] hover:text-white justify-between pl-[.75rem] pr-[1.125rem] h-[2.875rem] bg-transparent rounded-[.375rem] transition-[background_,_color_,_opacity] duration-300 hover:bg-[#313444] [&.active]:bg-blue [&.active]:text-white [&.active]:shadow-btn-blue"
-                      >
-                        <div
-                          class="flex pointer-events-none items-center gap-[.75rem]"
-                        >
-                          <svg class="shrink-0 w-[1.5rem] h-[1.5rem]">
-                            <use
-                              xlink:href="../assets/images/symbols.svg?v=1#icon-bonus-games"
-                            ></use>
-                          </svg>
-                          <div
-                            class="shrink-0 w-[.063rem] h-[1rem] bg-current opacity-20"
-                          ></div>
-                          <span>Bonus buy</span>
-                        </div>
-                      </button>
-                    </div>
-                    <div class="relative">
-                      <button
-                        class="flex w-full whitespace-nowrap font-[600] items-center text-[#9CA0B5] hover:text-white justify-between pl-[.75rem] pr-[1.125rem] h-[2.875rem] bg-transparent rounded-[.375rem] transition-[background_,_color_,_opacity] duration-300 hover:bg-[#313444] [&.active]:bg-blue [&.active]:text-white [&.active]:shadow-btn-blue"
-                      >
-                        <div
-                          class="flex pointer-events-none items-center gap-[.75rem]"
-                        >
-                          <svg class="shrink-0 w-[1.5rem] h-[1.5rem]">
-                            <use
-                              xlink:href="../assets/images/symbols.svg?v=1#icon-live-games"
-                            ></use>
-                          </svg>
-                          <div
-                            class="shrink-0 w-[.063rem] h-[1rem] bg-current opacity-20"
-                          ></div>
-                          <span>Live игры</span>
-                        </div>
-                      </button>
-                    </div>
-                    <div class="relative">
-                      <button
-                        class="flex w-full whitespace-nowrap font-[600] items-center text-[#9CA0B5] hover:text-white justify-between pl-[.75rem] pr-[1.125rem] h-[2.875rem] bg-transparent rounded-[.375rem] transition-[background_,_color_,_opacity] duration-300 hover:bg-[#313444] [&.active]:bg-blue [&.active]:text-white [&.active]:shadow-btn-blue"
-                      >
-                        <div
-                          class="flex pointer-events-none items-center gap-[.75rem]"
-                        >
-                          <svg class="shrink-0 w-[1.5rem] h-[1.5rem]">
-                            <use
-                              xlink:href="../assets/images/symbols.svg?v=1#icon-instant-games"
-                            ></use>
-                          </svg>
-                          <div
-                            class="shrink-0 w-[.063rem] h-[1rem] bg-current opacity-20"
-                          ></div>
-                          <span>Instant wins</span>
-                        </div>
-                      </button>
-                    </div>
-                    <div class="relative">
-                      <button
-                        class="flex w-full whitespace-nowrap font-[600] items-center text-[#9CA0B5] hover:text-white justify-between pl-[.75rem] pr-[1.125rem] h-[2.875rem] bg-transparent rounded-[.375rem] transition-[background_,_color_,_opacity] duration-300 hover:bg-[#313444] [&.active]:bg-blue [&.active]:text-white [&.active]:shadow-btn-blue"
-                      >
-                        <div
-                          class="flex pointer-events-none items-center gap-[.75rem]"
-                        >
-                          <svg class="shrink-0 w-[1.5rem] h-[1.5rem]">
-                            <use
-                              xlink:href="../assets/images/symbols.svg?v=1#icon-roulette-games"
-                            ></use>
-                          </svg>
-                          <div
-                            class="shrink-0 w-[.063rem] h-[1rem] bg-current opacity-20"
-                          ></div>
-                          <span>Рулетка</span>
-                        </div>
-                      </button>
-                    </div>
-                    <div class="relative">
-                      <button
-                        class="flex w-full whitespace-nowrap font-[600] items-center text-[#9CA0B5] hover:text-white justify-between pl-[.75rem] pr-[1.125rem] h-[2.875rem] bg-transparent rounded-[.375rem] transition-[background_,_color_,_opacity] duration-300 hover:bg-[#313444] [&.active]:bg-blue [&.active]:text-white [&.active]:shadow-btn-blue"
-                      >
-                        <div
-                          class="flex pointer-events-none items-center gap-[.75rem]"
-                        >
-                          <svg class="shrink-0 w-[1.5rem] h-[1.5rem]">
-                            <use
-                              xlink:href="../assets/images/symbols.svg?v=1#icon-card-games"
-                            ></use>
-                          </svg>
-                          <div
-                            class="shrink-0 w-[.063rem] h-[1rem] bg-current opacity-20"
-                          ></div>
-                          <span>Карточные</span>
-                        </div>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div
-                class="flex flex-col border-b border-b-[#2A2C3D] last:border-0"
-              >
-                <div class="flex flex-col gap-[.313rem] pb-[.625rem]">
-                  <div class="relative">
-                    <button
-                      class="flex w-full whitespace-nowrap font-[600] items-center text-[#9CA0B5] hover:text-white justify-between pl-[.75rem] pr-[1.125rem] h-[2.875rem] bg-transparent rounded-[.375rem] transition-[background_,_color_,_opacity] duration-300 hover:bg-[#313444] [&.active]:bg-blue [&.active]:text-white [&.active]:shadow-btn-blue"
+                    <div
+                      class="relative"
+                      x-bind:class="state && 'load'"
+                      x-data="loader"
+                      x-init="destroy"
                     >
-                      <div
-                        class="flex pointer-events-none items-center gap-[.75rem]"
-                      >
-                        <svg class="shrink-0 w-[1.5rem] h-[1.5rem]">
-                          <use
-                            xlink:href="../assets/images/symbols.svg?v=1#icon-tournaments"
-                          ></use>
-                        </svg>
+                      <template x-if="state">
                         <div
-                          class="shrink-0 w-[.063rem] h-[1rem] bg-current opacity-20"
-                        ></div>
-                        <span>Турниры</span>
-                      </div>
-                    </button>
+                          class="absolute left-0 top-0 gap-[.75rem] w-full h-full rounded-[.375rem] bg-transparent flex z-[1] items-center pl-[.75rem] pr-[1.125rem] h-[2.875rem]"
+                        >
+                          <div
+                            class="w-[1.5rem] h-[1.5rem] bg-[#313444] loading relative rounded-[.25rem]"
+                          ></div>
+                          <div
+                            class="shrink-0 relative w-[.063rem] h-[1rem] bg-[#313444] loading"
+                          ></div>
+                          <span
+                            class="w-[100px] h-[8px] bg-[#313444] relative loading rounded-full"
+                          ></span>
+                        </div>
+                      </template>
+                      <button
+                        data-href="/tournaments"
+                        class="flex w-full whitespace-nowrap font-[600] items-center text-[#9CA0B5] hover:text-white justify-between pl-[.75rem] pr-[1.125rem] h-[2.875rem] bg-transparent rounded-[.375rem] transition-[background_,_color_,_opacity] duration-300 hover:bg-[#313444] [&.active]:bg-blue [&.active]:text-white [&.active]:shadow-btn-blue"
+                      >
+                        <div
+                          class="flex pointer-events-none items-center gap-[.75rem]"
+                        >
+                          <svg class="shrink-0 w-[1.5rem] h-[1.5rem]">
+                            <use
+                              xlink:href="../assets/images/symbols.svg?v=1#icon-tournaments"
+                            ></use>
+                          </svg>
+                          <div
+                            class="shrink-0 w-[.063rem] h-[1rem] bg-current opacity-20"
+                          ></div>
+                          <span>Турниры</span>
+                        </div>
+                      </button>
+                    </div>
+                    <div
+                      class="relative"
+                      x-bind:class="state && 'load'"
+                      x-data="loader"
+                      x-init="destroy"
+                    >
+                      <template x-if="state">
+                        <div
+                          class="absolute left-0 top-0 gap-[.75rem] w-full h-full rounded-[.375rem] bg-transparent flex z-[1] items-center pl-[.75rem] pr-[1.125rem] h-[2.875rem]"
+                        >
+                          <div
+                            class="w-[1.5rem] h-[1.5rem] bg-[#313444] loading relative rounded-[.25rem]"
+                          ></div>
+                          <div
+                            class="shrink-0 relative w-[.063rem] h-[1rem] bg-[#313444] loading"
+                          ></div>
+                          <span
+                            class="w-[100px] h-[8px] bg-[#313444] relative loading rounded-full"
+                          ></span>
+                        </div>
+                      </template>
+                      <button
+                        data-href="/faq"
+                        class="flex w-full whitespace-nowrap font-[600] items-center text-[#9CA0B5] hover:text-white justify-between pl-[.75rem] pr-[1.125rem] h-[2.875rem] bg-transparent rounded-[.375rem] transition-[background_,_color_,_opacity] duration-300 hover:bg-[#313444] [&.active]:bg-blue [&.active]:text-white [&.active]:shadow-btn-blue"
+                      >
+                        <div
+                          class="flex pointer-events-none items-center gap-[.75rem]"
+                        >
+                          <svg class="shrink-0 w-[1.5rem] h-[1.5rem]">
+                            <use
+                              xlink:href="../assets/images/symbols.svg?v=1#icon-faq"
+                            ></use>
+                          </svg>
+                          <div
+                            class="shrink-0 w-[.063rem] h-[1rem] bg-current opacity-20"
+                          ></div>
+                          <span>F.A.Q</span>
+                        </div>
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -657,15 +762,197 @@
         </div>
       </div>
     </div>
+
+    <template x-if="search">
+      <div
+        class="fixed right-0 min-[1125px]:top-0 top-[4.5rem] min-[1125px]:w-[calc(100%_-_17.5rem)] w-full min-[1125px]:h-full h-[calc(100%_-_4.5rem)] z-[10] flex justify-start pointer-events-none transition-[opacity] duration-300"
+        x-bind:class="searchInner && 'pointer-events-auto opacity-100'"
+        x-data="{
+            model: '',
+            slots: [],
+            searchInner: false,
+            timeout: null,
+            loader: false,
+            input() {
+                clearTimeout(this.timeout);
+                this.loader = true;
+                this.timeout = setTimeout(() => {
+                    if (this.model.trim() !== '') {
+                        this.loadSlots();
+                    } else {
+                        this.slots = []; // Reset or set default state when the search is cleared
+                    }
+                    this.loader = false;
+                }, 600);
+                console.log(this.model);
+            },
+            loadSlots() {
+                worker.postMessage({url: 'script/search.php', type: 'load-slots-user', value: this.model});
+                worker.onmessage = (event) => {
+                    var obj = event.data
+                    if (obj.success === true) {
+                        this.slots = obj.massive;
+                    } else {
+                        showToast('error', 'Ошибка!', obj.error_description);
+                    }
+                }
+            },
+            init() {
+                setTimeout(() => {
+                    this.searchInner = true
+                },150)
+            }
+        }"
+        x-init="init"
+      >
+        <div
+          x-show="searchInner"
+          x-cloak
+          x-transition:enter="transition-[transform_,_opacity] duration-300"
+          x-transition:enter-start=" -translate-x-[1.5rem]"
+          x-transition:enter-end="opacity-100 translate-x-0"
+          x-transition:leave="transition-[transform_,_opacity] duration-300"
+          x-transition:leave-start="opacity-100 translate-x-0"
+          x-transition:leave-end=" -translate-x-[1.5rem]"
+          class="relative gap-4 justify-between h-full text-white max-w-[26.25rem] w-full bg-[#262836] z-[1] min-[1125px]:rounded-tr-[.75rem] min-[1125px]:rounded-br-[.75rem] flex flex-col px-[1.563rem] pt-[1.563rem]"
+        >
+          <div
+            class="shrink-0 flex font-[500] text-xl items-center justify-between"
+          >
+            <span>Поиск игр</span>
+            <button
+              aria-label="Закрыть поиск игр"
+              role="button"
+              @click="search = false; model = ''"
+              type="button"
+              class="flex transition-[color] duration-300 text-[#6B7089] hover:text-white"
+            >
+              <svg class="w-4 h-4">
+                <use xlink:href="../assets/images/symbols.svg#icon-close"></use>
+              </svg>
+            </button>
+          </div>
+          <div
+            class="w-full h-[calc(100%_-_1.75rem_-_1rem)] flex flex-col gap-4"
+          >
+            <div class="relative">
+              <div
+                class="w-[3rem] h-[3rem] text-[#82869F] absolute left-0 top-0 flex items-center justify-center"
+              >
+                <svg class="w-4 h-4">
+                  <use
+                    xlink:href="../assets/images/symbols.svg#icon-search"
+                  ></use>
+                </svg>
+              </div>
+              <input
+                x-model="model"
+                @input="input"
+                class="h-[3rem] pl-[3rem] rounded-[.375rem] bg-[#1e202c] font-medium text-sm w-full placeholder:text-[#82869F] text-white focus:placeholder: placeholder:transition-[opacity]"
+                type="text"
+                autocomplete="off"
+                placeholder="Например: Sweet Bonanza"
+              />
+            </div>
+            <template x-if="model">
+              <div
+                class="w-full h-[calc(100%_-_3rem_-_1rem)] [&_div.scrollbar-thumb]:!bg-[#b9bfeb]/[0.5] [&_div.scrollbar-thumb]:backdrop-blur-[10px]"
+              >
+                <template x-if="!loader">
+                  <div class="w-full h-full rounded-[.375rem]">
+                    <div
+                      class="flex pb-[1.875rem] flex-wrap -ml-2 -mr-2 gap-y-4 w-[calc(100%_+_1rem)] [&>div]:px-2 [&>div]:w-1/3"
+                    >
+                      <template x-for="(item, index) in slots" :key="index">
+                        <div>
+                          <div
+                            class="w-full relative h-[9.375rem] group/slot hover:z-[2]"
+                          >
+                            <div
+                              class="absolute left-0 top-0 w-full h-full group-hover/slot:!h-[calc(100%_+_1.5rem)] bg-[#494E67] rounded-[.375rem] transition-[height_,_box-shadow] duration-300 hover:shadow-slot-card"
+                            >
+                              <button
+                                type="button"
+                                class="absolute left-0 top-0 w-full h-full flex items-start rounded-[.375rem] overflow-hidden"
+                              >
+                                <template x-if="item.badge">
+                                  <span></span>
+                                </template>
+                                <div
+                                  class="absolute left-0 top-0 rounded-[.375rem] w-full h-full bg-[#494E67]/[0.8] backdrop-blur-[10px] z-[1] transition-[opacity] duration-300 group-hover/slot:opacity-100"
+                                ></div>
+                                <img
+                                  :src="item.image"
+                                  class="w-full object-cover object-top group-hover/slot:grayscale transition-[filter] duration-300"
+                                />
+                              </button>
+                              <div
+                                class="absolute left-0 top-0 z-[2] p-[.5rem] pointer-events-none w-full h-full flex flex-col rounded-[.375rem] justify-between transition-[opacity_,_border] border-transparent border group-hover/slot:border-[#535664] group-hover/slot:!opacity-100 rounded-[.375rem]"
+                              >
+                                <button
+                                  aria-label="Играть"
+                                  role="button"
+                                  type="button"
+                                  @click="document.location.href = item.url"
+                                  class="flex-1 flex items-center justify-center pointer-events-auto"
+                                >
+                                  <svg
+                                    class="w-[2rem] h-[2rem] hover:scale-110 transition-[transform] duration-300"
+                                  >
+                                    <use
+                                      xlink:href="../assets/images/symbols.svg#icon-play"
+                                    ></use>
+                                  </svg>
+                                </button>
+                                <div
+                                  class="shrink-0 flex flex-col text-[.813rem] gap-2"
+                                >
+                                  <div class="flex items-end justify-between">
+                                    <div
+                                      class="flex flex-col max-w-full items-start"
+                                    >
+                                      <span
+                                        class="font-[500] whitespace-nowrap max-w-full text-ellipsis overflow-hidden break-all"
+                                        x-text="item.name"
+                                      ></span>
+                                      <span
+                                        class="text-[.688rem] opacity-70 whitespace-nowrap max-w-full text-ellipsis overflow-hidden break-all"
+                                        x-text="item.provider"
+                                      ></span>
+                                    </div>
+                                  </div>
+                                  <button
+                                    aria-label="Играть"
+                                    role="button"
+                                    type="button"
+                                    @click="document.location.href = item.url"
+                                    class="w-full flex items-center justify-center pointer-events-auto text-xs h-[1.5rem] transition-[background] hover:text-white hover:shadow-btn-blue duration-300 hover:bg-blue rounded-[.25rem] text-black font-[600] bg-white"
+                                  >
+                                    Играть
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </template>
+                    </div>
+                  </div>
+                </template>
+              </div>
+            </template>
+          </div>
+        </div>
+        <div
+          class="absolute left-0 top-0 w-full h-full bg-[#0D0F17]/[0.75] backdrop-blur-[5px]"
+        ></div>
+      </div>
+    </template>
     <div class="w-full h-full flex flex-col justify-between">
       <main
         class="flex flex-1 overflow-x-hidden flex-col min-[1125px]:pl-[17.5rem] pl-0 pt-[4.5rem] max-[1125px]:pb-[4.563rem]"
       >
-        <section
-          class="relative flex-1 flex flex-col"
-          x-data="jackpot"
-          x-init="initGame"
-        >
+        <section class="relative flex-1 flex flex-col">
           <div
             class="flex flex-1 items-stretch justify-between min-[1376px]:gap-6 min-[1376px]:flex-row flex-col"
           >
@@ -678,20 +965,7 @@
                   >Последние 30 игр</span
                 >
               </div>
-              <div
-                class="w-full flex-1"
-                x-ref="scrollbarJackpotHistory"
-                x-init="Scrollbar.init($refs.scrollbarJackpotHistory, {
-            damping: 0.1,
-            plugins: {
-                overscroll: {
-                    effect: 'glow',
-                    glowColor: '#494E67'
-                }
-            },
-        })
-        "
-              >
+              <div class="w-full flex-1">
                 <div class="flex-col flex relative z-[1]">
                   <div
                     class="flex min-[1376px]:flex-col flex-row pb-[0.5rem] px-[1rem] gap-[.625rem] w-full [&_div.scrollbar-thumb]:!bg-[#b9bfeb]/[0.25] [&_div.scrollbar-thumb]:backdrop-blur-[10px]"
@@ -705,7 +979,527 @@
                           class="shrink-0 w-[1.75rem] h-[1.75rem] rounded-full flex items-center justify-center"
                         >
                           <img
-                            src="../assets/images/avatar.png"
+                            src="https://sun6-20.userapi.com/s/v1/ig2/9AIHmG8dD44dGD1FaCvZa-jjuuyeoE7BymMQ1bdJWYcj3PzYS8Z9eM1IAsX9MK12Nujfd5gFJxU11j0SORAdbPKt.jpg?quality=95&amp;crop=228,407,333,333&amp;as=32x32,48x48,72x72,108x108,160x160,240x240&amp;ava=1&amp;cs=200x200"
+                            class="w-full h-full rounded-full object-cover"
+                            alt=""
+                          />
+                        </div>
+                        <div class="flex flex-col *:leading-[100%] gap-1">
+                          <span
+                            class="font-semibold text-white/[0.65] text-[.625rem]"
+                            >#809</span
+                          >
+                          <span
+                            class="font-bold text-xs max-w-[3rem] whitespace-nowrap text-ellipsis overflow-hidden"
+                            >Андрей Пирогов</span
+                          >
+                        </div>
+                      </div>
+                      <div class="flex-1 flex items-center justify-center">
+                        <div class="flex flex-col *:leading-[100%] gap-1">
+                          <span
+                            class="font-semibold text-white/[0.65] text-[.625rem]"
+                            >Шанс</span
+                          >
+                          <span class="font-bold text-xs">55.56%</span>
+                        </div>
+                      </div>
+                      <div class="flex justify-end pr-2">
+                        <div class="flex flex-col items-end gap-1">
+                          <span
+                            class="font-semibold text-white/[0.65] text-[.625rem]"
+                            >Сумма</span
+                          >
+                          <div
+                            class="flex items-center gap-1 *:leading-[100%] gap-1"
+                          >
+                            <span class="font-bold text-xs">18</span>
+                            <svg class="w-3 h-3">
+                              <use
+                                xlink:href="../assets/images/symbols.svg#icon-rub"
+                              ></use>
+                            </svg>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="flex max-[1375px]:shrink-0 max-[1375px]:gap-6 p-2 flex items-center justify-between rounded-xl bg-[#8BA4E5]/[0.15] transition-all duration-300 hover:bg-[#8BA4E5]/[0.25]"
+                    >
+                      <div class="flex items-center gap-2">
+                        <div
+                          class="shrink-0 w-[1.75rem] h-[1.75rem] rounded-full flex items-center justify-center"
+                        >
+                          <img
+                            src="https://sun6-20.userapi.com/s/v1/ig2/jFOcywt9aZPsI-sAXFaGJR9_GNibiqqpJNJDvsXEXSF0iZsqLsbft0r5sHPt0ixeWco8_k_4n4FSW-KJduiYz4Ie.jpg?quality=96&amp;crop=176,36,288,288&amp;as=32x32,48x48,72x72,108x108,160x160,240x240&amp;ava=1&amp;cs=200x200"
+                            class="w-full h-full rounded-full object-cover"
+                            alt=""
+                          />
+                        </div>
+                        <div class="flex flex-col *:leading-[100%] gap-1">
+                          <span
+                            class="font-semibold text-white/[0.65] text-[.625rem]"
+                            >#69127</span
+                          >
+                          <span
+                            class="font-bold text-xs max-w-[3rem] whitespace-nowrap text-ellipsis overflow-hidden"
+                            >Саша Лузенко</span
+                          >
+                        </div>
+                      </div>
+                      <div class="flex-1 flex items-center justify-center">
+                        <div class="flex flex-col *:leading-[100%] gap-1">
+                          <span
+                            class="font-semibold text-white/[0.65] text-[.625rem]"
+                            >Шанс</span
+                          >
+                          <span class="font-bold text-xs">67.66%</span>
+                        </div>
+                      </div>
+                      <div class="flex justify-end pr-2">
+                        <div class="flex flex-col items-end gap-1">
+                          <span
+                            class="font-semibold text-white/[0.65] text-[.625rem]"
+                            >Сумма</span
+                          >
+                          <div
+                            class="flex items-center gap-1 *:leading-[100%] gap-1"
+                          >
+                            <span class="font-bold text-xs">1,110</span>
+                            <svg class="w-3 h-3">
+                              <use
+                                xlink:href="../assets/images/symbols.svg#icon-rub"
+                              ></use>
+                            </svg>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="flex max-[1375px]:shrink-0 max-[1375px]:gap-6 p-2 flex items-center justify-between rounded-xl bg-[#8BA4E5]/[0.15] transition-all duration-300 hover:bg-[#8BA4E5]/[0.25]"
+                    >
+                      <div class="flex items-center gap-2">
+                        <div
+                          class="shrink-0 w-[1.75rem] h-[1.75rem] rounded-full flex items-center justify-center"
+                        >
+                          <img
+                            src="https://sun6-21.userapi.com/s/v1/ig2/wxWBUESvhBnRdFgp1ys7FJykZ44TT6yMcm-W0Vd0rqanEdKtA_rWN6TxG5ylyeQBonVv97pAtkeHXuH6VJFV0H7J.jpg?quality=95&amp;crop=5,5,1055,1055&amp;as=32x32,48x48,72x72,108x108,160x160,240x240,360x360,480x480,540x540,640x640,720x720&amp;ava=1"
+                            class="w-full h-full rounded-full object-cover"
+                            alt=""
+                          />
+                        </div>
+                        <div class="flex flex-col *:leading-[100%] gap-1">
+                          <span
+                            class="font-semibold text-white/[0.65] text-[.625rem]"
+                            >#1709</span
+                          >
+                          <span
+                            class="font-bold text-xs max-w-[3rem] whitespace-nowrap text-ellipsis overflow-hidden"
+                            >セレガ フィセンコ</span
+                          >
+                        </div>
+                      </div>
+                      <div class="flex-1 flex items-center justify-center">
+                        <div class="flex flex-col *:leading-[100%] gap-1">
+                          <span
+                            class="font-semibold text-white/[0.65] text-[.625rem]"
+                            >Шанс</span
+                          >
+                          <span class="font-bold text-xs">83.33%</span>
+                        </div>
+                      </div>
+                      <div class="flex justify-end pr-2">
+                        <div class="flex flex-col items-end gap-1">
+                          <span
+                            class="font-semibold text-white/[0.65] text-[.625rem]"
+                            >Сумма</span
+                          >
+                          <div
+                            class="flex items-center gap-1 *:leading-[100%] gap-1"
+                          >
+                            <span class="font-bold text-xs">24</span>
+                            <svg class="w-3 h-3">
+                              <use
+                                xlink:href="../assets/images/symbols.svg#icon-rub"
+                              ></use>
+                            </svg>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="flex max-[1375px]:shrink-0 max-[1375px]:gap-6 p-2 flex items-center justify-between rounded-xl bg-[#8BA4E5]/[0.15] transition-all duration-300 hover:bg-[#8BA4E5]/[0.25]"
+                    >
+                      <div class="flex items-center gap-2">
+                        <div
+                          class="shrink-0 w-[1.75rem] h-[1.75rem] rounded-full flex items-center justify-center"
+                        >
+                          <img
+                            src="https://sun9-80.userapi.com/s/v1/ig2/1arGy1HS3IDN24T4wAPkc85qTqqQfnFbqA2USK8TtkFUzskUIdo-H3-E1bgNomDavljtVk71h8_0kkd2Z1bynLZH.jpg?size=200x200&amp;quality=95&amp;crop=0,538,1742,1742&amp;ava=1"
+                            class="w-full h-full rounded-full object-cover"
+                            alt=""
+                          />
+                        </div>
+                        <div class="flex flex-col *:leading-[100%] gap-1">
+                          <span
+                            class="font-semibold text-white/[0.65] text-[.625rem]"
+                            >#1035</span
+                          >
+                          <span
+                            class="font-bold text-xs max-w-[3rem] whitespace-nowrap text-ellipsis overflow-hidden"
+                            >Sergunya Smol</span
+                          >
+                        </div>
+                      </div>
+                      <div class="flex-1 flex items-center justify-center">
+                        <div class="flex flex-col *:leading-[100%] gap-1">
+                          <span
+                            class="font-semibold text-white/[0.65] text-[.625rem]"
+                            >Шанс</span
+                          >
+                          <span class="font-bold text-xs">86.67%</span>
+                        </div>
+                      </div>
+                      <div class="flex justify-end pr-2">
+                        <div class="flex flex-col items-end gap-1">
+                          <span
+                            class="font-semibold text-white/[0.65] text-[.625rem]"
+                            >Сумма</span
+                          >
+                          <div
+                            class="flex items-center gap-1 *:leading-[100%] gap-1"
+                          >
+                            <span class="font-bold text-xs">15</span>
+                            <svg class="w-3 h-3">
+                              <use
+                                xlink:href="../assets/images/symbols.svg#icon-rub"
+                              ></use>
+                            </svg>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="flex max-[1375px]:shrink-0 max-[1375px]:gap-6 p-2 flex items-center justify-between rounded-xl bg-[#8BA4E5]/[0.15] transition-all duration-300 hover:bg-[#8BA4E5]/[0.25]"
+                    >
+                      <div class="flex items-center gap-2">
+                        <div
+                          class="shrink-0 w-[1.75rem] h-[1.75rem] rounded-full flex items-center justify-center"
+                        >
+                          <img
+                            src="https://sun9-46.userapi.com/s/v1/ig2/B89XsYwUB2aMkr1HAt3OBasKqBVqLOsJiu_i1JYiL-mF3uHk5CAO3vQMCrQMXnoJ0wn_bUQBCdhne2HDe9DpXAYv.jpg?quality=95&amp;crop=180,180,640,640&amp;as=32x32,48x48,72x72,108x108,160x160,240x240,360x360,480x480,540x540,640x640&amp;ava=1&amp;cs=20"
+                            class="w-full h-full rounded-full object-cover"
+                            alt=""
+                          />
+                        </div>
+                        <div class="flex flex-col *:leading-[100%] gap-1">
+                          <span
+                            class="font-semibold text-white/[0.65] text-[.625rem]"
+                            >#993</span
+                          >
+                          <span
+                            class="font-bold text-xs max-w-[3rem] whitespace-nowrap text-ellipsis overflow-hidden"
+                            >Николай Кочанов</span
+                          >
+                        </div>
+                      </div>
+                      <div class="flex-1 flex items-center justify-center">
+                        <div class="flex flex-col *:leading-[100%] gap-1">
+                          <span
+                            class="font-semibold text-white/[0.65] text-[.625rem]"
+                            >Шанс</span
+                          >
+                          <span class="font-bold text-xs">83.33%</span>
+                        </div>
+                      </div>
+                      <div class="flex justify-end pr-2">
+                        <div class="flex flex-col items-end gap-1">
+                          <span
+                            class="font-semibold text-white/[0.65] text-[.625rem]"
+                            >Сумма</span
+                          >
+                          <div
+                            class="flex items-center gap-1 *:leading-[100%] gap-1"
+                          >
+                            <span class="font-bold text-xs">12</span>
+                            <svg class="w-3 h-3">
+                              <use
+                                xlink:href="../assets/images/symbols.svg#icon-rub"
+                              ></use>
+                            </svg>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="flex max-[1375px]:shrink-0 max-[1375px]:gap-6 p-2 flex items-center justify-between rounded-xl bg-[#8BA4E5]/[0.15] transition-all duration-300 hover:bg-[#8BA4E5]/[0.25]"
+                    >
+                      <div class="flex items-center gap-2">
+                        <div
+                          class="shrink-0 w-[1.75rem] h-[1.75rem] rounded-full flex items-center justify-center"
+                        >
+                          <img
+                            src="https://sun6-21.userapi.com/s/v1/ig2/FfFDHT4EC5XnUN0gejTHDqK2zT3OIale1_E0Sia8qcxMACUVMYJocn40-UoCvtYCxepIbXWGomXQCWElkU8eZVM6.jpg?quality=95&amp;crop=660,521,747,747&amp;as=32x32,48x48,72x72,108x108,160x160,240x240,360x360,480x480,540x540,640x640,720x720&amp;ava"
+                            class="w-full h-full rounded-full object-cover"
+                            alt=""
+                          />
+                        </div>
+                        <div class="flex flex-col *:leading-[100%] gap-1">
+                          <span
+                            class="font-semibold text-white/[0.65] text-[.625rem]"
+                            >#893</span
+                          >
+                          <span
+                            class="font-bold text-xs max-w-[3rem] whitespace-nowrap text-ellipsis overflow-hidden"
+                            >Golova</span
+                          >
+                        </div>
+                      </div>
+                      <div class="flex-1 flex items-center justify-center">
+                        <div class="flex flex-col *:leading-[100%] gap-1">
+                          <span
+                            class="font-semibold text-white/[0.65] text-[.625rem]"
+                            >Шанс</span
+                          >
+                          <span class="font-bold text-xs">11.11%</span>
+                        </div>
+                      </div>
+                      <div class="flex justify-end pr-2">
+                        <div class="flex flex-col items-end gap-1">
+                          <span
+                            class="font-semibold text-white/[0.65] text-[.625rem]"
+                            >Сумма</span
+                          >
+                          <div
+                            class="flex items-center gap-1 *:leading-[100%] gap-1"
+                          >
+                            <span class="font-bold text-xs">90</span>
+                            <svg class="w-3 h-3">
+                              <use
+                                xlink:href="../assets/images/symbols.svg#icon-rub"
+                              ></use>
+                            </svg>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="flex max-[1375px]:shrink-0 max-[1375px]:gap-6 p-2 flex items-center justify-between rounded-xl bg-[#8BA4E5]/[0.15] transition-all duration-300 hover:bg-[#8BA4E5]/[0.25]"
+                    >
+                      <div class="flex items-center gap-2">
+                        <div
+                          class="shrink-0 w-[1.75rem] h-[1.75rem] rounded-full flex items-center justify-center"
+                        >
+                          <img
+                            src="https://sun9-35.userapi.com/s/v1/ig2/XK3b4zu_JQpMlkRtc32F-UyAYQNTr7dpEBVFZdLajk8UTlXpT8Gs0TpyMq1IMQK_zpqjSJMlveYMLFNpg5FrkvNu.jpg?size=200x200&amp;quality=95&amp;crop=0,340,1585,1585&amp;ava=1"
+                            class="w-full h-full rounded-full object-cover"
+                            alt=""
+                          />
+                        </div>
+                        <div class="flex flex-col *:leading-[100%] gap-1">
+                          <span
+                            class="font-semibold text-white/[0.65] text-[.625rem]"
+                            >#1600</span
+                          >
+                          <span
+                            class="font-bold text-xs max-w-[3rem] whitespace-nowrap text-ellipsis overflow-hidden"
+                            >trip321123</span
+                          >
+                        </div>
+                      </div>
+                      <div class="flex-1 flex items-center justify-center">
+                        <div class="flex flex-col *:leading-[100%] gap-1">
+                          <span
+                            class="font-semibold text-white/[0.65] text-[.625rem]"
+                            >Шанс</span
+                          >
+                          <span class="font-bold text-xs">48.72%</span>
+                        </div>
+                      </div>
+                      <div class="flex justify-end pr-2">
+                        <div class="flex flex-col items-end gap-1">
+                          <span
+                            class="font-semibold text-white/[0.65] text-[.625rem]"
+                            >Сумма</span
+                          >
+                          <div
+                            class="flex items-center gap-1 *:leading-[100%] gap-1"
+                          >
+                            <span class="font-bold text-xs">39</span>
+                            <svg class="w-3 h-3">
+                              <use
+                                xlink:href="assets/images/symbols.svg#icon-rub"
+                              ></use>
+                            </svg>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="flex max-[1375px]:shrink-0 max-[1375px]:gap-6 p-2 flex items-center justify-between rounded-xl bg-[#8BA4E5]/[0.15] transition-all duration-300 hover:bg-[#8BA4E5]/[0.25]"
+                    >
+                      <div class="flex items-center gap-2">
+                        <div
+                          class="shrink-0 w-[1.75rem] h-[1.75rem] rounded-full flex items-center justify-center"
+                        >
+                          <img
+                            src="https://sun9-35.userapi.com/s/v1/ig2/6BNuTWC0wXy03KbsH2640OolL_ZUqqtsPUneN6cqo3yLRlH1T-0DJDMnYOJR8xqpDHCxv3M-j3QbSS8Cfb_RkGNk.jpg?size=200x200&amp;quality=96&amp;crop=64,64,512,512&amp;ava=1"
+                            class="w-full h-full rounded-full object-cover"
+                            alt=""
+                          />
+                        </div>
+                        <div class="flex flex-col *:leading-[100%] gap-1">
+                          <span
+                            class="font-semibold text-white/[0.65] text-[.625rem]"
+                            >#808</span
+                          >
+                          <span
+                            class="font-bold text-xs max-w-[3rem] whitespace-nowrap text-ellipsis overflow-hidden"
+                            >Ilsaf Nurullin</span
+                          >
+                        </div>
+                      </div>
+                      <div class="flex-1 flex items-center justify-center">
+                        <div class="flex flex-col *:leading-[100%] gap-1">
+                          <span
+                            class="font-semibold text-white/[0.65] text-[.625rem]"
+                            >Шанс</span
+                          >
+                          <span class="font-bold text-xs">40.00%</span>
+                        </div>
+                      </div>
+                      <div class="flex justify-end pr-2">
+                        <div class="flex flex-col items-end gap-1">
+                          <span
+                            class="font-semibold text-white/[0.65] text-[.625rem]"
+                            >Сумма</span
+                          >
+                          <div
+                            class="flex items-center gap-1 *:leading-[100%] gap-1"
+                          >
+                            <span class="font-bold text-xs">25</span>
+                            <svg class="w-3 h-3">
+                              <use
+                                xlink:href="../assets/images/symbols.svg#icon-rub"
+                              ></use>
+                            </svg>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="flex max-[1375px]:shrink-0 max-[1375px]:gap-6 p-2 flex items-center justify-between rounded-xl bg-[#8BA4E5]/[0.15] transition-all duration-300 hover:bg-[#8BA4E5]/[0.25]"
+                    >
+                      <div class="flex items-center gap-2">
+                        <div
+                          class="shrink-0 w-[1.75rem] h-[1.75rem] rounded-full flex items-center justify-center"
+                        >
+                          <img
+                            src="https://sun6-22.userapi.com/impf/DW4IDqvukChyc-WPXmzIot46En40R00idiUAXw/l5w5aIHioYc.jpg?quality=96&amp;as=32x32,48x48,72x72,108x108,160x160,240x240,360x360&amp;sign=10ad7d7953daabb7b0e707fdfb7ebefd&amp;u=I6EtahnrCRLlyd0MhT2raQt6ydhuyxX4s72EHGuUSoM&amp;cs=200x200"
+                            class="w-full h-full rounded-full object-cover"
+                            alt=""
+                          />
+                        </div>
+                        <div class="flex flex-col *:leading-[100%] gap-1">
+                          <span
+                            class="font-semibold text-white/[0.65] text-[.625rem]"
+                            >#4225</span
+                          >
+                          <span
+                            class="font-bold text-xs max-w-[3rem] whitespace-nowrap text-ellipsis overflow-hidden"
+                            >Роман-Акулов П</span
+                          >
+                        </div>
+                      </div>
+                      <div class="flex-1 flex items-center justify-center">
+                        <div class="flex flex-col *:leading-[100%] gap-1">
+                          <span
+                            class="font-semibold text-white/[0.65] text-[.625rem]"
+                            >Шанс</span
+                          >
+                          <span class="font-bold text-xs">71.43%</span>
+                        </div>
+                      </div>
+                      <div class="flex justify-end pr-2">
+                        <div class="flex flex-col items-end gap-1">
+                          <span
+                            class="font-semibold text-white/[0.65] text-[.625rem]"
+                            >Сумма</span
+                          >
+                          <div
+                            class="flex items-center gap-1 *:leading-[100%] gap-1"
+                          >
+                            <span class="font-bold text-xs">70</span>
+                            <svg class="w-3 h-3">
+                              <use
+                                xlink:href="../assets/images/symbols.svg#icon-rub"
+                              ></use>
+                            </svg>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="flex max-[1375px]:shrink-0 max-[1375px]:gap-6 p-2 flex items-center justify-between rounded-xl bg-[#8BA4E5]/[0.15] transition-all duration-300 hover:bg-[#8BA4E5]/[0.25]"
+                    >
+                      <div class="flex items-center gap-2">
+                        <div
+                          class="shrink-0 w-[1.75rem] h-[1.75rem] rounded-full flex items-center justify-center"
+                        >
+                          <img
+                            src="https://sun9-9.userapi.com/s/v1/ig2/3iN0PSovky8KFHmbSU0xv-5Y2cPt7ZwQAOoax_EYGOZvibkwVUqDvQDKwPomo4e1BrbxmTX4Qc-Uje9D5We3lkzk.jpg?quality=95&amp;crop=0,0,1128,1128&amp;as=32x32,48x48,72x72,108x108,160x160,240x240,360x360,480x480,540x540,640x640,720x720,1080x1"
+                            class="w-full h-full rounded-full object-cover"
+                            alt=""
+                          />
+                        </div>
+                        <div class="flex flex-col *:leading-[100%] gap-1">
+                          <span
+                            class="font-semibold text-white/[0.65] text-[.625rem]"
+                            >#1036</span
+                          >
+                          <span
+                            class="font-bold text-xs max-w-[3rem] whitespace-nowrap text-ellipsis overflow-hidden"
+                            >Maybe Cursed</span
+                          >
+                        </div>
+                      </div>
+                      <div class="flex-1 flex items-center justify-center">
+                        <div class="flex flex-col *:leading-[100%] gap-1">
+                          <span
+                            class="font-semibold text-white/[0.65] text-[.625rem]"
+                            >Шанс</span
+                          >
+                          <span class="font-bold text-xs">66.67%</span>
+                        </div>
+                      </div>
+                      <div class="flex justify-end pr-2">
+                        <div class="flex flex-col items-end gap-1">
+                          <span
+                            class="font-semibold text-white/[0.65] text-[.625rem]"
+                            >Сумма</span
+                          >
+                          <div
+                            class="flex items-center gap-1 *:leading-[100%] gap-1"
+                          >
+                            <span class="font-bold text-xs">30</span>
+                            <svg class="w-3 h-3">
+                              <use
+                                xlink:href="../assets/images/symbols.svg#icon-rub"
+                              ></use>
+                            </svg>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="flex max-[1375px]:shrink-0 max-[1375px]:gap-6 p-2 flex items-center justify-between rounded-xl bg-[#8BA4E5]/[0.15] transition-all duration-300 hover:bg-[#8BA4E5]/[0.25]"
+                    >
+                      <div class="flex items-center gap-2">
+                        <div
+                          class="shrink-0 w-[1.75rem] h-[1.75rem] rounded-full flex items-center justify-center"
+                        >
+                          <img
+                            src="/assets/images/avatar.png"
                             class="w-full h-full rounded-full object-cover"
                             alt=""
                           />
@@ -742,7 +1536,7 @@
                             <span class="font-bold text-xs">15</span>
                             <svg class="w-3 h-3">
                               <use
-                                xlink:href="assets/images/symbols.svg#icon-rub"
+                                xlink:href="../assets/images/symbols.svg#icon-rub"
                               ></use>
                             </svg>
                           </div>
@@ -794,7 +1588,7 @@
                             <span class="font-bold text-xs">2</span>
                             <svg class="w-3 h-3">
                               <use
-                                xlink:href="assets/images/symbols.svg#icon-rub"
+                                xlink:href="../assets/images/symbols.svg#icon-rub"
                               ></use>
                             </svg>
                           </div>
@@ -809,7 +1603,7 @@
                           class="shrink-0 w-[1.75rem] h-[1.75rem] rounded-full flex items-center justify-center"
                         >
                           <img
-                            src="../assets/images/avatar.png"
+                            src="/assets/images/avatar.png"
                             class="w-full h-full rounded-full object-cover"
                             alt=""
                           />
@@ -846,7 +1640,7 @@
                             <span class="font-bold text-xs">15</span>
                             <svg class="w-3 h-3">
                               <use
-                                xlink:href="assets/images/symbols.svg#icon-rub"
+                                xlink:href="../assets/images/symbols.svg#icon-rub"
                               ></use>
                             </svg>
                           </div>
@@ -898,7 +1692,7 @@
                             <span class="font-bold text-xs">30</span>
                             <svg class="w-3 h-3">
                               <use
-                                xlink:href="assets/images/symbols.svg#icon-rub"
+                                xlink:href="../assets/images/symbols.svg#icon-rub"
                               ></use>
                             </svg>
                           </div>
@@ -950,7 +1744,7 @@
                             <span class="font-bold text-xs">45</span>
                             <svg class="w-3 h-3">
                               <use
-                                xlink:href="assets/images/symbols.svg#icon-rub"
+                                xlink:href="../assets/images/symbols.svg#icon-rub"
                               ></use>
                             </svg>
                           </div>
@@ -1002,7 +1796,7 @@
                             <span class="font-bold text-xs">90</span>
                             <svg class="w-3 h-3">
                               <use
-                                xlink:href="assets/images/symbols.svg#icon-rub"
+                                xlink:href="../assets/images/symbols.svg#icon-rub"
                               ></use>
                             </svg>
                           </div>
@@ -1054,7 +1848,7 @@
                             <span class="font-bold text-xs">14</span>
                             <svg class="w-3 h-3">
                               <use
-                                xlink:href="assets/images/symbols.svg#icon-rub"
+                                xlink:href="../assets/images/symbols.svg#icon-rub"
                               ></use>
                             </svg>
                           </div>
@@ -1106,7 +1900,7 @@
                             <span class="font-bold text-xs">75</span>
                             <svg class="w-3 h-3">
                               <use
-                                xlink:href="assets/images/symbols.svg#icon-rub"
+                                xlink:href="../assets/images/symbols.svg#icon-rub"
                               ></use>
                             </svg>
                           </div>
@@ -1158,7 +1952,7 @@
                             <span class="font-bold text-xs">73</span>
                             <svg class="w-3 h-3">
                               <use
-                                xlink:href="assets/images/symbols.svg#icon-rub"
+                                xlink:href="../assets/images/symbols.svg#icon-rub"
                               ></use>
                             </svg>
                           </div>
@@ -1210,7 +2004,7 @@
                             <span class="font-bold text-xs">82</span>
                             <svg class="w-3 h-3">
                               <use
-                                xlink:href="assets/images/symbols.svg#icon-rub"
+                                xlink:href="../assets/images/symbols.svg#icon-rub"
                               ></use>
                             </svg>
                           </div>
@@ -1262,7 +2056,7 @@
                             <span class="font-bold text-xs">69</span>
                             <svg class="w-3 h-3">
                               <use
-                                xlink:href="assets/images/symbols.svg#icon-rub"
+                                xlink:href="../assets/images/symbols.svg#icon-rub"
                               ></use>
                             </svg>
                           </div>
@@ -1314,7 +2108,7 @@
                             <span class="font-bold text-xs">12</span>
                             <svg class="w-3 h-3">
                               <use
-                                xlink:href="assets/images/symbols.svg#icon-rub"
+                                xlink:href="../assets/images/symbols.svg#icon-rub"
                               ></use>
                             </svg>
                           </div>
@@ -1366,7 +2160,7 @@
                             <span class="font-bold text-xs">17</span>
                             <svg class="w-3 h-3">
                               <use
-                                xlink:href="assets/images/symbols.svg#icon-rub"
+                                xlink:href="../assets/images/symbols.svg#icon-rub"
                               ></use>
                             </svg>
                           </div>
@@ -1418,7 +2212,7 @@
                             <span class="font-bold text-xs">15</span>
                             <svg class="w-3 h-3">
                               <use
-                                xlink:href="assets/images/symbols.svg#icon-rub"
+                                xlink:href="../assets/images/symbols.svg#icon-rub"
                               ></use>
                             </svg>
                           </div>
@@ -1470,7 +2264,7 @@
                             <span class="font-bold text-xs">54</span>
                             <svg class="w-3 h-3">
                               <use
-                                xlink:href="assets/images/symbols.svg#icon-rub"
+                                xlink:href="../assets/images/symbols.svg#icon-rub"
                               ></use>
                             </svg>
                           </div>
@@ -1522,7 +2316,7 @@
                             <span class="font-bold text-xs">30</span>
                             <svg class="w-3 h-3">
                               <use
-                                xlink:href="assets/images/symbols.svg#icon-rub"
+                                xlink:href="../assets/images/symbols.svg#icon-rub"
                               ></use>
                             </svg>
                           </div>
@@ -1574,7 +2368,7 @@
                             <span class="font-bold text-xs">37</span>
                             <svg class="w-3 h-3">
                               <use
-                                xlink:href="assets/images/symbols.svg#icon-rub"
+                                xlink:href="../assets/images/symbols.svg#icon-rub"
                               ></use>
                             </svg>
                           </div>
@@ -1626,7 +2420,7 @@
                             <span class="font-bold text-xs">53</span>
                             <svg class="w-3 h-3">
                               <use
-                                xlink:href="assets/images/symbols.svg#icon-rub"
+                                xlink:href="../assets/images/symbols.svg#icon-rub"
                               ></use>
                             </svg>
                           </div>
@@ -1677,7 +2471,7 @@
                             <span class="font-bold text-xs">20</span>
                             <svg class="w-3 h-3">
                               <use
-                                xlink:href="assets/images/symbols.svg#icon-rub"
+                                xlink:href="../assets/images/symbols.svg#icon-rub"
                               ></use>
                             </svg>
                           </div>
@@ -1729,527 +2523,7 @@
                             <span class="font-bold text-xs">20</span>
                             <svg class="w-3 h-3">
                               <use
-                                xlink:href="assets/images/symbols.svg#icon-rub"
-                              ></use>
-                            </svg>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      class="flex max-[1375px]:shrink-0 max-[1375px]:gap-6 p-2 flex items-center justify-between rounded-xl bg-[#8BA4E5]/[0.15] transition-all duration-300 hover:bg-[#8BA4E5]/[0.25]"
-                    >
-                      <div class="flex items-center gap-2">
-                        <div
-                          class="shrink-0 w-[1.75rem] h-[1.75rem] rounded-full flex items-center justify-center"
-                        >
-                          <img
-                            src="../assets/images/avatar.png"
-                            class="w-full h-full rounded-full object-cover"
-                            alt=""
-                          />
-                        </div>
-                        <div class="flex flex-col *:leading-[100%] gap-1">
-                          <span
-                            class="font-semibold text-white/[0.65] text-[.625rem]"
-                            >#1734</span
-                          >
-                          <span
-                            class="font-bold text-xs max-w-[3rem] whitespace-nowrap text-ellipsis overflow-hidden"
-                            >Дорошенко</span
-                          >
-                        </div>
-                      </div>
-                      <div class="flex-1 flex items-center justify-center">
-                        <div class="flex flex-col *:leading-[100%] gap-1">
-                          <span
-                            class="font-semibold text-white/[0.65] text-[.625rem]"
-                            >Шанс</span
-                          >
-                          <span class="font-bold text-xs">50.00%</span>
-                        </div>
-                      </div>
-                      <div class="flex justify-end pr-2">
-                        <div class="flex flex-col items-end gap-1">
-                          <span
-                            class="font-semibold text-white/[0.65] text-[.625rem]"
-                            >Сумма</span
-                          >
-                          <div
-                            class="flex items-center gap-1 *:leading-[100%] gap-1"
-                          >
-                            <span class="font-bold text-xs">20</span>
-                            <svg class="w-3 h-3">
-                              <use
-                                xlink:href="assets/images/symbols.svg#icon-rub"
-                              ></use>
-                            </svg>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      class="flex max-[1375px]:shrink-0 max-[1375px]:gap-6 p-2 flex items-center justify-between rounded-xl bg-[#8BA4E5]/[0.15] transition-all duration-300 hover:bg-[#8BA4E5]/[0.25]"
-                    >
-                      <div class="flex items-center gap-2">
-                        <div
-                          class="shrink-0 w-[1.75rem] h-[1.75rem] rounded-full flex items-center justify-center"
-                        >
-                          <img
-                            src="../assets/images/avatar.png"
-                            class="w-full h-full rounded-full object-cover"
-                            alt=""
-                          />
-                        </div>
-                        <div class="flex flex-col *:leading-[100%] gap-1">
-                          <span
-                            class="font-semibold text-white/[0.65] text-[.625rem]"
-                            >#2557</span
-                          >
-                          <span
-                            class="font-bold text-xs max-w-[3rem] whitespace-nowrap text-ellipsis overflow-hidden"
-                            >.</span
-                          >
-                        </div>
-                      </div>
-                      <div class="flex-1 flex items-center justify-center">
-                        <div class="flex flex-col *:leading-[100%] gap-1">
-                          <span
-                            class="font-semibold text-white/[0.65] text-[.625rem]"
-                            >Шанс</span
-                          >
-                          <span class="font-bold text-xs">25.00%</span>
-                        </div>
-                      </div>
-                      <div class="flex justify-end pr-2">
-                        <div class="flex flex-col items-end gap-1">
-                          <span
-                            class="font-semibold text-white/[0.65] text-[.625rem]"
-                            >Сумма</span
-                          >
-                          <div
-                            class="flex items-center gap-1 *:leading-[100%] gap-1"
-                          >
-                            <span class="font-bold text-xs">40</span>
-                            <svg class="w-3 h-3">
-                              <use
-                                xlink:href="assets/images/symbols.svg#icon-rub"
-                              ></use>
-                            </svg>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      class="flex max-[1375px]:shrink-0 max-[1375px]:gap-6 p-2 flex items-center justify-between rounded-xl bg-[#8BA4E5]/[0.15] transition-all duration-300 hover:bg-[#8BA4E5]/[0.25]"
-                    >
-                      <div class="flex items-center gap-2">
-                        <div
-                          class="shrink-0 w-[1.75rem] h-[1.75rem] rounded-full flex items-center justify-center"
-                        >
-                          <img
-                            src="https://sun9-77.userapi.com/s/v1/ig2/P9P3GGsYhkjgkNM87kQ8PP7wYMobcSdiFLL39jtxAFwgXLuzuVycHjAm4yz9eKn69TY076cfyoRzoP7FHvVprxw1.jpg?quality=95&amp;crop=548,579,1571,1571&amp;as=32x32,48x48,72x72,108x108,160x160,240x240,360x360,480x480,540x540,640x640,720x720,1"
-                            class="w-full h-full rounded-full object-cover"
-                            alt=""
-                          />
-                        </div>
-                        <div class="flex flex-col *:leading-[100%] gap-1">
-                          <span
-                            class="font-semibold text-white/[0.65] text-[.625rem]"
-                            >#1056</span
-                          >
-                          <span
-                            class="font-bold text-xs max-w-[3rem] whitespace-nowrap text-ellipsis overflow-hidden"
-                            >sergeoleon</span
-                          >
-                        </div>
-                      </div>
-                      <div class="flex-1 flex items-center justify-center">
-                        <div class="flex flex-col *:leading-[100%] gap-1">
-                          <span
-                            class="font-semibold text-white/[0.65] text-[.625rem]"
-                            >Шанс</span
-                          >
-                          <span class="font-bold text-xs">61.54%</span>
-                        </div>
-                      </div>
-                      <div class="flex justify-end pr-2">
-                        <div class="flex flex-col items-end gap-1">
-                          <span
-                            class="font-semibold text-white/[0.65] text-[.625rem]"
-                            >Сумма</span
-                          >
-                          <div
-                            class="flex items-center gap-1 *:leading-[100%] gap-1"
-                          >
-                            <span class="font-bold text-xs">13</span>
-                            <svg class="w-3 h-3">
-                              <use
-                                xlink:href="assets/images/symbols.svg#icon-rub"
-                              ></use>
-                            </svg>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      class="flex max-[1375px]:shrink-0 max-[1375px]:gap-6 p-2 flex items-center justify-between rounded-xl bg-[#8BA4E5]/[0.15] transition-all duration-300 hover:bg-[#8BA4E5]/[0.25]"
-                    >
-                      <div class="flex items-center gap-2">
-                        <div
-                          class="shrink-0 w-[1.75rem] h-[1.75rem] rounded-full flex items-center justify-center"
-                        >
-                          <img
-                            src="https://sun9-77.userapi.com/s/v1/ig2/P9P3GGsYhkjgkNM87kQ8PP7wYMobcSdiFLL39jtxAFwgXLuzuVycHjAm4yz9eKn69TY076cfyoRzoP7FHvVprxw1.jpg?quality=95&amp;crop=548,579,1571,1571&amp;as=32x32,48x48,72x72,108x108,160x160,240x240,360x360,480x480,540x540,640x640,720x720,1"
-                            class="w-full h-full rounded-full object-cover"
-                            alt=""
-                          />
-                        </div>
-                        <div class="flex flex-col *:leading-[100%] gap-1">
-                          <span
-                            class="font-semibold text-white/[0.65] text-[.625rem]"
-                            >#32</span
-                          >
-                          <span
-                            class="font-bold text-xs max-w-[3rem] whitespace-nowrap text-ellipsis overflow-hidden"
-                            >sergeoleon</span
-                          >
-                        </div>
-                      </div>
-                      <div class="flex-1 flex items-center justify-center">
-                        <div class="flex flex-col *:leading-[100%] gap-1">
-                          <span
-                            class="font-semibold text-white/[0.65] text-[.625rem]"
-                            >Шанс</span
-                          >
-                          <span class="font-bold text-xs">22.08%</span>
-                        </div>
-                      </div>
-                      <div class="flex justify-end pr-2">
-                        <div class="flex flex-col items-end gap-1">
-                          <span
-                            class="font-semibold text-white/[0.65] text-[.625rem]"
-                            >Сумма</span
-                          >
-                          <div
-                            class="flex items-center gap-1 *:leading-[100%] gap-1"
-                          >
-                            <span class="font-bold text-xs">77</span>
-                            <svg class="w-3 h-3">
-                              <use
-                                xlink:href="assets/images/symbols.svg#icon-rub"
-                              ></use>
-                            </svg>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      class="flex max-[1375px]:shrink-0 max-[1375px]:gap-6 p-2 flex items-center justify-between rounded-xl bg-[#8BA4E5]/[0.15] transition-all duration-300 hover:bg-[#8BA4E5]/[0.25]"
-                    >
-                      <div class="flex items-center gap-2">
-                        <div
-                          class="shrink-0 w-[1.75rem] h-[1.75rem] rounded-full flex items-center justify-center"
-                        >
-                          <img
-                            src="https://sun9-49.userapi.com/impf/DW4IDqvukChyc-WPXmzIot46En40R00idiUAXw/l5w5aIHioYc.jpg?quality=96&amp;as=32x32,48x48,72x72,108x108,160x160,240x240,360x360&amp;sign=10ad7d7953daabb7b0e707fdfb7ebefd&amp;u=I6EtahnrCRLlyd0MhT2raQt6ydhuyxX4s72EHGuUSoM&amp;cs=200x200"
-                            class="w-full h-full rounded-full object-cover"
-                            alt=""
-                          />
-                        </div>
-                        <div class="flex flex-col *:leading-[100%] gap-1">
-                          <span
-                            class="font-semibold text-white/[0.65] text-[.625rem]"
-                            >#76</span
-                          >
-                          <span
-                            class="font-bold text-xs max-w-[3rem] whitespace-nowrap text-ellipsis overflow-hidden"
-                            >Алое Вера</span
-                          >
-                        </div>
-                      </div>
-                      <div class="flex-1 flex items-center justify-center">
-                        <div class="flex flex-col *:leading-[100%] gap-1">
-                          <span
-                            class="font-semibold text-white/[0.65] text-[.625rem]"
-                            >Шанс</span
-                          >
-                          <span class="font-bold text-xs">32.26%</span>
-                        </div>
-                      </div>
-                      <div class="flex justify-end pr-2">
-                        <div class="flex flex-col items-end gap-1">
-                          <span
-                            class="font-semibold text-white/[0.65] text-[.625rem]"
-                            >Сумма</span
-                          >
-                          <div
-                            class="flex items-center gap-1 *:leading-[100%] gap-1"
-                          >
-                            <span class="font-bold text-xs">31</span>
-                            <svg class="w-3 h-3">
-                              <use
-                                xlink:href="assets/images/symbols.svg#icon-rub"
-                              ></use>
-                            </svg>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      class="flex max-[1375px]:shrink-0 max-[1375px]:gap-6 p-2 flex items-center justify-between rounded-xl bg-[#8BA4E5]/[0.15] transition-all duration-300 hover:bg-[#8BA4E5]/[0.25]"
-                    >
-                      <div class="flex items-center gap-2">
-                        <div
-                          class="shrink-0 w-[1.75rem] h-[1.75rem] rounded-full flex items-center justify-center"
-                        >
-                          <img
-                            src="https://sun9-77.userapi.com/s/v1/ig2/P9P3GGsYhkjgkNM87kQ8PP7wYMobcSdiFLL39jtxAFwgXLuzuVycHjAm4yz9eKn69TY076cfyoRzoP7FHvVprxw1.jpg?quality=95&amp;crop=548,579,1571,1571&amp;as=32x32,48x48,72x72,108x108,160x160,240x240,360x360,480x480,540x540,640x640,720x720,1"
-                            class="w-full h-full rounded-full object-cover"
-                            alt=""
-                          />
-                        </div>
-                        <div class="flex flex-col *:leading-[100%] gap-1">
-                          <span
-                            class="font-semibold text-white/[0.65] text-[.625rem]"
-                            >#797</span
-                          >
-                          <span
-                            class="font-bold text-xs max-w-[3rem] whitespace-nowrap text-ellipsis overflow-hidden"
-                            >sergeoleon</span
-                          >
-                        </div>
-                      </div>
-                      <div class="flex-1 flex items-center justify-center">
-                        <div class="flex flex-col *:leading-[100%] gap-1">
-                          <span
-                            class="font-semibold text-white/[0.65] text-[.625rem]"
-                            >Шанс</span
-                          >
-                          <span class="font-bold text-xs">33.33%</span>
-                        </div>
-                      </div>
-                      <div class="flex justify-end pr-2">
-                        <div class="flex flex-col items-end gap-1">
-                          <span
-                            class="font-semibold text-white/[0.65] text-[.625rem]"
-                            >Сумма</span
-                          >
-                          <div
-                            class="flex items-center gap-1 *:leading-[100%] gap-1"
-                          >
-                            <span class="font-bold text-xs">30</span>
-                            <svg class="w-3 h-3">
-                              <use
-                                xlink:href="assets/images/symbols.svg#icon-rub"
-                              ></use>
-                            </svg>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      class="flex max-[1375px]:shrink-0 max-[1375px]:gap-6 p-2 flex items-center justify-between rounded-xl bg-[#8BA4E5]/[0.15] transition-all duration-300 hover:bg-[#8BA4E5]/[0.25]"
-                    >
-                      <div class="flex items-center gap-2">
-                        <div
-                          class="shrink-0 w-[1.75rem] h-[1.75rem] rounded-full flex items-center justify-center"
-                        >
-                          <img
-                            src="https://sun9-68.userapi.com/s/v1/ig2/YtZb2x3bRayDHM2egLJxs-o2rOZzn3nHcUaKww_HbG0bd-zBgbcCsRSZkMfV8G6ZDK_AGeIxdBwGbdTUNusF6kDb.jpg?quality=95&amp;crop=59,73,656,656&amp;as=32x32,48x48,72x72,108x108,160x160,240x240,360x360,480x480,540x540,640x640&amp;ava=1&amp;cs=200x"
-                            class="w-full h-full rounded-full object-cover"
-                            alt=""
-                          />
-                        </div>
-                        <div class="flex flex-col *:leading-[100%] gap-1">
-                          <span
-                            class="font-semibold text-white/[0.65] text-[.625rem]"
-                            >#1495</span
-                          >
-                          <span
-                            class="font-bold text-xs max-w-[3rem] whitespace-nowrap text-ellipsis overflow-hidden"
-                            >Сергей Куклус</span
-                          >
-                        </div>
-                      </div>
-                      <div class="flex-1 flex items-center justify-center">
-                        <div class="flex flex-col *:leading-[100%] gap-1">
-                          <span
-                            class="font-semibold text-white/[0.65] text-[.625rem]"
-                            >Шанс</span
-                          >
-                          <span class="font-bold text-xs">86.96%</span>
-                        </div>
-                      </div>
-                      <div class="flex justify-end pr-2">
-                        <div class="flex flex-col items-end gap-1">
-                          <span
-                            class="font-semibold text-white/[0.65] text-[.625rem]"
-                            >Сумма</span
-                          >
-                          <div
-                            class="flex items-center gap-1 *:leading-[100%] gap-1"
-                          >
-                            <span class="font-bold text-xs">23</span>
-                            <svg class="w-3 h-3">
-                              <use
-                                xlink:href="assets/images/symbols.svg#icon-rub"
-                              ></use>
-                            </svg>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      class="flex max-[1375px]:shrink-0 max-[1375px]:gap-6 p-2 flex items-center justify-between rounded-xl bg-[#8BA4E5]/[0.15] transition-all duration-300 hover:bg-[#8BA4E5]/[0.25]"
-                    >
-                      <div class="flex items-center gap-2">
-                        <div
-                          class="shrink-0 w-[1.75rem] h-[1.75rem] rounded-full flex items-center justify-center"
-                        >
-                          <img
-                            src="https://sun6-21.userapi.com/s/v1/ig2/rARBhSmyMaKV6b5CXujouI94y178yfeiHG1gK8LrHZbGPurHlwQ8PtOkzBgUSSP7CX4iKAEBHJgvtQkmWfYlokld.jpg?quality=95&amp;crop=320,0,1920,1920&amp;as=32x32,48x48,72x72,108x108,160x160,240x240,360x360,480x480,540x540,640x640,720x720,108"
-                            class="w-full h-full rounded-full object-cover"
-                            alt=""
-                          />
-                        </div>
-                        <div class="flex flex-col *:leading-[100%] gap-1">
-                          <span
-                            class="font-semibold text-white/[0.65] text-[.625rem]"
-                            >#446</span
-                          >
-                          <span
-                            class="font-bold text-xs max-w-[3rem] whitespace-nowrap text-ellipsis overflow-hidden"
-                            >Viktor Morozov</span
-                          >
-                        </div>
-                      </div>
-                      <div class="flex-1 flex items-center justify-center">
-                        <div class="flex flex-col *:leading-[100%] gap-1">
-                          <span
-                            class="font-semibold text-white/[0.65] text-[.625rem]"
-                            >Шанс</span
-                          >
-                          <span class="font-bold text-xs">85.71%</span>
-                        </div>
-                      </div>
-                      <div class="flex justify-end pr-2">
-                        <div class="flex flex-col items-end gap-1">
-                          <span
-                            class="font-semibold text-white/[0.65] text-[.625rem]"
-                            >Сумма</span
-                          >
-                          <div
-                            class="flex items-center gap-1 *:leading-[100%] gap-1"
-                          >
-                            <span class="font-bold text-xs">7</span>
-                            <svg class="w-3 h-3">
-                              <use
-                                xlink:href="assets/images/symbols.svg#icon-rub"
-                              ></use>
-                            </svg>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      class="flex max-[1375px]:shrink-0 max-[1375px]:gap-6 p-2 flex items-center justify-between rounded-xl bg-[#8BA4E5]/[0.15] transition-all duration-300 hover:bg-[#8BA4E5]/[0.25]"
-                    >
-                      <div class="flex items-center gap-2">
-                        <div
-                          class="shrink-0 w-[1.75rem] h-[1.75rem] rounded-full flex items-center justify-center"
-                        >
-                          <img
-                            src="https://sun6-22.userapi.com/impf/DW4IDqvukChyc-WPXmzIot46En40R00idiUAXw/l5w5aIHioYc.jpg?quality=96&amp;as=32x32,48x48,72x72,108x108,160x160,240x240,360x360&amp;sign=10ad7d7953daabb7b0e707fdfb7ebefd&amp;u=I6EtahnrCRLlyd0MhT2raQt6ydhuyxX4s72EHGuUSoM&amp;cs=200x200"
-                            class="w-full h-full rounded-full object-cover"
-                            alt=""
-                          />
-                        </div>
-                        <div class="flex flex-col *:leading-[100%] gap-1">
-                          <span
-                            class="font-semibold text-white/[0.65] text-[.625rem]"
-                            >#263</span
-                          >
-                          <span
-                            class="font-bold text-xs max-w-[3rem] whitespace-nowrap text-ellipsis overflow-hidden"
-                            >Ирина Зайнуллина</span
-                          >
-                        </div>
-                      </div>
-                      <div class="flex-1 flex items-center justify-center">
-                        <div class="flex flex-col *:leading-[100%] gap-1">
-                          <span
-                            class="font-semibold text-white/[0.65] text-[.625rem]"
-                            >Шанс</span
-                          >
-                          <span class="font-bold text-xs">33.33%</span>
-                        </div>
-                      </div>
-                      <div class="flex justify-end pr-2">
-                        <div class="flex flex-col items-end gap-1">
-                          <span
-                            class="font-semibold text-white/[0.65] text-[.625rem]"
-                            >Сумма</span
-                          >
-                          <div
-                            class="flex items-center gap-1 *:leading-[100%] gap-1"
-                          >
-                            <span class="font-bold text-xs">15</span>
-                            <svg class="w-3 h-3">
-                              <use
-                                xlink:href="assets/images/symbols.svg#icon-rub"
-                              ></use>
-                            </svg>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      class="flex max-[1375px]:shrink-0 max-[1375px]:gap-6 p-2 flex items-center justify-between rounded-xl bg-[#8BA4E5]/[0.15] transition-all duration-300 hover:bg-[#8BA4E5]/[0.25]"
-                    >
-                      <div class="flex items-center gap-2">
-                        <div
-                          class="shrink-0 w-[1.75rem] h-[1.75rem] rounded-full flex items-center justify-center"
-                        >
-                          <img
-                            src="https://sun9-49.userapi.com/impf/DW4IDqvukChyc-WPXmzIot46En40R00idiUAXw/l5w5aIHioYc.jpg?quality=96&amp;as=32x32,48x48,72x72,108x108,160x160,240x240,360x360&amp;sign=10ad7d7953daabb7b0e707fdfb7ebefd&amp;u=I6EtahnrCRLlyd0MhT2raQt6ydhuyxX4s72EHGuUSoM&amp;cs=200x200"
-                            class="w-full h-full rounded-full object-cover"
-                            alt=""
-                          />
-                        </div>
-                        <div class="flex flex-col *:leading-[100%] gap-1">
-                          <span
-                            class="font-semibold text-white/[0.65] text-[.625rem]"
-                            >#1372</span
-                          >
-                          <span
-                            class="font-bold text-xs max-w-[3rem] whitespace-nowrap text-ellipsis overflow-hidden"
-                            >Хулиган Доксс</span
-                          >
-                        </div>
-                      </div>
-                      <div class="flex-1 flex items-center justify-center">
-                        <div class="flex flex-col *:leading-[100%] gap-1">
-                          <span
-                            class="font-semibold text-white/[0.65] text-[.625rem]"
-                            >Шанс</span
-                          >
-                          <span class="font-bold text-xs">62.50%</span>
-                        </div>
-                      </div>
-                      <div class="flex justify-end pr-2">
-                        <div class="flex flex-col items-end gap-1">
-                          <span
-                            class="font-semibold text-white/[0.65] text-[.625rem]"
-                            >Сумма</span
-                          >
-                          <div
-                            class="flex items-center gap-1 *:leading-[100%] gap-1"
-                          >
-                            <span class="font-bold text-xs">16</span>
-                            <svg class="w-3 h-3">
-                              <use
-                                xlink:href="assets/images/symbols.svg#icon-rub"
+                                xlink:href="../assets/images/symbols.svg#icon-rub"
                               ></use>
                             </svg>
                           </div>
@@ -2274,7 +2548,6 @@
                   >
                     <div
                       class="relative z-[2] jackpot-line-content transition-[opacity] duration-[500ms]"
-                      x-bind:class="{'opacity-0 invisible': state === 'rolling'}"
                     >
                       <div class="absolute left-0 top-0 w-full h-full z-[2]">
                         <div
@@ -2291,12 +2564,8 @@
                       </div>
                       <div
                         class="min-[926px]:w-[12.5rem] w-[6.5rem] min-[926px]:h-[43.75rem] h-[20rem] relative"
-                        x-bind:class="{'animate-[flyRocketJackpot_4s_ease-in-out_forwards]': rocketState === 2}"
                       >
-                        <div
-                          class="relative w-full h-full"
-                          x-bind:class="{'animate-[waitRocketJackpot_1.5s_ease_alternate_infinite]': rocketState === 0, 'animate-[waitRocketJackpot_0.2s_ease_alternate_infinite]': rocketState === 1 || rocketState === 2}"
-                        >
+                        <div class="relative w-full h-full">
                           <img
                             src="../assets/images/games/jackpot/rocket-head.png"
                             class="absolute left-0 top-0 w-full h-full object-contain z-[1]"
@@ -2305,7 +2574,6 @@
                           <img
                             src="../assets/images/games/jackpot/rocket-fire.png"
                             class="absolute left-0 top-0 w-full h-full object-contain origin-center"
-                            x-bind:class="{'animate-[fireRocketJackpot_1s_ease_alternate_infinite]': rocketState === 0 || rocketState === 1, 'animate-[fireRocketJackpot_0.3s_ease_alternate_infinite]': rocketState === 1 || rocketState === 2, }"
                             alt=""
                           />
                         </div>
@@ -2313,19 +2581,8 @@
                     </div>
                     <div
                       class="absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 w-full pointer-events-none min-[926px]:mt-[4.375rem] max-[925px]:[&:not(.winner)]:mt-[6rem] max-[925px]:[&.winner]:mt-[2rem] max-[925px]:transition-all max-[925px]:duration-300"
-                      x-bind:class="{'pointer-events-auto': state === 'rolling', 'winner': winner}"
                     >
-                      <div
-                        class="flex flex-col items-center w-full gap-5"
-                        x-show="state === 'rolling'"
-                        x-cloak
-                        x-transition:leave="transition-all duration-[0s]"
-                        x-transition:leave-start="opacity-100 translate-y-0"
-                        x-transition:leave-end="opacity-0 translate-y-[1rem]"
-                        x-transition:enter="transition-all duration-[2s]"
-                        x-transition:enter-start="opacity-0 -translate-y-[1rem]"
-                        x-transition:enter-end="opacity-100 translate-y-0"
-                      >
+                      <div class="flex flex-col items-center w-full gap-5">
                         <img
                           src="../assets/images/games/jackpot/cursor.svg"
                           class="absolute left-1/2 -translate-x-1/2 -top-6 z-[1] w-[2.063rem] h-[2.5rem]"
@@ -2342,26 +2599,22 @@
                                 class="flex animate-event"
                                 id="jackpot-wheel"
                               >
-                                <template
-                                  x-for="(item, index) in avatars"
-                                  :key="index"
                                 >
-                                  <div
-                                    :id="index"
-                                    class="jackpot-avatar ml-[4px] min-[1625px]:min-w-[100px] min-[1625px]:h-[100px] min-w-[75px] h-[75px] rounded-lg overflow-hidden [&.win]:border-[.25rem] [&.win]:border-[#67C8FF]"
-                                    x-bind:class="{'win': item.win}"
-                                  >
-                                    <img
-                                      :src="item"
-                                      class="w-full h-full object-cover"
-                                      alt=""
-                                    />
-                                  </div>
-                                </template>
+                                <div
+                                  id="Тут id аватара"
+                                  class="jackpot-avatar ml-[4px] min-[1625px]:min-w-[100px] min-[1625px]:h-[100px] min-w-[75px] h-[75px] rounded-lg overflow-hidden [&.win]:border-[.25rem] [&.win]:border-[#67C8FF]"
+                                >
+                                  <img
+                                    src="тут ссылка на аватар"
+                                    class="w-full h-full object-cover"
+                                    alt=""
+                                  />
+                                </div>
                               </div>
                             </div>
                           </div>
                         </div>
+                        <!-- Победитель 
                         <div
                           class="w-full flex items-center justify-center min-h-[8.75rem]"
                         >
@@ -2372,12 +2625,13 @@
                             >
                               <div class="flex items-center gap-3">
                                 <img
+                                  :src="winner ? winner.avatar : ''"
                                   class="w-[3rem] h-[3rem] object-cover rounded-full"
                                 />
                                 <div
                                   class="flex flex-col *:leading-[100%] gap-1"
                                 >
-                                  <span class="text-sm"></span>
+                                  <span class="text-sm">username</span>
                                   <span
                                     class="text-xs font-semibold text-[#B7C1F1]"
                                     >0%</span
@@ -2387,10 +2641,7 @@
                               <div
                                 class="flex items-center gap-1 py-0.5 px-2 rounded-full text-sm border border-[#7b90e9]/[0.25]"
                               >
-                                <span
-                                  x-text="winner ? parseDecimals(winner.sum) : ''"
-                                  >0.00</span
-                                >
+                                <span>0.00</span>
                                 <svg class="w-3 h-3">
                                   <use
                                     xlink:href="assets/images/symbols.svg#icon-rub"
@@ -2403,6 +2654,7 @@
                             >
                           </div>
                         </div>
+-->
                       </div>
                     </div>
                     <div
@@ -2413,12 +2665,9 @@
                         >Начало через</span
                       >
                       <span class="min-[926px]:text-2xl text-xl font-bold">
-                        <template x-if="timer === null">
-                          <span class="loader-wheel-txt">Ожидание...</span>
-                        </template>
-                        <template>
-                          <span><span>0</span> секунд</span>
-                        </template>
+                        <span class="loader-wheel-txt">Ожидание...</span>
+
+                        <span><span>0</span> секунд</span>
                       </span>
                     </div>
                     <div
@@ -2485,18 +2734,13 @@
                             class="font-medium text-[#A7B2E7] text-sm uppercase"
                             >Ваш шанс</span
                           >
-                          <span
-                            class="font-bold text-3xl"
-                            x-text="(chance).toFixed() + '%'"
-                            >0%</span
-                          >
+                          <span class="font-bold text-3xl">0%</span>
                         </div>
                         <div
                           class="w-[8.75rem] h-[.25rem] relative rounded-full bg-[#2a2b3c] relative overflow-hidden"
                         >
                           <div
                             class="absolute left-0 top-0 h-full bg-blue transition-all duration-300"
-                            :style="'width:' + chance + '%'"
                           ></div>
                         </div>
                       </div>
@@ -2508,14 +2752,10 @@
                           >Общий банк</span
                         >
                         <div class="flex items-center gap-2">
-                          <span
-                            class="font-bold text-3xl"
-                            x-text="(bank).toFixed() + ' ₽'"
-                            >0</span
-                          >
+                          <span class="font-bold text-3xl">0</span>
                           <svg class="w-6 h-6">
                             <use
-                              xlink:href="assets/images/symbols.svg#icon-rub"
+                              xlink:href="../assets/images/symbols.svg#icon-rub"
                             ></use>
                           </svg>
                         </div>
@@ -2537,81 +2777,47 @@
                             >
                             <input
                               type="text"
-                              @input="filterBet"
-                              x-model="bet"
                               class="bg-transparent text-center h-full border-0 text-2xl w-full pt-4"
                             />
                           </div>
                         </div>
                         <div class="flex flex-wrap gap-2 max-w-[13.75rem]">
                           <button
-                            type="button"
-                            aria-label="+10"
-                            role="button"
-                            @click="addSumm(10)"
                             class="h-[2rem] flex flex-1 items-center font-semibold text-sm justify-center px-2 rounded-lg bg-[#a1a4d7]/[0.15] transition-all duration-300 hover:bg-blue"
                           >
                             +10
                           </button>
                           <button
-                            type="button"
-                            aria-label="+50"
-                            role="button"
-                            @click="addSumm(50)"
                             class="h-[2rem] flex flex-1 items-center font-semibold text-sm justify-center px-2 rounded-lg bg-[#a1a4d7]/[0.15] transition-all duration-300 hover:bg-blue"
                           >
                             +50
                           </button>
                           <button
-                            type="button"
-                            aria-label="+100"
-                            role="button"
-                            @click="addSumm(100)"
                             class="h-[2rem] flex flex-1 items-center font-semibold text-sm justify-center px-2 rounded-lg bg-[#a1a4d7]/[0.15] transition-all duration-300 hover:bg-blue"
                           >
                             +100
                           </button>
                           <button
-                            type="button"
-                            aria-label="+500"
-                            role="button"
-                            @click="addSumm(500)"
                             class="h-[2rem] flex flex-1 items-center font-semibold text-sm justify-center px-2 rounded-lg bg-[#a1a4d7]/[0.15] transition-all duration-300 hover:bg-blue"
                           >
                             +500
                           </button>
                           <button
-                            type="button"
-                            aria-label="+1000"
-                            role="button"
-                            @click="addSumm(1000)"
                             class="h-[2rem] flex flex-1 items-center font-semibold text-sm justify-center px-2 rounded-lg bg-[#a1a4d7]/[0.15] transition-all duration-300 hover:bg-blue"
                           >
                             +1000
                           </button>
                           <button
-                            type="button"
-                            aria-label="+5000"
-                            role="button"
-                            @click="addSumm(5000)"
                             class="h-[2rem] flex flex-1 items-center font-semibold text-sm justify-center px-2 rounded-lg bg-[#a1a4d7]/[0.15] transition-all duration-300 hover:bg-blue"
                           >
                             +5000
                           </button>
                           <button
-                            type="button"
-                            aria-label="x2"
-                            role="button"
-                            @click="xBet"
                             class="h-[2rem] flex flex-1 items-center font-semibold text-sm justify-center px-2 rounded-lg bg-[#a1a4d7]/[0.15] transition-all duration-300 hover:bg-blue"
                           >
                             x2
                           </button>
                           <button
-                            type="button"
-                            aria-label="1/2"
-                            role="button"
-                            @click="dBet"
                             class="h-[2rem] flex flex-1 items-center font-semibold text-sm justify-center px-2 rounded-lg bg-[#a1a4d7]/[0.15] transition-all duration-300 hover:bg-blue"
                           >
                             1/2
@@ -2626,7 +2832,6 @@
                         >
                         <div
                           class="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 opacity-0 transition-[opacity]"
-                          x-bind:class="loader ? '!opacity-100' : ''"
                         >
                           <svg
                             class="animate-spin h-[1.625rem] w-[1.625rem] text-white"
@@ -2668,15 +2873,19 @@
                       <div
                         class="flex flex-col flex-1 rounded-xl bg-[#546aa5]/[0.1] backdrop-blur-[1.875rem] p-5"
                       >
-                        <div
-                          class="min-[626px]:grid flex flex-row grid-cols-2 gap-5 max-[625px]:overflow-auto scroll-0"
-                        >
-                          <!-- СПИСОК ПОЛЬЗОВАТЕЛЕЙ ТАБЛИЦЫ
+                        <!-- Список пользователей в раунде
+                         <template x-if="users.length">
                           <div
+                            class="min-[626px]:grid flex flex-row grid-cols-2 gap-5 max-[625px]:overflow-auto scroll-0"
+                          >
+                            <template
+                              x-for="(item, index) in users"
+                              :key="index"
+                            >
+                              <div
                                 class="flex flex-col gap-3 max-[625px]:shrink-0 max-[625px]:min-w-[110px]"
                               >
-                                ПОЛЬЗОВАТЕЛЬ В ТАБЛИЦЕ
-                              <div class="flex items-center gap-2">
+                                <div class="flex items-center gap-2">
                                   <img
                                     :src="item.photo_200"
                                     class="w-[2rem] h-[2rem] shrink-0 rounded-full object-cover"
@@ -2702,17 +2911,16 @@
                                     :style="'width:' + item.chance + '%'"
                                   ></div>
                                 </div>
-                              </div> -->
-                        </div>
-                        -->
-
-                        <!-- ОЖИДАНИЕ ИГРОКОВ
+                              </div>
+                            </template>
+                          </div>
+                        </template> -->
                         <div class="flex items-center justify-center flex-1">
-                            <span
-                              class="loader-wheel-txt font-[500] whitespace-nowrap text-[#A7B2E7]"
-                              >Ожидание игроков...</span
-                            >
-                          </div> -->
+                          <span
+                            class="loader-wheel-txt font-[500] whitespace-nowrap text-[#A7B2E7]"
+                            >Ожидание игроков...</span
+                          >
+                        </div>
                       </div>
                     </div>
                     <div class="flex flex-col min-[626px]:w-2/3 gap-4">
@@ -2727,7 +2935,8 @@
                       <div
                         class="flex flex-col flex-1 rounded-xl bg-[#546aa5]/[0.1] backdrop-blur-[1.875rem] relative"
                       >
-                        <template x-if="bets.length">
+                        <!-- Список ставок
+                       <template x-if="bets.length">
                           <div
                             class="min-[926px]:absolute left-0 top-0 min-[926px]:w-full min-[926px]:h-full p-3 overflow-auto scroll-0"
                           >
@@ -2776,7 +2985,6 @@
                                       >
                                       <span
                                         class="font-bold text-sm"
-                                        x-text="(item.chance).toFixed() + '%'"
                                         >0%</span
                                       >
                                     </div>
@@ -2799,7 +3007,7 @@
                                         >
                                         <svg class="w-3 h-3">
                                           <use
-                                            xlink:href="assets/images/symbols.svg#icon-rub"
+                                            xlink:href="../assets/images/symbols.svg#icon-rub"
                                           ></use>
                                         </svg>
                                       </div>
@@ -2809,17 +3017,16 @@
                               </template>
                             </div>
                           </div>
-                        </template>
-                        <template x-if="!bets.length">
-                          <div
-                            class="flex items-center justify-center flex-1 min-[926px]:absolute left-0 top-0 min-[926px]:w-full min-[926px]:h-full"
+                        </template> -->
+
+                        <div
+                          class="flex items-center justify-center flex-1 min-[926px]:absolute left-0 top-0 min-[926px]:w-full min-[926px]:h-full"
+                        >
+                          <span
+                            class="loader-wheel-txt font-[500] whitespace-nowrap text-[#A7B2E7]"
+                            >Ожидание игроков...</span
                           >
-                            <span
-                              class="loader-wheel-txt font-[500] whitespace-nowrap text-[#A7B2E7]"
-                              >Ожидание игроков...</span
-                            >
-                          </div>
-                        </template>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -2839,5 +3046,16 @@
         </section>
       </main>
     </div>
+    <script src="api/script/countup.js"></script>
+    <script src="../assets/js/app.js"></script>
+    <script src="../assets/js/modal.js"></script>
+    <script src="../assets/js/smooth-scrollbar.js"></script>
+    <script src="../assets/js/plugins/overscroll.js"></script>
+    <script src="../assets/js/parallax-mouse.min.js"></script>
+    <script src="../assets/js/swiped-events.min.js"></script>
+    <script src="../assets/js/gradient.js" type="module"></script>
+    <script src="../assets/js/core.js"></script>
+    <script src="../assets/js/wNumb.min.js"></script>
+    <script src="../assets/js/gsap.min.js"></script>
   </body>
 </html>

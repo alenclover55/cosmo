@@ -951,497 +951,783 @@
     <div class="w-full h-full flex flex-col justify-between">
       <main
         class="flex flex-1 flex-col min-[1125px]:pl-[17.5rem] pl-0 pt-[4.5rem]"
+        x-data="profile"
       >
         <section class="relative flex flex-col">
-          <div class="flex flex-col" id="account">
-            <div
-              class="w-full relative bg-[#1D1F2C] sticky left-0 top-[4.5rem]"
-            >
+          <div
+            class="h-[270px] relative w-full flex justify-center items-center"
+          >
+            <div class="relative z-[2] flex flex-col items-center gap-2">
               <div
-                class="relative min-[841px]:flex-row flex-col flex min-[841px]:items-center gap-3 justify-between z-[2] min-[1125px]:px-[2rem] px-[1rem] py-5 w-full"
+                class="shrink-0 w-[7.5rem] h-[7.5rem] border-[4px] border-[#1D202F] rounded-full relative pointer-events-none"
               >
-                <div class="flex items-center gap-2">
-                  <svg class="w-5 h-5 text-blue">
-                    <use
-                      xlink:href="../assets/images/symbols.svg#icon-user"
-                    ></use>
-                  </svg>
-                  <span class="text-xl font-[600] uppercase">Аккаунт</span>
-                </div>
-              </div>
-              <div class="absolute left-0 top-0 w-full h-full overflow-hidden">
-                <div
-                  class="absolute left-0 top-0 w-full h-full bg-gradient-to-r from-[#222432] from-[0%] via-transparent to-[#222432] to-[80%] z-[1]"
-                ></div>
                 <img
-                  src="../assets/images/backgrounds/circle.jpg"
-                  class="w-full h-full object-cover saturate-[0.4] opacity-50"
+                  class="w-full h-full object-cover rounded-full"
+                  src="https://sun6-20.userapi.com/s/v1/ig2/1Ci7vUUKLLE9_BXfnCKsL14vVx-lNdl_rPkC-UNOWQvx6PgMJj65uX3b772q8LL3yim-keyCvXWalbWspQGP-kZR.jpg?quality=95&crop=253,490,804,804&as=32x32,48x48,72x72,108x108,160x160,240x240,360x360,480x480,540x540,640x640,720x720&ava"
                   alt=""
                 />
               </div>
+              <div class="flex items-center gap-3">
+                <span class="font-[600] text-xl">Дима Христов#40510</span>
+                <button
+                  type="button"
+                  data-href="/auth/logout"
+                  class="maskedLink mt-1.5 text-sm font-[500] transition-[background_,_color] bg-[#737CB2]/[0.2] py-0.5 px-2 rounded-full text-[#CCD5FF] backdrop-blur-[15px] hover:bg-[#737CB2]/[0.25] hover:text-white"
+                >
+                  Выйти
+                </button>
+              </div>
             </div>
-            <div class="flex flex-col min-[1125px]:p-[2rem] p-[1.5rem] gap-5">
+            <div class="absolute w-full h-full left-0 top-0">
               <div
-                class="flex flex-col gap-5 p-7 rounded-[.625rem] bg-[#181b28]"
-                id="registration"
-              >
-                <span class="text-[1.3rem] font-[600] leading-[110%]"
-                  >Как мне зарегестрироваться?</span
-                >
-                <div
-                  class="flex flex-col text-sm font-[400] gap-3 text-[#abaec3] [&_b]:text-white [&_b]:font-[500]"
-                >
-                  <p>
-                    Если Вы впервые на сайте, нажмите на кнопку
-                    <b>Регистрация</b> в шапке сайта и выберите наиболее удобный
-                    способ создания аккаунта.
-                  </p>
-                  <p>
-                    Если у Вас уже есть аккаунт, нажмите на кнопку <b>Вход</b> в
-                    шапке сайта и выберите способ, который был использован при
-                    регистрации аккаунта. Если Вы подключали к профилю
-                    дополнительные аккаунты, они так же могут быть использованы
-                    для входа.
-                  </p>
-                </div>
-              </div>
-              <div
-                class="flex flex-col gap-5 p-7 rounded-[.625rem] bg-[#181b28]"
-                id="multiaccount"
-              >
-                <span class="text-[1.3rem] font-[600] leading-[110%]"
-                  >Могу ли я зарегистрировать несколько аккаунтов?</span
-                >
-                <div
-                  class="flex flex-col text-sm font-[400] gap-3 text-[#abaec3] [&_b]:text-white [&_b]:font-[500]"
-                >
-                  <p>
-                    Регистрация более одного аккаунта запрещена. Нарушая правила
-                    сайта Вы рискуете получить блокировку всех своих аккаунтов
-                    без права возврата денежных средств.
-                  </p>
-                </div>
-              </div>
-              <div
-                class="flex flex-col gap-5 p-7 rounded-[.625rem] bg-[#181b28]"
-                id="timezone"
-              >
-                <span class="text-[1.3rem] font-[600] leading-[110%]"
-                  >Как используется моя временная зона?</span
-                >
-                <div
-                  class="flex flex-col text-sm font-[400] gap-3 text-[#abaec3] [&_b]:text-white [&_b]:font-[500]"
-                >
-                  <p>
-                    С помощью временной зоны аккаунта мы корректируем все
-                    отображаемые на сайте даты по Вашему часовому поясу.
-                    Например, даты в истории ставок в личном кабинете.
-                  </p>
-                </div>
-              </div>
-              <div
-                class="flex flex-col gap-5 p-7 rounded-[.625rem] bg-[#181b28]"
-                id="historyoperation"
-              >
-                <span class="text-[1.3rem] font-[600] leading-[110%]"
-                  >Где находится история моих операций?</span
-                >
-                <div
-                  class="flex flex-col text-sm font-[400] gap-3 text-[#abaec3] [&_b]:text-white [&_b]:font-[500]"
-                >
-                  <p>
-                    Историю платежей и выплат можно найти во вкладке
-                    <b>"Депозит"</b>.
-                  </p>
-                </div>
-              </div>
-              <div
-                class="flex flex-col gap-5 p-7 rounded-[.625rem] bg-[#181b28]"
-                id="blocked"
-              >
-                <span class="text-[1.3rem] font-[600] leading-[110%]"
-                  >Мой аккаунт заблокировали, что делать?</span
-                >
-                <div
-                  class="flex flex-col text-sm font-[400] gap-3 text-[#abaec3] [&_b]:text-white [&_b]:font-[500]"
-                >
-                  <p>Отпишите в тех.поддержку на сайте.</p>
-                </div>
-              </div>
+                class="absolute w-full h-full left-0 top-0 bg-[radial-gradient(90%_55%_,_transparent,_#131521_85%)] z-[1]"
+              ></div>
+              <img
+                src="../assets/images/backgrounds/night.jpg"
+                class="w-full h-full object-cover"
+              />
             </div>
           </div>
-          <div class="flex flex-col" id="wallet">
+        </section>
+        <section class="flex flex-col min-[1125px]:p-[2rem] p-[1rem]">
+          <div class="flex flex-col">
             <div
-              class="w-full relative bg-[#1D1F2C] sticky left-0 top-[4.5rem]"
+              class="flex self-start flex-wrap -ml-2 -mr-2 min-[945px]:gap-y-6 gap-y-4 w-[calc(100%_+_1rem)] [&>div]:px-2 min-[945px]:[&>div]:w-1/2 [&>div]:w-full"
             >
-              <div
-                class="relative min-[841px]:flex-row flex-col flex min-[841px]:items-center gap-3 justify-between z-[2] min-[1125px]:px-[2rem] px-[1rem] py-5 w-full"
-              >
-                <div class="flex items-center gap-2">
-                  <svg class="w-5 h-5 text-blue">
-                    <use
-                      xlink:href="../assets/images/symbols.svg#icon-wallet"
-                    ></use>
-                  </svg>
-                  <span class="text-xl font-[600] uppercase"
-                    >Платежи и выплаты</span
+              <div>
+                <div
+                  class="rounded-[.5rem] h-full w-full flex flex-col overflow-hidden relative bg-[#1D1F2C] px-6 py-6"
+                >
+                  <div
+                    class="relative min-[481px]:flex-row flex-col z-[2] flex min-[481px]:items-end items-start min-[481px]:gap-0 gap-4 justify-between w-full"
                   >
+                    <div class="relative z-[2] flex flex-col items-start gap-2">
+                      <div class="flex flex-col items-start">
+                        <span class="text-[#B3BBDF] text-base font-[500]"
+                          >Ваш уровень</span
+                        >
+                        <span class="text-[2rem] font-[600]">Без ранга 0%</span>
+                      </div>
+                      <span class="text-[#8A91AC] text-sm font-[500]"
+                        >Получайте уникальные
+                        <span class="text-white">ранговые бонусы</span></span
+                      >
+                    </div>
+                    <button
+                      class="h-[3.438rem] min-[425px]:w-fit w-full uppercase relative font-[600] flex rounded-[.375rem] items-center justify-center text-white px-[1.75rem] transition-[background_,_box-shadow_,_opacity] duration-300 bg-[#3D415B] hover:bg-[#454968]"
+                    >
+                      <span>Подробнее</span>
+                    </button>
+                  </div>
+                  <div class="absolute w-full h-full left-0 top-0">
+                    <div
+                      class="absolute w-full h-full left-0 top-0 bg-[radial-gradient(50%_100%_,_transparent,_#1D1F2C_85%)] z-[1]"
+                    ></div>
+                    <img
+                      src="../assets/images/backgrounds/circle.jpg"
+                      class="w-full h-full object-cover saturate-[0.6]"
+                    />
+                  </div>
                 </div>
               </div>
-              <div class="absolute left-0 top-0 w-full h-full overflow-hidden">
+              <div>
                 <div
-                  class="absolute left-0 top-0 w-full h-full bg-gradient-to-r from-[#222432] from-[0%] via-transparent to-[#222432] to-[80%] z-[1]"
-                ></div>
-                <img
-                  src="../assets/images/backgrounds/circle.jpg"
-                  class="w-full h-full object-cover saturate-[0.4] opacity-50"
-                  alt=""
-                />
-              </div>
-            </div>
-            <div class="flex flex-col min-[1125px]:p-[2rem] p-[1.5rem] gap-5">
-              <div
-                class="flex flex-col gap-5 p-7 rounded-[.625rem] bg-[#181b28]"
-                id="howpay"
-              >
-                <span class="text-[1.3rem] font-[600] leading-[110%]"
-                  >Как пополнить баланс?</span
+                  class="rounded-[.5rem] w-full h-full flex flex-col overflow-hidden relative bg-[#1D1F2C] px-6 py-6"
                 >
-                <div
-                  class="flex flex-col text-sm font-[400] gap-3 text-[#abaec3] [&_b]:text-white [&_b]:font-[500]"
-                >
-                  <p>
-                    Чтобы начать игру в нашем казино и насладиться всеми его
-                    преимуществами, вам нужно внести депозит на свой аккаунт.
-                  </p>
-                  <p>
-                    Мы предлагаем множество удобных и безопасных способов
-                    пополнения
-                  </p>
-                </div>
-              </div>
-              <div
-                class="flex flex-col gap-5 p-7 rounded-lg bg-[#181b28]"
-                id="withhelp"
-              >
-                <span class="text-2xl font-semibold leading-tight text-white"
-                  >Как вывести средства?</span
-                >
-                <div
-                  class="flex flex-col text-sm font-normal gap-3 text-[#abaec3]"
-                >
-                  <p>
-                    Если вы готовы вывести свои средства, наше казино предлагает
-                    большое количество удобных и безопасных способов для этого:
-                  </p>
-                  <p>1. Нажмите на кнопку "Пополнить"</p>
-                  <p>2. Нажмите на кнопку "Вывод"</p>
-                  <p>3. Выберите один из предложенных методов вывода средств</p>
-                  <p>4. Ожидайте поступления средств</p>
-                </div>
-              </div>
-              <div
-                class="flex flex-col gap-5 p-7 rounded-[.625rem] bg-[#181b28]"
-                id="methodpay"
-              >
-                <span class="text-[1.3rem] font-[600] leading-[110%] text-white"
-                  >Какие способы доступны для пополнения и вывода?</span
-                >
-                <div
-                  class="flex flex-col text-sm font-[400] gap-3 text-[#abaec3] [&_b]:text-white [&_b]:font-[500]"
-                >
-                  <p>
-                    В нашем казино мы предлагаем множество удобных и безопасных
-                    методов для пополнения и вывода средств. Ваш комфорт и
-                    безопасность – наши приоритеты. Рассмотрим доступные
-                    варианты подробнее:
-                  </p>
-                  <p>1. Система Быстрых Платежей (СБП)</p>
-                  <p>2. TRC20</p>
-                  <p>3. Банковские Карты</p>
-                  <p>4. FKWallet</p>
-                  <p>5. ЮMoney</p>
-                </div>
-              </div>
-              <div
-                class="flex flex-col gap-5 p-7 rounded-[.625rem] bg-[#181b28]"
-                id="historyoperation"
-              >
-                <span class="text-[1.3rem] font-[600] leading-[110%]"
-                  >Как быстро зачисляются деньги на баланс?</span
-                >
-                <div
-                  class="flex flex-col text-sm font-[400] gap-3 text-[#abaec3] [&_b]:text-white [&_b]:font-[500]"
-                >
-                  <p>
-                    Обычно деньги поступают на ваш игровой счёт в течение пары
-                    минут.
-                  </p>
-                  <p>
-                    Однако, в редких случаях могут возникнуть задержки. Это
-                    может происходить из-за различных факторов, таких как
-                    банковские проверки или нагрузки на платёжные системы. В
-                    этих случаях зачисление средств может занять до 15-20 минут.
-                  </p>
-                  <p>
-                    Если после этого времени ваш депозит всё ещё не отобразился
-                    на балансе, не волнуйтесь! Свяжитесь с нашей службой
-                    поддержки. Пожалуйста, приготовьте чек перевода или скриншот
-                    подтверждения платежа, чтобы мы могли оперативно решить вашу
-                    проблему и вы могли продолжить наслаждаться игрой.
-                  </p>
-                </div>
-              </div>
-              <div
-                class="flex flex-col gap-5 p-7 rounded-[.625rem] bg-[#181b28]"
-                id="howlongwith"
-              >
-                <span class="text-[1.3rem] font-[600] leading-[110%]"
-                  >Как быстро происходит вывод средств?</span
-                >
-                <div
-                  class="flex flex-col text-sm font-[400] gap-3 text-[#abaec3] [&_b]:text-white [&_b]:font-[500]"
-                >
-                  <p>
-                    Среднее время вывода средств составляет около 1 часа,
-                    максимальное время ожидания вывода средств составляет 24
-                    часа.
-                  </p>
-                </div>
-              </div>
-              <div
-                class="flex flex-col gap-5 p-7 rounded-[.625rem] bg-[#181b28]"
-                id="nopay"
-              >
-                <span class="text-[1.3rem] font-[600] leading-[110%]"
-                  >Произвел оплату, но деньги на баланс не зачислились, что
-                  делать?</span
-                >
-                <div
-                  class="flex flex-col text-sm font-[400] gap-3 text-[#abaec3] [&_b]:text-white [&_b]:font-[500]"
-                >
-                  <p>
-                    Если после обработки депозит всё ещё не отобразился на
-                    балансе, не волнуйтесь! Свяжитесь с нашей службой поддержки.
-                    Пожалуйста, приготовьте чек перевода или скриншот
-                    подтверждения платежа, чтобы мы могли оперативно решить вашу
-                    проблему и вы могли продолжить наслаждаться игрой.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="flex flex-col" id="bonus">
-            <div
-              class="w-full relative bg-[#1D1F2C] sticky left-0 top-[4.5rem]"
-            >
-              <div
-                class="relative min-[841px]:flex-row flex-col flex min-[841px]:items-center gap-3 justify-between z-[2] min-[1125px]:px-[2rem] px-[1rem] py-5 w-full"
-              >
-                <div class="flex items-center gap-2">
-                  <svg class="w-5 h-5 text-blue">
-                    <use
-                      xlink:href="../assets/images/symbols.svg#icon-bonus"
-                    ></use>
-                  </svg>
-                  <span class="text-xl font-[600] uppercase"
-                    >Бонусная программа</span
+                  <div
+                    class="relative min-[481px]:flex-row flex-col z-[2] flex min-[481px]:items-end items-start min-[481px]:gap-0 gap-4 justify-between w-full"
                   >
+                    <div class="relative z-[2] flex flex-col items-start gap-2">
+                      <div class="flex flex-col items-start">
+                        <span class="text-[#B3BBDF] text-base font-[500]"
+                          >Ваш кэшбэк</span
+                        >
+                        <span class="text-[2rem] font-[600]"
+                          ><span id="cashback">0</span> ₽</span
+                        >
+                      </div>
+                      <button
+                        class="text-sm font-[500] transition-[background_,_color] bg-[#737CB2]/[0.15] py-0.5 px-2 rounded-full text-[#CCD5FF] backdrop-blur-[15px] hover:bg-[#737CB2]/[0.25] hover:text-white"
+                      >
+                        Снять
+                      </button>
+                    </div>
+                    <button
+                      class="h-[3.438rem] min-[425px]:w-fit w-full uppercase relative font-[600] flex rounded-[.375rem] items-center justify-center text-white px-[1.75rem] transition-[background_,_box-shadow_,_opacity] duration-300 bg-[#3D415B] hover:bg-[#454968]"
+                    >
+                      <span>Подробнее</span>
+                    </button>
+                  </div>
+                  <div class="absolute w-full h-full left-0 top-0">
+                    <div
+                      class="absolute w-full h-full left-0 top-0 bg-[radial-gradient(50%_100%_,_transparent,_#1D1F2C_85%)] z-[1]"
+                    ></div>
+                    <img
+                      src="../assets/images/backgrounds/cosmos.jpg"
+                      class="w-full h-full object-cover saturate-[0.6]"
+                    />
+                  </div>
                 </div>
               </div>
-              <div class="absolute left-0 top-0 w-full h-full overflow-hidden">
-                <div
-                  class="absolute left-0 top-0 w-full h-full bg-gradient-to-r from-[#222432] from-[0%] via-transparent to-[#222432] to-[80%] z-[1]"
-                ></div>
-                <img
-                  src="../assets/images/backgrounds/circle.jpg"
-                  class="w-full h-full object-cover saturate-[0.4] opacity-50"
-                  alt=""
-                />
-              </div>
+              <!-- <div class="!w-full">
+            <div class="flex h-full flex-col gap-4">
+                <div class="shrink-0 flex items-center gap-3 font-[600] text-xl uppercase">
+                    <i class="shrink-0 w-[1.125rem] h-[1.125rem] rounded-full bg-blue shadow-btn-blue"></i>
+                    <span>Статистика</span>
+                </div>
+                <div class="min-[525px]:flex grid grid-cols-2 gap-4 p-5 items-center justify-between bg-[#1D1F2C] rounded-[.5rem] border border-[#505575]/[0.3]">
+                    <div class="flex flex-col min-[525px]:items-start items-center">
+                        <span class="text-[#CCD5FF] font-[500] text-sm">Всего ставок</span>
+                        <span class="text-xl font-[600]">3 757</span>
+                    </div>
+                    <div class="flex flex-col min-[525px]:items-start items-center">
+                        <span class="text-[#CCD5FF] font-[500] text-sm">Пополнено</span>
+                        <span class="text-xl font-[600]">0₽</span>
+                    </div>
+                    <div class="flex flex-col min-[525px]:items-start items-center">
+                        <span class="text-[#CCD5FF] font-[500] text-sm">Выплачено</span>
+                        <span class="text-xl font-[600]">0₽</span>
+                    </div>
+                    <div class="flex flex-col min-[525px]:items-start items-center">
+                        <span class="text-[#CCD5FF] font-[500] text-sm">Профит</span>
+                        <span class="text-xl font-[600]">0₽</span>
+                    </div> 
+                </div>
             </div>
-            <div class="flex flex-col min-[1125px]:p-[2rem] p-[1.5rem] gap-5">
-              <div
-                class="flex flex-col gap-5 p-7 rounded-[.625rem] bg-[#181b28]"
-                id="bonusvk"
-              >
-                <span class="text-[1.3rem] font-[600] leading-[110%]"
-                  >Бонусы за Подписку на Наш Телеграм и ВКонтакте</span
-                >
-                <div
-                  class="flex flex-col text-sm font-[400] gap-3 text-[#abaec3] [&_b]:text-white [&_b]:font-[500]"
-                >
-                  <p>
-                    Подпишитесь на наш Телеграм-канал и группу ВКонтакте, чтобы
-                    получать бонусы за подписку.
-                  </p>
-                  <p>1. Бонус за Репост</p>
-                  <p>2. Ежемесячный Кешбек</p>
-                  <p>3. Ежедневные Промокоды в Телеграм-канале</p>
+        </div>
+        <!-- <div>
+            <div class="flex h-full flex-col gap-4">
+                <div class="shrink-0 flex items-center gap-3 font-[600] text-xl uppercase">
+                    <i class="shrink-0 w-[1.125rem] h-[1.125rem] rounded-full bg-blue shadow-btn-blue"></i>
+                    <span>Двухфакторная аутентификация</span>
+                </div>
+                <div class="flex min-[525px]:flex-row flex-col min-[525px]:gap-0 gap-3 min-[525px]:text-left text-center items-center px-4 h-full justify-between bg-[#1D1F2C] min-[945px]:py-0 py-4 rounded-[.5rem] border border-[#505575]/[0.3]">
+                    <div class="flex min-[525px]:flex-row flex-col items-center gap-3 text-sm font-[500]">
+                        <img src="assets/images/locked.svg" alt="">
+                        <p>Защитите свою учетную запись <br> дополнительным уровнем безопасности</p>
+                    </div>
+                    <button type="button" rel="popup" data-popup="popup--cashback" class="h-[3.438rem] min-[425px]:w-fit w-full uppercase relative font-[600] flex rounded-[.375rem] items-center justify-center text-white px-[1.75rem] transition-[background_,_box-shadow_,_opacity] duration-300 bg-[#3D415B] hover:bg-[#454968]">
+                        <span>Подробнее</span>
+                    </button>
+                </div>
+            </div>
+        </div> -->
+              <div>
+                <div class="flex h-full flex-col gap-4">
+                  <div
+                    class="shrink-0 flex items-center gap-3 font-[600] text-xl uppercase"
+                  >
+                    <i
+                      class="shrink-0 w-[1.125rem] h-[1.125rem] rounded-full bg-blue shadow-btn-blue"
+                    ></i>
+                    <span>Общее</span>
+                  </div>
+                  <div
+                    class="grid min-[525px]:grid-cols-2 grid-cols-1 gap-3 px-6 justify-between bg-[#1D1F2C] p-6 rounded-[.5rem]"
+                  >
+                    <div class="flex flex-col gap-2">
+                      <span class="text-sm font-[500] text-[#8F94AB]"
+                        >Ваш логин</span
+                      >
+                      <div class="flex flex-col gap-2">
+                        <div class="relative">
+                          <input
+                            class="h-[3rem] px-5 rounded-[.375rem] bg-[#272A39] text-[.938rem] w-full placeholder:text-[#A1A6BE] text-white focus:placeholder:opacity-0 placeholder:transition-[opacity]"
+                            placeholder="Введите ваш логин"
+                            autocomplete="off"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="flex flex-col gap-2">
+                      <span class="text-sm font-[500] text-[#8F94AB]"
+                        >Почта</span
+                      >
+                      <div class="flex flex-col gap-2">
+                        <div class="relative">
+                          <input
+                            class="h-[3rem] px-5 rounded-[.375rem] bg-[#272A39] text-[.938rem] w-full placeholder:text-[#A1A6BE] text-white focus:placeholder:opacity-0 placeholder:transition-[opacity]"
+                            placeholder="Введите вашу почту"
+                            autocomplete="off"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="flex flex-col gap-2">
+                      <span class="text-sm font-[500] text-[#8F94AB]"
+                        >Номер телефона</span
+                      >
+                      <div class="flex flex-col gap-2">
+                        <div class="relative">
+                          <input
+                            class="h-[3rem] px-5 rounded-[.375rem] bg-[#272A39] text-[.938rem] w-full placeholder:text-[#A1A6BE] text-white focus:placeholder:opacity-0 placeholder:transition-[opacity]"
+                            autocomplete="off"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="flex items-end">
+                      <button
+                        type="button"
+                        class="h-[3rem] w-full uppercase relative font-[600] flex rounded-[.375rem] items-center justify-center text-white px-[1.75rem] transition-[background_,_box-shadow_,_opacity] duration-300 bg-[#3D415B] hover:bg-[#454968]"
+                      >
+                        <span>Сохранить</span>
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div
-                class="flex flex-col gap-5 p-7 rounded-[.625rem] bg-[#181b28]"
-                id="promocodeactivate"
-              >
-                <span class="text-[1.3rem] font-[600] leading-[110%]"
-                  >Как активировать промо-код?</span
-                >
-                <div
-                  class="flex flex-col text-sm font-[400] gap-3 text-[#abaec3] [&_b]:text-white [&_b]:font-[500]"
-                >
-                  <p>
-                    Промокоды активируются в разделе "Бонусы". Максимальный
-                    вывод с бонуса 1000р.
-                  </p>
-                  <p>
-                    Если вы выиграли больше чем 1000р то баланс будет
-                    анулирован!
-                  </p>
-                </div>
-              </div>
-              <div
-                class="flex flex-col gap-5 p-7 rounded-[.625rem] bg-[#181b28]"
-                id="searchpromo"
-              >
-                <span class="text-[1.3rem] font-[600] leading-[110%]"
-                  >Где можно найти актуальные промо-коды?</span
-                >
-                <div
-                  class="flex flex-col text-sm font-[400] gap-3 text-[#abaec3] [&_b]:text-white [&_b]:font-[500]"
-                >
-                  <p>
-                    Актуальные промокоды публикуются каждый день в нашем
-                    Телеграм-канале. Все промокоды идут с вейджером х5!
-                  </p>
-                  <p>
-                    Вейджер с промокодов суммируется, старайтесь его отыгрывать
-                    чтобы потом у вас не было большого вейджера!
-                  </p>
-                </div>
-              </div>
-              <div
-                class="flex flex-col gap-5 p-7 rounded-[.625rem] bg-[#181b28]"
-                id="bonusvk"
-              >
-                <span class="text-[1.3rem] font-[600] leading-[110%]"
-                  >Как получить бонус за вступление в группу ВКонтакте?</span
-                >
-                <div
-                  class="flex flex-col text-sm font-[400] gap-3 text-[#abaec3] [&_b]:text-white [&_b]:font-[500]"
-                >
-                  <p>
-                    Подпишитесь на нашу группу ВКонтакте и нажмите кнопку
-                    проверить.
-                  </p>
+              <div>
+                <div class="flex h-full flex-col gap-4">
+                  <div
+                    class="shrink-0 flex items-center gap-3 font-[600] text-xl uppercase"
+                  >
+                    <i
+                      class="shrink-0 w-[1.125rem] h-[1.125rem] rounded-full bg-blue shadow-btn-blue"
+                    ></i>
+                    <span>Безопасность</span>
+                  </div>
+                  <div
+                    class="grid min-[525px]:grid-cols-2 grid-cols-1 gap-3 px-6 justify-between bg-[#1D1F2C] p-6 rounded-[.5rem]"
+                    @keydown.enter="changePass()"
+                  >
+                    <div class="flex flex-col gap-2">
+                      <span class="text-sm font-[500] text-[#8F94AB]"
+                        >Старый пароль</span
+                      >
+                      <div class="flex flex-col gap-2">
+                        <div class="relative">
+                          <input
+                            x-model="oldPass"
+                            type="password"
+                            class="h-[3rem] px-5 rounded-[.375rem] bg-[#272A39] text-[.938rem] w-full placeholder:text-[#A1A6BE] text-white focus:placeholder:opacity-0 placeholder:transition-[opacity]"
+                            placeholder="Старый пароль"
+                            autocomplete="off"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="flex flex-col gap-2">
+                      <span class="text-sm font-[500] text-[#8F94AB]"
+                        >Новый пароль</span
+                      >
+                      <div class="flex flex-col gap-2">
+                        <div class="relative">
+                          <input
+                            x-model="newPass"
+                            type="password"
+                            class="h-[3rem] px-5 rounded-[.375rem] bg-[#272A39] text-[.938rem] w-full placeholder:text-[#A1A6BE] text-white focus:placeholder:opacity-0 placeholder:transition-[opacity]"
+                            placeholder="Новый пароль"
+                            autocomplete="off"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="flex flex-col gap-2">
+                      <span class="text-sm font-[500] text-[#8F94AB]"
+                        >Подтверждения пароля</span
+                      >
+                      <div class="flex flex-col gap-2">
+                        <div class="relative">
+                          <input
+                            x-model="newPass2"
+                            type="password"
+                            class="h-[3rem] px-5 rounded-[.375rem] bg-[#272A39] text-[.938rem] w-full placeholder:text-[#A1A6BE] text-white focus:placeholder:opacity-0 placeholder:transition-[opacity]"
+                            placeholder="Введите новый пароль"
+                            autocomplete="off"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="flex items-end">
+                      <button
+                        class="h-[3rem] w-full uppercase relative font-[600] flex rounded-[.375rem] items-center justify-center text-white px-[1.75rem] transition-[background_,_box-shadow_,_opacity] duration-300 bg-[#3D415B] hover:bg-[#454968]"
+                      >
+                        <span>Сохранить</span>
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-
-          <div class="flex flex-col" id="partner">
+          <div class="flex flex-col gap-4 pt-3">
             <div
-              class="w-full relative bg-[#1D1F2C] sticky left-0 top-[4.5rem]"
+              class="shrink-0 flex items-center gap-3 font-[600] text-xl uppercase"
             >
+              <i
+                class="shrink-0 w-[1.125rem] h-[1.125rem] rounded-full bg-blue shadow-btn-blue"
+              ></i>
+              <span>История действий</span>
+            </div>
+            <div class="flex flex-col gap-4">
               <div
-                class="relative min-[841px]:flex-row flex-col flex min-[841px]:items-center gap-3 justify-between z-[2] min-[1125px]:px-[2rem] px-[1rem] py-5 w-full"
+                class="flex flex-col gap-3 max-[780px]:overflow-auto scroll-0"
               >
-                <div class="flex items-center gap-2">
-                  <svg class="w-5 h-5 text-blue">
-                    <use
-                      xlink:href="assets/images/symbols.svg#icon-partners"
-                    ></use>
-                  </svg>
-                  <span class="text-xl font-[600] uppercase">Партнерка</span>
+                <div
+                  class="flex max-[992px]:min-w-[992px] items-center justify-between bg-[#222432] rounded-[.5rem] h-[4.5rem] overflow-hidden"
+                >
+                  <div
+                    class="shrink-0 flex flex-col items-center justify-center h-full"
+                  >
+                    <img
+                      src="../assets/images/history/partners.png"
+                      class="max-h-full object-contain"
+                      alt=""
+                    />
+                  </div>
+                  <div class="flex-1 flex flex-col items-start px-6">
+                    <span class="text-xs text-[#9CA0B5]">ID операции</span>
+                    <span class="text-base font-[600]">#128128</span>
+                  </div>
+                  <div class="flex-1 flex flex-col items-start px-6">
+                    <span class="text-xs text-[#9CA0B5]"
+                      >Действие операции
+                    </span>
+                    <span class="text-base font-[600]">Перевод на баланс</span>
+                  </div>
+                  <div class="flex-1 flex flex-col items-start px-6">
+                    <span class="text-xs text-[#9CA0B5]">Сумма операции</span>
+                    <span class="text-base font-[600]">5 878 ₽</span>
+                  </div>
+                  <div class="flex-1 flex flex-col items-start px-6">
+                    <span class="text-xs text-[#9CA0B5]">Дата операции</span>
+                    <span class="text-base font-[600]">3 января 2024</span>
+                  </div>
+                </div>
+                <div
+                  class="flex max-[992px]:min-w-[992px] items-center justify-between bg-[#222432] rounded-[.5rem] h-[4.5rem] overflow-hidden"
+                >
+                  <div
+                    class="shrink-0 flex flex-col items-center justify-center h-full"
+                  >
+                    <img
+                      src="../assets/images/history/wallet.png"
+                      class="max-h-full object-contain"
+                      alt=""
+                    />
+                  </div>
+                  <div class="flex-1 flex flex-col items-start px-6">
+                    <span class="text-xs text-[#9CA0B5]">ID операции</span>
+                    <span class="text-base font-[600]">#128128</span>
+                  </div>
+                  <div class="flex-1 flex flex-col items-start px-6">
+                    <span class="text-xs text-[#9CA0B5]"
+                      >Действие операции
+                    </span>
+                    <span class="text-base font-[600]">Пополнение средств</span>
+                  </div>
+                  <div class="flex-1 flex flex-col items-start px-6">
+                    <span class="text-xs text-[#9CA0B5]">Сумма операции</span>
+                    <span class="text-base font-[600]">1 500 ₽</span>
+                  </div>
+                  <div class="flex-1 flex flex-col items-start px-6">
+                    <span class="text-xs text-[#9CA0B5]">Дата операции</span>
+                    <span class="text-base font-[600]">3 января 2024</span>
+                  </div>
+                </div>
+                <div
+                  class="flex max-[992px]:min-w-[992px] items-center justify-between bg-[#222432] rounded-[.5rem] h-[4.5rem] overflow-hidden"
+                >
+                  <div
+                    class="shrink-0 flex flex-col items-center justify-center h-full"
+                  >
+                    <img
+                      src="../assets/images/history/tournament.png"
+                      class="max-h-full object-contain"
+                      alt=""
+                    />
+                  </div>
+                  <div class="flex-1 flex flex-col items-start px-6">
+                    <span class="text-xs text-[#9CA0B5]">ID операции</span>
+                    <span class="text-base font-[600]">#128128</span>
+                  </div>
+                  <div class="flex-1 flex flex-col items-start px-6">
+                    <span class="text-xs text-[#9CA0B5]"
+                      >Действие операции
+                    </span>
+                    <span class="text-base font-[600]">Победа</span>
+                  </div>
+                  <div class="flex-1 flex flex-col items-start px-6">
+                    <span class="text-xs text-[#9CA0B5]">Сумма операции</span>
+                    <span class="text-base font-[600]">1 500 ₽</span>
+                  </div>
+                  <div class="flex-1 flex flex-col items-start px-6">
+                    <span class="text-xs text-[#9CA0B5]">Дата операции</span>
+                    <span class="text-base font-[600]">3 января 2024</span>
+                  </div>
+                </div>
+                <div
+                  class="flex max-[992px]:min-w-[992px] items-center justify-between bg-[#222432] rounded-[.5rem] h-[4.5rem] overflow-hidden"
+                >
+                  <div
+                    class="shrink-0 flex flex-col items-center justify-center h-full"
+                  >
+                    <img
+                      src="../assets/images/history/wallet.png"
+                      class="max-h-full object-contain"
+                      alt=""
+                    />
+                  </div>
+                  <div class="flex-1 flex flex-col items-start px-6">
+                    <span class="text-xs text-[#9CA0B5]">ID операции</span>
+                    <span class="text-base font-[600]">#128128</span>
+                  </div>
+                  <div class="flex-1 flex flex-col items-start px-6">
+                    <span class="text-xs text-[#9CA0B5]"
+                      >Действие операции
+                    </span>
+                    <span class="text-base font-[600]">Вывод средств</span>
+                  </div>
+                  <div class="flex-1 flex flex-col items-start px-6">
+                    <span class="text-xs text-[#9CA0B5]">Сумма операции</span>
+                    <span class="text-base font-[600]">1 500 ₽</span>
+                  </div>
+                  <div class="flex-1 flex flex-col items-start px-6">
+                    <span class="text-xs text-[#9CA0B5]">Дата операции</span>
+                    <span class="text-base font-[600]">3 января 2024</span>
+                  </div>
+                </div>
+                <div
+                  class="flex max-[992px]:min-w-[992px] items-center justify-between bg-[#222432] rounded-[.5rem] h-[4.5rem] overflow-hidden"
+                >
+                  <div
+                    class="shrink-0 flex flex-col items-center justify-center h-full"
+                  >
+                    <img
+                      src="../assets/images/history/account.png"
+                      class="max-h-full object-contain"
+                      alt=""
+                    />
+                  </div>
+                  <div class="flex-1 flex flex-col items-start px-6">
+                    <span class="text-xs text-[#9CA0B5]">ID операции</span>
+                    <span class="text-base font-[600]">#128128</span>
+                  </div>
+                  <div class="flex-1 flex flex-col items-start px-6">
+                    <span class="text-xs text-[#9CA0B5]"
+                      >Действие операции
+                    </span>
+                    <span class="text-base font-[600]">Смена пароля</span>
+                  </div>
+                  <div class="flex-1 flex flex-col items-start px-6">
+                    <span class="text-xs text-[#9CA0B5]">Статус</span>
+                    <span class="text-base font-[600]">Успешно</span>
+                  </div>
+                  <div class="flex-1 flex flex-col items-start px-6">
+                    <span class="text-xs text-[#9CA0B5]">Дата операции</span>
+                    <span class="text-base font-[600]">3 января 2024</span>
+                  </div>
+                </div>
+                <div
+                  class="flex max-[992px]:min-w-[992px] items-center justify-between bg-[#222432] rounded-[.5rem] h-[4.5rem] overflow-hidden"
+                >
+                  <div
+                    class="shrink-0 flex flex-col items-center justify-center h-full"
+                  >
+                    <img
+                      src="../assets/images/history/account.png"
+                      class="max-h-full object-contain"
+                      alt=""
+                    />
+                  </div>
+                  <div class="flex-1 flex flex-col items-start px-6">
+                    <span class="text-xs text-[#9CA0B5]">ID операции</span>
+                    <span class="text-base font-[600]">#128128</span>
+                  </div>
+                  <div class="flex-1 flex flex-col items-start px-6">
+                    <span class="text-xs text-[#9CA0B5]"
+                      >Действие операции
+                    </span>
+                    <span class="text-base font-[600]">Подключение 2FA</span>
+                  </div>
+                  <div class="flex-1 flex flex-col items-start px-6">
+                    <span class="text-xs text-[#9CA0B5]">Статус</span>
+                    <span class="text-base font-[600]">Успешно</span>
+                  </div>
+                  <div class="flex-1 flex flex-col items-start px-6">
+                    <span class="text-xs text-[#9CA0B5]">Дата операции</span>
+                    <span class="text-base font-[600]">3 января 2024</span>
+                  </div>
+                </div>
+                <div
+                  class="flex max-[992px]:min-w-[992px] items-center justify-between bg-[#222432] rounded-[.5rem] h-[4.5rem] overflow-hidden"
+                >
+                  <div
+                    class="shrink-0 flex flex-col items-center justify-center h-full"
+                  >
+                    <img
+                      src="../assets/images/history/bonuses.png"
+                      class="max-h-full object-contain"
+                      alt=""
+                    />
+                  </div>
+                  <div class="flex-1 flex flex-col items-start px-6">
+                    <span class="text-xs text-[#9CA0B5]">ID операции</span>
+                    <span class="text-base font-[600]">#128128</span>
+                  </div>
+                  <div class="flex-1 flex flex-col items-start px-6">
+                    <span class="text-xs text-[#9CA0B5]"
+                      >Действие операции
+                    </span>
+                    <span class="text-base font-[600]"
+                      >Подписка на группу вк</span
+                    >
+                  </div>
+                  <div class="flex-1 flex flex-col items-start px-6">
+                    <span class="text-xs text-[#9CA0B5]">Сумма операции</span>
+                    <span class="text-base font-[600]">25 ₽</span>
+                  </div>
+                  <div class="flex-1 flex flex-col items-start px-6">
+                    <span class="text-xs text-[#9CA0B5]">Дата операции</span>
+                    <span class="text-base font-[600]">3 января 2024</span>
+                  </div>
                 </div>
               </div>
-              <div class="absolute left-0 top-0 w-full h-full overflow-hidden">
-                <div
-                  class="absolute left-0 top-0 w-full h-full bg-gradient-to-r from-[#222432] from-[0%] via-transparent to-[#222432] to-[80%] z-[1]"
-                ></div>
-                <img
-                  src="../assets/images/backgrounds/circle.jpg"
-                  class="w-full h-full object-cover saturate-[0.4] opacity-50"
-                  alt=""
-                />
+              <div class="flex justify-end gap-2 flex-wrap">
+                <button
+                  type="button"
+                  disabled=""
+                  class="text-sm font-[500] transition-[background_,_color] bg-[#222432] py-0.5 px-2 rounded-full text-[#CCD5FF] hover:bg-[#2E3040] hover:text-white disabled:opacity-50 disabled:pointer-events-none"
+                >
+                  Предыдущая страница
+                </button>
+                <button
+                  type="button"
+                  class="text-sm font-[500] transition-[background_,_color] bg-[#222432] py-0.5 px-2 rounded-full text-[#CCD5FF] hover:bg-[#2E3040] hover:text-white disabled:opacity-50 disabled:pointer-events-none"
+                >
+                  Следующая страница
+                </button>
               </div>
             </div>
-            <div class="flex flex-col min-[1125px]:p-[2rem] p-[1.5rem] gap-5">
+          </div>
+          <div class="flex flex-col gap-4">
+            <div
+              class="shrink-0 flex items-center gap-3 font-[600] text-xl uppercase"
+            >
+              <i
+                class="shrink-0 w-[1.125rem] h-[1.125rem] rounded-full bg-blue shadow-btn-blue"
+              ></i>
+              <span>Сеансы</span>
+            </div>
+            <div class="flex flex-col gap-4">
               <div
-                class="flex flex-col gap-5 p-7 rounded-[.625rem] bg-[#181b28]"
-                id="partner"
+                class="flex flex-col gap-3 max-[1390px]:overflow-auto scroll-0"
               >
-                <span class="text-[1.3rem] font-[600] leading-[110%]"
-                  >Как происходят выплаты комиссионных начислений?</span
-                >
                 <div
-                  class="flex flex-col text-sm font-[400] gap-3 text-[#abaec3] [&_b]:text-white [&_b]:font-[500]"
+                  class="flex max-[1390px]:min-w-[1390px] items-center justify-between bg-[#222432] rounded-[.5rem] h-[4.5rem] overflow-hidden"
                 >
-                  <p>
-                    1. Перейдите во Вкладку "Партнерка". Для начала вам нужно
-                    зайти в свой личный кабинет и выбрать вкладку "Партнерка".
-                  </p>
-                  <p>
-                    2. Заберите Комиссионные. В разделе "Партнерка" вы найдете
-                    кнопку для вывода средств.
-                  </p>
-                  <p>
-                    3. Поставьте Деньги на Вывод. Вам не нужно отыгрывать свои
-                    комиссионные! Просто поставьте деньги на вывод, выбрав
-                    удобный для вас способ получения средств.
-                  </p>
-                  <p>4. Ожидайте Подтверждения.</p>
+                  <div
+                    class="shrink-0 flex flex-col items-center justify-center h-full relative"
+                  >
+                    <div
+                      class="absolute left-0 top-0 w-full h-full flex flex-col justify-center items-start px-5"
+                    >
+                      <span class="text-sm font-[500] text-[#9CA0B5]"
+                        >Google Chrome</span
+                      >
+                      <span class="text-base font-[600]">192.168.0.1</span>
+                    </div>
+                    <img
+                      src="../assets/images/history/seans.png"
+                      class="max-h-full object-contain"
+                      alt=""
+                    />
+                  </div>
+                  <div class="flex-1 flex flex-col items-start px-6">
+                    <span class="text-xs text-[#9CA0B5]">Регион</span>
+                    <span class="text-base font-[600]">Московская обл</span>
+                  </div>
+                  <div class="flex-1 flex flex-col items-start px-6">
+                    <span class="text-xs text-[#9CA0B5]">Вход</span>
+                    <span class="text-base font-[600]">03.02.2024 6:56</span>
+                  </div>
+                  <div class="flex-1 flex flex-col items-start px-6">
+                    <span class="text-xs text-[#9CA0B5]">В сеансе</span>
+                    <span class="text-base font-[600]">3 д. 5 ч. 25 м.</span>
+                  </div>
+                  <div class="flex-1 flex flex-col items-start px-6">
+                    <span class="text-xs text-[#9CA0B5]">Последний заход</span>
+                    <span class="text-base font-[600]">Вчера</span>
+                  </div>
+                  <div class="flex-1 flex flex-col items-start px-6">
+                    <span class="text-xs text-[#9CA0B5]">Статус</span>
+                    <span class="text-base font-[600]">Текущая</span>
+                  </div>
+                  <div class="shrink-0 px-6">
+                    <button
+                      class="w-[2.75rem] flex items-center justify-center h-[2.75rem] relative text-[#7C82A5] bg-[#323546] transition-[color_,_background] rounded-[.375rem] duration-300 hover:text-white hover:bg-[#3B3E52]"
+                    >
+                      <svg class="w-4 h-4 transition-[opacity] opacity-100">
+                        <use
+                          xlink:href="assets/images/symbols.svg#icon-lock"
+                        ></use>
+                      </svg>
+                      <div
+                        class="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 opacity-0 transition-[opacity] scale-[0.8]"
+                        x-bind:class="loader ? '!opacity-100' : ''"
+                      >
+                        <svg
+                          class="animate-spin h-[1.625rem] w-[1.625rem] text-white"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                        >
+                          <circle
+                            class="opacity-25"
+                            cx="12"
+                            cy="12"
+                            r="10"
+                            stroke="currentColor"
+                            stroke-width="2"
+                          ></circle>
+                          <path
+                            class="opacity-75"
+                            stroke-linecap="round"
+                            fill="currentColor"
+                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                          ></path>
+                        </svg>
+                      </div>
+                    </button>
+                  </div>
+                </div>
+                <div
+                  class="flex max-[1390px]:min-w-[1390px] items-center justify-between bg-[#222432] rounded-[.5rem] h-[4.5rem] overflow-hidden"
+                >
+                  <div
+                    class="shrink-0 flex flex-col items-center justify-center h-full relative"
+                  >
+                    <div
+                      class="absolute left-0 top-0 w-full h-full flex flex-col justify-center items-start px-5"
+                    >
+                      <span class="text-sm font-[500] text-[#9CA0B5]"
+                        >Google Chrome</span
+                      >
+                      <span class="text-base font-[600]">192.168.0.1</span>
+                    </div>
+                    <img
+                      src="../assets/images/history/seans.png"
+                      class="max-h-full object-contain"
+                      alt=""
+                    />
+                  </div>
+                  <div class="flex-1 flex flex-col items-start px-6">
+                    <span class="text-xs text-[#9CA0B5]">Регион</span>
+                    <span class="text-base font-[600]">Московская обл</span>
+                  </div>
+                  <div class="flex-1 flex flex-col items-start px-6">
+                    <span class="text-xs text-[#9CA0B5]">Вход</span>
+                    <span class="text-base font-[600]">03.02.2024 6:56</span>
+                  </div>
+                  <div class="flex-1 flex flex-col items-start px-6">
+                    <span class="text-xs text-[#9CA0B5]">В сеансе</span>
+                    <span class="text-base font-[600]">3 д. 5 ч. 25 м.</span>
+                  </div>
+                  <div class="flex-1 flex flex-col items-start px-6">
+                    <span class="text-xs text-[#9CA0B5]">Последний заход</span>
+                    <span class="text-base font-[600]">Позавчера</span>
+                  </div>
+                  <div class="flex-1 flex flex-col items-start px-6">
+                    <span class="text-xs text-[#9CA0B5]">Статус</span>
+                    <span class="text-base font-[600]">Активная</span>
+                  </div>
+                  <div class="shrink-0 px-6">
+                    <button
+                      class="w-[2.75rem] flex items-center justify-center h-[2.75rem] relative text-[#7C82A5] bg-[#323546] transition-[color_,_background] rounded-[.375rem] duration-300 hover:text-white hover:bg-[#3B3E52]"
+                    >
+                      <svg class="w-4 h-4 transition-[opacity] opacity-100">
+                        <use
+                          xlink:href="assets/images/symbols.svg#icon-lock"
+                        ></use>
+                      </svg>
+                      <div
+                        class="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 opacity-0 transition-[opacity] scale-[0.8]"
+                      >
+                        <svg
+                          class="animate-spin h-[1.625rem] w-[1.625rem] text-white"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                        >
+                          <circle
+                            class="opacity-25"
+                            cx="12"
+                            cy="12"
+                            r="10"
+                            stroke="currentColor"
+                            stroke-width="2"
+                          ></circle>
+                          <path
+                            class="opacity-75"
+                            stroke-linecap="round"
+                            fill="currentColor"
+                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                          ></path>
+                        </svg>
+                      </div>
+                    </button>
+                  </div>
+                </div>
+                <div
+                  class="flex max-[1390px]:min-w-[1390px] items-center justify-between bg-[#222432] rounded-[.5rem] h-[4.5rem] overflow-hidden"
+                >
+                  <div
+                    class="shrink-0 flex flex-col items-center justify-center h-full relative"
+                  >
+                    <div
+                      class="absolute left-0 top-0 w-full h-full flex flex-col justify-center items-start px-5"
+                    >
+                      <span class="text-sm font-[500] text-[#9CA0B5]"
+                        >Google Chrome</span
+                      >
+                      <span class="text-base font-[600]">192.168.0.1</span>
+                    </div>
+                    <img
+                      src="../assets/images/history/seans.png"
+                      class="max-h-full object-contain"
+                      alt=""
+                    />
+                  </div>
+                  <div class="flex-1 flex flex-col items-start px-6">
+                    <span class="text-xs text-[#9CA0B5]">Регион</span>
+                    <span class="text-base font-[600]">Московская обл</span>
+                  </div>
+                  <div class="flex-1 flex flex-col items-start px-6">
+                    <span class="text-xs text-[#9CA0B5]">Вход</span>
+                    <span class="text-base font-[600]">03.02.2024 6:56</span>
+                  </div>
+                  <div class="flex-1 flex flex-col items-start px-6">
+                    <span class="text-xs text-[#9CA0B5]">В сеансе</span>
+                    <span class="text-base font-[600]">3 д. 5 ч. 25 м.</span>
+                  </div>
+                  <div class="flex-1 flex flex-col items-start px-6">
+                    <span class="text-xs text-[#9CA0B5]">Последний заход</span>
+                    <span class="text-base font-[600]">Позавчера</span>
+                  </div>
+                  <div class="flex-1 flex flex-col items-start px-6">
+                    <span class="text-xs text-[#9CA0B5]">Статус</span>
+                    <span class="text-base font-[600]">Закрытая</span>
+                  </div>
+                  <div class="shrink-0 px-6">
+                    <div class="w-[2.75rem] flex"></div>
+                  </div>
                 </div>
               </div>
-              <div
-                class="flex flex-col gap-5 p-7 rounded-[.625rem] bg-[#181b28]"
-                id="stats"
-              >
-                <span class="text-[1.3rem] font-[600] leading-[110%]"
-                  >Как часто обновляется статистика?</span
+              <div class="flex justify-end gap-2 flex-wrap">
+                <button
+                  type="button"
+                  disabled=""
+                  class="text-sm font-[500] transition-[background_,_color] bg-[#222432] py-0.5 px-2 rounded-full text-[#CCD5FF] hover:bg-[#2E3040] hover:text-white disabled:opacity-50 disabled:pointer-events-none"
                 >
-                <div
-                  class="flex flex-col text-sm font-[400] gap-3 text-[#abaec3] [&_b]:text-white [&_b]:font-[500]"
+                  Предыдущая страница
+                </button>
+                <button
+                  type="button"
+                  class="text-sm font-[500] transition-[background_,_color] bg-[#222432] py-0.5 px-2 rounded-full text-[#CCD5FF] hover:bg-[#2E3040] hover:text-white disabled:opacity-50 disabled:pointer-events-none"
                 >
-                  <p>Статистика обновляется в реальном времени.</p>
-                </div>
-              </div>
-              <div
-                class="flex flex-col gap-5 p-7 rounded-[.625rem] bg-[#181b28]"
-                id="linkref"
-              >
-                <span class="text-[1.3rem] font-[600] leading-[110%]"
-                  >Будет ли работать рекламная ссылка, если домен сайта
-                  заблокируют?</span
-                >
-                <div
-                  class="flex flex-col text-sm font-[400] gap-3 text-[#abaec3] [&_b]:text-white [&_b]:font-[500]"
-                >
-                  <p>
-                    Если домен нашего сайта заблокировали, вам нужно оперативно
-                    заменить ссылки в ваших рекламных постах и кампаниях.
-                  </p>
-                </div>
-              </div>
-              <div
-                class="flex flex-col gap-5 p-7 rounded-[.625rem] bg-[#181b28]"
-                id="blogers"
-              >
-                <span class="text-[1.3rem] font-[600] leading-[110%]"
-                  >Есть ли альтернативные варианты сотрудничества с
-                  сайтом?</span
-                >
-                <div
-                  class="flex flex-col text-sm font-[400] gap-3 text-[#abaec3] [&_b]:text-white [&_b]:font-[500]"
-                >
-                  <p>
-                    Если вы заинтересованы в сотрудничестве, и у вас есть методы
-                    привлечения игроков, напишите нашим менеджерам или отправьте
-                    сообщение на нашу электронную почту. Мы внимательно
-                    рассмотрим ваши предложения и оперативно ответим.
-                  </p>
-                </div>
+                  Следующая страница
+                </button>
               </div>
             </div>
           </div>
