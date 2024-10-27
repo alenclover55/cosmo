@@ -1,64 +1,101 @@
-
-
 <!DOCTYPE html>
 <html lang="ru" class="h-full">
-<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/focus@3.x.x/dist/cdn.min.js"></script>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script
+    defer
+    src="https://cdn.jsdelivr.net/npm/@alpinejs/focus@3.x.x/dist/cdn.min.js"
+  ></script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="verification" content="7e83722522e8aeb7512b7075311316b7" />
-    <link rel="icon" href="../assets/images/favicon.png" type="image/png">
-    <link rel="preload" href="../assets/css/styles.css" as="style" onload="this.rel='stylesheet'">
-    <link rel="preload" href="../assets/css/toastr.min.css" as="style" onload="this.rel='stylesheet'">
-    <link rel="preload" href="../assets/fonts/OpenSansCondensed/stylesheet.css" as="style" onload="this.rel='stylesheet'">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="icon" href="../assets/images/favicon.png" type="image/png" />
+    <link
+      rel="preload"
+      href="../assets/css/styles.css"
+      as="style"
+      onload="this.rel='stylesheet'"
+    />
+    <link
+      rel="preload"
+      href="../assets/css/toastr.min.css"
+      as="style"
+      onload="this.rel='stylesheet'"
+    />
+    <link
+      rel="preload"
+      href="../assets/fonts/OpenSansCondensed/stylesheet.css"
+      as="style"
+      onload="this.rel='stylesheet'"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
     <script src="../assets/js/jquery.js"></script>
     <script src="../assets/js/toastr.min.js"></script>
     <script src="https://cdn.tailwindcss.com?plugins=line-clamp"></script>
     <script src="../assets/js/swiper-bundle.min.js"></script>
-    <link rel="preload" href="../assets/css/swiper-bundle.min.css" as="style" onload="this.rel='stylesheet'"/>
+    <link
+      rel="preload"
+      href="../assets/css/swiper-bundle.min.css"
+      as="style"
+      onload="this.rel='stylesheet'"
+    />
     <script src="../assets/js/smooth-scrollbar.js"></script>
-    <link rel="preload" href="../assets/css/simple-scrollbar.min.css" as="style" onload="this.rel='stylesheet'">
+    <link
+      rel="preload"
+      href="../assets/css/simple-scrollbar.min.css"
+      as="style"
+      onload="this.rel='stylesheet'"
+    />
     <script src="../assets/js/popper.min.js"></script>
     <script src="../assets/js/tippy-bundle.umd.min.js"></script>
     <script src="../assets/js/clipboard.min.js"></script>
-    <link rel="preload" href="../assets/css/scale-subtle.css" as="style" onload="this.rel='stylesheet'">
+    <link
+      rel="preload"
+      href="../assets/css/scale-subtle.css"
+      as="style"
+      onload="this.rel='stylesheet'"
+    />
     <script src="../assets/js/socket.io-1.4.5.js"></script>
     <title>Крути и зарабатывай | CosmoCasino</title>
     <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        blue: '#0083E1',
-                    },
-                    fontFamily: {
-                        sans: ['Rubik'],
-                        opensans: ['Open Sans Condensed']
-                    },
-                    boxShadow: {
-                        'btn-blue': '0px 12px 19px -4px rgba(7, 119, 200, 0.16)',
-                        'slot-card': '0px 3px 85px 30px rgba(0,0,0,0.25)',
-                        'modal': '0px 0px 73px 6px #11131C'
-                    }
-                }
-            }
-        }
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              blue: "#0083E1",
+            },
+            fontFamily: {
+              sans: ["Rubik"],
+              opensans: ["Open Sans Condensed"],
+            },
+            boxShadow: {
+              "btn-blue": "0px 12px 19px -4px rgba(7, 119, 200, 0.16)",
+              "slot-card": "0px 3px 85px 30px rgba(0,0,0,0.25)",
+              modal: "0px 0px 73px 6px #11131C",
+            },
+          },
+        },
+      };
     </script>
     <style>
-        body {
-            user-select: text !important; /* Разрешаем выделение текста */
-        }
+      body {
+        user-select: text !important; /* Разрешаем выделение текста */
+      }
     </style>
     <script>
-        document.onselectstart = null; 
-        window.oncontextmenu = null; 
+      document.onselectstart = null;
+      window.oncontextmenu = null;
     </script>
-</head>
-<body
+  </head>
+  <body
     class="[&_img]:pointer-events-none [&_img]:select-none group/body font-sans bg-[#131521] h-full [&_span]:cursor-default [&_p]:cursor-default [&_b]:cursor-default [&_li]:cursor-default [&_h1]:cursor-default [&_h2]:cursor-default [&_h3]:cursor-default [&_h4]:cursor-default [&_h5]:cursor-default [&_h6]:cursor-default text-white [&_li]:list-none focus:[&_*]:ring-0 focus:[&_*]:ring-inherit focus:[&_*]:outline-0 overflow-x-hidden min-w-[320px] [&_button_span]:pointer-events-none [&_a_span]:pointer-events-none [&_canvas]:pointer-events-none select-none parallax"
   >
     <header
@@ -100,7 +137,7 @@
               </svg>
               <span>Слоты</span>
               <div
-                class="absolute left-0 bottom-0 w-full h-[3px] bg-blue  w-0 group-[.active]/link:!w-full group-[.active]/link:!opacity-100"
+                class="absolute left-0 bottom-0 w-full h-[3px] bg-blue w-0 group-[.active]/link:!w-full group-[.active]/link:!opacity-100"
               ></div>
             </button>
           </li>
@@ -118,7 +155,7 @@
               </svg>
               <span>Live игры</span>
               <div
-                class="absolute left-0 bottom-0 w-full h-[3px] bg-blue  w-0 group-[.active]/link:!w-full group-[.active]/link:!opacity-100"
+                class="absolute left-0 bottom-0 w-full h-[3px] bg-blue w-0 group-[.active]/link:!w-full group-[.active]/link:!opacity-100"
               ></div>
             </button>
           </li>
@@ -136,7 +173,7 @@
               </svg>
               <span>Турниры</span>
               <div
-                class="absolute left-0 bottom-0 w-full h-[3px] bg-blue  w-0 group-[.active]/link:!w-full group-[.active]/link:!opacity-100"
+                class="absolute left-0 bottom-0 w-full h-[3px] bg-blue w-0 group-[.active]/link:!w-full group-[.active]/link:!opacity-100"
               ></div>
             </button>
           </li>
@@ -147,11 +184,13 @@
           class="flex items-center gap-3 min-[1125px]:pr-[1.875rem] pr-[1rem]"
         >
           <button
+            id="sign-in-btn"
             class="relative flex items-center font-[500] text-[#A7AFBF] justify-center h-[2.5rem] rounded-[.375rem] bg-[#313343] transition-[color_,_background] duration-300 hover:bg-[#383a4d] hover:text-white px-5"
           >
             <span class="transition-[opacity] opacity-100">Войти</span>
           </button>
           <button
+            id="sign-up-btn"
             class="relative flex items-center font-[500] text-white justify-center h-[2.5rem] rounded-[.375rem] shadow-btn-blue bg-blue transition-[color_,_background_,_border] duration-300 hover:bg-[#2399EF] px-5"
           >
             <span class="transition-[opacity] opacity-100">Регистрация</span>
@@ -259,24 +298,10 @@
                     ></i>
                   </button>
                   <div
-                    class="flex overflow-hidden flex-col gap-[.313rem] max-h-0 transition-[max-height]"
+                    class="flex overflow-hidden flex-col gap-[.313rem] transition-[max-height]"
                   >
                     <div class="flex flex-col gap-[.313rem] pb-[.625rem]">
                       <div class="relative">
-                        <div
-                          class="absolute left-0 top-0 gap-[.75rem] w-full h-full rounded-[.375rem] bg-transparent flex z-[1] items-center pl-[.75rem] pr-[1.125rem] h-[2.875rem]"
-                        >
-                          <div
-                            class="w-[1.5rem] h-[1.5rem] bg-[#313444] loading relative rounded-[.25rem]"
-                          ></div>
-                          <div
-                            class="shrink-0 relative w-[.063rem] h-[1rem] bg-[#313444] loading"
-                          ></div>
-                          <span
-                            class="w-[100px] h-[8px] bg-[#313444] relative loading rounded-full"
-                          ></span>
-                        </div>
-
                         <button
                           data-href="/mines"
                           class="flex w-full whitespace-nowrap font-[600] items-center text-[#9CA0B5] hover:text-white justify-between pl-[.75rem] pr-[1.125rem] h-[2.875rem] bg-transparent rounded-[.375rem] transition-[background_,_color_,_opacity] duration-300 hover:bg-[#313444] [&.active]:bg-blue [&.active]:text-white [&.active]:shadow-btn-blue"
@@ -436,7 +461,7 @@
                     ></i>
                   </button>
                   <div
-                    class="flex overflow-hidden flex-col gap-[.313rem] max-h-0 transition-[max-height]"
+                    class="flex overflow-hidden flex-col gap-[.313rem] transition-[max-height]"
                   >
                     <div class="flex flex-col gap-[.313rem] pb-[.625rem]">
                       <div class="relative">
@@ -642,62 +667,13 @@
                       x-bind:class="state && 'load'"
                       x-data="loader"
                       x-init="destroy"
-                    >
-                      <template x-if="state">
-                        <div
-                          class="absolute left-0 top-0 gap-[.75rem] w-full h-full rounded-[.375rem] bg-transparent flex z-[1] items-center pl-[.75rem] pr-[1.125rem] h-[2.875rem]"
-                        >
-                          <div
-                            class="w-[1.5rem] h-[1.5rem] bg-[#313444] loading relative rounded-[.25rem]"
-                          ></div>
-                          <div
-                            class="shrink-0 relative w-[.063rem] h-[1rem] bg-[#313444] loading"
-                          ></div>
-                          <span
-                            class="w-[100px] h-[8px] bg-[#313444] relative loading rounded-full"
-                          ></span>
-                        </div>
-                      </template>
-                      <button
-                        data-href="/tournaments"
-                        class="flex w-full whitespace-nowrap font-[600] items-center text-[#9CA0B5] hover:text-white justify-between pl-[.75rem] pr-[1.125rem] h-[2.875rem] bg-transparent rounded-[.375rem] transition-[background_,_color_,_opacity] duration-300 hover:bg-[#313444] [&.active]:bg-blue [&.active]:text-white [&.active]:shadow-btn-blue"
-                      >
-                        <div
-                          class="flex pointer-events-none items-center gap-[.75rem]"
-                        >
-                          <svg class="shrink-0 w-[1.5rem] h-[1.5rem]">
-                            <use
-                              xlink:href="../assets/images/symbols.svg?v=1#icon-tournaments"
-                            ></use>
-                          </svg>
-                          <div
-                            class="shrink-0 w-[.063rem] h-[1rem] bg-current opacity-20"
-                          ></div>
-                          <span>Турниры</span>
-                        </div>
-                      </button>
-                    </div>
+                    ></div>
                     <div
                       class="relative"
                       x-bind:class="state && 'load'"
                       x-data="loader"
                       x-init="destroy"
                     >
-                      <template x-if="state">
-                        <div
-                          class="absolute left-0 top-0 gap-[.75rem] w-full h-full rounded-[.375rem] bg-transparent flex z-[1] items-center pl-[.75rem] pr-[1.125rem] h-[2.875rem]"
-                        >
-                          <div
-                            class="w-[1.5rem] h-[1.5rem] bg-[#313444] loading relative rounded-[.25rem]"
-                          ></div>
-                          <div
-                            class="shrink-0 relative w-[.063rem] h-[1rem] bg-[#313444] loading"
-                          ></div>
-                          <span
-                            class="w-[100px] h-[8px] bg-[#313444] relative loading rounded-full"
-                          ></span>
-                        </div>
-                      </template>
                       <button
                         data-href="/faq"
                         class="flex w-full whitespace-nowrap font-[600] items-center text-[#9CA0B5] hover:text-white justify-between pl-[.75rem] pr-[1.125rem] h-[2.875rem] bg-transparent rounded-[.375rem] transition-[background_,_color_,_opacity] duration-300 hover:bg-[#313444] [&.active]:bg-blue [&.active]:text-white [&.active]:shadow-btn-blue"
@@ -728,7 +704,7 @@
 
     <template x-if="search">
       <div
-        class="fixed right-0 min-[1125px]:top-0 top-[4.5rem] min-[1125px]:w-[calc(100%_-_17.5rem)] w-full min-[1125px]:h-full h-[calc(100%_-_4.5rem)] z-[10] flex justify-start pointer-events-none  transition-[opacity] duration-300"
+        class="fixed right-0 min-[1125px]:top-0 top-[4.5rem] min-[1125px]:w-[calc(100%_-_17.5rem)] w-full min-[1125px]:h-full h-[calc(100%_-_4.5rem)] z-[10] flex justify-start pointer-events-none transition-[opacity] duration-300"
         x-bind:class="searchInner && 'pointer-events-auto opacity-100'"
         x-data="{
             model: '',
@@ -822,10 +798,7 @@
                 class="w-full h-[calc(100%_-_3rem_-_1rem)] [&_div.scrollbar-thumb]:!bg-[#b9bfeb]/[0.5] [&_div.scrollbar-thumb]:backdrop-blur-[10px]"
               >
                 <template x-if="!loader">
-                  <div
-                    class="w-full h-full rounded-[.375rem]"
-                    
-                  >
+                  <div class="w-full h-full rounded-[.375rem]">
                     <div
                       class="flex pb-[1.875rem] flex-wrap -ml-2 -mr-2 gap-y-4 w-[calc(100%_+_1rem)] [&>div]:px-2 [&>div]:w-1/3"
                     >
@@ -845,7 +818,7 @@
                                   <span></span>
                                 </template>
                                 <div
-                                  class="absolute left-0 top-0 rounded-[.375rem] w-full h-full bg-[#494E67]/[0.8] backdrop-blur-[10px] z-[1] transition-[opacity] duration-300  group-hover/slot:opacity-100"
+                                  class="absolute left-0 top-0 rounded-[.375rem] w-full h-full bg-[#494E67]/[0.8] backdrop-blur-[10px] z-[1] transition-[opacity] duration-300 group-hover/slot:opacity-100"
                                 ></div>
                                 <img
                                   :src="item.image"
@@ -853,13 +826,9 @@
                                 />
                               </button>
                               <div
-                                class="absolute left-0 top-0 z-[2] p-[.5rem] pointer-events-none w-full h-full flex flex-col rounded-[.375rem] justify-between  transition-[opacity_,_border] border-transparent border group-hover/slot:border-[#535664] group-hover/slot:!opacity-100 rounded-[.375rem]"
+                                class="absolute left-0 top-0 z-[2] p-[.5rem] pointer-events-none w-full h-full flex flex-col rounded-[.375rem] justify-between transition-[opacity_,_border] border-transparent border group-hover/slot:border-[#535664] group-hover/slot:!opacity-100 rounded-[.375rem]"
                               >
                                 <button
-                                  aria-label="Играть"
-                                  role="button"
-                                  type="button"
-                                  @click="document.location.href = item.url"
                                   class="flex-1 flex items-center justify-center pointer-events-auto"
                                 >
                                   <svg
@@ -888,9 +857,6 @@
                                     </div>
                                   </div>
                                   <button
-                                    aria-label="Играть"
-                                    role="button"
-                                    type="button"
                                     @click="document.location.href = item.url"
                                     class="w-full flex items-center justify-center pointer-events-auto text-xs h-[1.5rem] transition-[background] hover:text-white hover:shadow-btn-blue duration-300 hover:bg-blue rounded-[.25rem] text-black font-[600] bg-white"
                                   >
@@ -913,245 +879,554 @@
           class="absolute left-0 top-0 w-full h-full bg-[#0D0F17]/[0.75] backdrop-blur-[5px]"
         ></div>
       </div>
-    </template>    
+    </template>
     <div class="w-full h-full flex flex-col justify-between">
-        <main class="flex flex-1 overflow-x-hidden flex-col min-[1125px]:pl-[17.5rem] pl-0 pt-[4.5rem] max-[1125px]:pb-[4.563rem]">
-            <section class="relative flex-1 flex flex-col" x-data="mines" x-init="init">
-                <div class="flex flex-col gap-3 flex-1">
-                    <div class="flex items-stretch px-4 pt-4 mines-history -translate-y-[1rem] gap-2 mask-right" x-ref="history">
-    <div class="swiper-wrapper">
-      <div class="swiper-slide mines-history-item flex items-center group/item">
-        <div class="bg-[#2a2b3c] px-4 rounded-2xl h-[4.063rem] flex items-center gap-4 justify-between w-[90%] border border-2 border-transparent group-[.win]/item:border-[#3dcb3d] group-[.active]/item:border-blue group-[.lose]/item:border-[#ff3535]">
-            <div class="flex flex-col *:leading-[100%] gap-1.5">
-                <span class="text-sm font-medium text-[#8f91bf] group-[.win]/item:text-[#3dcb3d] group-[.active]/item:text-blue group-[.lose]/item:text-[#ff3535]">1 шаг</span>
-                <span class="text-lg font-bold" x-text="'x' + item.x"></span>
-            </div>
-            <div class="w-6 h-6 flex items-center justify-center text-white text-sm font-bold relative">
-                <span class="relative z-[1]">1</span>
-                <div class="absolute left-0 top-0 w-full h-full rounded-md bg-[#484968] group-[.win]/item:bg-[#3dcb3d] group-[.active]/item:bg-blue group-[.lose]/item:bg-[#ff3535] -skew-x-[12deg]"></div>
-            </div>
-        </div>
-        <div class="w-[10%] h-[4px] bg-[#2a2b3c] group-[.win]/item:bg-[#3dcb3d] group-[.active]/item:bg-blue group-[.lose]/item:bg-[#ff3535] group-last/item:hidden"></div>
-    </div>
-    <div class="swiper-slide mines-history-item flex items-center group/item">
-      <div class="bg-[#2a2b3c] px-4 rounded-2xl h-[4.063rem] flex items-center gap-4 justify-between w-[90%] border border-2 border-transparent group-[.win]/item:border-[#3dcb3d] group-[.active]/item:border-blue group-[.lose]/item:border-[#ff3535]">
-          <div class="flex flex-col *:leading-[100%] gap-1.5">
-              <span class="text-sm font-medium text-[#8f91bf] group-[.win]/item:text-[#3dcb3d] group-[.active]/item:text-blue group-[.lose]/item:text-[#ff3535]">1 шаг</span>
-              <span class="text-lg font-bold" x-text="'x' + item.x"></span>
-          </div>
-          <div class="w-6 h-6 flex items-center justify-center text-white text-sm font-bold relative">
-              <span class="relative z-[1]">1</span>
-              <div class="absolute left-0 top-0 w-full h-full rounded-md bg-[#484968] group-[.win]/item:bg-[#3dcb3d] group-[.active]/item:bg-blue group-[.lose]/item:bg-[#ff3535] -skew-x-[12deg]"></div>
-          </div>
-      </div>
-      <div class="w-[10%] h-[4px] bg-[#2a2b3c] group-[.win]/item:bg-[#3dcb3d] group-[.active]/item:bg-blue group-[.lose]/item:bg-[#ff3535] group-last/item:hidden"></div>
-  </div>
-  <div class="swiper-slide mines-history-item flex items-center group/item">
-    <div class="bg-[#2a2b3c] px-4 rounded-2xl h-[4.063rem] flex items-center gap-4 justify-between w-[90%] border border-2 border-transparent group-[.win]/item:border-[#3dcb3d] group-[.active]/item:border-blue group-[.lose]/item:border-[#ff3535]">
-        <div class="flex flex-col *:leading-[100%] gap-1.5">
-            <span class="text-sm font-medium text-[#8f91bf] group-[.win]/item:text-[#3dcb3d] group-[.active]/item:text-blue group-[.lose]/item:text-[#ff3535]">1 шаг</span>
-            <span class="text-lg font-bold" x-text="'x' + item.x"></span>
-        </div>
-        <div class="w-6 h-6 flex items-center justify-center text-white text-sm font-bold relative">
-            <span class="relative z-[1]">1</span>
-            <div class="absolute left-0 top-0 w-full h-full rounded-md bg-[#484968] group-[.win]/item:bg-[#3dcb3d] group-[.active]/item:bg-blue group-[.lose]/item:bg-[#ff3535] -skew-x-[12deg]"></div>
-        </div>
-    </div>
-    <div class="w-[10%] h-[4px] bg-[#2a2b3c] group-[.win]/item:bg-[#3dcb3d] group-[.active]/item:bg-blue group-[.lose]/item:bg-[#ff3535] group-last/item:hidden"></div>
-</div>
-<div class="swiper-slide mines-history-item flex items-center group/item">
-  <div class="bg-[#2a2b3c] px-4 rounded-2xl h-[4.063rem] flex items-center gap-4 justify-between w-[90%] border border-2 border-transparent group-[.win]/item:border-[#3dcb3d] group-[.active]/item:border-blue group-[.lose]/item:border-[#ff3535]">
-      <div class="flex flex-col *:leading-[100%] gap-1.5">
-          <span class="text-sm font-medium text-[#8f91bf] group-[.win]/item:text-[#3dcb3d] group-[.active]/item:text-blue group-[.lose]/item:text-[#ff3535]">1 шаг</span>
-          <span class="text-lg font-bold" x-text="'x' + item.x"></span>
-      </div>
-      <div class="w-6 h-6 flex items-center justify-center text-white text-sm font-bold relative">
-          <span class="relative z-[1]">1</span>
-          <div class="absolute left-0 top-0 w-full h-full rounded-md bg-[#484968] group-[.win]/item:bg-[#3dcb3d] group-[.active]/item:bg-blue group-[.lose]/item:bg-[#ff3535] -skew-x-[12deg]"></div>
-      </div>
-  </div>
-  <div class="w-[10%] h-[4px] bg-[#2a2b3c] group-[.win]/item:bg-[#3dcb3d] group-[.active]/item:bg-blue group-[.lose]/item:bg-[#ff3535] group-last/item:hidden"></div>
-</div>
-<div class="swiper-slide mines-history-item flex items-center group/item">
-  <div class="bg-[#2a2b3c] px-4 rounded-2xl h-[4.063rem] flex items-center gap-4 justify-between w-[90%] border border-2 border-transparent group-[.win]/item:border-[#3dcb3d] group-[.active]/item:border-blue group-[.lose]/item:border-[#ff3535]">
-      <div class="flex flex-col *:leading-[100%] gap-1.5">
-          <span class="text-sm font-medium text-[#8f91bf] group-[.win]/item:text-[#3dcb3d] group-[.active]/item:text-blue group-[.lose]/item:text-[#ff3535]">1 шаг</span>
-          <span class="text-lg font-bold" x-text="'x' + item.x"></span>
-      </div>
-      <div class="w-6 h-6 flex items-center justify-center text-white text-sm font-bold relative">
-          <span class="relative z-[1]">1</span>
-          <div class="absolute left-0 top-0 w-full h-full rounded-md bg-[#484968] group-[.win]/item:bg-[#3dcb3d] group-[.active]/item:bg-blue group-[.lose]/item:bg-[#ff3535] -skew-x-[12deg]"></div>
-      </div>
-  </div>
-  <div class="w-[10%] h-[4px] bg-[#2a2b3c] group-[.win]/item:bg-[#3dcb3d] group-[.active]/item:bg-blue group-[.lose]/item:bg-[#ff3535] group-last/item:hidden"></div>
-</div>
-<div class="swiper-slide mines-history-item flex items-center group/item">
-  <div class="bg-[#2a2b3c] px-4 rounded-2xl h-[4.063rem] flex items-center gap-4 justify-between w-[90%] border border-2 border-transparent group-[.win]/item:border-[#3dcb3d] group-[.active]/item:border-blue group-[.lose]/item:border-[#ff3535]">
-      <div class="flex flex-col *:leading-[100%] gap-1.5">
-          <span class="text-sm font-medium text-[#8f91bf] group-[.win]/item:text-[#3dcb3d] group-[.active]/item:text-blue group-[.lose]/item:text-[#ff3535]">1 шаг</span>
-          <span class="text-lg font-bold" x-text="'x' + item.x"></span>
-      </div>
-      <div class="w-6 h-6 flex items-center justify-center text-white text-sm font-bold relative">
-          <span class="relative z-[1]">1</span>
-          <div class="absolute left-0 top-0 w-full h-full rounded-md bg-[#484968] group-[.win]/item:bg-[#3dcb3d] group-[.active]/item:bg-blue group-[.lose]/item:bg-[#ff3535] -skew-x-[12deg]"></div>
-      </div>
-  </div>
-  <div class="w-[10%] h-[4px] bg-[#2a2b3c] group-[.win]/item:bg-[#3dcb3d] group-[.active]/item:bg-blue group-[.lose]/item:bg-[#ff3535] group-last/item:hidden"></div>
-</div>
-<div class="swiper-slide mines-history-item flex items-center group/item">
-  <div class="bg-[#2a2b3c] px-4 rounded-2xl h-[4.063rem] flex items-center gap-4 justify-between w-[90%] border border-2 border-transparent group-[.win]/item:border-[#3dcb3d] group-[.active]/item:border-blue group-[.lose]/item:border-[#ff3535]">
-      <div class="flex flex-col *:leading-[100%] gap-1.5">
-          <span class="text-sm font-medium text-[#8f91bf] group-[.win]/item:text-[#3dcb3d] group-[.active]/item:text-blue group-[.lose]/item:text-[#ff3535]">1 шаг</span>
-          <span class="text-lg font-bold" x-text="'x' + item.x"></span>
-      </div>
-      <div class="w-6 h-6 flex items-center justify-center text-white text-sm font-bold relative">
-          <span class="relative z-[1]">1</span>
-          <div class="absolute left-0 top-0 w-full h-full rounded-md bg-[#484968] group-[.win]/item:bg-[#3dcb3d] group-[.active]/item:bg-blue group-[.lose]/item:bg-[#ff3535] -skew-x-[12deg]"></div>
-      </div>
-  </div>
-  <div class="w-[10%] h-[4px] bg-[#2a2b3c] group-[.win]/item:bg-[#3dcb3d] group-[.active]/item:bg-blue group-[.lose]/item:bg-[#ff3535] group-last/item:hidden"></div>
-</div>
-<div class="swiper-slide mines-history-item flex items-center group/item">
-  <div class="bg-[#2a2b3c] px-4 rounded-2xl h-[4.063rem] flex items-center gap-4 justify-between w-[90%] border border-2 border-transparent group-[.win]/item:border-[#3dcb3d] group-[.active]/item:border-blue group-[.lose]/item:border-[#ff3535]">
-      <div class="flex flex-col *:leading-[100%] gap-1.5">
-          <span class="text-sm font-medium text-[#8f91bf] group-[.win]/item:text-[#3dcb3d] group-[.active]/item:text-blue group-[.lose]/item:text-[#ff3535]">1 шаг</span>
-          <span class="text-lg font-bold" x-text="'x' + item.x"></span>
-      </div>
-      <div class="w-6 h-6 flex items-center justify-center text-white text-sm font-bold relative">
-          <span class="relative z-[1]">1</span>
-          <div class="absolute left-0 top-0 w-full h-full rounded-md bg-[#484968] group-[.win]/item:bg-[#3dcb3d] group-[.active]/item:bg-blue group-[.lose]/item:bg-[#ff3535] -skew-x-[12deg]"></div>
-      </div>
-  </div>
-  <div class="w-[10%] h-[4px] bg-[#2a2b3c] group-[.win]/item:bg-[#3dcb3d] group-[.active]/item:bg-blue group-[.lose]/item:bg-[#ff3535] group-last/item:hidden"></div>
-</div>
-<div class="swiper-slide mines-history-item flex items-center group/item">
-  <div class="bg-[#2a2b3c] px-4 rounded-2xl h-[4.063rem] flex items-center gap-4 justify-between w-[90%] border border-2 border-transparent group-[.win]/item:border-[#3dcb3d] group-[.active]/item:border-blue group-[.lose]/item:border-[#ff3535]">
-      <div class="flex flex-col *:leading-[100%] gap-1.5">
-          <span class="text-sm font-medium text-[#8f91bf] group-[.win]/item:text-[#3dcb3d] group-[.active]/item:text-blue group-[.lose]/item:text-[#ff3535]">1 шаг</span>
-          <span class="text-lg font-bold" x-text="'x' + item.x"></span>
-      </div>
-      <div class="w-6 h-6 flex items-center justify-center text-white text-sm font-bold relative">
-          <span class="relative z-[1]">1</span>
-          <div class="absolute left-0 top-0 w-full h-full rounded-md bg-[#484968] group-[.win]/item:bg-[#3dcb3d] group-[.active]/item:bg-blue group-[.lose]/item:bg-[#ff3535] -skew-x-[12deg]"></div>
-      </div>
-  </div>
-  <div class="w-[10%] h-[4px] bg-[#2a2b3c] group-[.win]/item:bg-[#3dcb3d] group-[.active]/item:bg-blue group-[.lose]/item:bg-[#ff3535] group-last/item:hidden"></div>
-</div>
-    </div>
-</div>
-                    <div class="relative flex-1 min-[861px]:flex min-[861px]:gap-0 gap-4 grid grid-cols-2 items-stretch justify-between z-[1] px-4">
-                        <div class="min-[861px]:w-[8.75rem] w-full mines-sidebar min-[861px]:-translate-x-[1rem] max-[860px]:translate-y-[1rem]  flex flex-col h-full rounded-[1.25rem] overflow-hidden relative shadow-[0_0_35px_rgba(0,0,0,0.1)]">
-    <div class="relative z-[1] min-[861px]:py-6 min-[861px]:py-2 max-[860px]:pb-2 w-full h-full rounded-[1.25rem] bg-[#41496B]/[0.25] border border-[#41496B]/[0.5] flex min-[861px]:flex-col items-center justify-center">
-        <span class="uppercase font-bold min-[861px]:text-xl text-base max-[860px]:hidden">Сфер</span>
-        <div class="relative min-[861px]:w-full flex flex-col items-center">
-            <img src="../assets/images/games/mines/sphere.png" class="group-[:not(.disable-animations)]/body:animate-[mineIcon_1s_infinite_alternate] max-[860px]:min-[545px]:max-w-[5.625rem] max-[544px]:max-w-[3.875rem]" alt="">
-            <div class="w-[3.375rem] h-[1.125rem] rounded-[50%] bg-black opacity-20 group-[:not(.disable-animations)]/body:animate-[shadowIcon_1s_infinite_alternate]"></div>
-        </div>
-        <span class="min-[861px]:text-4xl text-xl font-semibold min-[861px]:pt-4" x-text="grid.length - bomb"></span>
-    </div>
-    <div class="absolute left-0 top-0 w-[4.688rem] h-[4.688rem] rounded-full bg-[#0083E1] blur-[60px] group-[:not(.disable-animations)]/body:animate-[blurEllipse_3s_infinite_alternate]"></div>
-    <div class="absolute right-0 top-1/2 -translate-y-1/2 w-[4.688rem] h-[4.688rem] rounded-full bg-[#003FE1] blur-[60px] group-[:not(.disable-animations)]/body:animate-[blurEllipse_6s_0.5s_infinite_alternate]"></div>
-    <div class="absolute left-0 bottom-0 w-[4.688rem] h-[4.688rem] rounded-full bg-[#00ABE1] blur-[60px] group-[:not(.disable-animations)]/body:animate-[blurEllipse_4s_1s_infinite_alternate]"></div>
-</div>
-<div class="flex-1 min-[545px]:px-8 flex items-center justify-center [&.wait]:pointer-events-none max-[860px]:order-[1] max-[860px]:col-span-2">
-    <div class="min-[1391px]:w-1/2 min-[861px]:w-[70%] min-[745px]:w-[60%] min-[546px]:w-[80%] w-full flex flex-col min-[861px]:py-3">
-        <div class="grid grid-cols-5 gap-3">
-            <button class="grid mines-grid-item  scale-[0.85] relative before:pt-[100%] border-[.188rem] border-[#53588d]/[0.3] [&:not(.lose):not(.win)]:hover:border-[#8990d5] [&:not(.lose):not(.win)]:hover:!scale-105 rounded-xl transition-all duration-300 backdrop-blur-sm [&.win]:border-[#39bc3c] [&.lose]:border-[#ff4a51]">
-                    <div class="absolute left-0 top-0 w-full h-full flex items-center justify-center text-[#586887] p-2">
-                        <img src="../assets/images/games/mines/mines.png" class="animate-[mineIconInner_1s_infinite_alternate]" alt="">
+      <main
+        class="flex flex-1 overflow-hidden flex-col min-[1125px]:pl-[17.5rem] pl-0 pt-[4.5rem] max-[1125px]:pb-[4.563rem]"
+      >
+        <section class="relative flex-1 flex flex-col">
+          <div class="flex flex-col gap-3 flex-1">
+            <div
+              class="flex items-stretch px-4 pt-4 mines-history -translate-y-[1rem] gap-2 mask-right"
+            >
+              <div class="swiper-wrapper">
+                <div
+                  class="swiper-slide mines-history-item flex items-center group/item"
+                >
+                  <div
+                    class="bg-[#2a2b3c] px-4 rounded-2xl h-[4.063rem] flex items-center gap-4 justify-between w-[90%] border border-2 border-transparent group-[.win]/item:border-[#3dcb3d] group-[.active]/item:border-blue group-[.lose]/item:border-[#ff3535]"
+                  >
+                    <div class="flex flex-col *:leading-[100%] gap-1.5">
+                      <span
+                        class="text-sm font-medium text-[#8f91bf] group-[.win]/item:text-[#3dcb3d] group-[.active]/item:text-blue group-[.lose]/item:text-[#ff3535]"
+                        >1 шаг</span
+                      >
+                      <span
+                        class="text-lg font-bold"
+                        x-text="'x' + item.x"
+                      ></span>
                     </div>
-            </button>
-            <button class="grid mines-grid-item  scale-[0.85] relative before:pt-[100%] border-[.188rem] border-[#53588d]/[0.3] [&:not(.lose):not(.win)]:hover:border-[#8990d5] [&:not(.lose):not(.win)]:hover:!scale-105 rounded-xl transition-all duration-300 backdrop-blur-sm [&.win]:border-[#39bc3c] [&.lose]:border-[#ff4a51]">
-              <div class="absolute left-0 top-0 w-full h-full flex items-center justify-center text-[#586887] p-2">
-                  <img src="../assets/images/games/mines/sphere.png" class="animate-[mineIconInner_1s_infinite_alternate]" alt="">
-              </div>
-            </button>
-            <button class="grid mines-grid-item  scale-[0.85] relative before:pt-[100%] border-[.188rem] border-[#53588d]/[0.3] [&:not(.lose):not(.win)]:hover:border-[#8990d5] [&:not(.lose):not(.win)]:hover:!scale-105 rounded-xl transition-all duration-300 backdrop-blur-sm [&.win]:border-[#39bc3c] [&.lose]:border-[#ff4a51]">
-              <div class="absolute left-0 top-0 w-full h-full flex items-center justify-center text-[#586887] p-2">
-                  <img src="../assets/images/games/mines/sphere.png" class="animate-[mineIconInner_1s_infinite_alternate]" alt="">
-              </div>
-            </button>
-            <button class="grid mines-grid-item  scale-[0.85] relative before:pt-[100%] border-[.188rem] border-[#53588d]/[0.3] [&:not(.lose):not(.win)]:hover:border-[#8990d5] [&:not(.lose):not(.win)]:hover:!scale-105 rounded-xl transition-all duration-300 backdrop-blur-sm [&.win]:border-[#39bc3c] [&.lose]:border-[#ff4a51]">
-              <div class="absolute left-0 top-0 w-full h-full flex items-center justify-center text-[#586887]">
-                  <svg class="w-8 h-8"><use xlink:href="../assets/images/symbols.svg#icon-logotype"></use></svg>
-              </div>
-            </button>
-        </div>
-    </div>
-</div>                        <div class="min-[861px]:w-[8.75rem] w-full mines-sidebar min-[861px]:-translate-x-[1rem] max-[860px]:translate-y-[1rem]  flex flex-col h-full rounded-[1.25rem] overflow-hidden relative shadow-[0_0_35px_rgba(0,0,0,0.1)]">
-    <div class="relative z-[1] min-[861px]:py-6 min-[861px]:py-2 max-[860px]:pb-2 w-full h-full rounded-[1.25rem] bg-[#41496B]/[0.25] border border-[#41496B]/[0.5] flex min-[861px]:flex-col items-center justify-center">
-        <span class="uppercase font-bold min-[861px]:text-xl text-base max-[860px]:hidden">Бомб</span>
-        <div class="relative min-[861px]:w-full flex flex-col items-center">
-            <img src="../assets/images/games/mines/mines.png" class="group-[:not(.disable-animations)]/body:animate-[mineIcon_1s_infinite_alternate] max-[860px]:min-[545px]:max-w-[5.625rem] max-[544px]:max-w-[3.875rem]" alt="">
-            <div class="w-[3.375rem] h-[1.125rem] rounded-[50%] bg-black opacity-20 group-[:not(.disable-animations)]/body:animate-[shadowIcon_1s_infinite_alternate]"></div>
-        </div>
-        <span class="min-[861px]:text-4xl text-xl font-semibold min-[861px]:pt-4" x-text="bomb"></span>
-    </div>
-    <div class="absolute left-0 top-0 w-[4.688rem] h-[4.688rem] rounded-full bg-[#0083E1] blur-[60px] group-[:not(.disable-animations)]/body:animate-[blurEllipse_3s_infinite_alternate]"></div>
-    <div class="absolute right-0 top-1/2 -translate-y-1/2 w-[4.688rem] h-[4.688rem] rounded-full bg-[#003FE1] blur-[60px] group-[:not(.disable-animations)]/body:animate-[blurEllipse_6s_0.5s_infinite_alternate]"></div>
-    <div class="absolute left-0 bottom-0 w-[4.688rem] h-[4.688rem] rounded-full bg-[#00ABE1] blur-[60px] group-[:not(.disable-animations)]/body:animate-[blurEllipse_4s_1s_infinite_alternate]"></div>
-</div>                    </div>
+                    <div
+                      class="w-6 h-6 flex items-center justify-center text-white text-sm font-bold relative"
+                    >
+                      <span class="relative z-[1]">1</span>
+                      <div
+                        class="absolute left-0 top-0 w-full h-full rounded-md bg-[#484968] group-[.win]/item:bg-[#3dcb3d] group-[.active]/item:bg-blue group-[.lose]/item:bg-[#ff3535] -skew-x-[12deg]"
+                      ></div>
+                    </div>
+                  </div>
+                  <div
+                    class="w-[10%] h-[4px] bg-[#2a2b3c] group-[.win]/item:bg-[#3dcb3d] group-[.active]/item:bg-blue group-[.lose]/item:bg-[#ff3535] group-last/item:hidden"
+                  ></div>
                 </div>
-                
-                <div class="w-full mines-bet translate-y-[1rem]  py-4 bg-gradient-to-b from-transparent to-[#161823] min-[1125px]:to-[70%] to-[20%] min-[861px]:flex grid grid-cols-2 items-stretch justify-between px-4 gap-4 z-[1]">
-    <div class="flex items-stretch gap-2 max-[650px]:col-span-2">
-        <div class="flex flex-col gap-1 max-[860px]:flex-1">
-            <div class="min-[861px]:w-[10rem] w-full relative flex-1 flex flex-col bg-[#2a2b3c] rounded-lg items-center">
-                <span class="absolute left-1/2 top-0 -translate-x-1/2 whitespace-nowrap text-xs pt-2 font-semibold text-[#9E9EAD]">Сумма ставки</span>
-                <input type="text" class="bg-transparent text-center h-full border-0 text-2xl w-full pt-4">
+                <div
+                  class="swiper-slide mines-history-item flex items-center group/item"
+                >
+                  <div
+                    class="bg-[#2a2b3c] px-4 rounded-2xl h-[4.063rem] flex items-center gap-4 justify-between w-[90%] border border-2 border-transparent group-[.win]/item:border-[#3dcb3d] group-[.active]/item:border-blue group-[.lose]/item:border-[#ff3535]"
+                  >
+                    <div class="flex flex-col *:leading-[100%] gap-1.5">
+                      <span
+                        class="text-sm font-medium text-[#8f91bf] group-[.win]/item:text-[#3dcb3d] group-[.active]/item:text-blue group-[.lose]/item:text-[#ff3535]"
+                        >1 шаг</span
+                      >
+                      <span
+                        class="text-lg font-bold"
+                        x-text="'x' + item.x"
+                      ></span>
+                    </div>
+                    <div
+                      class="w-6 h-6 flex items-center justify-center text-white text-sm font-bold relative"
+                    >
+                      <span class="relative z-[1]">1</span>
+                      <div
+                        class="absolute left-0 top-0 w-full h-full rounded-md bg-[#484968] group-[.win]/item:bg-[#3dcb3d] group-[.active]/item:bg-blue group-[.lose]/item:bg-[#ff3535] -skew-x-[12deg]"
+                      ></div>
+                    </div>
+                  </div>
+                  <div
+                    class="w-[10%] h-[4px] bg-[#2a2b3c] group-[.win]/item:bg-[#3dcb3d] group-[.active]/item:bg-blue group-[.lose]/item:bg-[#ff3535] group-last/item:hidden"
+                  ></div>
+                </div>
+                <div
+                  class="swiper-slide mines-history-item flex items-center group/item"
+                >
+                  <div
+                    class="bg-[#2a2b3c] px-4 rounded-2xl h-[4.063rem] flex items-center gap-4 justify-between w-[90%] border border-2 border-transparent group-[.win]/item:border-[#3dcb3d] group-[.active]/item:border-blue group-[.lose]/item:border-[#ff3535]"
+                  >
+                    <div class="flex flex-col *:leading-[100%] gap-1.5">
+                      <span
+                        class="text-sm font-medium text-[#8f91bf] group-[.win]/item:text-[#3dcb3d] group-[.active]/item:text-blue group-[.lose]/item:text-[#ff3535]"
+                        >1 шаг</span
+                      >
+                      <span
+                        class="text-lg font-bold"
+                        x-text="'x' + item.x"
+                      ></span>
+                    </div>
+                    <div
+                      class="w-6 h-6 flex items-center justify-center text-white text-sm font-bold relative"
+                    >
+                      <span class="relative z-[1]">1</span>
+                      <div
+                        class="absolute left-0 top-0 w-full h-full rounded-md bg-[#484968] group-[.win]/item:bg-[#3dcb3d] group-[.active]/item:bg-blue group-[.lose]/item:bg-[#ff3535] -skew-x-[12deg]"
+                      ></div>
+                    </div>
+                  </div>
+                  <div
+                    class="w-[10%] h-[4px] bg-[#2a2b3c] group-[.win]/item:bg-[#3dcb3d] group-[.active]/item:bg-blue group-[.lose]/item:bg-[#ff3535] group-last/item:hidden"
+                  ></div>
+                </div>
+                <div
+                  class="swiper-slide mines-history-item flex items-center group/item"
+                >
+                  <div
+                    class="bg-[#2a2b3c] px-4 rounded-2xl h-[4.063rem] flex items-center gap-4 justify-between w-[90%] border border-2 border-transparent group-[.win]/item:border-[#3dcb3d] group-[.active]/item:border-blue group-[.lose]/item:border-[#ff3535]"
+                  >
+                    <div class="flex flex-col *:leading-[100%] gap-1.5">
+                      <span
+                        class="text-sm font-medium text-[#8f91bf] group-[.win]/item:text-[#3dcb3d] group-[.active]/item:text-blue group-[.lose]/item:text-[#ff3535]"
+                        >1 шаг</span
+                      >
+                      <span
+                        class="text-lg font-bold"
+                        x-text="'x' + item.x"
+                      ></span>
+                    </div>
+                    <div
+                      class="w-6 h-6 flex items-center justify-center text-white text-sm font-bold relative"
+                    >
+                      <span class="relative z-[1]">1</span>
+                      <div
+                        class="absolute left-0 top-0 w-full h-full rounded-md bg-[#484968] group-[.win]/item:bg-[#3dcb3d] group-[.active]/item:bg-blue group-[.lose]/item:bg-[#ff3535] -skew-x-[12deg]"
+                      ></div>
+                    </div>
+                  </div>
+                  <div
+                    class="w-[10%] h-[4px] bg-[#2a2b3c] group-[.win]/item:bg-[#3dcb3d] group-[.active]/item:bg-blue group-[.lose]/item:bg-[#ff3535] group-last/item:hidden"
+                  ></div>
+                </div>
+                <div
+                  class="swiper-slide mines-history-item flex items-center group/item"
+                >
+                  <div
+                    class="bg-[#2a2b3c] px-4 rounded-2xl h-[4.063rem] flex items-center gap-4 justify-between w-[90%] border border-2 border-transparent group-[.win]/item:border-[#3dcb3d] group-[.active]/item:border-blue group-[.lose]/item:border-[#ff3535]"
+                  >
+                    <div class="flex flex-col *:leading-[100%] gap-1.5">
+                      <span
+                        class="text-sm font-medium text-[#8f91bf] group-[.win]/item:text-[#3dcb3d] group-[.active]/item:text-blue group-[.lose]/item:text-[#ff3535]"
+                        >1 шаг</span
+                      >
+                      <span
+                        class="text-lg font-bold"
+                        x-text="'x' + item.x"
+                      ></span>
+                    </div>
+                    <div
+                      class="w-6 h-6 flex items-center justify-center text-white text-sm font-bold relative"
+                    >
+                      <span class="relative z-[1]">1</span>
+                      <div
+                        class="absolute left-0 top-0 w-full h-full rounded-md bg-[#484968] group-[.win]/item:bg-[#3dcb3d] group-[.active]/item:bg-blue group-[.lose]/item:bg-[#ff3535] -skew-x-[12deg]"
+                      ></div>
+                    </div>
+                  </div>
+                  <div
+                    class="w-[10%] h-[4px] bg-[#2a2b3c] group-[.win]/item:bg-[#3dcb3d] group-[.active]/item:bg-blue group-[.lose]/item:bg-[#ff3535] group-last/item:hidden"
+                  ></div>
+                </div>
+                <div
+                  class="swiper-slide mines-history-item flex items-center group/item"
+                >
+                  <div
+                    class="bg-[#2a2b3c] px-4 rounded-2xl h-[4.063rem] flex items-center gap-4 justify-between w-[90%] border border-2 border-transparent group-[.win]/item:border-[#3dcb3d] group-[.active]/item:border-blue group-[.lose]/item:border-[#ff3535]"
+                  >
+                    <div class="flex flex-col *:leading-[100%] gap-1.5">
+                      <span
+                        class="text-sm font-medium text-[#8f91bf] group-[.win]/item:text-[#3dcb3d] group-[.active]/item:text-blue group-[.lose]/item:text-[#ff3535]"
+                        >1 шаг</span
+                      >
+                      <span
+                        class="text-lg font-bold"
+                        x-text="'x' + item.x"
+                      ></span>
+                    </div>
+                    <div
+                      class="w-6 h-6 flex items-center justify-center text-white text-sm font-bold relative"
+                    >
+                      <span class="relative z-[1]">1</span>
+                      <div
+                        class="absolute left-0 top-0 w-full h-full rounded-md bg-[#484968] group-[.win]/item:bg-[#3dcb3d] group-[.active]/item:bg-blue group-[.lose]/item:bg-[#ff3535] -skew-x-[12deg]"
+                      ></div>
+                    </div>
+                  </div>
+                  <div
+                    class="w-[10%] h-[4px] bg-[#2a2b3c] group-[.win]/item:bg-[#3dcb3d] group-[.active]/item:bg-blue group-[.lose]/item:bg-[#ff3535] group-last/item:hidden"
+                  ></div>
+                </div>
+                <div
+                  class="swiper-slide mines-history-item flex items-center group/item"
+                >
+                  <div
+                    class="bg-[#2a2b3c] px-4 rounded-2xl h-[4.063rem] flex items-center gap-4 justify-between w-[90%] border border-2 border-transparent group-[.win]/item:border-[#3dcb3d] group-[.active]/item:border-blue group-[.lose]/item:border-[#ff3535]"
+                  >
+                    <div class="flex flex-col *:leading-[100%] gap-1.5">
+                      <span
+                        class="text-sm font-medium text-[#8f91bf] group-[.win]/item:text-[#3dcb3d] group-[.active]/item:text-blue group-[.lose]/item:text-[#ff3535]"
+                        >1 шаг</span
+                      >
+                      <span
+                        class="text-lg font-bold"
+                        x-text="'x' + item.x"
+                      ></span>
+                    </div>
+                    <div
+                      class="w-6 h-6 flex items-center justify-center text-white text-sm font-bold relative"
+                    >
+                      <span class="relative z-[1]">1</span>
+                      <div
+                        class="absolute left-0 top-0 w-full h-full rounded-md bg-[#484968] group-[.win]/item:bg-[#3dcb3d] group-[.active]/item:bg-blue group-[.lose]/item:bg-[#ff3535] -skew-x-[12deg]"
+                      ></div>
+                    </div>
+                  </div>
+                  <div
+                    class="w-[10%] h-[4px] bg-[#2a2b3c] group-[.win]/item:bg-[#3dcb3d] group-[.active]/item:bg-blue group-[.lose]/item:bg-[#ff3535] group-last/item:hidden"
+                  ></div>
+                </div>
+                <div
+                  class="swiper-slide mines-history-item flex items-center group/item"
+                >
+                  <div
+                    class="bg-[#2a2b3c] px-4 rounded-2xl h-[4.063rem] flex items-center gap-4 justify-between w-[90%] border border-2 border-transparent group-[.win]/item:border-[#3dcb3d] group-[.active]/item:border-blue group-[.lose]/item:border-[#ff3535]"
+                  >
+                    <div class="flex flex-col *:leading-[100%] gap-1.5">
+                      <span
+                        class="text-sm font-medium text-[#8f91bf] group-[.win]/item:text-[#3dcb3d] group-[.active]/item:text-blue group-[.lose]/item:text-[#ff3535]"
+                        >1 шаг</span
+                      >
+                      <span
+                        class="text-lg font-bold"
+                        x-text="'x' + item.x"
+                      ></span>
+                    </div>
+                    <div
+                      class="w-6 h-6 flex items-center justify-center text-white text-sm font-bold relative"
+                    >
+                      <span class="relative z-[1]">1</span>
+                      <div
+                        class="absolute left-0 top-0 w-full h-full rounded-md bg-[#484968] group-[.win]/item:bg-[#3dcb3d] group-[.active]/item:bg-blue group-[.lose]/item:bg-[#ff3535] -skew-x-[12deg]"
+                      ></div>
+                    </div>
+                  </div>
+                  <div
+                    class="w-[10%] h-[4px] bg-[#2a2b3c] group-[.win]/item:bg-[#3dcb3d] group-[.active]/item:bg-blue group-[.lose]/item:bg-[#ff3535] group-last/item:hidden"
+                  ></div>
+                </div>
+                <div
+                  class="swiper-slide mines-history-item flex items-center group/item"
+                >
+                  <div
+                    class="bg-[#2a2b3c] px-4 rounded-2xl h-[4.063rem] flex items-center gap-4 justify-between w-[90%] border border-2 border-transparent group-[.win]/item:border-[#3dcb3d] group-[.active]/item:border-blue group-[.lose]/item:border-[#ff3535]"
+                  >
+                    <div class="flex flex-col *:leading-[100%] gap-1.5">
+                      <span
+                        class="text-sm font-medium text-[#8f91bf] group-[.win]/item:text-[#3dcb3d] group-[.active]/item:text-blue group-[.lose]/item:text-[#ff3535]"
+                        >1 шаг</span
+                      >
+                      <span
+                        class="text-lg font-bold"
+                        x-text="'x' + item.x"
+                      ></span>
+                    </div>
+                    <div
+                      class="w-6 h-6 flex items-center justify-center text-white text-sm font-bold relative"
+                    >
+                      <span class="relative z-[1]">1</span>
+                      <div
+                        class="absolute left-0 top-0 w-full h-full rounded-md bg-[#484968] group-[.win]/item:bg-[#3dcb3d] group-[.active]/item:bg-blue group-[.lose]/item:bg-[#ff3535] -skew-x-[12deg]"
+                      ></div>
+                    </div>
+                  </div>
+                  <div
+                    class="w-[10%] h-[4px] bg-[#2a2b3c] group-[.win]/item:bg-[#3dcb3d] group-[.active]/item:bg-blue group-[.lose]/item:bg-[#ff3535] group-last/item:hidden"
+                  ></div>
+                </div>
+              </div>
             </div>
-        </div>
-        <div class="flex flex-wrap gap-2 max-w-[13.75rem]">
-            <button class="h-[2rem] flex flex-1 items-center font-semibold text-sm justify-center px-2 rounded-lg bg-[#a1a4d7]/[0.15] transition-all duration-300 hover:bg-blue">+10</button>
-            <button class="h-[2rem] flex flex-1 items-center font-semibold text-sm justify-center px-2 rounded-lg bg-[#a1a4d7]/[0.15] transition-all duration-300 hover:bg-blue">+50</button>
-            <button class="h-[2rem] flex flex-1 items-center font-semibold text-sm justify-center px-2 rounded-lg bg-[#a1a4d7]/[0.15] transition-all duration-300 hover:bg-blue">+100</button>
-            <button class="h-[2rem] flex flex-1 items-center font-semibold text-sm justify-center px-2 rounded-lg bg-[#a1a4d7]/[0.15] transition-all duration-300 hover:bg-blue">+500</button>
-            <button class="h-[2rem] flex flex-1 items-center font-semibold text-sm justify-center px-2 rounded-lg bg-[#a1a4d7]/[0.15] transition-all duration-300 hover:bg-blue">+1000</button>
-            <button class="h-[2rem] flex flex-1 items-center font-semibold text-sm justify-center px-2 rounded-lg bg-[#a1a4d7]/[0.15] transition-all duration-300 hover:bg-blue">+5000</button>
-            <button class="h-[2rem] flex flex-1 items-center font-semibold text-sm justify-center px-2 rounded-lg bg-[#a1a4d7]/[0.15] transition-all duration-300 hover:bg-blue">x2</button>
-            <button class="h-[2rem] flex flex-1 items-center font-semibold text-sm justify-center px-2 rounded-lg bg-[#a1a4d7]/[0.15] transition-all duration-300 hover:bg-blue">1/2</button>
-        </div>
-    </div>
-    <div class="flex items-stretch gap-2 max-[650px]:col-span-2">
-        <div class="flex flex-col gap-1 max-[860px]:flex-1">
-            <div class="min-[861px]:w-[10rem] w-full relative flex-1 flex flex-col bg-[#2a2b3c] rounded-lg items-center">
-                <span class="absolute left-1/2 top-0 -translate-x-1/2 whitespace-nowrap text-xs pt-2 font-semibold text-[#9E9EAD]">Количество бомб</span>
-                <input type="text" class="bg-transparent text-center h-full border-0 text-2xl w-full pt-4">
+            <div
+              class="relative flex-1 min-[861px]:flex min-[861px]:gap-0 gap-4 grid grid-cols-2 items-stretch justify-between z-[1] px-8"
+            >
+              <div
+                class="min-[861px]:w-[8.75rem] w-full mines-sidebar min-[861px]:-translate-x-[1rem] max-[860px]:translate-y-[1rem] flex flex-col h-full rounded-[1.25rem] overflow-hidden relative shadow-[0_0_35px_rgba(0,0,0,0.1)]"
+              >
+                <div
+                  class="relative z-[1] min-[861px]:py-6 min-[861px]:py-2 max-[860px]:pb-2 w-full h-full rounded-[1.25rem] bg-[#41496B]/[0.25] border border-[#41496B]/[0.5] flex min-[861px]:flex-col items-center justify-center"
+                >
+                  <span
+                    class="uppercase font-bold min-[861px]:text-xl text-base max-[860px]:hidden"
+                    >Сфер</span
+                  >
+                  <div
+                    class="relative min-[861px]:w-full flex flex-col items-center"
+                  >
+                    <img
+                      src="../assets/images/games/mines/sphere.png"
+                      class="group-[:not(.disable-animations)]/body:animate-[mineIcon_1s_infinite_alternate] max-[860px]:min-[545px]:max-w-[5.625rem] max-[544px]:max-w-[3.875rem]"
+                      alt=""
+                    />
+                    <div
+                      class="w-[3.375rem] h-[1.125rem] rounded-[50%] bg-black opacity-20 group-[:not(.disable-animations)]/body:animate-[shadowIcon_1s_infinite_alternate]"
+                    ></div>
+                  </div>
+                  <span
+                    class="min-[861px]:text-4xl text-xl font-semibold min-[861px]:pt-4"
+                    x-text="grid.length - bomb"
+                  ></span>
+                </div>
+                <div
+                  class="absolute left-0 top-0 w-[4.688rem] h-[4.688rem] rounded-full bg-[#0083E1] blur-[60px] group-[:not(.disable-animations)]/body:animate-[blurEllipse_3s_infinite_alternate]"
+                ></div>
+                <div
+                  class="absolute right-0 top-1/2 -translate-y-1/2 w-[4.688rem] h-[4.688rem] rounded-full bg-[#003FE1] blur-[60px] group-[:not(.disable-animations)]/body:animate-[blurEllipse_6s_0.5s_infinite_alternate]"
+                ></div>
+                <div
+                  class="absolute left-0 bottom-0 w-[4.688rem] h-[4.688rem] rounded-full bg-[#00ABE1] blur-[60px] group-[:not(.disable-animations)]/body:animate-[blurEllipse_4s_1s_infinite_alternate]"
+                ></div>
+              </div>
+              <div
+                class="flex-1 min-[545px]:px-8 flex items-center justify-center [&.wait]:pointer-events-none max-[860px]:order-[1] max-[860px]:col-span-2"
+              >
+                <div
+                  class="min-[1391px]:w-1/2 min-[861px]:w-[70%] min-[745px]:w-[60%] min-[546px]:w-[80%] w-full flex flex-col min-[861px]:py-3"
+                >
+                  <div class="grid grid-cols-5 gap-3">
+                    <button
+                      class="grid mines-grid-item scale-[0.85] relative before:pt-[100%] border-[.188rem] border-[#53588d]/[0.3] [&:not(.lose):not(.win)]:hover:border-[#8990d5] [&:not(.lose):not(.win)]:hover:!scale-105 rounded-xl transition-all duration-300 backdrop-blur-sm [&.win]:border-[#39bc3c] [&.lose]:border-[#ff4a51]"
+                    >
+                      <div
+                        class="absolute left-0 top-0 w-full h-full flex items-center justify-center text-[#586887] p-2"
+                      >
+                        <img
+                          src="../assets/images/games/mines/mines.png"
+                          class="animate-[mineIconInner_1s_infinite_alternate]"
+                          alt=""
+                        />
+                      </div>
+                    </button>
+                    <button
+                      class="grid mines-grid-item scale-[0.85] relative before:pt-[100%] border-[.188rem] border-[#53588d]/[0.3] [&:not(.lose):not(.win)]:hover:border-[#8990d5] [&:not(.lose):not(.win)]:hover:!scale-105 rounded-xl transition-all duration-300 backdrop-blur-sm [&.win]:border-[#39bc3c] [&.lose]:border-[#ff4a51]"
+                    >
+                      <div
+                        class="absolute left-0 top-0 w-full h-full flex items-center justify-center text-[#586887] p-2"
+                      >
+                        <img
+                          src="../assets/images/games/mines/sphere.png"
+                          class="animate-[mineIconInner_1s_infinite_alternate]"
+                          alt=""
+                        />
+                      </div>
+                    </button>
+                    <button
+                      class="grid mines-grid-item scale-[0.85] relative before:pt-[100%] border-[.188rem] border-[#53588d]/[0.3] [&:not(.lose):not(.win)]:hover:border-[#8990d5] [&:not(.lose):not(.win)]:hover:!scale-105 rounded-xl transition-all duration-300 backdrop-blur-sm [&.win]:border-[#39bc3c] [&.lose]:border-[#ff4a51]"
+                    >
+                      <div
+                        class="absolute left-0 top-0 w-full h-full flex items-center justify-center text-[#586887] p-2"
+                      >
+                        <img
+                          src="../assets/images/games/mines/sphere.png"
+                          class="animate-[mineIconInner_1s_infinite_alternate]"
+                          alt=""
+                        />
+                      </div>
+                    </button>
+                    <button
+                      class="grid mines-grid-item scale-[0.85] relative before:pt-[100%] border-[.188rem] border-[#53588d]/[0.3] [&:not(.lose):not(.win)]:hover:border-[#8990d5] [&:not(.lose):not(.win)]:hover:!scale-105 rounded-xl transition-all duration-300 backdrop-blur-sm [&.win]:border-[#39bc3c] [&.lose]:border-[#ff4a51]"
+                    >
+                      <div
+                        class="absolute left-0 top-0 w-full h-full flex items-center justify-center text-[#586887]"
+                      >
+                        <svg class="w-8 h-8">
+                          <use
+                            xlink:href="../assets/images/symbols.svg#icon-logotype"
+                          ></use>
+                        </svg>
+                      </div>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="min-[861px]:w-[8.75rem] w-full mines-sidebar min-[861px]:-translate-x-[1rem] max-[860px]:translate-y-[1rem] flex flex-col h-full rounded-[1.25rem] overflow-hidden relative shadow-[0_0_35px_rgba(0,0,0,0.1)]"
+              >
+                <div
+                  class="relative z-[1] min-[861px]:py-6 min-[861px]:py-2 max-[860px]:pb-2 w-full h-full rounded-[1.25rem] bg-[#41496B]/[0.25] border border-[#41496B]/[0.5] flex min-[861px]:flex-col items-center justify-center"
+                >
+                  <span
+                    class="uppercase font-bold min-[861px]:text-xl text-base max-[860px]:hidden"
+                    >Бомб</span
+                  >
+                  <div
+                    class="relative min-[861px]:w-full flex flex-col items-center"
+                  >
+                    <img
+                      src="../assets/images/games/mines/mines.png"
+                      class="group-[:not(.disable-animations)]/body:animate-[mineIcon_1s_infinite_alternate] max-[860px]:min-[545px]:max-w-[5.625rem] max-[544px]:max-w-[3.875rem]"
+                      alt=""
+                    />
+                    <div
+                      class="w-[3.375rem] h-[1.125rem] rounded-[50%] bg-black opacity-20 group-[:not(.disable-animations)]/body:animate-[shadowIcon_1s_infinite_alternate]"
+                    ></div>
+                  </div>
+                  <span
+                    class="min-[861px]:text-4xl text-xl font-semibold min-[861px]:pt-4"
+                  ></span>
+                </div>
+                <div
+                  class="absolute left-0 top-0 w-[4.688rem] h-[4.688rem] rounded-full bg-[#0083E1] blur-[60px] group-[:not(.disable-animations)]/body:animate-[blurEllipse_3s_infinite_alternate]"
+                ></div>
+                <div
+                  class="absolute right-0 top-1/2 -translate-y-1/2 w-[4.688rem] h-[4.688rem] rounded-full bg-[#003FE1] blur-[60px] group-[:not(.disable-animations)]/body:animate-[blurEllipse_6s_0.5s_infinite_alternate]"
+                ></div>
+                <div
+                  class="absolute left-0 bottom-0 w-[4.688rem] h-[4.688rem] rounded-full bg-[#00ABE1] blur-[60px] group-[:not(.disable-animations)]/body:animate-[blurEllipse_4s_1s_infinite_alternate]"
+                ></div>
+              </div>
             </div>
-        </div>
-        <div class="flex flex-wrap gap-2 max-w-[13.75rem]">
-            <button class="h-[2rem]  w-[calc(50%-0.25rem)] flex items-center font-semibold text-sm justify-center px-2 rounded-lg bg-[#2a2b3c] [&.active]:bg-blue transition-all duration-300 hover:bg-blue">3</button>
-            <button class="h-[2rem]  w-[calc(50%-0.25rem)] flex items-center font-semibold text-sm justify-center px-2 rounded-lg bg-[#2a2b3c] [&.active]:bg-blue transition-all duration-300 hover:bg-blue">5</button>
-            <button class="h-[2rem]  w-[calc(50%-0.25rem)] flex items-center font-semibold text-sm justify-center px-2 rounded-lg bg-[#2a2b3c] [&.active]:bg-blue transition-all duration-300 hover:bg-blue">10</button>
-            <button class="h-[2rem]  w-[calc(50%-0.25rem)] flex items-center font-semibold text-sm justify-center px-2 rounded-lg bg-[#2a2b3c] [&.active]:bg-blue transition-all duration-300 hover:bg-blue">24</button>
-        </div>
-    </div>
-    <button class="min-h-[3.438rem] flex-1 uppercase relative font-[600] flex rounded-[.375rem] items-center justify-center text-white px-[1.75rem] transition-[background_,_box-shadow] duration-300 hover:bg-[#2399EF] bg-blue hover:shadow-btn-blue">
-        <span class="transition-[opacity] opacity-100">Начать игру</span>
+          </div>
 
-    </button>
-    <button class="min-h-[3.438rem] flex-1 uppercase relative font-[600] flex rounded-[.375rem] items-center justify-center text-white px-[1.75rem] transition-[background_,_box-shadow] duration-300 hover:bg-[#2399EF] bg-blue hover:shadow-btn-blue">
+          <div
+            class="w-full mines-bet translate-y-[1rem] py-8 bg-gradient-to-b from-transparent to-[#161823] min-[1125px]:to-[70%] to-[20%] min-[861px]:flex grid grid-cols-2 items-stretch justify-between px-4 gap-4 z-[1]"
+          >
+            <div class="flex items-stretch gap-2 max-[650px]:col-span-2">
+              <div class="flex flex-col gap-1 max-[860px]:flex-1">
+                <div
+                  class="min-[861px]:w-[10rem] w-full relative flex-1 flex flex-col bg-[#2a2b3c] rounded-lg items-center"
+                >
+                  <span
+                    class="absolute left-1/2 top-0 -translate-x-1/2 whitespace-nowrap text-xs pt-2 font-semibold text-[#9E9EAD]"
+                    >Сумма ставки</span
+                  >
+                  <input
+                    type="text"
+                    class="bg-transparent text-center h-full border-0 text-2xl w-full pt-4"
+                  />
+                </div>
+              </div>
+              <div class="flex flex-wrap gap-2 max-w-[13.75rem]">
+                <button
+                  class="h-[2rem] flex flex-1 items-center font-semibold text-sm justify-center px-2 rounded-lg bg-[#a1a4d7]/[0.15] transition-all duration-300 hover:bg-blue"
+                >
+                  +10
+                </button>
+                <button
+                  class="h-[2rem] flex flex-1 items-center font-semibold text-sm justify-center px-2 rounded-lg bg-[#a1a4d7]/[0.15] transition-all duration-300 hover:bg-blue"
+                >
+                  +50
+                </button>
+                <button
+                  class="h-[2rem] flex flex-1 items-center font-semibold text-sm justify-center px-2 rounded-lg bg-[#a1a4d7]/[0.15] transition-all duration-300 hover:bg-blue"
+                >
+                  +100
+                </button>
+                <button
+                  class="h-[2rem] flex flex-1 items-center font-semibold text-sm justify-center px-2 rounded-lg bg-[#a1a4d7]/[0.15] transition-all duration-300 hover:bg-blue"
+                >
+                  +500
+                </button>
+                <button
+                  class="h-[2rem] flex flex-1 items-center font-semibold text-sm justify-center px-2 rounded-lg bg-[#a1a4d7]/[0.15] transition-all duration-300 hover:bg-blue"
+                >
+                  +1000
+                </button>
+                <button
+                  class="h-[2rem] flex flex-1 items-center font-semibold text-sm justify-center px-2 rounded-lg bg-[#a1a4d7]/[0.15] transition-all duration-300 hover:bg-blue"
+                >
+                  +5000
+                </button>
+                <button
+                  class="h-[2rem] flex flex-1 items-center font-semibold text-sm justify-center px-2 rounded-lg bg-[#a1a4d7]/[0.15] transition-all duration-300 hover:bg-blue"
+                >
+                  x2
+                </button>
+                <button
+                  class="h-[2rem] flex flex-1 items-center font-semibold text-sm justify-center px-2 rounded-lg bg-[#a1a4d7]/[0.15] transition-all duration-300 hover:bg-blue"
+                >
+                  1/2
+                </button>
+              </div>
+            </div>
+            <div class="flex items-stretch gap-2 max-[650px]:col-span-2">
+              <div class="flex flex-col gap-1 max-[860px]:flex-1">
+                <div
+                  class="min-[861px]:w-[10rem] w-full relative flex-1 flex flex-col bg-[#2a2b3c] rounded-lg items-center"
+                >
+                  <span
+                    class="absolute left-1/2 top-0 -translate-x-1/2 whitespace-nowrap text-xs pt-2 font-semibold text-[#9E9EAD]"
+                    >Количество бомб</span
+                  >
+                  <input
+                    type="text"
+                    class="bg-transparent text-center h-full border-0 text-2xl w-full pt-4"
+                  />
+                </div>
+              </div>
+              <div class="flex flex-wrap gap-2 max-w-[13.75rem]">
+                <button
+                  class="h-[2rem] w-[calc(50%-0.25rem)] flex items-center font-semibold text-sm justify-center px-2 rounded-lg bg-[#2a2b3c] [&.active]:bg-blue transition-all duration-300 hover:bg-blue"
+                >
+                  3
+                </button>
+                <button
+                  class="h-[2rem] w-[calc(50%-0.25rem)] flex items-center font-semibold text-sm justify-center px-2 rounded-lg bg-[#2a2b3c] [&.active]:bg-blue transition-all duration-300 hover:bg-blue"
+                >
+                  5
+                </button>
+                <button
+                  class="h-[2rem] w-[calc(50%-0.25rem)] flex items-center font-semibold text-sm justify-center px-2 rounded-lg bg-[#2a2b3c] [&.active]:bg-blue transition-all duration-300 hover:bg-blue"
+                >
+                  10
+                </button>
+                <button
+                  class="h-[2rem] w-[calc(50%-0.25rem)] flex items-center font-semibold text-sm justify-center px-2 rounded-lg bg-[#2a2b3c] [&.active]:bg-blue transition-all duration-300 hover:bg-blue"
+                >
+                  24
+                </button>
+              </div>
+            </div>
+            <button
+              class="min-h-[3.438rem] flex-1 uppercase relative font-[600] flex rounded-[.375rem] items-center justify-center text-white px-[1.75rem] transition-[background_,_box-shadow] duration-300 hover:bg-[#2399EF] bg-blue hover:shadow-btn-blue"
+            >
+              <span class="transition-[opacity] opacity-100">Начать игру</span>
+            </button>
+            <!-- Забрать
+      <button class="min-h-[3.438rem] flex-1 uppercase relative font-[600] flex rounded-[.375rem] items-center justify-center text-white px-[1.75rem] transition-[background_,_box-shadow] duration-300 hover:bg-[#2399EF] bg-blue hover:shadow-btn-blue">
         <span class="transition-[opacity] opacity-100">Забрать  <span class="bg-white text-blue py-1 px-1.5 rounded-md">0 ₽</span></span>
-    </button>
-    <button class="min-h-[3.438rem] flex-1 uppercase relative font-[600] flex rounded-[.375rem] items-center justify-center text-white px-[1.75rem] transition-[background_,_box-shadow] duration-300 hover:bg-[#373850] bg-[#2a2b3c]">
-        <span class="transition-[opacity] opacity-100">Авто-выбор</span>
-    </button>
-</div>
-                <img src="../assets/images/games/mines/background.png" class="absolute left-0 top-0 w-full h-full object-cover" alt="">
-            </section>
-        </main>
+    </button> -->
+            <button
+              class="min-h-[3.438rem] flex-1 uppercase relative font-[600] flex rounded-[.375rem] items-center justify-center text-white px-[1.75rem] transition-[background_,_box-shadow] duration-300 hover:bg-[#373850] bg-[#2a2b3c]"
+            >
+              <span class="transition-[opacity] opacity-100">Авто-выбор</span>
+            </button>
+          </div>
+          <img
+            src="../assets/images/games/mines/background.png"
+            class="absolute left-0 top-0 w-full h-full object-cover"
+            alt=""
+          />
+        </section>
+      </main>
     </div>
-    <script src="api/script/countup.js"></script>       
-<script src="../assets/js/app.js"></script>
-<script src="../assets/js/modal.js"></script>
-<script src="../assets/js/smooth-scrollbar.js"></script>
-<script src="../assets/js/plugins/overscroll.js"></script>
-<script src="../assets/js/parallax-mouse.min.js"></script>
-<script src="../assets/js/swiped-events.min.js"></script>
-<script src="../assets/js/gradient.js" type="module"></script>
+    <script src="api/script/countup.js"></script>
+    <script src="../assets/js/app.js"></script>
+    <script src="../assets/js/modal.js"></script>
+    <script src="../assets/js/smooth-scrollbar.js"></script>
+    <script src="../assets/js/plugins/overscroll.js"></script>
+    <script src="../assets/js/parallax-mouse.min.js"></script>
+    <script src="../assets/js/swiped-events.min.js"></script>
+    <script src="../assets/js/gradient.js" type="module"></script>
 
-<script src="../assets/js/core.js"></script>
-<script src='../assets/js/wNumb.min.js'></script>
-<script src="../assets/js/gsap.min.js"></script
-</body>
+    <script src="../assets/js/core.js"></script>
+    <script src="../assets/js/wNumb.min.js"></script>
+    <script src="../assets/js/gsap.min.js"></script>
+  </body>
 </html>
