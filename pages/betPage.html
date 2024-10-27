@@ -159,24 +159,6 @@
               ></div>
             </button>
           </li>
-          <li class="relative">
-            <button
-              data-href="/tournaments"
-              class="flex h-full justify-center items-center gap-[.5rem] text-base font-[600] text-[#9E9EAD] transition-[color_,_opacity] duration-300 [&.active]:!opacity-100 hover:text-[#B9B9CA] group/link [&.active]:text-white"
-            >
-              <svg
-                class="shrink-0 w-[1.5rem] h-[1.5rem] text-[#75798C] transition-[color] duration-300 group-hover/link:text-[#9196AA] group-[.active]/link:text-blue"
-              >
-                <use
-                  xlink:href="../assets/images/symbols.svg#icon-tournaments"
-                ></use>
-              </svg>
-              <span>Турниры</span>
-              <div
-                class="absolute left-0 bottom-0 w-full h-[3px] bg-blue w-0 group-[.active]/link:!w-full group-[.active]/link:!opacity-100"
-              ></div>
-            </button>
-          </li>
         </ul>
       </div>
       <div class="flex items-center gap-4">
@@ -184,11 +166,13 @@
           class="flex items-center gap-3 min-[1125px]:pr-[1.875rem] pr-[1rem]"
         >
           <button
+            id="sign-in-btn"
             class="relative flex items-center font-[500] text-[#A7AFBF] justify-center h-[2.5rem] rounded-[.375rem] bg-[#313343] transition-[color_,_background] duration-300 hover:bg-[#383a4d] hover:text-white px-5"
           >
             <span class="transition-[opacity] opacity-100">Войти</span>
           </button>
           <button
+            id="sign-up-btn"
             class="relative flex items-center font-[500] text-white justify-center h-[2.5rem] rounded-[.375rem] shadow-btn-blue bg-blue transition-[color_,_background_,_border] duration-300 hover:bg-[#2399EF] px-5"
           >
             <span class="transition-[opacity] opacity-100">Регистрация</span>
@@ -198,7 +182,6 @@
     </header>
     <div
       class="fixed left-0 min-[1125px]:top-0 top-[4.5rem] min-[1125px]:h-full h-[calc(100%_-_4.5rem)] z-[10] w-full pointer-events-none flex flex-col justify-between group/sidebar [&.active]:z-[9]"
-      x-bind:class="menu && 'active'"
     >
       <div
         class="flex flex-col justify-between min-[425px]:max-w-[17.5rem] max-w-full bg-[#1D1F2C] w-full h-full pointer-events-auto transition-[transform] duration-300 max-[1124px]:-translate-x-full max-[1124px]:group-[.active]/sidebar:translate-x-0 max-[1124px]:pb-[4rem]"
@@ -296,24 +279,10 @@
                     ></i>
                   </button>
                   <div
-                    class="flex overflow-hidden flex-col gap-[.313rem] max-h-0 transition-[max-height]"
+                    class="flex overflow-hidden flex-col gap-[.313rem] transition-[max-height]"
                   >
                     <div class="flex flex-col gap-[.313rem] pb-[.625rem]">
                       <div class="relative">
-                        <div
-                          class="absolute left-0 top-0 gap-[.75rem] w-full h-full rounded-[.375rem] bg-transparent flex z-[1] items-center pl-[.75rem] pr-[1.125rem] h-[2.875rem]"
-                        >
-                          <div
-                            class="w-[1.5rem] h-[1.5rem] bg-[#313444] loading relative rounded-[.25rem]"
-                          ></div>
-                          <div
-                            class="shrink-0 relative w-[.063rem] h-[1rem] bg-[#313444] loading"
-                          ></div>
-                          <span
-                            class="w-[100px] h-[8px] bg-[#313444] relative loading rounded-full"
-                          ></span>
-                        </div>
-
                         <button
                           data-href="/mines"
                           class="flex w-full whitespace-nowrap font-[600] items-center text-[#9CA0B5] hover:text-white justify-between pl-[.75rem] pr-[1.125rem] h-[2.875rem] bg-transparent rounded-[.375rem] transition-[background_,_color_,_opacity] duration-300 hover:bg-[#313444] [&.active]:bg-blue [&.active]:text-white [&.active]:shadow-btn-blue"
@@ -414,21 +383,6 @@
                         </button>
                       </div>
                       <div class="relative">
-                        <template x-if="state">
-                          <div
-                            class="absolute left-0 top-0 gap-[.75rem] w-full h-full rounded-[.375rem] bg-transparent flex z-[1] items-center pl-[.75rem] pr-[1.125rem] h-[2.875rem]"
-                          >
-                            <div
-                              class="w-[1.5rem] h-[1.5rem] bg-[#313444] loading relative rounded-[.25rem]"
-                            ></div>
-                            <div
-                              class="shrink-0 relative w-[.063rem] h-[1rem] bg-[#313444] loading"
-                            ></div>
-                            <span
-                              class="w-[100px] h-[8px] bg-[#313444] relative loading rounded-full"
-                            ></span>
-                          </div>
-                        </template>
                         <button
                           data-href="/upgrade"
                           class="flex w-full whitespace-nowrap font-[600] items-center text-[#9CA0B5] hover:text-white justify-between pl-[.75rem] pr-[1.125rem] h-[2.875rem] bg-transparent rounded-[.375rem] transition-[background_,_color_,_opacity] duration-300 hover:bg-[#313444] [&.active]:bg-blue [&.active]:text-white [&.active]:shadow-btn-blue"
@@ -473,7 +427,7 @@
                     ></i>
                   </button>
                   <div
-                    class="flex overflow-hidden flex-col gap-[.313rem] max-h-0 transition-[max-height]"
+                    class="flex overflow-hidden flex-col gap-[.313rem] transition-[max-height]"
                   >
                     <div class="flex flex-col gap-[.313rem] pb-[.625rem]">
                       <div class="relative">
@@ -538,10 +492,7 @@
                       </div>
                       <div class="relative">
                         <button
-                          aria-label="Слоты"
-                          role="button"
                           data-href="/lobby?category=0"
-                          x-bind:class="!state && 'opacity-100'"
                           class="flex w-full whitespace-nowrap font-[600] items-center text-[#9CA0B5] hover:text-white justify-between pl-[.75rem] pr-[1.125rem] h-[2.875rem] bg-transparent rounded-[.375rem] transition-[background_,_color_,_opacity] duration-300 hover:bg-[#313444] [&.active]:bg-blue [&.active]:text-white [&.active]:shadow-btn-blue"
                         >
                           <div
@@ -559,12 +510,7 @@
                           </div>
                         </button>
                       </div>
-                      <div
-                        class="relative"
-                        x-bind:class="state && 'load'"
-                        x-data="loader"
-                        x-init="destroy"
-                      >
+                      <div class="relative">
                         <button
                           aria-label="Лайвы"
                           role="button"
@@ -674,67 +620,8 @@
                   class="flex flex-col border-b border-b-[#2A2C3D] last:border-0"
                 >
                   <div class="flex flex-col gap-[.313rem] pb-[.625rem]">
-                    <div
-                      class="relative"
-                      x-bind:class="state && 'load'"
-                      x-data="loader"
-                      x-init="destroy"
-                    >
-                      <template x-if="state">
-                        <div
-                          class="absolute left-0 top-0 gap-[.75rem] w-full h-full rounded-[.375rem] bg-transparent flex z-[1] items-center pl-[.75rem] pr-[1.125rem] h-[2.875rem]"
-                        >
-                          <div
-                            class="w-[1.5rem] h-[1.5rem] bg-[#313444] loading relative rounded-[.25rem]"
-                          ></div>
-                          <div
-                            class="shrink-0 relative w-[.063rem] h-[1rem] bg-[#313444] loading"
-                          ></div>
-                          <span
-                            class="w-[100px] h-[8px] bg-[#313444] relative loading rounded-full"
-                          ></span>
-                        </div>
-                      </template>
-                      <button
-                        data-href="/tournaments"
-                        class="flex w-full whitespace-nowrap font-[600] items-center text-[#9CA0B5] hover:text-white justify-between pl-[.75rem] pr-[1.125rem] h-[2.875rem] bg-transparent rounded-[.375rem] transition-[background_,_color_,_opacity] duration-300 hover:bg-[#313444] [&.active]:bg-blue [&.active]:text-white [&.active]:shadow-btn-blue"
-                      >
-                        <div
-                          class="flex pointer-events-none items-center gap-[.75rem]"
-                        >
-                          <svg class="shrink-0 w-[1.5rem] h-[1.5rem]">
-                            <use
-                              xlink:href="../assets/images/symbols.svg?v=1#icon-tournaments"
-                            ></use>
-                          </svg>
-                          <div
-                            class="shrink-0 w-[.063rem] h-[1rem] bg-current opacity-20"
-                          ></div>
-                          <span>Турниры</span>
-                        </div>
-                      </button>
-                    </div>
-                    <div
-                      class="relative"
-                      x-bind:class="state && 'load'"
-                      x-data="loader"
-                      x-init="destroy"
-                    >
-                      <template x-if="state">
-                        <div
-                          class="absolute left-0 top-0 gap-[.75rem] w-full h-full rounded-[.375rem] bg-transparent flex z-[1] items-center pl-[.75rem] pr-[1.125rem] h-[2.875rem]"
-                        >
-                          <div
-                            class="w-[1.5rem] h-[1.5rem] bg-[#313444] loading relative rounded-[.25rem]"
-                          ></div>
-                          <div
-                            class="shrink-0 relative w-[.063rem] h-[1rem] bg-[#313444] loading"
-                          ></div>
-                          <span
-                            class="w-[100px] h-[8px] bg-[#313444] relative loading rounded-full"
-                          ></span>
-                        </div>
-                      </template>
+                    <div class="relative"></div>
+                    <div class="relative">
                       <button
                         data-href="/faq"
                         class="flex w-full whitespace-nowrap font-[600] items-center text-[#9CA0B5] hover:text-white justify-between pl-[.75rem] pr-[1.125rem] h-[2.875rem] bg-transparent rounded-[.375rem] transition-[background_,_color_,_opacity] duration-300 hover:bg-[#313444] [&.active]:bg-blue [&.active]:text-white [&.active]:shadow-btn-blue"

@@ -99,36 +99,57 @@
     class="[&_img]:pointer-events-none [&_img]:select-none group/body font-sans bg-[#131521] h-full [&_span]:cursor-default [&_p]:cursor-default [&_b]:cursor-default [&_li]:cursor-default [&_h1]:cursor-default [&_h2]:cursor-default [&_h3]:cursor-default [&_h4]:cursor-default [&_h5]:cursor-default [&_h6]:cursor-default text-white [&_li]:list-none focus:[&_*]:ring-0 focus:[&_*]:ring-inherit focus:[&_*]:outline-0 overflow-x-hidden min-w-[320px] [&_button_span]:pointer-events-none [&_a_span]:pointer-events-none [&_canvas]:pointer-events-none select-none parallax"
   >
     <header
+      x-data="loader"
+      x-init="destroy"
       class="fixed right-0 top-0 min-[1125px]:w-[calc(100%_-_17.5rem)] w-full h-[4.5rem] bg-[#222432] border-b border-b-[#2A2C3D] gap-4 flex items-stretch justify-between min-[1125px]:pl-[1.875rem] pl-[1rem] z-[10]"
     >
       <div class="flex items-center gap-8">
         <div class="min-[1125px]:hidden flex items-center gap-3">
           <button
             data-href="/"
-            class="max-[360px]:w-[1.625rem] max-[360px]:overflow-hidden"
+            aria-label="Главная"
+            role="button"
+            class="maskedLink max-[360px]:w-[1.625rem] max-[360px]:overflow-hidden"
           >
             <img
-              src="../assets/images/logo.svg"
+              src="assets/images/logo.svg"
               class="min-[361px]:w-[7rem] h-[2rem] max-[360px]:max-w-fit object-contain"
               alt=""
             />
           </button>
           <button
+            @click="search = !search"
+            type="button"
+            aria-label="Поиск игр"
+            role="button"
             class="shrink-0 flex gap-0.5 flex-col justify-center text-[.688rem] items-center w-[2.813rem] h-[2.813rem] text-[#A2A8B0] transition-[background_,_color] duration-300 hover:bg-[#2f3140] rounded-[.438rem] hover:text-white"
           >
-            <svg class="w-4 h-4 mt-1">
-              <use xlink:href="../assets/images/symbols.svg#icon-search"></use>
+            <svg x-show="!search" class="w-4 h-4 mt-1">
+              <use xlink:href="assets/images/symbols.svg#icon-search"></use>
             </svg>
-            <span>Поиск</span>
+            <svg x-show="search" x-cloak class="w-3 h-3 mt-1">
+              <use xlink:href="assets/images/symbols.svg#icon-close"></use>
+            </svg>
+            <span x-text="search ? 'Отмена' : 'Поиск'">Поиск</span>
           </button>
         </div>
         <ul
           class="min-[1125px]:flex hidden h-full items-stretch gap-[1.875rem]"
         >
           <li class="relative">
+            <div
+              x-show="state"
+              class="flex w-full h-full absolute left-0 items-center gap-[.5rem]"
+            >
+              <div
+                class="shrink-0 w-[1.5rem] h-[1.5rem] rounded-[.375rem] bg-[#373a4c] relative loading"
+              ></div>
+              <span
+                class="w-full h-[8px] rounded-full relative bg-[#373a4c] loading"
+              ></span>
+            </div>
             <button
-              data-href="/lobby"
-              class="flex h-full justify-center items-center gap-[.5rem] text-base font-[600] text-[#9E9EAD] transition-[color_,_opacity] duration-300 [&.active]:!opacity-100 hover:text-[#B9B9CA] group/link [&.active]:text-white"
+              class="maskedLink opacity-0 flex h-full justify-center items-center gap-[.5rem] text-base font-[600] text-[#9E9EAD] transition-[color_,_opacity] duration-300 [&.active]:!opacity-100 hover:text-[#B9B9CA] group/link [&.active]:text-white"
             >
               <svg
                 class="shrink-0 w-[1.5rem] h-[1.5rem] text-[#75798C] transition-[color] duration-300 group-hover/link:text-[#9196AA] group-[.active]/link:text-blue"
@@ -137,14 +158,24 @@
               </svg>
               <span>Слоты</span>
               <div
-                class="absolute left-0 bottom-0 w-full h-[3px] bg-blue w-0 group-[.active]/link:!w-full group-[.active]/link:!opacity-100"
+                class="absolute left-0 bottom-0 w-full h-[3px] bg-blue opacity-0 w-0 group-[.active]/link:!w-full group-[.active]/link:!opacity-100"
               ></div>
             </button>
           </li>
           <li class="relative">
+            <div
+              x-show="state"
+              class="flex w-full h-full absolute left-0 items-center gap-[.5rem]"
+            >
+              <div
+                class="shrink-0 w-[1.5rem] h-[1.5rem] rounded-[.375rem] bg-[#373a4c] relative loading"
+              ></div>
+              <span
+                class="w-full h-[8px] rounded-full relative bg-[#373a4c] loading"
+              ></span>
+            </div>
             <button
-              data-href="/game?id=225597"
-              class="flex h-full justify-center items-center gap-[.5rem] text-base font-[600] text-[#9E9EAD] transition-[color_,_opacity] duration-300 [&.active]:!opacity-100 hover:text-[#B9B9CA] group/link [&.active]:text-white"
+              class="maskedLink opacity-0 flex h-full justify-center items-center gap-[.5rem] text-base font-[600] text-[#9E9EAD] transition-[color_,_opacity] duration-300 [&.active]:!opacity-100 hover:text-[#B9B9CA] group/link [&.active]:text-white"
             >
               <svg
                 class="shrink-0 w-[1.5rem] h-[1.5rem] text-[#75798C] transition-[color] duration-300 group-hover/link:text-[#9196AA] group-[.active]/link:text-blue"
@@ -155,25 +186,61 @@
               </svg>
               <span>Live игры</span>
               <div
-                class="absolute left-0 bottom-0 w-full h-[3px] bg-blue w-0 group-[.active]/link:!w-full group-[.active]/link:!opacity-100"
+                class="absolute left-0 bottom-0 w-full h-[3px] bg-blue opacity-0 w-0 group-[.active]/link:!w-full group-[.active]/link:!opacity-100"
               ></div>
             </button>
           </li>
           <li class="relative">
+            <div
+              x-show="state"
+              class="flex w-full h-full absolute left-0 items-center gap-[.5rem]"
+            >
+              <div
+                class="shrink-0 w-[1.5rem] h-[1.5rem] rounded-[.375rem] bg-[#373a4c] relative loading"
+              ></div>
+              <span
+                class="w-full h-[8px] rounded-full relative bg-[#373a4c] loading"
+              ></span>
+            </div>
             <button
-              data-href="/tournaments"
-              class="flex h-full justify-center items-center gap-[.5rem] text-base font-[600] text-[#9E9EAD] transition-[color_,_opacity] duration-300 [&.active]:!opacity-100 hover:text-[#B9B9CA] group/link [&.active]:text-white"
+              class="maskedLink opacity-0 flex h-full justify-center items-center gap-[.5rem] text-base font-[600] text-[#9E9EAD] transition-[color_,_opacity] duration-300 [&.active]:!opacity-100 hover:text-[#B9B9CA] group/link [&.active]:text-white"
+            >
+              <svg
+                class="shrink-0 w-[1.5rem] h-[1.5rem] text-[#75798C] transition-[color] duration-300 group-hover/link:text-[#9196AA] group-[.active]/link:text-blue"
+              >
+                <use xlink:href="../assets/images/symbols.svg#icon-bonus"></use>
+              </svg>
+              <span>Бонусы</span>
+              <div
+                class="absolute left-0 bottom-0 w-full h-[3px] bg-blue opacity-0 w-0 group-[.active]/link:!w-full group-[.active]/link:!opacity-100"
+              ></div>
+            </button>
+          </li>
+          <li class="relative">
+            <div
+              x-show="state"
+              class="flex w-full h-full absolute left-0 items-center gap-[.5rem]"
+            >
+              <div
+                class="shrink-0 w-[1.5rem] h-[1.5rem] rounded-[.375rem] bg-[#373a4c] relative loading"
+              ></div>
+              <span
+                class="w-full h-[8px] rounded-full relative bg-[#373a4c] loading"
+              ></span>
+            </div>
+            <button
+              class="maskedLink opacity-0 flex h-full justify-center items-center gap-[.5rem] text-base font-[600] text-[#9E9EAD] transition-[color_,_opacity] duration-300 [&.active]:!opacity-100 hover:text-[#B9B9CA] group/link [&.active]:text-white"
             >
               <svg
                 class="shrink-0 w-[1.5rem] h-[1.5rem] text-[#75798C] transition-[color] duration-300 group-hover/link:text-[#9196AA] group-[.active]/link:text-blue"
               >
                 <use
-                  xlink:href="../assets/images/symbols.svg#icon-tournaments"
+                  xlink:href="assets/images/symbols.svg#icon-tournaments"
                 ></use>
               </svg>
               <span>Турниры</span>
               <div
-                class="absolute left-0 bottom-0 w-full h-[3px] bg-blue w-0 group-[.active]/link:!w-full group-[.active]/link:!opacity-100"
+                class="absolute left-0 bottom-0 w-full h-[3px] bg-blue opacity-0 w-0 group-[.active]/link:!w-full group-[.active]/link:!opacity-100"
               ></div>
             </button>
           </li>
@@ -181,24 +248,164 @@
       </div>
       <div class="flex items-center gap-4">
         <div
-          class="flex items-center gap-3 min-[1125px]:pr-[1.875rem] pr-[1rem]"
+          class="flex items-center whitespace-nowrap min-[576px]:gap-5 gap-3 bg-gradient-to-r from-transparent to-[#282a38] to-[45%] h-full pl-5 min-[1125px]:pr-[1.875rem] pr-[1rem]"
+          x-show="true"
         >
-          <button
-            class="relative flex items-center font-[500] text-[#A7AFBF] justify-center h-[2.5rem] rounded-[.375rem] bg-[#313343] transition-[color_,_background] duration-300 hover:bg-[#383a4d] hover:text-white px-5"
-          >
-            <span class="transition-[opacity] opacity-100">Войти</span>
-          </button>
-          <button
-            class="relative flex items-center font-[500] text-white justify-center h-[2.5rem] rounded-[.375rem] shadow-btn-blue bg-blue transition-[color_,_background_,_border] duration-300 hover:bg-[#2399EF] px-5"
-          >
-            <span class="transition-[opacity] opacity-100">Регистрация</span>
-          </button>
+          <div class="flex items-center gap-3">
+            <div class="flex flex-col items-end gap-1.5">
+              <span
+                class="uppercase leading-[100%] text-[.688rem] font-[500] text-[#9CA0B5]"
+                >Баланс</span
+              >
+              <span class="font-[600] leading-[100%] text-[1.063rem]"
+                ><span
+                  class="font-[600] leading-[100%] text-[1.063rem]"
+                  x-text="parseDecimals(0)"
+                  id="userBalance"
+                  >0</span
+                >
+                ₽</span
+              >
+            </div>
+            <button
+              id="wallet-modal"
+              class="w-[2.375rem] h-[2.375rem] flex items-center justify-center rounded-[.375rem] bg-blue text-white transition-[color_,_background] duration-300 shadow-btn-blue hover:bg-[#2399EF]"
+            >
+              <svg class="w-4 h-4">
+                <use
+                  xlink:href="../assets/images/symbols.svg#icon-wallet"
+                ></use>
+              </svg>
+            </button>
+          </div>
+          <div class="flex items-center min-[576px]:gap-4 gap-2">
+            <button
+              id="level-popup-btn"
+              class="min-[576px]:flex hidden flex-col items-start -space-y-2 relative top-[.125rem] group/level"
+            >
+              <div class="h-[1.125rem] flex flex-col overflow-hidden">
+                <div
+                  class="relative transition-[transform] duration-300 group-hover/level:-translate-y-[1.125rem] flex flex-col items-start"
+                >
+                  <div
+                    class="h-[1.125rem] transition-[opacity] duration-300 group-hover/level:opacity-0"
+                  >
+                    <span class="text-[.813rem] font-[500] text-[#9CA0B5]"
+                      >Без ранга <span class="text-white">0%</span></span
+                    >
+                  </div>
+                  <div
+                    class="h-[1.125rem] flex items-center transition-[opacity] duration-300"
+                  >
+                    <span
+                      class="text-[.688rem] h-[1.063rem] flex leading-[100%] items-center justify-center px-2 rounded-full bg-[#484c66] text-[#c5c9f9] font-[500]"
+                      >Подробнее</span
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="relative">
+                <div
+                  class="absolute w-[5.625rem] h-[.5rem] rounded-full bg-[#222432] left-[.375rem] top-[1.25rem]"
+                >
+                  <div
+                    class="absolute left-0 top-0 h-full bg-gradient-to-b from-[#0083E1] to-[#0049B6] rounded-full"
+                    style="width: 0%"
+                  ></div>
+                </div>
+                <div
+                  class="absolute right-0 top-0 w-[2.25rem] h-[2.75rem] flex items-center justify-center"
+                >
+                  <img src="../assets/images/gift.svg" class="w-6 h-6" alt="" />
+                </div>
+                <svg
+                  class="w-[8.313rem] h-[2.813rem]"
+                  viewBox="0 0 159 43"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <mask id="path-1-inside-1_888_137" fill="white">
+                    <path
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      d="M137.4 43C149.275 43 158.9 33.3741 158.9 21.5C158.9 9.62588 149.275 0 137.4 0C128.164 0 120.288 5.82403 117.245 14L9.5 14C4.25329 14 -2.38419e-07 18.2533 0 23.5C2.38419e-07 28.7467 4.2533 33 9.5 33L119.231 33C123.044 39.0105 129.756 43 137.4 43Z"
+                    />
+                  </mask>
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M137.4 43C149.275 43 158.9 33.3741 158.9 21.5C158.9 9.62588 149.275 0 137.4 0C128.164 0 120.288 5.82403 117.245 14L9.5 14C4.25329 14 -2.38419e-07 18.2533 0 23.5C2.38419e-07 28.7467 4.2533 33 9.5 33L119.231 33C123.044 39.0105 129.756 43 137.4 43Z"
+                    fill="#383A4E"
+                  />
+                  <path
+                    d="M117.245 14L117.245 15L117.94 15L118.182 14.3489L117.245 14ZM9.5 14L9.5 15L9.5 15L9.5 14ZM0 23.5L-1 23.5L0 23.5ZM9.5 33L9.5 34H9.5L9.5 33ZM119.231 33L120.076 32.4644L119.781 32L119.231 32L119.231 33ZM157.9 21.5C157.9 32.8218 148.722 42 137.4 42V44C149.827 44 159.9 33.9264 159.9 21.5H157.9ZM137.4 1C148.722 1 157.9 10.1782 157.9 21.5H159.9C159.9 9.07359 149.827 -1 137.4 -1V1ZM118.182 14.3489C121.085 6.55164 128.595 1 137.4 1V-1C127.733 -1 119.492 5.09643 116.308 13.6511L118.182 14.3489ZM9.5 15L117.245 15L117.245 13L9.5 13L9.5 15ZM1 23.5C1 18.8056 4.80558 15 9.5 15V13C3.70101 13 -1 17.701 -1 23.5L1 23.5ZM9.5 32C4.80558 32 1 28.1944 1 23.5L-1 23.5C-1 29.299 3.70101 34 9.5 34V32ZM119.231 32L9.5 32L9.5 34L119.231 34L119.231 32ZM137.4 42C130.113 42 123.712 38.1979 120.076 32.4644L118.387 33.5356C122.375 39.8231 129.399 44 137.4 44V42Z"
+                    fill="#4A4D64"
+                    mask="url(#path-1-inside-1_888_137)"
+                  />
+                </svg>
+              </div>
+            </button>
+            <div class="flex items-center gap-3">
+              <button
+                class="min-[1125px]:hidden flex shrink-0 items-center p-1 rounded-full bg-[#383A4E] border border-[#4A4D64]"
+              >
+                <div
+                  class="shrink-0 w-[2.813rem] h-[2.813rem] rounded-full relative pointer-events-none"
+                >
+                  <img
+                    class="w-full h-full object-cover rounded-full"
+                    src="https://sun6-20.userapi.com/s/v1/ig2/1Ci7vUUKLLE9_BXfnCKsL14vVx-lNdl_rPkC-UNOWQvx6PgMJj65uX3b772q8LL3yim-keyCvXWalbWspQGP-kZR.jpg?quality=95&crop=253,490,804,804&as=32x32,48x48,72x72,108x108,160x160,240x240,360x360,480x480,540x540,640x640,720x720&ava"
+                    alt=""
+                  />
+                </div>
+              </button>
+              <button
+                class="min-[1125px]:flex hidden shrink-0 items-center p-1 rounded-full bg-[#383A4E] border border-[#4A4D64]"
+              >
+                <div
+                  class="shrink-0 w-[2.813rem] h-[2.813rem] rounded-full relative pointer-events-none"
+                >
+                  <img
+                    class="w-full h-full object-cover rounded-full"
+                    src="https://sun6-20.userapi.com/s/v1/ig2/1Ci7vUUKLLE9_BXfnCKsL14vVx-lNdl_rPkC-UNOWQvx6PgMJj65uX3b772q8LL3yim-keyCvXWalbWspQGP-kZR.jpg?quality=95&crop=253,490,804,804&as=32x32,48x48,72x72,108x108,160x160,240x240,360x360,480x480,540x540,640x640,720x720&ava"
+                    alt=""
+                  />
+                </div>
+              </button>
+              <div class="min-[576px]:flex hidden flex-col items-start">
+                <button
+                  type="button"
+                  aria-label="Профиль"
+                  role="button"
+                  @click="changeUser"
+                  class="font-[500] min-[1125px]:hidden flex"
+                >
+                  Дима Христов
+                </button>
+                <button
+                  data-href="/profile"
+                  aria-label="Профиль"
+                  role="button"
+                  class="font-[500] min-[1125px]:flex hidden"
+                >
+                  Дима Христов
+                </button>
+                <button
+                  data-href="/auth/logout"
+                  aria-label="Выйти"
+                  role="button"
+                  class="font-[500] text-sm transition-[color] hover:text-[#DDE1F1] text-[#9CA0B5]"
+                >
+                  Выйти
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </header>
     <div
       class="fixed left-0 min-[1125px]:top-0 top-[4.5rem] min-[1125px]:h-full h-[calc(100%_-_4.5rem)] z-[10] w-full pointer-events-none flex flex-col justify-between group/sidebar [&.active]:z-[9]"
-      x-bind:class="menu && 'active'"
     >
       <div
         class="flex flex-col justify-between min-[425px]:max-w-[17.5rem] max-w-full bg-[#1D1F2C] w-full h-full pointer-events-auto transition-[transform] duration-300 max-[1124px]:-translate-x-full max-[1124px]:group-[.active]/sidebar:translate-x-0 max-[1124px]:pb-[4rem]"
@@ -225,7 +432,7 @@
           </button>
         </div>
         <div
-          class="w-full min-[1125px]:h-[calc(100%_-_4.5rem)] h-full flex flex-col"
+          class="w-full min-[1125px]:h-[calc(100%_-_4.5rem)] h-full flex flex-col overflow-y-auto"
         >
           <div class="w-full flex-1">
             <div class="flex-col flex relative z-[1]">
@@ -296,24 +503,10 @@
                     ></i>
                   </button>
                   <div
-                    class="flex overflow-hidden flex-col gap-[.313rem] max-h-0 transition-[max-height]"
+                    class="flex overflow-hidden flex-col gap-[.313rem] transition-[max-height]"
                   >
                     <div class="flex flex-col gap-[.313rem] pb-[.625rem]">
                       <div class="relative">
-                        <div
-                          class="absolute left-0 top-0 gap-[.75rem] w-full h-full rounded-[.375rem] bg-transparent flex z-[1] items-center pl-[.75rem] pr-[1.125rem] h-[2.875rem]"
-                        >
-                          <div
-                            class="w-[1.5rem] h-[1.5rem] bg-[#313444] loading relative rounded-[.25rem]"
-                          ></div>
-                          <div
-                            class="shrink-0 relative w-[.063rem] h-[1rem] bg-[#313444] loading"
-                          ></div>
-                          <span
-                            class="w-[100px] h-[8px] bg-[#313444] relative loading rounded-full"
-                          ></span>
-                        </div>
-
                         <button
                           data-href="/mines"
                           class="flex w-full whitespace-nowrap font-[600] items-center text-[#9CA0B5] hover:text-white justify-between pl-[.75rem] pr-[1.125rem] h-[2.875rem] bg-transparent rounded-[.375rem] transition-[background_,_color_,_opacity] duration-300 hover:bg-[#313444] [&.active]:bg-blue [&.active]:text-white [&.active]:shadow-btn-blue"
@@ -473,7 +666,7 @@
                     ></i>
                   </button>
                   <div
-                    class="flex overflow-hidden flex-col gap-[.313rem] max-h-0 transition-[max-height]"
+                    class="flex overflow-hidden flex-col gap-[.313rem] transition-[max-height]"
                   >
                     <div class="flex flex-col gap-[.313rem] pb-[.625rem]">
                       <div class="relative">
@@ -679,62 +872,13 @@
                       x-bind:class="state && 'load'"
                       x-data="loader"
                       x-init="destroy"
-                    >
-                      <template x-if="state">
-                        <div
-                          class="absolute left-0 top-0 gap-[.75rem] w-full h-full rounded-[.375rem] bg-transparent flex z-[1] items-center pl-[.75rem] pr-[1.125rem] h-[2.875rem]"
-                        >
-                          <div
-                            class="w-[1.5rem] h-[1.5rem] bg-[#313444] loading relative rounded-[.25rem]"
-                          ></div>
-                          <div
-                            class="shrink-0 relative w-[.063rem] h-[1rem] bg-[#313444] loading"
-                          ></div>
-                          <span
-                            class="w-[100px] h-[8px] bg-[#313444] relative loading rounded-full"
-                          ></span>
-                        </div>
-                      </template>
-                      <button
-                        data-href="/tournaments"
-                        class="flex w-full whitespace-nowrap font-[600] items-center text-[#9CA0B5] hover:text-white justify-between pl-[.75rem] pr-[1.125rem] h-[2.875rem] bg-transparent rounded-[.375rem] transition-[background_,_color_,_opacity] duration-300 hover:bg-[#313444] [&.active]:bg-blue [&.active]:text-white [&.active]:shadow-btn-blue"
-                      >
-                        <div
-                          class="flex pointer-events-none items-center gap-[.75rem]"
-                        >
-                          <svg class="shrink-0 w-[1.5rem] h-[1.5rem]">
-                            <use
-                              xlink:href="../assets/images/symbols.svg?v=1#icon-tournaments"
-                            ></use>
-                          </svg>
-                          <div
-                            class="shrink-0 w-[.063rem] h-[1rem] bg-current opacity-20"
-                          ></div>
-                          <span>Турниры</span>
-                        </div>
-                      </button>
-                    </div>
+                    ></div>
                     <div
                       class="relative"
                       x-bind:class="state && 'load'"
                       x-data="loader"
                       x-init="destroy"
                     >
-                      <template x-if="state">
-                        <div
-                          class="absolute left-0 top-0 gap-[.75rem] w-full h-full rounded-[.375rem] bg-transparent flex z-[1] items-center pl-[.75rem] pr-[1.125rem] h-[2.875rem]"
-                        >
-                          <div
-                            class="w-[1.5rem] h-[1.5rem] bg-[#313444] loading relative rounded-[.25rem]"
-                          ></div>
-                          <div
-                            class="shrink-0 relative w-[.063rem] h-[1rem] bg-[#313444] loading"
-                          ></div>
-                          <span
-                            class="w-[100px] h-[8px] bg-[#313444] relative loading rounded-full"
-                          ></span>
-                        </div>
-                      </template>
                       <button
                         data-href="/faq"
                         class="flex w-full whitespace-nowrap font-[600] items-center text-[#9CA0B5] hover:text-white justify-between pl-[.75rem] pr-[1.125rem] h-[2.875rem] bg-transparent rounded-[.375rem] transition-[background_,_color_,_opacity] duration-300 hover:bg-[#313444] [&.active]:bg-blue [&.active]:text-white [&.active]:shadow-btn-blue"
@@ -1585,6 +1729,1088 @@
           </div>
         </div>
       </footer>
+    </div>
+    <div
+      class="overlayed fixed backdrop-blur-[3px] top-0 left-0 w-full h-full z-[2000] bg-[#0D0F17]/[0.85] overflow-auto opacity-0 invisible transition-all duration-200 flex justify-center min-[631px]:px-[1.5rem] min-[631px]:py-[1.5rem] min-[875px]:py-[3rem]"
+    >
+      <div
+        class="popup m-[auto_0] relative popup--sign-in hidden invisible max-w-[45rem] w-full overflow-hidden min-[631px]:rounded-[.75rem] bg-[#232537] shadow-modal !opacity-100 !visible pointer-events-auto"
+      >
+        <div class="flex min-[631px]:flex-row flex-col items-stretch">
+          <div
+            class="min-[631px]:max-w-[20rem] max-w-full w-full relative p-[1.75rem]"
+          >
+            <div
+              class="relative z-[2] flex items-start text-[1.625rem] font-[600] gap-3"
+            >
+              <div
+                class="shrink-0 bg-blue h-[.25rem] w-[1.5rem] relative top-3.5"
+              ></div>
+              <span class="leading-[120%]">Вход</span>
+            </div>
+            <div
+              class="absolute min-[631px]:hidden block w-full h-full left-0 top-0 bg-[radial-gradient(transparent,_#232537_80%)] z-[1]"
+            ></div>
+            <img
+              src="../assets/images/modal-auth.jpg"
+              class="absolute left-0 top-0 w-full h-full object-cover object-top"
+              alt=""
+            />
+          </div>
+          <div
+            class="min-[631px]:w-[calc(100%_-_20rem)] w-full flex flex-col p-[1.5rem]"
+          >
+            <div class="flex flex-col gap-5 mb-10">
+              <div class="flex flex-col gap-2">
+                <span class="text-sm font-[600] text-[#8F94AB]">Логин</span>
+                <div class="relative">
+                  <input
+                    type="text"
+                    class="h-[3rem] px-5 rounded-[.375rem] bg-[#2C2E43] text-[.938rem] w-full placeholder:text-[#A1A6BE] text-white focus:placeholder:opacity-0 placeholder:transition-[opacity]"
+                    placeholder="Введите логин"
+                  />
+                </div>
+              </div>
+              <div class="flex flex-col gap-2">
+                <span class="text-sm font-[600] text-[#8F94AB]">Пароль</span>
+                <div class="relative">
+                  <button
+                    class="absolute right-0 top-0 w-[3rem] h-[3rem] flex items-center justify-center transition-[color] duration-300 text-[#565978] hover:text-[#777AA3]"
+                  >
+                    <svg class="w-5 h-5">
+                      <use
+                        xlink:href="../assets/images/symbols.svg#icon-view"
+                      ></use>
+                    </svg>
+                    <span
+                      class="w-[1.25rem] h-[.125rem] bg-current absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 rotate-45 opacity-0 transition-[opacity] duration-150"
+                    ></span>
+                  </button>
+                  <input
+                    class="h-[3rem] px-5 rounded-[.375rem] bg-[#2C2E43] text-[.938rem] w-full placeholder:text-[#A1A6BE] text-white focus:placeholder:opacity-0 placeholder:transition-[opacity]"
+                    placeholder="Введите пароль"
+                    autocomplete="off"
+                  />
+                </div>
+              </div>
+              <button
+                class="h-[3.438rem] uppercase relative font-[600] flex rounded-[.375rem] items-center justify-center text-white px-[1.75rem] transition-[background_,_box-shadow] duration-300 hover:bg-[#2399EF] bg-blue hover:shadow-btn-blue"
+              >
+                <span class="transition-[opacity] opacity-100"
+                  >Войти в аккаунт</span
+                >
+              </button>
+              <div class="flex justify-center">
+                <span
+                  class="py-0.5 font-[600] px-2 rounded-full bg-[#33364B] text-[#8992BB] text-[.813rem]"
+                  >или</span
+                >
+              </div>
+              <div class="flex gap-3">
+                <button
+                  onclick="javascript:location.href='/auth/vk'"
+                  class="flex-1 flex items-center justify-center h-[3rem] rounded-[.375rem] transition-[background_,_color] duration-300 text-[#8389B5] bg-[#2C2E43] hover:bg-[#454969] hover:text-white"
+                >
+                  <svg class="w-5 h-5">
+                    <use
+                      xlink:href="../assets/images/symbols.svg#icon-vk"
+                    ></use>
+                  </svg>
+                </button>
+                <button
+                  @click="window.open('https://t.me/CosmocasinoBot?start=welcome'); modalClose(); modalShow('telegram')"
+                  class="flex-1 flex items-center justify-center h-[3rem] rounded-[.375rem] transition-[background_,_color] duration-300 text-[#8389B5] bg-[#2C2E43] hover:bg-[#454969] hover:text-white"
+                >
+                  <svg class="w-5 h-5">
+                    <use
+                      xlink:href="../assets/images/symbols.svg#icon-telegram"
+                    ></use>
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <div class="flex justify-end items-center gap-2">
+              <button
+                class="flex text-[.813rem] font-[500] transition-[color] duration-300 text-[#656C8D] hover:text-[#A2A9CD]"
+              >
+                Регистрация
+              </button>
+            </div>
+          </div>
+        </div>
+        <button
+          class="popup__close absolute right-2 top-2 w-[2rem] h-[2rem] flex items-center justify-center transition-[color] duration-300 text-[#43485B] hover:text-white"
+          type="button"
+        >
+          <svg class="w-3 h-3">
+            <use xlink:href="../assets/images/symbols.svg#icon-close"></use>
+          </svg>
+        </button>
+      </div>
+      <div
+        class="popup m-[auto_0] relative popup--sign-up hidden invisible max-w-[45rem] w-full overflow-hidden min-[631px]:rounded-[.75rem] bg-[#232537] shadow-modal"
+      >
+        <div class="flex min-[631px]:flex-row flex-col items-stretch">
+          <div class="min-[631px]:max-w-[20rem] w-full relative p-[1.75rem]">
+            <div
+              class="relative z-[2] flex items-start text-[1.625rem] font-[600] gap-3"
+            >
+              <div
+                class="shrink-0 bg-blue h-[.25rem] w-[1.5rem] relative top-3.5"
+              ></div>
+              <span class="leading-[120%]">Регистрация</span>
+            </div>
+            <div
+              class="absolute min-[631px]:hidden block w-full h-full left-0 top-0 bg-[radial-gradient(transparent,_#232537_80%)] z-[1]"
+            ></div>
+            <img
+              src="../assets/images/modal-auth.jpg"
+              class="absolute left-0 top-0 w-full h-full object-cover object-top"
+              alt=""
+            />
+          </div>
+          <div
+            @keydown.enter="event"
+            class="min-[631px]:w-[calc(100%_-_20rem)] w-full flex flex-col p-[1.5rem]"
+          >
+            <div class="flex flex-col gap-5 mb-10">
+              <div class="flex flex-col gap-2">
+                <span class="text-sm font-[600] text-[#8F94AB]">Логин</span>
+                <div class="relative">
+                  <input
+                    type="text"
+                    class="h-[3rem] px-5 rounded-[.375rem] bg-[#2C2E43] text-[.938rem] w-full placeholder:text-[#A1A6BE] text-white focus:placeholder:opacity-0 placeholder:transition-[opacity]"
+                    placeholder="Введите логин"
+                    autocomplete="off"
+                  />
+                </div>
+              </div>
+              <div class="flex flex-col gap-2">
+                <span class="text-sm font-[600] text-[#8F94AB]">Почта</span>
+                <div class="relative">
+                  <input
+                    class="h-[3rem] px-5 rounded-[.375rem] bg-[#2C2E43] text-[.938rem] w-full placeholder:text-[#A1A6BE] text-white focus:placeholder:opacity-0 placeholder:transition-[opacity]"
+                    placeholder="Введите почту"
+                    autocomplete="off"
+                  />
+                </div>
+              </div>
+              <div class="flex flex-col gap-2" x-data="{ show: false }">
+                <span class="text-sm font-[600] text-[#8F94AB]">Пароль</span>
+                <div class="relative">
+                  <button
+                    type="button"
+                    class="absolute right-0 top-0 w-[3rem] h-[3rem] flex items-center justify-center transition-[color] duration-300 text-[#565978] hover:text-[#777AA3]"
+                  >
+                    <svg class="w-5 h-5">
+                      <use
+                        xlink:href="../assets/images/symbols.svg#icon-view"
+                      ></use>
+                    </svg>
+                    <span
+                      class="w-[1.25rem] h-[.125rem] bg-current absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 rotate-45 opacity-0 transition-[opacity] duration-150"
+                      x-bind:class="show && 'opacity-100'"
+                    ></span>
+                  </button>
+                  <input
+                    class="h-[3rem] px-5 rounded-[.375rem] bg-[#2C2E43] text-[.938rem] w-full placeholder:text-[#A1A6BE] text-white focus:placeholder:opacity-0 placeholder:transition-[opacity]"
+                    placeholder="Введите пароль"
+                    autocomplete="off"
+                  />
+                </div>
+              </div>
+              <div class="flex flex-col gap-2">
+                <span class="text-sm font-[600] text-[#8F94AB]">Капча</span>
+                <div class="flex items-stretch gap-3">
+                  <div
+                    class="flex items-center justify-center text-lg font-bold"
+                    x-text="placeholderCaptcha"
+                  ></div>
+                  <div class="relative flex-1">
+                    <input
+                      type="text"
+                      class="h-[3rem] px-5 rounded-[.375rem] bg-[#2C2E43] text-[.938rem] w-full placeholder:text-[#A1A6BE] text-white focus:placeholder:opacity-0 placeholder:transition-[opacity]"
+                      placeholder="Введите ответ"
+                      autocomplete="off"
+                    />
+                  </div>
+                </div>
+              </div>
+              <button
+                class="h-[3.438rem] uppercase relative font-[600] flex rounded-[.375rem] items-center justify-center text-white px-[1.75rem] transition-[background_,_box-shadow] duration-300 hover:bg-[#2399EF] bg-blue hover:shadow-btn-blue"
+              >
+                <span class="transition-[opacity] opacity-100"
+                  >Зарегестрироваться</span
+                >
+              </button>
+              <div class="flex justify-center">
+                <span
+                  class="py-0.5 font-[600] px-2 rounded-full bg-[#33364B] text-[#8992BB] text-[.813rem]"
+                  >или</span
+                >
+              </div>
+              <div class="flex gap-3">
+                <button
+                  class="flex-1 flex items-center justify-center h-[3rem] rounded-[.375rem] transition-[background_,_color] duration-300 text-[#8389B5] bg-[#2C2E43] hover:bg-[#454969] hover:text-white"
+                >
+                  <svg class="w-5 h-5">
+                    <use
+                      xlink:href="../assets/images/symbols.svg#icon-vk"
+                    ></use>
+                  </svg>
+                </button>
+                <button
+                  class="flex-1 flex items-center justify-center h-[3rem] rounded-[.375rem] transition-[background_,_color] duration-300 text-[#8389B5] bg-[#2C2E43] hover:bg-[#454969] hover:text-white"
+                >
+                  <svg class="w-5 h-5">
+                    <use
+                      xlink:href="../assets/images/symbols.svg#icon-telegram"
+                    ></use>
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <div class="flex justify-end items-center gap-2">
+              <button
+                class="flex text-[.813rem] font-[500] transition-[color] duration-300 text-[#656C8D] hover:text-[#A2A9CD]"
+              >
+                Войти в аккаунт
+              </button>
+            </div>
+          </div>
+        </div>
+        <button
+          class="popup__close absolute right-2 top-2 w-[2rem] h-[2rem] flex items-center justify-center transition-[color] duration-300 text-[#43485B] hover:text-white"
+          type="button"
+        >
+          <svg class="w-3 h-3">
+            <use xlink:href="../assets/images/symbols.svg#icon-close"></use>
+          </svg>
+        </button>
+      </div>
+      <div
+        class="popup m-[auto_0] relative popup--wallet hidden invisible min-[631px]:max-w-[42.5rem] max-w-full w-full max-[630px]:h-full"
+      >
+        <div class="flex flex-col gap-3 h-full">
+          <div
+            class="flex flex-col relative min-[631px]:rounded-[.75rem] bg-[#202232] h-full shadow-modal w-full"
+          >
+            <div
+              class="flex items-stretch justify-between h-[3.5rem] bg-[#272A3C] min-[631px]:rounded-tl-[.75rem] min-[631px]:rounded-tr-[.75rem] overflow-hidden"
+            >
+              <div class="flex items-stretch">
+                <button
+                  type="button"
+                  class="flex items-center justify-center px-5 gap-2 transition-[background_,_color] font-[600] text-[.938rem] duration-300 text-[#8A91AC] [&.active]:bg-[#2F3346] [&.active]:text-white hover:text-[#BAC2E0] group/tab"
+                >
+                  <svg class="w-4 h-4">
+                    <use
+                      xlink:href="../assets/images/symbols.svg#icon-plus"
+                    ></use>
+                  </svg>
+                  <span
+                    class="max-[360px]:hidden max-[360px]:group-[.active]/tab:!block"
+                    >Депозит</span
+                  >
+                </button>
+                <button
+                  class="flex items-center justify-center px-5 gap-2 transition-[background_,_color] font-[600] text-[.938rem] duration-300 text-[#8A91AC] [&.active]:bg-[#2F3346] [&.active]:text-white hover:text-[#BAC2E0] group/tab"
+                >
+                  <svg class="w-4 h-4">
+                    <use
+                      xlink:href="../assets/images/symbols.svg#icon-minus"
+                    ></use>
+                  </svg>
+                  <span
+                    class="max-[360px]:hidden max-[360px]:group-[.active]/tab:!block"
+                    >Вывод</span
+                  >
+                </button>
+                <button
+                  type="button"
+                  class="flex items-center justify-center px-5 gap-2 transition-[background_,_color] font-[600] text-[.938rem] duration-300 text-[#8A91AC] [&.active]:bg-[#2F3346] [&.active]:text-white hover:text-[#BAC2E0] group/tab"
+                >
+                  <svg class="w-4 h-4">
+                    <use
+                      xlink:href="../assets/images/symbols.svg#icon-history"
+                    ></use>
+                  </svg>
+                  <span
+                    class="max-[360px]:hidden max-[360px]:group-[.active]/tab:!block"
+                    >История</span
+                  >
+                </button>
+              </div>
+              <button
+                class="z-[1] w-[3.5rem] flex items-center justify-center transition-[color] duration-300 text-[#43485B] hover:text-white popup__close"
+                type="button"
+              >
+                <svg class="w-3 h-3">
+                  <use
+                    xlink:href="../assets/images/symbols.svg#icon-close"
+                  ></use>
+                </svg>
+              </button>
+            </div>
+            <div
+              class="w-full flex flex-col p-5 max-[630px]:h-full max-[630px]:overflow-auto"
+            >
+              <div class="h-full w-full">
+                <div
+                  class="flex flex-col max-[630px]:h-full max-[630px]:justify-between"
+                >
+                  <div
+                    class="flex flex min-[631px]:flex-row flex-col min-[631px]:items-stretch justify-between gap-6 opacity-0 transition-[opacity] max-[630px]:h-full"
+                  >
+                    <div
+                      class="min-[631px]:max-w-[13.75rem] max-w-full w-full flex flex-col gap-2"
+                    >
+                      <span class="shrink-0 text-sm font-[500] text-[#8F94AB]"
+                        >Выберите метод</span
+                      >
+                      <div
+                        class="flex min-[631px]:flex-col flex-row max-[630px]:overflow-auto scroll-0 gap-2 min-[631px]:h-[28.75rem] [&_div.scroll-content]:flex [&_div.scroll-content]:flex-col [&_div.scroll-content]:gap-2 [&_div.scrollbar-thumb]:!bg-[#b9bfeb]/[0.25] [&_div.scrollbar-thumb]:backdrop-blur-[10px]"
+                      >
+                        <div class="w-full h-full max-[630px]:!hidden">
+                          <button
+                            class="shrink-0 w-full rounded-[.375rem] gap-3 flex items-center px-4 relative h-[4.375rem] transition-[background_,_color_,_border_,_box-shadow] border border-transparent duration-300 bg-[#2E3245] hover:bg-[#393C54] hover:border-[#545874] [&.active]:bg-[#393C54] [&.active]:border-[#545874]"
+                          >
+                            <img
+                              :src="item.image"
+                              class="shrink-0 w-[2rem] h-[2rem]"
+                              alt=""
+                            />
+                            <div class="flex flex-col items-start">
+                              <span class="font-[600] text-base"
+                                >item.name</span
+                              >
+                              <span
+                                class="font-[500] text-[.813rem] text-[#A1A7C7]"
+                                >item.parameters.min</span
+                              >
+                            </div>
+                            <span
+                              class="absolute text-xs font-[500] right-2 top-2 text-[#A1A7C7]"
+                              >item.comission</span
+                            >
+                          </button>
+                        </div>
+                        <div class="w-full min-[631px]:hidden flex gap-3">
+                          <button
+                            class="shrink-0 pr-[2.5rem] rounded-[.375rem] gap-3 flex items-center px-4 relative h-[4.375rem] transition-[background_,_color_,_border_,_box-shadow] border border-transparent duration-300 bg-[#2E3245] hover:bg-[#393C54] hover:border-[#545874] [&.active]:bg-[#393C54] [&.active]:border-[#545874]"
+                          >
+                            <img
+                              src="item.image"
+                              class="shrink-0 w-[2rem] h-[2rem]"
+                              alt=""
+                            />
+                            <div class="flex flex-col items-start">
+                              <span class="font-[600] text-base"
+                                >item.name</span
+                              >
+                              <span
+                                class="font-[500] text-[.813rem] text-[#A1A7C7]"
+                                >item.parameter.min</span
+                              >
+                            </div>
+                            <span
+                              class="absolute text-xs font-[500] right-2 top-2 text-[#A1A7C7]"
+                              >item.comission</span
+                            >
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="min-[631px]:w-[calc(100%_-_220px)] w-full flex flex-col justify-between gap-6 max-[630px]:h-full"
+                    >
+                      <div class="flex flex-col gap-5">
+                        <div class="flex flex-col gap-2">
+                          <span class="text-sm font-[500] text-[#8F94AB]"
+                            >Укажите сумму пополнения</span
+                          >
+                          <div class="flex flex-col gap-2">
+                            <div class="relative">
+                              <input
+                                type="text"
+                                class="h-[3rem] px-5 rounded-[.375rem] bg-[#2E3245] text-[.938rem] w-full placeholder:text-[#A1A6BE] text-white focus:placeholder:opacity-0 placeholder:transition-[opacity]"
+                                placeholder="Введите сумму"
+                                autocomplete="off"
+                              />
+                            </div>
+                            <div
+                              class="flex items-stretch justify-between gap-2"
+                            >
+                              <button
+                                class="grow flex items-center justify-center rounded-[.375rem] transition-[border_,_background_,_color] duration-300 border border-transparent bg-[#2E3245] hover:bg-[#393C54] text-[#8991B8] hover:text-white hover:border-[#545874] h-[2.375rem] font-[500] text-[.813rem]"
+                                type="button"
+                              ></button>
+                              <button
+                                class="grow flex items-center justify-center rounded-[.375rem] transition-[border_,_background_,_color] duration-300 border border-transparent bg-[#2E3245] hover:bg-[#393C54] text-[#8991B8] hover:text-white hover:border-[#545874] h-[2.375rem] font-[500] text-[.813rem]"
+                                type="button"
+                              >
+                                500 ₽
+                              </button>
+                              <button
+                                class="grow flex items-center justify-center rounded-[.375rem] transition-[border_,_background_,_color] duration-300 border border-transparent bg-[#2E3245] hover:bg-[#393C54] text-[#8991B8] hover:text-white hover:border-[#545874] h-[2.375rem] font-[500] text-[.813rem]"
+                                type="button"
+                              >
+                                1 000 ₽
+                              </button>
+                              <button
+                                class="grow flex items-center justify-center rounded-[.375rem] transition-[border_,_background_,_color] duration-300 border border-transparent bg-[#2E3245] hover:bg-[#393C54] text-[#8991B8] hover:text-white hover:border-[#545874] h-[2.375rem] font-[500] text-[.813rem]"
+                                type="button"
+                              >
+                                5 000 ₽
+                              </button>
+                              <button
+                                class="grow flex items-center justify-center rounded-[.375rem] transition-[border_,_background_,_color] duration-300 border border-transparent bg-[#2E3245] hover:bg-[#393C54] text-[#8991B8] hover:text-white hover:border-[#545874] h-[2.375rem] font-[500] text-[.813rem]"
+                                type="button"
+                              >
+                                Макс
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="flex flex-col gap-2">
+                          <span class="text-sm font-[500] text-[#8F94AB]"
+                            >Введите промокод (если есть)</span
+                          >
+                          <div class="flex flex-col gap-2">
+                            <div class="relative">
+                              <input
+                                type="text"
+                                class="h-[3rem] px-5 rounded-[.375rem] bg-[#2E3245] text-[.938rem] w-full placeholder:text-[#A1A6BE] text-white focus:placeholder:opacity-0 placeholder:transition-[opacity]"
+                                placeholder="Введите промокод"
+                                autocomplete="off"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="flex flex-col gap-6">
+                        <div class="flex flex-col">
+                          <div
+                            class="w-full h-[8.75rem] text-white relative flex items-center px-[1.25rem]"
+                          >
+                            <div
+                              class="relative w-full z-[2] flex flex-col items-center justify-end h-full gap-1.5"
+                            >
+                              <div class="flex items-center gap-3 pb-4">
+                                <div
+                                  class="flex items-center font-[600] text-[2.5rem] gap-2 drop-shadow-2xl"
+                                >
+                                  <svg class="w-[2rem] h-[2rem] text-[#7B87AA]">
+                                    <use
+                                      xlink:href="../assets/images/symbols.svg#icon-ticket"
+                                    ></use>
+                                  </svg>
+                                  <span>0</span>
+                                </div>
+                                <span class="text-sm text-[#B2BAE8] font-[500]"
+                                  >(1 тикет = 500₽)</span
+                                >
+                              </div>
+                            </div>
+                            <div class="absolute w-full h-full left-0 top-0">
+                              <div
+                                class="absolute w-full h-full left-0 top-0 bg-[radial-gradient(transparent,_#202333_75%)] z-[1]"
+                              ></div>
+                              <img
+                                src="../assets/images/backgrounds/night.jpg"
+                                class="w-full h-full object-cover"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                        <div
+                          class="flex justify-center text-center flex-wrap gap-1 min-[361px]:flex-row flex-col text-xs text-[#8A91AC] font-[500] [&_span_span]:text-white"
+                        >
+                          <span
+                            >Комиссия:
+                            <span x-text="currentMethod.comission + '%'"></span
+                          ></span>
+                          <span class="max-[360px]:hidden">/</span>
+                          <span
+                            >Лимит одного пополнения:
+                            <span
+                              ><span
+                                x-text="parseDecimals(currentMethod.parameters.min) + ' ₽'"
+                              ></span>
+                              −
+                              <span
+                                x-text="parseDecimals(currentMethod.parameters.max) + ' ₽'"
+                              ></span></span
+                          ></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="h-full w-full hidden">
+                <div
+                  class="flex flex-col max-[630px]:h-full max-[630px]:justify-between"
+                >
+                  <div
+                    class="flex flex min-[631px]:flex-row flex-col min-[631px]:items-stretch justify-between gap-6 opacity-0 transition-[opacity]"
+                  >
+                    <div
+                      class="min-[631px]:max-w-[13.75rem] max-w-full w-full flex flex-col gap-2"
+                    >
+                      <span class="shrink-0 text-sm font-[500] text-[#8F94AB]"
+                        >Выберите метод</span
+                      >
+                      <div
+                        class="flex min-[631px]:flex-col flex-row max-[630px]:overflow-auto scroll-0 gap-2 min-[631px]:h-[28.75rem] [&_div.scroll-content]:flex [&_div.scroll-content]:flex-col [&_div.scroll-content]:gap-2 [&_div.scrollbar-thumb]:!bg-[#b9bfeb]/[0.25] [&_div.scrollbar-thumb]:backdrop-blur-[10px]"
+                      >
+                        <div class="w-full h-full max-[630px]:!hidden">
+                          <button
+                            class="shrink-0 w-full rounded-[.375rem] gap-3 flex items-center px-4 relative h-[4.375rem] transition-[background_,_color_,_border_,_box-shadow] border border-transparent duration-300 bg-[#2E3245] hover:bg-[#393C54] hover:border-[#545874] [&.active]:bg-[#393C54] [&.active]:border-[#545874]"
+                          >
+                            <img
+                              src="item.image"
+                              class="shrink-0 w-[2rem] h-[2rem]"
+                              alt=""
+                            />
+                            <div class="flex flex-col items-start">
+                              <span class="font-[600] text-base"
+                                >item.name</span
+                              >
+                              <span
+                                class="font-[500] text-[.813rem] text-[#A1A7C7]"
+                                >item.parameters.min</span
+                              >
+                            </div>
+                            <span
+                              class="absolute text-xs font-[500] right-2 top-2 text-[#A1A7C7]"
+                              >item.comission</span
+                            >
+                          </button>
+                        </div>
+                        <div class="w-full min-[631px]:hidden flex gap-3">
+                          <button
+                            class="shrink-0 pr-[2.5rem] rounded-[.375rem] gap-3 flex items-center px-4 relative h-[4.375rem] transition-[background_,_color_,_border_,_box-shadow] border border-transparent duration-300 bg-[#2E3245] hover:bg-[#393C54] hover:border-[#545874] [&.active]:bg-[#393C54] [&.active]:border-[#545874]"
+                          >
+                            <img
+                              :src="item.image"
+                              class="shrink-0 w-[2rem] h-[2rem]"
+                              alt=""
+                            />
+                            <div class="flex flex-col items-start">
+                              <span class="font-[600] text-base"
+                                >item.name</span
+                              >
+                              <span
+                                class="font-[500] text-[.813rem] text-[#A1A7C7]"
+                                >item.parameters.min</span
+                              >
+                            </div>
+                            <span
+                              class="absolute text-xs font-[500] right-2 top-2 text-[#A1A7C7]"
+                              >item.comission</span
+                            >
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="min-[631px]:w-[calc(100%_-_220px)] w-full flex flex-col justify-between gap-6 max-[630px]:h-full"
+                    >
+                      <div class="flex flex-col gap-5">
+                        <div class="flex flex-col gap-2">
+                          <span class="text-sm font-[500] text-[#8F94AB]"
+                            >Выберите банк</span
+                          >
+                          <div class="flex flex-wrap gap-2">
+                            <button
+                              class="flex py-1 [&.active]:border-blue [&.active]:bg-blue/[0.15] px-2 rounded-lg bg-[#2e3245] border border-transparent items-center gap-2 font-bold text-sm [&:not(.active)]:hover:bg-[#3c4159] group-[:not(.disable-animations)]/body:transition-colors group-[:not(.disable-animations)]/body:duration-300"
+                            >
+                              <img src="bank.img" class="max-w-[1.25rem]" />
+                              <span>bank.name</span>
+                            </button>
+                          </div>
+                        </div>
+                        <div class="flex flex-col gap-2">
+                          <span class="text-sm font-[500] text-[#8F94AB]"
+                            >Укажите реквизиты</span
+                          >
+                          <div class="flex flex-col gap-2">
+                            <div class="relative">
+                              <input
+                                type="text"
+                                class="h-[3rem] px-5 rounded-[.375rem] bg-[#2E3245] text-[.938rem] w-full placeholder:text-[#A1A6BE] text-white focus:placeholder:opacity-0 placeholder:transition-[opacity]"
+                                :placeholder="currentMethod.placeholder"
+                                autocomplete="off"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                        <div class="flex flex-col gap-2">
+                          <span class="text-sm font-[500] text-[#8F94AB]"
+                            >Укажите сумму вывода</span
+                          >
+                          <div class="flex flex-col gap-2">
+                            <div class="relative">
+                              <input
+                                type="text"
+                                class="h-[3rem] px-5 rounded-[.375rem] bg-[#2E3245] text-[.938rem] w-full placeholder:text-[#A1A6BE] text-white focus:placeholder:opacity-0 placeholder:transition-[opacity]"
+                                placeholder="Введите сумму"
+                                autocomplete="off"
+                              />
+                            </div>
+                            <div
+                              class="flex items-stretch justify-between gap-2"
+                            >
+                              <button
+                                class="grow flex items-center justify-center rounded-[.375rem] transition-[border_,_background_,_color] duration-300 border border-transparent bg-[#2E3245] hover:bg-[#393C54] text-[#8991B8] hover:text-white hover:border-[#545874] h-[2.375rem] font-[500] text-[.813rem]"
+                                type="button"
+                              >
+                                Мин
+                              </button>
+                              <button
+                                class="grow flex items-center justify-center rounded-[.375rem] transition-[border_,_background_,_color] duration-300 border border-transparent bg-[#2E3245] hover:bg-[#393C54] text-[#8991B8] hover:text-white hover:border-[#545874] h-[2.375rem] font-[500] text-[.813rem]"
+                                type="button"
+                              >
+                                500 ₽
+                              </button>
+                              <button
+                                class="grow flex items-center justify-center rounded-[.375rem] transition-[border_,_background_,_color] duration-300 border border-transparent bg-[#2E3245] hover:bg-[#393C54] text-[#8991B8] hover:text-white hover:border-[#545874] h-[2.375rem] font-[500] text-[.813rem]"
+                                type="button"
+                              >
+                                1 000 ₽
+                              </button>
+                              <button
+                                class="grow flex items-center justify-center rounded-[.375rem] transition-[border_,_background_,_color] duration-300 border border-transparent bg-[#2E3245] hover:bg-[#393C54] text-[#8991B8] hover:text-white hover:border-[#545874] h-[2.375rem] font-[500] text-[.813rem]"
+                                type="button"
+                              >
+                                5 000 ₽
+                              </button>
+                              <button
+                                class="grow flex items-center justify-center rounded-[.375rem] transition-[border_,_background_,_color] duration-300 border border-transparent bg-[#2E3245] hover:bg-[#393C54] text-[#8991B8] hover:text-white hover:border-[#545874] h-[2.375rem] font-[500] text-[.813rem]"
+                                type="button"
+                              >
+                                Макс
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="flex flex-col gap-6">
+                        <div class="flex flex-col">
+                          <div
+                            class="w-full h-[8.75rem] text-white relative flex items-center px-[1.25rem]"
+                          >
+                            <div
+                              class="relative w-full z-[2] flex flex-col items-center justify-end h-full gap-1.5"
+                            >
+                              <div class="flex flex-col items-center pb-2">
+                                <span class="text-sm text-[#B2BAE8] font-[500]"
+                                  >К зачислению</span
+                                >
+                                <div
+                                  class="flex items-center font-[600] text-[2.5rem] gap-2 drop-shadow-2xl"
+                                >
+                                  <svg class="w-[2rem] h-[2rem]">
+                                    <use
+                                      xlink:href="../assets/images/symbols.svg#icon-rub"
+                                    ></use>
+                                  </svg>
+                                  <span
+                                    x-text="sum - (sum * currentMethod.comission / 100)"
+                                    >0</span
+                                  >
+                                </div>
+                              </div>
+                            </div>
+                            <div class="absolute w-full h-full left-0 top-0">
+                              <div
+                                class="absolute w-full h-full left-0 top-0 bg-[radial-gradient(transparent,_#202333_75%)] z-[1]"
+                              ></div>
+                              <img
+                                src="../assets/images/backgrounds/night.jpg"
+                                class="w-full h-full object-cover"
+                              />
+                            </div>
+                          </div>
+                          <button
+                            class="h-[3.438rem] uppercase relative font-[600] flex rounded-[.375rem] items-center justify-center text-white px-[1.75rem] transition-[background_,_box-shadow] duration-300 hover:bg-[#2399EF] bg-blue hover:shadow-btn-blue"
+                          >
+                            <span class="transition-[opacity] opacity-100"
+                              >Оформить заявку</span
+                            >
+                          </button>
+                        </div>
+                        <div
+                          class="flex justify-center text-center flex-wrap gap-1 min-[361px]:flex-row flex-col text-xs text-[#8A91AC] font-[500] [&_span_span]:text-white"
+                        >
+                          <span
+                            >Комиссия:
+                            <span>currentMethod.comission</span></span
+                          >
+                          <span class="max-[360px]:hidden">/</span>
+                          <span
+                            >Лимит одного пополнения:
+                            <span
+                              ><span
+                                x-text="parseDecimals(currentMethod.parameters.min) + ' ₽'"
+                              ></span>
+                              − <span></span>currentMethod.parameters.max</span
+                            ></span
+                          >
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="h-full w-full hidden">
+                <div class="flex flex-col">
+                  <div
+                    class="flex flex-col gap-3 opacity-0 transition-[opacity]"
+                  >
+                    <div class="flex relative z-[1]">
+                      <button
+                        class="flex items-center gap-2 text-sm font-[500] text-[#9CA0B5] transition-[color] duration-300 hover:text-[#C1C5D8]"
+                      >
+                        <span>model</span>
+                        <i
+                          class="w-1.5 h-1.5 border-r-2 border-b-2 rotate-45 border-current"
+                        ></i>
+                      </button>
+                      <div
+                        class="absolute origin-top-left left-0 top-[calc(100%_+_5px)] bg-[#36384f] rounded-[.375rem] overflow-hidden"
+                      >
+                        <div class="flex flex-col py-1">
+                          <button
+                            class="flex text-sm py-1 px-3 text-[#858bb1] transition-[color_,_background] hover:bg-[#40435d] duration-300 hover:text-white"
+                          >
+                            item.name
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="flex flex-col gap-2">
+                      <div class="flex flex-col">
+                        <div
+                          class="flex items-center justify-between text-sm gap-8 bg-[#272A3C] rounded-[6px] min-[631px]:p-[.625rem_.938rem] p-[.625rem_.75rem]"
+                        >
+                          <div class="shrink-0 flex items-center">
+                            <div
+                              class="min-[631px]:min-w-[6.875rem] min-w-[7.75rem] font-[600] text-lg flex items-center gap-2"
+                            >
+                              <button
+                                @click="show = !show"
+                                type="button"
+                                class="w-[1.5rem] h-[1.5rem] min-[631px]:hidden flex items-center justify-center bg-[#34374d] rounded-full"
+                                x-bind:class="show ? '!bg-blue !text-white' : ''"
+                              >
+                                <i
+                                  class="w-1.5 h-1.5 border-r border-b rotate-45 border-current transition-[transform_,_background_,_color]"
+                                  x-bind:class="show ? 'rotate-[225deg] top-[3px]' : ''"
+                                ></i>
+                              </button>
+                              <span>item.sum</span>
+                            </div>
+                            <div class="flex items-center gap-2 min-w-[5rem]">
+                              <svg
+                                class="animate-spin h-[1rem] w-[1rem] text-white"
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                              >
+                                <circle
+                                  class="opacity-25"
+                                  cx="12"
+                                  cy="12"
+                                  r="10"
+                                  stroke="currentColor"
+                                  stroke-width="2"
+                                ></circle>
+                                <path
+                                  class="opacity-75"
+                                  stroke-linecap="round"
+                                  fill="currentColor"
+                                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                                ></path>
+                              </svg>
+                              <span class="hidden min-[631px]:block"
+                                >Успешно</span
+                              >
+                              <button class="text-[#FF6868] min-[631px]:hidden">
+                                Отмена
+                              </button>
+                              <span
+                                class="tooltip w-[1.125rem] cursor-pointer h-[1.125rem] bg-[#3E4255] transition-[background] duration-300 hover:bg-[#4D5168] rounded-full flex items-center justify-center text-xs font-[400]"
+                              >
+                                ?
+                              </span>
+                            </div>
+                          </div>
+                          <div
+                            class="grow max-[630px]:hidden flex items-center justify-between"
+                          >
+                            <span class="w-full text-center"
+                              >Депозит: ' + item.deposit</span
+                            >
+                            <button
+                              class="shrink-0 text-sm font-[500] text-[#FF6868] hidden min-[631px]:block"
+                            >
+                              Отмена
+                            </button>
+                            <span class="w-full text-center">item.date</span>
+                          </div>
+                          <div
+                            class="shrink-0 text-sm font-[500] text-[#8388A5]"
+                          >
+                            <span>ID: # + item.id</span>
+                          </div>
+                        </div>
+                        <div
+                          x-show="show"
+                          class="flex flex-wrap py-3 px-4 text-xs gap-2.5 bg-[#272a3c] relative -top-[.25rem] rounded-bl-[.375rem] rounded-br-[.375rem] text-[#a5a9c3]"
+                        >
+                          <span>Депозит: item.deposite</span>
+                          <span>'Дата: ' + item.date</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="popup levels_popup m-[auto_0] relative hidden invisible max-w-[32.5rem] w-full overflow-hidden rounded-[.75rem] bg-[#202232] shadow-modal"
+      >
+        <div class="w-full h-[9.375rem] relative flex items-center">
+          <div
+            class="relative px-[1.75rem] z-[2] flex flex-col items-start gap-2"
+          >
+            <div class="flex flex-col items-start">
+              <span class="text-[#B3BBDF] text-base font-[500]">Ваш ранг</span>
+              <span class="text-[2rem] font-[600]">rank</span>
+            </div>
+            <span class="text-[#8A91AC] text-sm font-[500]"
+              >Совершайте депозиты что-бы повысить уровень. <br />
+              1 рубль депозита = <span class="text-white">1 XP</span></span
+            >
+          </div>
+          <div class="absolute left-0 top-0 w-full h-full">
+            <div
+              class="absolute w-full h-full left-0 top-0 bg-[radial-gradient(transparent,_#202232_75%)] z-[1]"
+            ></div>
+            <img
+              src="../assets/images/backgrounds/circle.jpg"
+              class="w-full h-full object-cover"
+              alt=""
+            />
+          </div>
+        </div>
+        <div class="flex flex-col px-[1.75rem] pb-[1.75rem] gap-[1.75rem]">
+          <div
+            class="rounded-[.5rem] h-[3rem] bg-gradient-to-r from-[#2E3044] from-[50%] to-[#3F425C] p-2 flex items-center justify-between gap-4"
+          >
+            <div class="flex-1 h-full rounded-[.5rem] bg-[#202232] relative">
+              <span
+                class="absolute left-3 top-1/2 -translate-y-1/2 font-[600] text-base"
+                >20%</span
+              >
+              <div
+                class="bg-gradient-to-b from-[#0083E1] from-[25%] to-[#0049B6] h-full rounded-[.5rem] shadow-btn-blue"
+                style="width: 20%"
+              ></div>
+            </div>
+            <svg class="shrink-0 w-4 h-4 text-[#7B7FA7]">
+              <use
+                xlink:href="../assets/images/symbols.svg#icon-two-arrows"
+              ></use>
+            </svg>
+            <div
+              class="shrink-0 flex items-center gap-2 uppercase text-sm font-[600] pr-4"
+            >
+              <img
+                src="../assets/images/gift.svg"
+                class="w-[1.75rem] h-[1.75rem]"
+                alt=""
+              />
+              <span>Подарок</span>
+            </div>
+          </div>
+          <div class="flex items-stretch gap-3 relative">
+            <div
+              class="absolute -left-[1.75rem] w-[30%] pointer-events-none top-0 h-full z-[2] bg-gradient-to-r from-[#202232] to-transparent"
+            ></div>
+            <div
+              class="w-[2.5rem] shrink-0 bg-[#2E3144] rounded-[.5rem] flex flex-col relative z-[3]"
+            >
+              <button
+                x-ref="prev"
+                class="flex-1 flex items-center justify-center transition-[color] duration-300 text-[#8A91AC] [&:not(.swiper-button-disabled)]:hover:text-white [&.swiper-button-disabled]:pointer-events-none [&.swiper-button-disabled]:opacity-30"
+              >
+                <svg class="w-4 h-4 rotate-180">
+                  <use
+                    xlink:href="../assets/images/symbols.svg#icon-arrow-x"
+                  ></use>
+                </svg>
+              </button>
+              <button
+                x-ref="next"
+                class="flex-1 flex items-center justify-center transition-[color] duration-300 text-[#8A91AC] [&:not(.swiper-button-disabled)]:hover:text-white [&.swiper-button-disabled]:pointer-events-none [&.swiper-button-disabled]:opacity-30"
+              >
+                <svg class="w-4 h-4">
+                  <use
+                    xlink:href="../assets/images/symbols.svg#icon-arrow-x"
+                  ></use>
+                </svg>
+              </button>
+            </div>
+            <div class="w-[calc(100%_-_2.5rem)]">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide flex flex-col items-start gap-1.5">
+                  <div
+                    class="w-full rounded-[.5rem] bg-[#2E3144] flex flex-col p-4 gap-2"
+                  >
+                    <div
+                      class="flex items-center justify-between text-base font-[600]"
+                    >
+                      <span>Новичок</span>
+                      <span class="text-[#8A91AC] text-[.813rem]"
+                        >100 из 1000XP</span
+                      >
+                    </div>
+                    <div
+                      class="flex flex-wrap gap-2 text-[.813rem] [&_span]:py-0.5 [&_span]:px-1.5 [&_span]:font-[500] [&_span]:rounded-[.188rem] [&_span]:bg-[#444865]"
+                    >
+                      <img
+                        src="../assets/images/gift.svg"
+                        class="w-5 h-5"
+                        alt=""
+                      />
+                      <span>100 ₽</span>
+                      <span>+2% к кэшбеку</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="swiper-slide flex flex-col items-start gap-1.5">
+                  <div
+                    class="w-full rounded-[.5rem] bg-[#2E3144] flex flex-col p-4 gap-2"
+                  >
+                    <div
+                      class="flex items-center justify-between text-base font-[600]"
+                    >
+                      <span>Опытный</span>
+                      <span class="text-[#8A91AC] text-[.813rem]">
+                        из 5000XP</span
+                      >
+                    </div>
+                    <div
+                      class="flex flex-wrap gap-2 text-[.813rem] [&_span]:py-0.5 [&_span]:px-1.5 [&_span]:font-[500] [&_span]:rounded-[.188rem] [&_span]:bg-[#444865]"
+                    >
+                      <img
+                        src="../assets/images/gift.svg"
+                        class="w-5 h-5"
+                        alt=""
+                      />
+                      <span>100 ₽</span>
+                      <span>+4% к кэшбеку</span>
+                    </div>
+                  </div>
+                  <span class="text-xs font-[600] text-[#8A91AC]">текущий</span>
+                </div>
+                <div class="swiper-slide flex flex-col items-start gap-1.5">
+                  <div
+                    class="w-full rounded-[.5rem] bg-[#2E3144] flex flex-col p-4 gap-2"
+                  >
+                    <div
+                      class="flex items-center justify-between text-base font-[600]"
+                    >
+                      <span>Игроман</span>
+                      <span class="text-[#8A91AC] text-[.813rem]"
+                        >100 из 10000XP</span
+                      >
+                    </div>
+                    <div
+                      class="flex flex-wrap gap-2 text-[.813rem] [&_span]:py-0.5 [&_span]:px-1.5 [&_span]:font-[500] [&_span]:rounded-[.188rem] [&_span]:bg-[#444865]"
+                    >
+                      <img
+                        src="../assets/images/gift.svg"
+                        class="w-5 h-5"
+                        alt=""
+                      />
+                      <span>100 ₽</span>
+                      <span>+6% к кэшбеку</span>
+                    </div>
+                  </div>
+                  <span class="text-xs font-[600] text-[#8A91AC]">текущий</span>
+                </div>
+                <div class="swiper-slide flex flex-col items-start gap-1.5">
+                  <div
+                    class="w-full rounded-[.5rem] bg-[#2E3144] flex flex-col p-4 gap-2"
+                  >
+                    <div
+                      class="flex items-center justify-between text-base font-[600]"
+                    >
+                      <span>Легенда</span>
+                      <span class="text-[#8A91AC] text-[.813rem]"
+                        >100 из 10000XP</span
+                      >
+                    </div>
+                    <div
+                      class="flex flex-wrap gap-2 text-[.813rem] [&_span]:py-0.5 [&_span]:px-1.5 [&_span]:font-[500] [&_span]:rounded-[.188rem] [&_span]:bg-[#444865]"
+                    >
+                      <img
+                        src="../assets/images/gift.svg"
+                        class="w-5 h-5"
+                        alt=""
+                      />
+                      <span>100 ₽</span>
+                      <span>+8% к кэшбеку</span>
+                    </div>
+                  </div>
+                  <span class="text-xs font-[600] text-[#8A91AC]">текущий</span>
+                </div>
+                <div class="swiper-slide flex flex-col items-start gap-1.5">
+                  <div
+                    class="w-full rounded-[.5rem] bg-[#2E3144] flex flex-col p-4 gap-2"
+                  >
+                    <div
+                      class="flex items-center justify-between text-base font-[600]"
+                    >
+                      <span>Нвутимен</span>
+                      <span class="text-[#8A91AC] text-[.813rem]"
+                        >100 из 200000XP</span
+                      >
+                    </div>
+                    <div
+                      class="flex flex-wrap gap-2 text-[.813rem] [&_span]:py-0.5 [&_span]:px-1.5 [&_span]:font-[500] [&_span]:rounded-[.188rem] [&_span]:bg-[#444865]"
+                    >
+                      <img
+                        src="../assets/images/gift.svg"
+                        class="w-5 h-5"
+                        alt=""
+                      />
+                      <span>100 ₽</span>
+                      <span>+15% к кэшбеку</span>
+                    </div>
+                  </div>
+                  <span class="text-xs font-[600] text-[#8A91AC]">текущий</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button
+          class="popup__close absolute right-2 z-[1] top-2 w-[2rem] h-[2rem] flex items-center justify-center transition-[color] duration-300 text-[#43485B] hover:text-white"
+          type="button"
+        >
+          <svg class="w-3 h-3">
+            <use xlink:href="../assets/images/symbols.svg#icon-close"></use>
+          </svg>
+        </button>
+      </div>
     </div>
     <script src="api/script/countup.js"></script>
     <script src="../assets/js/app.js"></script>
