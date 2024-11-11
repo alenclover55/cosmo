@@ -1,9 +1,5 @@
 <!DOCTYPE html>
 <html lang="ru" class="h-full">
-  <script
-    defer
-    src="https://cdn.jsdelivr.net/npm/@alpinejs/focus@3.x.x/dist/cdn.min.js"
-  ></script>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -29,13 +25,11 @@
     <script src="../assets/js/toastr.min.js"></script>
     <script src="https://cdn.tailwindcss.com?plugins=line-clamp"></script>
     <script src="../assets/js/swiper-bundle.min.js"></script>
-    <link rel="preload" href="assets/css/swiper-bundle.min.css" />
-    <script src="../assets/js/smooth-scrollbar.js"></script>
-    <link rel="preload" href="assets/css/simple-scrollbar.min.css" />
+    <link rel="preload" href="../assets/css/swiper-bundle.min.css" />
     <script src="../assets/js/popper.min.js"></script>
     <script src="../assets/js/tippy-bundle.umd.min.js"></script>
     <script src="../assets/js/clipboard.min.js"></script>
-    <link rel="preload" href="assets/css/scale-subtle.css" />
+    <link rel="preload" href="../assets/css/scale-subtle.css" />
     <script src="../assets/js/socket.io-1.4.5.js"></script>
     <title>Крути и зарабатывай | CosmoCasino</title>
     <script>
@@ -342,7 +336,10 @@
                   class="flex items-center justify-between px-4 py-3 text-sm rounded-lg bg-[#262838]"
                 >
                   <span class="font-semibold text-[#9e9ead]">Анимации:</span>
-                  <button class="flex items-center text-xs gap-2 group/toggle">
+                  <button
+                    id="toggle-animation"
+                    class="flex items-center text-xs gap-2 group/toggle"
+                  >
                     <span>Вкл.</span>
                     <div
                       class="relative w-8 h-5 rounded-full bg-[#151620] group-hover/toggle:bg-[#1d1f2c] group-[.active]/toggle:bg-blue transition-all duration-300"
@@ -764,9 +761,7 @@
               placeholder="Например: Sweet Bonanza"
             />
           </div>
-          <div
-            class="w-full h-[calc(100%_-_3rem_-_1rem)] [&_div.scrollbar-thumb]:!bg-[#b9bfeb]/[0.5] [&_div.scrollbar-thumb]:backdrop-blur-[10px]"
-          >
+          <div class="w-full h-[calc(100%_-_3rem_-_1rem)]">
             <div class="w-full h-full rounded-[.375rem]">
               <div
                 class="flex pb-[1.875rem] flex-wrap -ml-2 -mr-2 gap-y-4 w-[calc(100%_+_1rem)] [&>div]:px-2 [&>div]:w-1/3"
@@ -861,20 +856,15 @@
                   <span>Ваши обращения</span>
                 </div>
                 <button
-                  :disabled="loader"
-                  x-data="btn"
-                  @click="eventClick(200); setTimeout(() => { modalShow('support') }, 200)"
                   class="w-[2.75rem] relative flex items-center justify-center h-[2.75rem] bg-blue transition-[color_,_background] rounded-[.375rem] duration-300 shadow-btn-blue hover:bg-[#2399EF]"
                 >
-                  <svg
-                    class="w-4 h-4 transition-[opacity] opacity-100"
-                    x-bind:class="loader ? '!opacity-0' : ''"
-                  >
-                    <use xlink:href="assets/images/symbols.svg#icon-plus"></use>
+                  <svg class="w-4 h-4 transition-[opacity] opacity-100">
+                    <use
+                      xlink:href="../assets/images/symbols.svg#icon-plus"
+                    ></use>
                   </svg>
                   <div
                     class="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 opacity-0 transition-[opacity] scale-[0.8]"
-                    x-bind:class="loader ? '!opacity-100' : ''"
                   >
                     <svg
                       class="animate-spin h-[1.625rem] w-[1.625rem] text-white"
@@ -900,89 +890,55 @@
                   </div>
                 </button>
               </div>
-              <div
-                class="h-full flex flex-col gap-6"
-                x-init="const scrollbar = Scrollbar.init($refs.tickets, { damping: 1, plugins: { overscroll: { effect: 'glow', glowColor: '#494E67' } }, })"
-                x-ref="tickets"
-              >
+              <div class="h-full flex flex-col gap-6">
                 <div class="mt-2 mb-2">
                   <h2 class="text-xl font-semibold mb-4">Открытые обращения</h2>
-                  <template x-if="openTickets.length">
-                    <div class="flex flex-col gap-3">
-                      <template
-                        x-for="(item, index) in openTickets"
-                        :key="index"
+                  <div class="flex flex-col gap-3">
+                    <button
+                      class="flex w-full flex-col items-start gap-1 rounded-[.375rem] px-5 py-4 bg-[#222532] border border-[#222532] transition duration-300 hover:bg-[#383B4C] hover:border-[#626680] [&.active]:bg-[#383B4C] [&.active]:border-[#626680]"
+                    >
+                      <span
+                        class="max-w-full overflow-hidden text-ellipsis whitespace-nowrap break-all text-[.938rem] font-[600]"
+                        >item.theme</span
                       >
-                        <button
-                          :aria-label="item.theme"
-                          role="button"
-                          @click="selectTicket(item)"
-                          x-bind:class="ticketSelect !== null && item.theme === ticketSelect.theme ? 'active' : ''"
-                          type="button"
-                          class="flex w-full flex-col items-start gap-1 rounded-[.375rem] px-5 py-4 bg-[#222532] border border-[#222532] transition duration-300 hover:bg-[#383B4C] hover:border-[#626680] [&.active]:bg-[#383B4C] [&.active]:border-[#626680]"
-                        >
-                          <span
-                            class="max-w-full overflow-hidden text-ellipsis whitespace-nowrap break-all text-[.938rem] font-[600]"
-                            x-text="item.theme"
-                          ></span>
-                          <span
-                            class="text-xs text-[#9CA0B5] font-[500]"
-                            x-text="item.date"
-                          ></span>
-                        </button>
-                      </template>
-                    </div>
-                  </template>
-                  <template x-if="!openTickets.length">
-                    <div class="text-gray-400 text-center">
-                      Нет открытых обращений
-                    </div>
-                  </template>
+                      <span
+                        class="text-xs text-[#9CA0B5] font-[500]"
+                        x-text="item.date"
+                        >item.date</span
+                      >
+                    </button>
+                  </div>
+                  <div class="text-gray-400 text-center">
+                    Нет открытых обращений
+                  </div>
                 </div>
 
                 <div class="mt-2 mb-2">
                   <h2 class="text-xl font-semibold mb-4">Закрытые обращения</h2>
-                  <template x-if="closedTickets.length">
-                    <div class="flex flex-col gap-3">
-                      <template
-                        x-for="(item, index) in closedTickets"
-                        :key="index"
+                  <div class="flex flex-col gap-3">
+                    <button
+                      class="flex w-full flex-col items-start gap-1 rounded-[.375rem] px-5 py-4 bg-[#222532] border border-[#222532] transition duration-300 hover:bg-[#383B4C] hover:border-[#626680] [&.active]:bg-[#383B4C] [&.active]:border-[#626680]"
+                    >
+                      <span
+                        class="max-w-full overflow-hidden text-ellipsis whitespace-nowrap break-all text-[.938rem] font-[600]"
+                        >item.theme</span
                       >
-                        <button
-                          :aria-label="item.theme"
-                          role="button"
-                          @click="selectTicket(item)"
-                          x-bind:class="ticketSelect !== null && item.theme === ticketSelect.theme ? 'active' : ''"
-                          type="button"
-                          class="flex w-full flex-col items-start gap-1 rounded-[.375rem] px-5 py-4 bg-[#222532] border border-[#222532] transition duration-300 hover:bg-[#383B4C] hover:border-[#626680] [&.active]:bg-[#383B4C] [&.active]:border-[#626680]"
-                        >
-                          <span
-                            class="max-w-full overflow-hidden text-ellipsis whitespace-nowrap break-all text-[.938rem] font-[600]"
-                            x-text="item.theme"
-                          ></span>
-                          <span
-                            class="text-xs text-[#9CA0B5] font-[500]"
-                            x-text="item.date"
-                          ></span>
-                        </button>
-                      </template>
-                    </div>
-                  </template>
-                  <template x-if="!closedTickets.length">
-                    <div class="text-gray-400 text-center">
-                      Нет закрытых обращений
-                    </div>
-                  </template>
+                      <span class="text-xs text-[#9CA0B5] font-[500]"
+                        >item.date</span
+                      >
+                    </button>
+                  </div>
+
+                  <div class="text-gray-400 text-center">
+                    Нет закрытых обращений
+                  </div>
                 </div>
               </div>
             </div>
             <div
               class="flex min-[1625px]:max-w-[49.375rem] min-[1381px]:max-w-[39.063rem] min-[1125px]:max-w-[calc(100%_-_20.125rem)] min-[751px]:max-w-[calc(100%_-_19.125rem)] max-w-full max-[750px]:transition-[transform] max-[750px]:duration-300 max-[750px]:translate-x-full w-full min-[751px]:rounded-[.75rem] min-[751px]:bg-[#222532] bg-[#1e202c] shrink-0 overflow-hidden max-[750px]:absolute max-[750px]:left-0 max-[750px]:top-0 max-[750px]:p-4 max-[750px]:h-full"
-              x-bind:class="ticketSelect !== null ? 'max-[750px]:translate-x-0' : ''"
             >
               <button
-                type="button"
-                @click="ticketSelect = null"
                 class="absolute z-[2] left-0 top-0 w-full h-[2.25rem] text-sm shrink-0 font-[500] gap-2 w-full bg-[#393D53] transition-[background_,_color] text-[#9CA0B5] hover:text-white duration-300 hover:bg-[#3D4158] min-[751px]:hidden flex items-center justify-center"
               >
                 <i
@@ -990,228 +946,220 @@
                 ></i>
                 <span class="min-[992px]:hidden">Назад</span>
               </button>
-              <template x-if="ticketSelect !== null">
+
+              <div
+                class="flex h-full flex-col w-full relative max-[750px]:pt-[2.25rem]"
+              >
                 <div
-                  class="flex h-full flex-col w-full relative max-[750px]:pt-[2.25rem]"
+                  class="absolute left-0 top-0 w-full h-full flex items-center justify-center opacity-100 transition-[opacity]"
+                >
+                  <svg
+                    class="animate-spin h-[1.625rem] w-[1.625rem] text-white"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <circle
+                      class="opacity-25"
+                      cx="12"
+                      cy="12"
+                      r="10"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    ></circle>
+                    <path
+                      class="opacity-75"
+                      stroke-linecap="round"
+                      fill="currentColor"
+                      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                    ></path>
+                  </svg>
+                </div>
+                <div
+                  class="w-full h-full flex flex-col justify-between opacity-0 transition-[opacity]"
                 >
                   <div
-                    class="absolute left-0 top-0 w-full h-full flex items-center justify-center opacity-100 transition-[opacity]"
+                    class="flex items-center justify-between min-[751px]:px-6 min-[751px]:h-[4.438rem] min-[751px]:pb-0"
                   >
-                    <svg
-                      class="animate-spin h-[1.625rem] w-[1.625rem] text-white"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
+                    <div class="flex flex-col max-w-full">
+                      <span
+                        class="max-w-full overflow-hidden text-ellipsis whitespace-nowrap break-all min-[426px]:text-lg text-base font-[600]"
+                        >ticketSelect.theme</span
+                      >
+                      <span
+                        class="min-[426px]:text-sm text-xs text-[#9CA0B5] font-[500]"
+                        >ticketSelect.date</span
+                      >
+                    </div>
+                    <button
+                      class="shrink-0 h-[3.438rem] uppercase relative font-[600] flex rounded-[.375rem] items-center justify-center text-white px-[1rem] transition-[background_,_box-shadow] duration-300 hover:bg-[#2c3040]"
                     >
-                      <circle
-                        class="opacity-25"
-                        cx="12"
-                        cy="12"
-                        r="10"
-                        stroke="currentColor"
-                        stroke-width="2"
-                      ></circle>
-                      <path
-                        class="opacity-75"
-                        stroke-linecap="round"
-                        fill="currentColor"
-                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                      ></path>
-                    </svg>
+                      <span
+                        class="transition-[opacity] opacity-100 flex items-center gap-2"
+                      >
+                        <svg class="w-4 h-4 text-[#4E5269]">
+                          <use
+                            xlink:href="../assets/images/symbols.svg#icon-lock"
+                          ></use>
+                        </svg>
+                        <span
+                          >Закрыть
+                          <span class="max-[425px]:hidden">тикет</span></span
+                        >
+                      </span>
+                      <div
+                        class="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 opacity-0 transition-[opacity]"
+                      >
+                        <svg
+                          class="animate-spin h-[1.625rem] w-[1.625rem] text-white"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                        >
+                          <circle
+                            class="opacity-25"
+                            cx="12"
+                            cy="12"
+                            r="10"
+                            stroke="currentColor"
+                            stroke-width="2"
+                          ></circle>
+                          <path
+                            class="opacity-75"
+                            stroke-linecap="round"
+                            fill="currentColor"
+                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                          ></path>
+                        </svg>
+                      </div>
+                    </button>
                   </div>
                   <div
-                    class="w-full h-full flex flex-col justify-between opacity-0 transition-[opacity]"
+                    class="min-[751px]:h-[calc(100%_-_4.438rem_-_4.688rem)] h-[calc(100%_-_4.438rem_-_3.438rem)] flex-col flex"
                   >
-                    <div
-                      class="flex items-center justify-between min-[751px]:px-6 min-[751px]:h-[4.438rem] min-[751px]:pb-0"
-                    >
-                      <div class="flex flex-col max-w-full">
-                        <span
-                          class="max-w-full overflow-hidden text-ellipsis whitespace-nowrap break-all min-[426px]:text-lg text-base font-[600]"
-                          >ticketSelect.theme</span
-                        >
-                        <span
-                          class="min-[426px]:text-sm text-xs text-[#9CA0B5] font-[500]"
-                          >ticketSelect.date</span
-                        >
-                      </div>
-                      <button
-                        class="shrink-0 h-[3.438rem] uppercase relative font-[600] flex rounded-[.375rem] items-center justify-center text-white px-[1rem] transition-[background_,_box-shadow] duration-300 hover:bg-[#2c3040]"
-                      >
-                        <span
-                          class="transition-[opacity] opacity-100 flex items-center gap-2"
-                        >
-                          <svg class="w-4 h-4 text-[#4E5269]">
-                            <use
-                              xlink:href="../assets/images/symbols.svg#icon-lock"
-                            ></use>
-                          </svg>
-                          <span
-                            >Закрыть
-                            <span class="max-[425px]:hidden">тикет</span></span
-                          >
-                        </span>
+                    <div class="h-full w-full">
+                      <div class="flex flex-col gap-[1.5rem] p-[1.5rem]">
                         <div
-                          class="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 opacity-0 transition-[opacity]"
+                          class="flex justify-end group/msg [&.agent]:justify-start"
                         >
-                          <svg
-                            class="animate-spin h-[1.625rem] w-[1.625rem] text-white"
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                          >
-                            <circle
-                              class="opacity-25"
-                              cx="12"
-                              cy="12"
-                              r="10"
-                              stroke="currentColor"
-                              stroke-width="2"
-                            ></circle>
-                            <path
-                              class="opacity-75"
-                              stroke-linecap="round"
-                              fill="currentColor"
-                              d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                            ></path>
-                          </svg>
-                        </div>
-                      </button>
-                    </div>
-                    <div
-                      class="min-[751px]:h-[calc(100%_-_4.438rem_-_4.688rem)] h-[calc(100%_-_4.438rem_-_3.438rem)] flex-col flex"
-                    >
-                      <div class="h-full w-full">
-                        <div class="flex flex-col gap-[1.5rem] p-[1.5rem]">
                           <div
-                            class="flex justify-end group/msg [&.agent]:justify-start"
+                            class="flex items-end gap-4 max-w-[80%] w-full justify-end group-[.agent]/msg:items-start group-[.agent]/msg:flex-row-reverse"
                           >
                             <div
-                              class="flex items-end gap-4 max-w-[80%] w-full justify-end group-[.agent]/msg:items-start group-[.agent]/msg:flex-row-reverse"
+                              class="flex flex-col items-end gap-2 group-[.agent]/msg:items-start"
                             >
-                              <div
-                                class="flex flex-col items-end gap-2 group-[.agent]/msg:items-start"
-                              >
+                              <div class="relative rounded-[1rem] bg-[#383B4D]">
                                 <div
-                                  class="relative rounded-[1rem] bg-[#383B4D]"
+                                  class="relative z-[1] p-[.75rem_1rem] text-sm"
                                 >
-                                  <div
-                                    class="relative z-[1] p-[.75rem_1rem] text-sm"
-                                  >
-                                    <span x-text="item.message">message</span>
-                                  </div>
+                                  <span>message</span>
+                                </div>
 
-                                  <div class="p-[.75rem_1rem]">
-                                    <img
-                                      alt="Вложение"
-                                      class="max-w-[450px] max-h-[450px] object-cover rounded-lg block mx-auto"
-                                    />
-                                  </div>
-
+                                <div class="p-[.75rem_1rem]">
                                   <img
-                                    src="../assets/images/arrow-msg.svg"
-                                    class="absolute right-[-0.813rem] group-[.agent]/msg:right-auto group-[.agent]/msg:left-[-0.813rem] group-[.agent]/msg:rotate-180 group-[.agent]/msg:bottom-[.563rem] bottom-[.25rem]"
-                                    alt=""
+                                    alt="Вложение"
+                                    class="max-w-[450px] max-h-[450px] object-cover rounded-lg block mx-auto"
                                   />
                                 </div>
-                                <span class="text-xs text-[#9CA0B5] font-[500]"
-                                  >date</span
-                                >
+
+                                <img
+                                  src="../assets/images/arrow-msg.svg"
+                                  class="absolute right-[-0.813rem] group-[.agent]/msg:right-auto group-[.agent]/msg:left-[-0.813rem] group-[.agent]/msg:rotate-180 group-[.agent]/msg:bottom-[.563rem] bottom-[.25rem]"
+                                  alt=""
+                                />
                               </div>
-                              <div
-                                class="shrink-0 w-[3rem] h-[3rem] rounded-full overflow-hidden"
+                              <span class="text-xs text-[#9CA0B5] font-[500]"
+                                >date</span
                               >
-                                <img class="w-full h-full object-cover" />
-                              </div>
+                            </div>
+                            <div
+                              class="shrink-0 w-[3rem] h-[3rem] rounded-full overflow-hidden"
+                            >
+                              <img class="w-full h-full object-cover" />
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
+                  </div>
+                  <div
+                    class="shrink-0 min-[751px]:h-[4.688rem] h-[3.438rem] min-[751px]:p-3 !pt-0"
+                  >
                     <div
-                      class="shrink-0 min-[751px]:h-[4.688rem] h-[3.438rem] min-[751px]:p-3 !pt-0"
+                      class="bg-[#2D303F] rounded-[.5rem] flex items-center h-full w-full gap-3 text-lg font-[600] px-5"
                     >
-                      <template x-if="ticketSelect.closed">
-                        <div
-                          class="bg-[#2D303F] rounded-[.5rem] flex items-center h-full w-full gap-3 text-lg font-[600] px-5"
-                        >
-                          <span>Тикет закрыт</span>
-                        </div>
-                      </template>
-                      <template x-if="!ticketSelect.closed">
-                        <div
-                          class="bg-[#2D303F] rounded-[.5rem] flex items-center h-full w-full gap-3"
-                        >
-                          <input
-                            type="text"
-                            class="w-full h-full bg-transparent border-0 text-white text-base px-5 focus:placeholder:opacity-0 placeholder:transition-[opacity] placeholder:text-[#9CA0B5]"
-                            placeholder="Введите сообщение"
-                          />
-                          <div>
-                            <label for="file-input-support">
-                              <svg
-                                width="28"
-                                height="28"
-                                viewBox="0 0 64 64"
-                                fill="#99c"
-                                xmlns="http://www.w3.org/2000/svg"
-                              >
-                                <path
-                                  fill-rule="evenodd"
-                                  clip-rule="evenodd"
-                                  d="M39.9057 15.5859C44.0598 17.4299 45.6997 22.4675 43.4272 26.4035L32.1243 45.9807C30.0532 49.5679 25.4663 50.797 21.8791 48.7259C18.2919 46.6548 17.0629 42.0679 19.1339 38.4807L29.2589 20.9437C30.5706 18.6718 33.4757 17.8934 35.7476 19.2051C38.0194 20.5167 38.7978 23.4218 37.4862 25.6937L27.3612 43.2307C27.085 43.709 26.4734 43.8729 25.9951 43.5967C25.5169 43.3206 25.353 42.709 25.6291 42.2307L35.7541 24.6937C36.5135 23.3784 36.0629 21.6965 34.7476 20.9371C33.4322 20.1777 31.7504 20.6284 30.991 21.9437L20.866 39.4807C19.3472 42.1113 20.2485 45.4751 22.8791 46.9938C25.5097 48.5126 28.8735 47.6113 30.3923 44.9807L41.6951 25.4035C43.3735 22.4965 42.1623 18.7758 39.0942 17.4139L39.9057 15.5859Z"
-                                  fill="currentColor"
-                                />
-                              </svg>
-                            </label>
-                            <input
-                              type="file"
-                              id="file-input-support"
-                              accept="image/*"
-                              style="display: none"
-                              @change="handleFileInput"
+                      <span>Тикет закрыт</span>
+                    </div>
+
+                    <div
+                      class="bg-[#2D303F] rounded-[.5rem] flex items-center h-full w-full gap-3"
+                    >
+                      <input
+                        type="text"
+                        class="w-full h-full bg-transparent border-0 text-white text-base px-5 focus:placeholder:opacity-0 placeholder:transition-[opacity] placeholder:text-[#9CA0B5]"
+                        placeholder="Введите сообщение"
+                      />
+                      <div>
+                        <label for="file-input-support">
+                          <svg
+                            width="28"
+                            height="28"
+                            viewBox="0 0 64 64"
+                            fill="#99c"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              clip-rule="evenodd"
+                              d="M39.9057 15.5859C44.0598 17.4299 45.6997 22.4675 43.4272 26.4035L32.1243 45.9807C30.0532 49.5679 25.4663 50.797 21.8791 48.7259C18.2919 46.6548 17.0629 42.0679 19.1339 38.4807L29.2589 20.9437C30.5706 18.6718 33.4757 17.8934 35.7476 19.2051C38.0194 20.5167 38.7978 23.4218 37.4862 25.6937L27.3612 43.2307C27.085 43.709 26.4734 43.8729 25.9951 43.5967C25.5169 43.3206 25.353 42.709 25.6291 42.2307L35.7541 24.6937C36.5135 23.3784 36.0629 21.6965 34.7476 20.9371C33.4322 20.1777 31.7504 20.6284 30.991 21.9437L20.866 39.4807C19.3472 42.1113 20.2485 45.4751 22.8791 46.9938C25.5097 48.5126 28.8735 47.6113 30.3923 44.9807L41.6951 25.4035C43.3735 22.4965 42.1623 18.7758 39.0942 17.4139L39.9057 15.5859Z"
+                              fill="currentColor"
                             />
-                          </div>
-                          <div class="shrink-0 p-2 h-full">
-                            <button
-                              class="h-full uppercase relative font-[600] flex rounded-[.375rem] items-center justify-center text-white px-[1rem] transition-[background_,_box-shadow] duration-300 hover:bg-[#2399EF] bg-blue hover:shadow-btn-blue"
+                          </svg>
+                        </label>
+                        <input
+                          type="file"
+                          id="file-input-support"
+                          style="display: none"
+                        />
+                      </div>
+                      <div class="shrink-0 p-2 h-full">
+                        <button
+                          class="h-full uppercase relative font-[600] flex rounded-[.375rem] items-center justify-center text-white px-[1rem] transition-[background_,_box-shadow] duration-300 hover:bg-[#2399EF] bg-blue hover:shadow-btn-blue"
+                        >
+                          <span class="transition-[opacity] opacity-100"
+                            >Отправить</span
+                          >
+                          <div
+                            class="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 opacity-0 transition-[opacity]"
+                          >
+                            <svg
+                              class="animate-spin h-[1.625rem] w-[1.625rem] text-white"
+                              xmlns="http://www.w3.org/2000/svg"
+                              fill="none"
+                              viewBox="0 0 24 24"
                             >
-                              <span class="transition-[opacity] opacity-100"
-                                >Отправить</span
-                              >
-                              <div
-                                class="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 opacity-0 transition-[opacity]"
-                              >
-                                <svg
-                                  class="animate-spin h-[1.625rem] w-[1.625rem] text-white"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  fill="none"
-                                  viewBox="0 0 24 24"
-                                >
-                                  <circle
-                                    class="opacity-25"
-                                    cx="12"
-                                    cy="12"
-                                    r="10"
-                                    stroke="currentColor"
-                                    stroke-width="2"
-                                  ></circle>
-                                  <path
-                                    class="opacity-75"
-                                    stroke-linecap="round"
-                                    fill="currentColor"
-                                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                                  ></path>
-                                </svg>
-                              </div>
-                            </button>
+                              <circle
+                                class="opacity-25"
+                                cx="12"
+                                cy="12"
+                                r="10"
+                                stroke="currentColor"
+                                stroke-width="2"
+                              ></circle>
+                              <path
+                                class="opacity-75"
+                                stroke-linecap="round"
+                                fill="currentColor"
+                                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                              ></path>
+                            </svg>
                           </div>
-                        </div>
-                      </template>
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </template>
+              </div>
 
               <div
                 class="flex h-full font-[500] gap-2 w-full items-center text-center justify-center flex-col"
@@ -1224,7 +1172,7 @@
               </div>
             </div>
             <div
-              class="w-full rounded-[.75rem] bg-[#222532] flex-col overflow-scroll min-[1381px]:flex hidden"
+              class="w-full rounded-[.75rem] bg-[#222532] flex-col overflow-y-auto min-[1381px]:flex hidden scroll-dark"
             >
               <div
                 class="shrink-0 flex items-center gap-3 font-[600] p-[1.75rem] text-xl uppercase"
@@ -1448,16 +1396,5 @@
         </section>
       </main>
     </div>
-    <script src="api/script/countup.js"></script>
-    <script src="../assets/js/app.js"></script>
-    <script src="../assets/js/modal.js"></script>
-    <script src="../assets/js/smooth-scrollbar.js"></script>
-    <script src="../assets/js/plugins/overscroll.js"></script>
-    <script src="../assets/js/parallax-mouse.min.js"></script>
-    <script src="../assets/js/swiped-events.min.js"></script>
-    <script src="../assets/js/gradient.js" type="module"></script>
-    <script src="../assets/js/core.js"></script>
-    <script src="../assets/js/wNumb.min.js"></script>
-    <script src="../assets/js/gsap.min.js"></script>
   </body>
 </html>
