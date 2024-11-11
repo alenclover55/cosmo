@@ -1,9 +1,5 @@
 <!DOCTYPE html>
 <html lang="ru" class="h-full">
-  <script
-    defer
-    src="https://cdn.jsdelivr.net/npm/@alpinejs/focus@3.x.x/dist/cdn.min.js"
-  ></script>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -29,13 +25,11 @@
     <script src="../assets/js/toastr.min.js"></script>
     <script src="https://cdn.tailwindcss.com?plugins=line-clamp"></script>
     <script src="../assets/js/swiper-bundle.min.js"></script>
-    <link rel="preload" href="assets/css/swiper-bundle.min.css" />
-    <script src="../assets/js/smooth-scrollbar.js"></script>
-    <link rel="preload" href="assets/css/simple-scrollbar.min.css" />
+    <link rel="preload" href="../assets/css/swiper-bundle.min.css" />
     <script src="../assets/js/popper.min.js"></script>
     <script src="../assets/js/tippy-bundle.umd.min.js"></script>
     <script src="../assets/js/clipboard.min.js"></script>
-    <link rel="preload" href="assets/css/scale-subtle.css" />
+    <link rel="preload" href="../assets/css/scale-subtle.css" />
     <script src="../assets/js/socket.io-1.4.5.js"></script>
     <title>Крути и зарабатывай | CosmoCasino</title>
     <script>
@@ -342,7 +336,10 @@
                   class="flex items-center justify-between px-4 py-3 text-sm rounded-lg bg-[#262838]"
                 >
                   <span class="font-semibold text-[#9e9ead]">Анимации:</span>
-                  <button class="flex items-center text-xs gap-2 group/toggle">
+                  <button
+                    id="toggle-animation"
+                    class="flex items-center text-xs gap-2 group/toggle"
+                  >
                     <span>Вкл.</span>
                     <div
                       class="relative w-8 h-5 rounded-full bg-[#151620] group-hover/toggle:bg-[#1d1f2c] group-[.active]/toggle:bg-blue transition-all duration-300"
@@ -853,7 +850,6 @@
             >
               <div class="flex items-center gap-4 w-[calc(100%_-_7.5rem)]">
                 <button
-                  onclick="location.href='/lobby'"
                   class="flex items-center gap-2 justify-center rounded-[.375rem] h-[2rem] px-4 text-sm font-[600] transition-[background] duration-300 bg-[#222432] hover:bg-[#2E3243]"
                 >
                   <i
@@ -929,8 +925,6 @@
     <script src="api/script/countup.js"></script>
     <script src="../assets/js/app.js"></script>
     <script src="../assets/js/modal.js"></script>
-    <script src="../assets/js/smooth-scrollbar.js"></script>
-    <script src="../assets/js/plugins/overscroll.js"></script>
     <script src="../assets/js/parallax-mouse.min.js"></script>
     <script src="../assets/js/swiped-events.min.js"></script>
     <script src="../assets/js/gradient.js" type="module"></script>

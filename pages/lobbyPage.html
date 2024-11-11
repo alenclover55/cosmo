@@ -342,7 +342,7 @@
                   class="flex items-center justify-between px-4 py-3 text-sm rounded-lg bg-[#262838]"
                 >
                   <span class="font-semibold text-[#9e9ead]">Анимации:</span>
-                  <button class="flex items-center text-xs gap-2 group/toggle">
+                  <button id="toggle-animation" class="flex items-center text-xs gap-2 group/toggle">
                     <span>Вкл.</span>
                     <div
                       class="relative w-8 h-5 rounded-full bg-[#151620] group-hover/toggle:bg-[#1d1f2c] group-[.active]/toggle:bg-blue transition-all duration-300"
@@ -1162,14 +1162,13 @@
                         class="absolute left-0 top-0 z-[3] p-[.5rem] pointer-events-none w-full h-full flex flex-col rounded-[.375rem] justify-between opacity-0 transition-[opacity_,_border] border-transparent border group-hover/slot:border-[#535664] group-hover/slot:!opacity-100 rounded-[.375rem]"
                       >
                         <button
-                          type="button"
                           class="flex-1 flex items-center justify-center pointer-events-auto"
                         >
                           <svg
                             class="w-[3rem] h-[3rem] hover:scale-110 transition-[transform] duration-300"
                           >
                             <use
-                              xlink:href="assets/images/symbols.svg#icon-play"
+                              xlink:href="../assets/images/symbols.svg#icon-play"
                             ></use>
                           </svg>
                         </button>
@@ -1178,17 +1177,13 @@
                             <div class="flex flex-col max-w-full items-start">
                               <span
                                 class="font-[500] whitespace-nowrap max-w-full text-ellipsis overflow-hidden break-all"
-                                x-text="item.name"
-                              ></span>
+                              >item.name</span>
                               <span
                                 class="text-[.813rem] opacity-70 whitespace-nowrap max-w-full text-ellipsis overflow-hidden break-all"
-                                x-text="item.provider"
-                              ></span>
+                              >item.provider</span>
                             </div>
                             <button
-                              @click="favoriteChange(index)"
                               class="group/favorite pointer-events-auto w-[1.5rem] h-[1.5rem] flex items-center justify-center relative"
-                              type="button"
                             >
                               <template x-if="!item.favorite">
                                 <div
@@ -1198,14 +1193,14 @@
                                     class="w-5 h-5 absolute left-1/2 -translate-y-1/2 -translate-x-1/2 top-1/2 transition-[opacity] duration-300 group-hover/favorite:opacity-0"
                                   >
                                     <use
-                                      xlink:href="assets/images/symbols.svg#icon-favorite-stroke"
+                                      xlink:href="../assets/images/symbols.svg#icon-favorite-stroke"
                                     ></use>
                                   </svg>
                                   <svg
                                     class="w-5 h-5 absolute left-1/2 -translate-y-1/2 -translate-x-1/2 top-1/2 transition-[opacity] duration-300 opacity-0 group-hover/favorite:opacity-100"
                                   >
                                     <use
-                                      xlink:href="assets/images/symbols.svg#icon-favorite-fill"
+                                      xlink:href="../assets/images/symbols.svg#icon-favorite-fill"
                                     ></use>
                                   </svg>
                                 </div>
@@ -1218,7 +1213,7 @@
                                     class="w-5 h-5 absolute left-1/2 -translate-y-1/2 -translate-x-1/2 top-1/2 transition-[transform] duration-300 group-hover/favorite:scale-110"
                                   >
                                     <use
-                                      xlink:href="assets/images/symbols.svg#icon-favorite-fill"
+                                      xlink:href="../assets/images/symbols.svg#icon-favorite-fill"
                                     ></use>
                                   </svg>
                                 </div>
@@ -1531,8 +1526,6 @@
                   </button>
                   <input
                     class="h-[3rem] px-5 rounded-[.375rem] bg-[#2C2E43] text-[.938rem] w-full placeholder:text-[#A1A6BE] text-white focus:placeholder:opacity-0 placeholder:transition-[opacity]"
-                    placeholder="Введите пароль"
-                    autocomplete="off"
                   />
                 </div>
               </div>
@@ -1803,7 +1796,7 @@
                   class="flex flex-col max-[630px]:h-full max-[630px]:justify-between"
                 >
                   <div
-                    class="flex flex min-[631px]:flex-row flex-col min-[631px]:items-stretch justify-between gap-6 opacity-0 transition-[opacity] max-[630px]:h-full"
+                    class="flex flex min-[631px]:flex-row flex-col min-[631px]:items-stretch justify-between gap-6 transition-[opacity] max-[630px]:h-full"
                   >
                     <div
                       class="min-[631px]:max-w-[13.75rem] max-w-full w-full flex flex-col gap-2"
@@ -1819,7 +1812,7 @@
                             class="shrink-0 w-full rounded-[.375rem] gap-3 flex items-center px-4 relative h-[4.375rem] transition-[background_,_color_,_border_,_box-shadow] border border-transparent duration-300 bg-[#2E3245] hover:bg-[#393C54] hover:border-[#545874] [&.active]:bg-[#393C54] [&.active]:border-[#545874]"
                           >
                             <img
-                              :src="item.image"
+                              src="item.image"
                               class="shrink-0 w-[2rem] h-[2rem]"
                               alt=""
                             />
@@ -1877,8 +1870,6 @@
                               <input
                                 type="text"
                                 class="h-[3rem] px-5 rounded-[.375rem] bg-[#2E3245] text-[.938rem] w-full placeholder:text-[#A1A6BE] text-white focus:placeholder:opacity-0 placeholder:transition-[opacity]"
-                                placeholder="Введите сумму"
-                                autocomplete="off"
                               />
                             </div>
                             <div
@@ -1971,19 +1962,17 @@
                         >
                           <span
                             >Комиссия:
-                            <span x-text="currentMethod.comission + '%'"></span
+                            <span>currentMethod.comission + '%</span
                           ></span>
                           <span class="max-[360px]:hidden">/</span>
                           <span
                             >Лимит одного пополнения:
                             <span
                               ><span
-                                x-text="parseDecimals(currentMethod.parameters.min) + ' ₽'"
-                              ></span>
+                              >currentMethod.parameters.min ₽</span>
                               −
                               <span
-                                x-text="parseDecimals(currentMethod.parameters.max) + ' ₽'"
-                              ></span></span
+                              >currentMethod.parameters.max ₽</span></span
                           ></span>
                         </div>
                       </div>
@@ -2036,7 +2025,7 @@
                             class="shrink-0 pr-[2.5rem] rounded-[.375rem] gap-3 flex items-center px-4 relative h-[4.375rem] transition-[background_,_color_,_border_,_box-shadow] border border-transparent duration-300 bg-[#2E3245] hover:bg-[#393C54] hover:border-[#545874] [&.active]:bg-[#393C54] [&.active]:border-[#545874]"
                           >
                             <img
-                              :src="item.image"
+                              src="item.image"
                               class="shrink-0 w-[2rem] h-[2rem]"
                               alt=""
                             />
@@ -2194,10 +2183,7 @@
                           <span class="max-[360px]:hidden">/</span>
                           <span
                             >Лимит одного пополнения:
-                            <span
-                              ><span
-                                x-text="parseDecimals(currentMethod.parameters.min) + ' ₽'"
-                              ></span>
+                            <span><span>currentMethod.parameters.min ₽</span>
                               − <span></span>currentMethod.parameters.max</span
                             ></span
                           >
@@ -2243,14 +2229,10 @@
                               class="min-[631px]:min-w-[6.875rem] min-w-[7.75rem] font-[600] text-lg flex items-center gap-2"
                             >
                               <button
-                                @click="show = !show"
-                                type="button"
                                 class="w-[1.5rem] h-[1.5rem] min-[631px]:hidden flex items-center justify-center bg-[#34374d] rounded-full"
-                                x-bind:class="show ? '!bg-blue !text-white' : ''"
                               >
                                 <i
                                   class="w-1.5 h-1.5 border-r border-b rotate-45 border-current transition-[transform_,_background_,_color]"
-                                  x-bind:class="show ? 'rotate-[225deg] top-[3px]' : ''"
                                 ></i>
                               </button>
                               <span>item.sum</span>
@@ -2390,7 +2372,6 @@
               class="w-[2.5rem] shrink-0 bg-[#2E3144] rounded-[.5rem] flex flex-col relative z-[3]"
             >
               <button
-                x-ref="prev"
                 class="flex-1 flex items-center justify-center transition-[color] duration-300 text-[#8A91AC] [&:not(.swiper-button-disabled)]:hover:text-white [&.swiper-button-disabled]:pointer-events-none [&.swiper-button-disabled]:opacity-30"
               >
                 <svg class="w-4 h-4 rotate-180">
@@ -2400,7 +2381,6 @@
                 </svg>
               </button>
               <button
-                x-ref="next"
                 class="flex-1 flex items-center justify-center transition-[color] duration-300 text-[#8A91AC] [&:not(.swiper-button-disabled)]:hover:text-white [&.swiper-button-disabled]:pointer-events-none [&.swiper-button-disabled]:opacity-30"
               >
                 <svg class="w-4 h-4">
