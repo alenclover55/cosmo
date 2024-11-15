@@ -125,25 +125,6 @@
     transform: rotate(10deg) translateX(-10%);
   }
 }
-.scroll-dark {
-  height: 300px; /* Устанавливаем высоту, чтобы прокрутка была видна */
-  overflow-y: auto; /* Включаем вертикальную прокрутку */
-}
-
-/* Стили для прокрутки */
-.scroll-dark::-webkit-scrollbar {
-  width: 8px !important; /* Ширина полосы прокрутки */
-}
-
-.scroll-dark::-webkit-scrollbar-thumb {
-  background-color: #0083e1 !important; /* Цвет ползунка */
-  border-radius: 10px !important; /* Закругление углов */
-}
-
-.scroll-dark::-webkit-scrollbar-track {
-  background: #2a2c3d !important; /* Цвет дорожки */
-  border-radius: 10px !important; /* Закругление углов */
-}
 
 .tippy-box {
   background: #fff !important;
@@ -725,4 +706,18 @@ body:not(.disable-animations) .loader-wheel-txt {
 .disable-animations .swiper-wrapper {
   transition-property: transform !important;
   transition-duration: 500ms !important;
+}
+
+::-webkit-scrollbar {
+  width: 8px; /* Ширина полосы прокрутки */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #0083e1 !important; /* Цвет ползунка */
+  border-radius: 10px !important; /* Закругление углов */
+}
+
+::-webkit-scrollbar-track {
+  background: #2a2c3d !important; /* Цвет дорожки */
+  border-radius: 10px !important; /* Закругление углов */
 }
