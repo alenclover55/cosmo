@@ -38,3 +38,24 @@ $("#toggle-animation").click(function () {
     $(this).find("span").text("Вкл.");
   }
 });
+
+new Swiper("#swiper-levels", {
+  slidesPerView: 1.5,
+  spaceBetween: 12,
+  speed: 600,
+  navigation: {
+    prevEl: "#swiper-levels-prev",
+    nextEl: "#swiper-levels-next",
+  },
+  breakpoints: {
+    414: {
+      slidesPerView: 1.5,
+    },
+    355: {
+      slidesPerView: 1.2,
+    },
+    0: {
+      slidesPerView: 1.05,
+    },
+  },
+});

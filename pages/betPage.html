@@ -36,6 +36,7 @@
     <script src="../assets/js/tippy-bundle.umd.min.js"></script>
     <script src="../assets/js/clipboard.min.js"></script>
     <link rel="preload" href="../assets/css/scale-subtle.css" />
+    <link rel="stylesheet" href="../assets/css/styles.css" />
     <script src="../assets/js/socket.io-1.4.5.js"></script>
     <title>Крути и зарабатывай | CosmoCasino</title>
     <script>
@@ -845,11 +846,7 @@
       <main
         class="flex flex-1 overflow-x-hidden flex-col min-[1125px]:pl-[17.5rem] pl-0 pt-[4.5rem] max-[1125px]:pb-[4.563rem]"
       >
-        <section
-          class="relative flex-1 flex flex-col"
-          x-data="coinflip"
-          x-init="getCoeffList(); renderGame();"
-        >
+        <section class="relative flex-1 flex flex-col">
           <div
             class="flex-1 flex flex-col z-[1] p-4 relative min-[691px]:gap-6 gap-2"
           >
@@ -861,40 +858,30 @@
                   class="relative z-[1] px-2 py-3 w-full h-full rounded-[1.25rem] bg-[#41496B]/[0.25] border border-[#41496B]/[0.5] flex min-[861px]:flex-col items-stretch justify-center"
                 >
                   <div class="swiper-wrapper !flex items-stretch">
-                    <template x-for="(item, index) in coeffs" :key="index">
+                    <div
+                      class="swiper-slide !h-auto flex items-center justify-center group/item opacity-30 transition-all duration-300 [&.active]:opacity-100 [&.played]:opacity-100"
+                    >
                       <div
-                        class="swiper-slide !h-auto flex items-center justify-center group/item opacity-30 transition-all duration-300 [&.active]:opacity-100 [&.played]:opacity-100"
+                        class="w-full flex flex-col items-center text-center font-semibold gap-1.5"
                       >
-                        <div
-                          class="w-full flex flex-col items-center text-center font-semibold gap-1.5"
-                        >
-                          <template
-                            x-if="item.status === null || item.status === 'active'"
-                          >
-                            <img
-                              src="../assets/images/games/coinflip/hidden.svg"
-                              class="max-w-[2.625rem]"
-                              alt=""
-                            />
-                          </template>
-                          <template x-if="item.status === 'rocket'">
-                            <img
-                              src="../assets/images/games/coinflip/rocket.svg"
-                              class="max-w-[2.625rem]"
-                              alt=""
-                            />
-                          </template>
-                          <template x-if="item.status === 'asteroid'">
-                            <img
-                              src="../assets/images/games/coinflip/asteroid.svg"
-                              class="max-w-[2.625rem]"
-                              alt=""
-                            />
-                          </template>
-                          <span x-text="'x' + item.x"></span>
-                        </div>
+                        <img
+                          src="../assets/images/games/coinflip/hidden.svg"
+                          class="max-w-[2.625rem]"
+                          alt=""
+                        />
+                        <img
+                          src="../assets/images/games/coinflip/rocket.svg"
+                          class="max-w-[2.625rem]"
+                          alt=""
+                        />
+
+                        <img
+                          src="../assets/images/games/coinflip/asteroid.svg"
+                          class="max-w-[2.625rem]"
+                          alt=""
+                        />
                       </div>
-                    </template>
+                    </div>
                   </div>
                 </div>
                 <div
@@ -1219,7 +1206,6 @@
     <script src="../assets/js/parallax-mouse.min.js"></script>
     <script src="../assets/js/swiped-events.min.js"></script>
     <script src="../assets/js/gradient.js" type="module"></script>
-
     <script src="../assets/js/core.js"></script>
     <script src="../assets/js/wNumb.min.js"></script>
     <script src="../assets/js/gsap.min.js"></script>
