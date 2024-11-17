@@ -33,7 +33,7 @@
     <script src="assets/js/tippy-bundle.umd.min.js"></script>
     <script src="assets/js/clipboard.min.js"></script>
     <link rel="preload" href="assets/css/scale-subtle.css" />
-    <link rel="stylesheet" href="index.html" />
+    <link rel="stylesheet" href="./assets/css/styles.css" />
     <script src="assets/js/socket.io-1.4.5.js"></script>
     <title>Крути и зарабатывай | CosmoCasino</title>
     <script>
@@ -336,7 +336,10 @@
                   class="flex items-center justify-between px-4 py-3 text-sm rounded-lg bg-[#262838]"
                 >
                   <span class="font-semibold text-[#9e9ead]">Анимации:</span>
-                  <button id="toggle-animation" class="flex items-center text-xs gap-2 group/toggle">
+                  <button
+                    id="toggle-animation"
+                    class="flex items-center text-xs gap-2 group/toggle"
+                  >
                     <span>Вкл.</span>
                     <div
                       class="relative w-8 h-5 rounded-full bg-[#151620] group-hover/toggle:bg-[#1d1f2c] group-[.active]/toggle:bg-blue transition-all duration-300"
@@ -352,10 +355,10 @@
                 class="flex flex-col pb-[1.25rem] px-[1.25rem] gap-[.625rem] w-full"
               >
                 <div
-                  class="flex flex-col gap-[.625rem] border-b border-b-[#2A2C3D] last:border-0"
+                  class="flex flex-col gap-[.625rem] border-b border-b-[#2A2C3D] last:border-0 menu-group-wrapper"
                 >
                   <button
-                    class="flex group/btn font-[600] items-center text-[#9CA0B5] hover:text-white justify-between pl-[.75rem] pr-[1.125rem] h-[2.875rem] bg-transparent rounded-[.375rem] transition-[background_,_color] duration-300 hover:bg-[#313444] [&.active]:bg-blue [&.active]:text-white [&.active]:shadow-btn-blue"
+                    class="flex menu-full-btn group/btn font-[600] items-center text-[#9CA0B5] hover:text-white justify-between pl-[.75rem] pr-[1.125rem] h-[2.875rem] bg-transparent rounded-[.375rem] transition-[background_,_color] duration-300 hover:bg-[#313444] [&.active]:bg-blue [&.active]:text-white [&.active]:shadow-btn-blue"
                   >
                     <div class="flex items-center gap-[.75rem]">
                       <svg class="w-[1.5rem] h-[1.5rem]">
@@ -373,7 +376,7 @@
                     ></i>
                   </button>
                   <div
-                    class="flex overflow-hidden flex-col gap-[.313rem] transition-[max-height]"
+                    class="flex overflow-hidden flex-col gap-[.313rem] transition-[max-height] closable-menu"
                   >
                     <div class="flex flex-col gap-[.313rem] pb-[.625rem]">
                       <div class="relative">
@@ -494,10 +497,10 @@
                   </div>
                 </div>
                 <div
-                  class="flex flex-col gap-[.625rem] border-b border-b-[#2A2C3D] last:border-0"
+                  class="flex flex-col gap-[.625rem] border-b border-b-[#2A2C3D] last:border-0 menu-group-wrapper"
                 >
                   <button
-                    class="flex group/btn font-[600] items-center text-[#9CA0B5] hover:text-white justify-between pl-[.75rem] pr-[1.125rem] h-[2.875rem] bg-transparent rounded-[.375rem] transition-[background_,_color] duration-300 hover:bg-[#313444] [&.active]:bg-blue [&.active]:text-white [&.active]:shadow-btn-blue"
+                    class="flex menu-full-btn group/btn font-[600] items-center text-[#9CA0B5] hover:text-white justify-between pl-[.75rem] pr-[1.125rem] h-[2.875rem] bg-transparent rounded-[.375rem] transition-[background_,_color] duration-300 hover:bg-[#313444] [&.active]:bg-blue [&.active]:text-white [&.active]:shadow-btn-blue"
                   >
                     <div class="flex items-center gap-[.75rem]">
                       <svg class="w-[1.5rem] h-[1.5rem]">
@@ -515,7 +518,7 @@
                     ></i>
                   </button>
                   <div
-                    class="flex overflow-hidden flex-col gap-[.313rem] transition-[max-height]"
+                    class="flex overflow-hidden flex-col gap-[.313rem] transition-[max-height] closable-menu"
                   >
                     <div class="flex flex-col gap-[.313rem] pb-[.625rem]">
                       <div class="relative">
