@@ -28,6 +28,10 @@ $("#cashback-modal-btn").click(function () {
   showPopup(".popup--cashback");
 });
 
+$("#support-btn").click(function () {
+  showPopup(".popup--support");
+});
+
 let isActive = false;
 $("#toggle-animation").click(function () {
   $("#toggle-animation").toggleClass("active");
@@ -58,4 +62,19 @@ new Swiper("#swiper-levels", {
       slidesPerView: 1.05,
     },
   },
+});
+
+new Swiper(".mines-history", {
+  slidesPerView: 10,
+  speed: 600,
+});
+
+$(".menu-full-btn").click(function () {
+  if ($(this).hasClass("active")) {
+    $(this).removeClass("active");
+    $(this).parent().removeClass("active");
+  } else {
+    $(this).addClass("active");
+    $(this).parent().addClass("active");
+  }
 });

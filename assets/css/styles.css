@@ -709,15 +709,25 @@ body:not(.disable-animations) .loader-wheel-txt {
 }
 
 ::-webkit-scrollbar {
-  width: 8px; /* Ширина полосы прокрутки */
+  width: 8px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #0083e1 !important; /* Цвет ползунка */
-  border-radius: 10px !important; /* Закругление углов */
+  background-color: #0083e1;
+  border-radius: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #2a2c3d !important; /* Цвет дорожки */
-  border-radius: 10px !important; /* Закругление углов */
+  background: #2a2c3d;
+  border-radius: 10px;
+}
+.menu-group-wrapper {
+  .closable-menu {
+    display: none;
+  }
+}
+.menu-group-wrapper.active {
+  .closable-menu {
+    display: flex;
+  }
 }
