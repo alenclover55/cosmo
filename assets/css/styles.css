@@ -731,3 +731,10 @@ body:not(.disable-animations) .loader-wheel-txt {
     display: flex;
   }
 }
+
+.tab-page {
+  display: none;
+  &.active {
+    display: flex;
+  }
+}
