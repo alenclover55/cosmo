@@ -1052,17 +1052,14 @@
                   </div>
                 </div>
                 <button
-                  class="shrink-0 h-[3rem] max-[944px]:w-full min-w-[18.75rem] uppercase relative font-[600] flex rounded-[.375rem] items-center justify-center text-white px-[1.75rem] transition-[background_,_box-shadow] duration-300 hover:bg-[#2399EF] bg-blue hover:shadow-btn-blue"
+                  class="shrink-0 h-[3rem] max-[944px]:w-full min-w-[18.75rem] uppercase relative font-[600] flex rounded-[.375rem] items-center justify-center text-white px-[1.75rem] transition-[background_,_box-shadow] duration-300 hover:bg-[#2399EF] bg-blue hover:shadow-btn-blue provider-btn"
                 >
                   <span
                     class="transition-[opacity] opacity-100 flex items-center gap-2"
                   >
-                    <span
-                      x-text="show ? 'Отменить выбор' : 'Выбрать провайдера'"
-                      >Выбрать провайдера</span
-                    >
+                    <span class="provider-btn-text">Выбрать провайдера</span>
                     <i
-                      class="w-1.5 h-1.5 border-r-2 border-b-2 rotate-45 border-current relative -top-0.5"
+                      class="w-1.5 h-1.5 border-r-2 border-b-2 rotate-45 border-current relative -top-0.5 provider-btn-arrow"
                     ></i>
                   </span>
                   <div
@@ -1093,7 +1090,9 @@
                 </button>
               </div>
             </div>
-            <div class="flex flex-col min-[1125px]:px-[2rem] px-[1rem]">
+            <div
+              class="flex flex-col min-[1125px]:px-[2rem] px-[1rem] providers__wrapper hidden"
+            >
               <div
                 class="-ml-[.375rem] -mr-[.375rem] flex flex-wrap gap-y-[.75rem] w-[calc(100%_+_.75rem)] [&>div]:px-[.375rem] min-[1591px]:[&>div]:w-[calc(100%_/_8)] min-[848px]:[&>div]:w-[calc(100%_/_7)] min-[591px]:[&>div]:w-[calc(100%_/_5)] [&>div]:w-[calc(100%_/_3)]"
               >
@@ -1135,7 +1134,9 @@
                 <!-- провайдеры -->
               </div>
             </div>
-            <div class="flex flex-col min-[1125px]:px-[2rem] px-[1rem] gap-5">
+            <div
+              class="flex flex-col min-[1125px]:px-[2rem] px-[1rem] gap-5 games__wrapper"
+            >
               <div
                 class="flex flex-wrap -ml-2 -mr-2 gap-y-4 w-[calc(100%_+_1rem)] [&>div]:px-2 min-[1625px]:[&>div]:w-[calc(100%_/_8)] min-[1175px]:[&>div]:w-[calc(100%_/_6)] min-[1125px]:[&>div]:w-[calc(100%_/_5)] min-[945px]:[&>div]:w-[calc(100%_/_6)] min-[744px]:[&>div]:w-[calc(100%_/_5)] min-[575px]:[&>div]:w-[calc(100%_/_4)] min-[361px]:[&>div]:w-[calc(100%_/_3)] [&>div]:w-[calc(100%_/_2)]"
               >
@@ -1191,39 +1192,35 @@
                             <button
                               class="group/favorite pointer-events-auto w-[1.5rem] h-[1.5rem] flex items-center justify-center relative"
                             >
-                              <template x-if="!item.favorite">
-                                <div
-                                  class="flex items-center left-0 top-0 w-full h-full justify-center text-white"
+                              <div
+                                class="flex items-center left-0 top-0 w-full h-full justify-center text-white"
+                              >
+                                <svg
+                                  class="w-5 h-5 absolute left-1/2 -translate-y-1/2 -translate-x-1/2 top-1/2 transition-[opacity] duration-300 group-hover/favorite:opacity-0"
                                 >
-                                  <svg
-                                    class="w-5 h-5 absolute left-1/2 -translate-y-1/2 -translate-x-1/2 top-1/2 transition-[opacity] duration-300 group-hover/favorite:opacity-0"
-                                  >
-                                    <use
-                                      xlink:href="../assets/images/symbols.svg#icon-favorite-stroke"
-                                    ></use>
-                                  </svg>
-                                  <svg
-                                    class="w-5 h-5 absolute left-1/2 -translate-y-1/2 -translate-x-1/2 top-1/2 transition-[opacity] duration-300 opacity-0 group-hover/favorite:opacity-100"
-                                  >
-                                    <use
-                                      xlink:href="../assets/images/symbols.svg#icon-favorite-fill"
-                                    ></use>
-                                  </svg>
-                                </div>
-                              </template>
-                              <template x-if="item.favorite">
-                                <div
-                                  class="flex items-center left-0 top-0 w-full h-full justify-center text-[#FFA200]"
+                                  <use
+                                    xlink:href="../assets/images/symbols.svg#icon-favorite-stroke"
+                                  ></use>
+                                </svg>
+                                <svg
+                                  class="w-5 h-5 absolute left-1/2 -translate-y-1/2 -translate-x-1/2 top-1/2 transition-[opacity] duration-300 opacity-0 group-hover/favorite:opacity-100"
                                 >
-                                  <svg
-                                    class="w-5 h-5 absolute left-1/2 -translate-y-1/2 -translate-x-1/2 top-1/2 transition-[transform] duration-300 group-hover/favorite:scale-110"
-                                  >
-                                    <use
-                                      xlink:href="../assets/images/symbols.svg#icon-favorite-fill"
-                                    ></use>
-                                  </svg>
-                                </div>
-                              </template>
+                                  <use
+                                    xlink:href="../assets/images/symbols.svg#icon-favorite-fill"
+                                  ></use>
+                                </svg>
+                              </div>
+                              <div
+                                class="flex items-center left-0 top-0 w-full h-full justify-center text-[#FFA200]"
+                              >
+                                <svg
+                                  class="w-5 h-5 absolute left-1/2 -translate-y-1/2 -translate-x-1/2 top-1/2 transition-[transform] duration-300 group-hover/favorite:scale-110"
+                                >
+                                  <use
+                                    xlink:href="../assets/images/symbols.svg#icon-favorite-fill"
+                                  ></use>
+                                </svg>
+                              </div>
                             </button>
                           </div>
                           <button
@@ -1238,29 +1235,6 @@
                   </div>
                 </div>
                 <!-- Слоты -->
-              </div>
-              <div class="flex justify-center">
-                <svg
-                  class="animate-spin h-[1.625rem] w-[1.625rem] text-white"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                >
-                  <circle
-                    class="opacity-25"
-                    cx="12"
-                    cy="12"
-                    r="10"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  ></circle>
-                  <path
-                    class="opacity-75"
-                    stroke-linecap="round"
-                    fill="currentColor"
-                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                  ></path>
-                </svg>
               </div>
             </div>
           </div>
@@ -1743,7 +1717,7 @@
               <div class="flex items-stretch">
                 <button
                   type="button"
-                  class="flex items-center justify-center px-5 gap-2 transition-[background_,_color] font-[600] text-[.938rem] duration-300 text-[#8A91AC] [&.active]:bg-[#2F3346] [&.active]:text-white hover:text-[#BAC2E0] group/tab"
+                  class="flex items-center justify-center px-5 gap-2 transition-[background_,_color] font-[600] text-[.938rem] duration-300 text-[#8A91AC] [&.active]:bg-[#2F3346] [&.active]:text-white hover:text-[#BAC2E0] group/tab tab-button"
                 >
                   <svg class="w-4 h-4">
                     <use
@@ -1756,7 +1730,7 @@
                   >
                 </button>
                 <button
-                  class="flex items-center justify-center px-5 gap-2 transition-[background_,_color] font-[600] text-[.938rem] duration-300 text-[#8A91AC] [&.active]:bg-[#2F3346] [&.active]:text-white hover:text-[#BAC2E0] group/tab"
+                  class="flex items-center justify-center px-5 gap-2 transition-[background_,_color] font-[600] text-[.938rem] duration-300 text-[#8A91AC] [&.active]:bg-[#2F3346] [&.active]:text-white hover:text-[#BAC2E0] group/tab tab-button"
                 >
                   <svg class="w-4 h-4">
                     <use
@@ -1770,7 +1744,7 @@
                 </button>
                 <button
                   type="button"
-                  class="flex items-center justify-center px-5 gap-2 transition-[background_,_color] font-[600] text-[.938rem] duration-300 text-[#8A91AC] [&.active]:bg-[#2F3346] [&.active]:text-white hover:text-[#BAC2E0] group/tab"
+                  class="flex items-center justify-center px-5 gap-2 transition-[background_,_color] font-[600] text-[.938rem] duration-300 text-[#8A91AC] [&.active]:bg-[#2F3346] [&.active]:text-white hover:text-[#BAC2E0] group/tab tab-button"
                 >
                   <svg class="w-4 h-4">
                     <use
@@ -1797,7 +1771,8 @@
             <div
               class="w-full flex flex-col p-5 max-[630px]:h-full max-[630px]:overflow-auto"
             >
-              <div class="h-full w-full">
+              <!-- Депозит -->
+              <div class="h-full w-full tab-page">
                 <div
                   class="flex flex-col max-[630px]:h-full max-[630px]:justify-between"
                 >
@@ -1985,12 +1960,14 @@
                   </div>
                 </div>
               </div>
-              <div class="h-full w-full hidden">
+              <!-- Депозит -->
+              <!--Вывод  -->
+              <div class="h-full w-full tab-page">
                 <div
                   class="flex flex-col max-[630px]:h-full max-[630px]:justify-between"
                 >
                   <div
-                    class="flex flex min-[631px]:flex-row flex-col min-[631px]:items-stretch justify-between gap-6 opacity-0 transition-[opacity]"
+                    class="flex flex min-[631px]:flex-row flex-col min-[631px]:items-stretch justify-between gap-6 transition-[opacity]"
                   >
                     <div
                       class="min-[631px]:max-w-[13.75rem] max-w-full w-full flex flex-col gap-2"
@@ -2199,11 +2176,11 @@
                   </div>
                 </div>
               </div>
-              <div class="h-full w-full hidden">
+              <!-- Вывод -->
+              <!-- История -->
+              <div class="h-full w-full tab-page">
                 <div class="flex flex-col">
-                  <div
-                    class="flex flex-col gap-3 opacity-0 transition-[opacity]"
-                  >
+                  <div class="flex flex-col gap-3 transition-[opacity]">
                     <div class="flex relative z-[1]">
                       <button
                         class="flex items-center gap-2 text-sm font-[500] text-[#9CA0B5] transition-[color] duration-300 hover:text-[#C1C5D8]"
@@ -2309,6 +2286,7 @@
                   </div>
                 </div>
               </div>
+              <!-- История -->
             </div>
           </div>
         </div>

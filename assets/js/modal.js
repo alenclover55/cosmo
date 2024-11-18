@@ -69,6 +69,11 @@ new Swiper(".mines-history", {
   speed: 600,
 });
 
+new Swiper("#coinflip-history", {
+  slidesPerView: 15,
+  speed: 600,
+});
+
 $(".menu-full-btn").click(function () {
   if ($(this).hasClass("active")) {
     $(this).removeClass("active");
@@ -77,4 +82,48 @@ $(".menu-full-btn").click(function () {
     $(this).addClass("active");
     $(this).parent().addClass("active");
   }
+});
+
+$(".provider-btn").click(function () {
+  if ($(".providers__wrapper").hasClass("hidden")) {
+    $(".provider-btn-text").text("Отменить выбор");
+    $(".providers__wrapper").removeClass("hidden").addClass("flex");
+    $(".games__wrapper").addClass("hidden").removeClass("flex");
+    $(".provider-btn-arrow")
+      .removeClass("rotate-45")
+      .addClass("rotate-[225deg]");
+  } else {
+    $(".provider-btn-arrow")
+      .removeClass("rotate-[225deg]")
+      .addClass("rotate-45");
+    $(".provider-btn-text").text("Выбрать провайдера");
+    $(".providers__wrapper").addClass("hidden").removeClass("flex");
+    $(".games__wrapper").removeClass("hidden").addClass("flex");
+  }
+});
+
+$(document).ready(function () {
+  // Скрыть все табы при загрузке страницы
+  $(".tab-page").hide();
+
+  // Показать первый таб по умолчанию
+  $(".tab-page").first().show();
+
+  // Обработчик клика для кнопок табов
+  $(".tab-button").on("click", function () {
+    // Удаляем класс 'active' у всех кнопок
+    $(".tab-button").removeClass("active");
+
+    // Добавляем класс 'active' к текущей кнопке
+    $(this).addClass("active");
+
+    // Получаем индекс текущей кнопки
+    var index = $(".tab-button").index(this);
+
+    // Скрываем все табы
+    $(".tab-page").hide();
+
+    // Показать таб с тем же индексом
+    $(".tab-page").eq(index).show();
+  });
 });
