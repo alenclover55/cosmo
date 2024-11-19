@@ -103,27 +103,46 @@ $(".provider-btn").click(function () {
 });
 
 $(document).ready(function () {
-  // Скрыть все табы при загрузке страницы
   $(".tab-page").hide();
 
-  // Показать первый таб по умолчанию
   $(".tab-page").first().show();
 
-  // Обработчик клика для кнопок табов
   $(".tab-button").on("click", function () {
-    // Удаляем класс 'active' у всех кнопок
     $(".tab-button").removeClass("active");
 
-    // Добавляем класс 'active' к текущей кнопке
     $(this).addClass("active");
 
-    // Получаем индекс текущей кнопки
     var index = $(".tab-button").index(this);
-
-    // Скрываем все табы
     $(".tab-page").hide();
 
-    // Показать таб с тем же индексом
     $(".tab-page").eq(index).show();
+  });
+});
+
+$(document).ready(function () {
+  function defaultState() {
+    $(".icon-close").hide();
+    $(".search-sidebar").hide();
+    $(".search-btn-text").text("Поиск");
+    $(".icon-search").show();
+  }
+
+  defaultState();
+
+  $(".search-btn-open").click(() => {
+    if ($(".search-sidebar").is(":visible")) {
+      defaultState();
+    } else {
+      $(".icon-search").hide();
+      $(".icon-close").show();
+      $(".search-sidebar").show();
+      $(".search-btn-text").text("Отмена");
+    }
+  });
+
+  $("#search-close-btn").click(() => {
+    if ($(".search-sidebar").is(":visible")) {
+      defaultState();
+    }
   });
 });
