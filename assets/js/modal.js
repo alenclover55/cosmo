@@ -127,8 +127,6 @@ $(document).ready(function () {
     $(".icon-search").show();
   }
 
-  defaultState();
-
   $(".search-btn-open").click(() => {
     if ($(".search-sidebar").is(":visible")) {
       defaultState();
