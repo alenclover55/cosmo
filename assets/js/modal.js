@@ -67,11 +67,39 @@ new Swiper("#swiper-levels", {
 new Swiper(".mines-history", {
   slidesPerView: 10,
   speed: 600,
+  breakpoints: {
+    800: {
+      slidesPerView: 10,
+    },
+    414: {
+      slidesPerView: 5,
+    },
+    355: {
+      slidesPerView: 3,
+    },
+    0: {
+      slidesPerView: 1.05,
+    },
+  },
 });
 
 new Swiper("#coinflip-history", {
   slidesPerView: 15,
   speed: 600,
+  breakpoints: {
+    800: {
+      slidesPerView: 10,
+    },
+    414: {
+      slidesPerView: 5,
+    },
+    355: {
+      slidesPerView: 3,
+    },
+    0: {
+      slidesPerView: 1.05,
+    },
+  },
 });
 
 $(".menu-full-btn").click(function () {
@@ -143,4 +171,11 @@ $(document).ready(function () {
       defaultState();
     }
   });
+});
+
+$("#mobile-profile-btn").click(() => {
+  $("#profile-modal").toggle("hidden");
+});
+$("#sidebar-open-btn").click(() => {
+  $("#sidebar").toggleClass("active");
 });
